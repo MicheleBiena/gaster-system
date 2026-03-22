@@ -421,11 +421,6 @@
   </head>
   <body>
     <script>
-      const TWITCH_CLIENT_ID = "5o9bcwsby8441081qq84a8vbccq2e7";
-      const TWITCH_TOKEN = "bxqbheqhmhuzj89kdii96lob5kvr47";
-      const TWITCH_MY_CHANNEL = "TrainerFromHoenn";
-      const TWITCH_CHANNEL = "gibbotto_x_red";
-    </script>
 
     <div id="screen">
       <div id="header">
@@ -434,7 +429,7 @@
           <span class="wingdings">GASTER</span> SYSTEM</span
         >
         <span id="header-right"
-          >SPETTATORI: <span id="viewer-count">—</span></span
+          >GASTER_SYSTEM</span
         >
       </div>
       <div id="container">
@@ -596,9 +591,6 @@
         score: 0,
         currentQ: 0,
         answers: [],
-        viewerCount: null,
-        lastChatMsg: null,
-        lastChatUser: null,
       };
 
       const $ = (id) => document.getElementById(id);
@@ -617,164 +609,26 @@
       const tweetLikes = $("tweet-likes");
       const tweetClose = $("tweet-close");
       const chatNotif = $("chat-notif");
-      const viewerCount = $("viewer-count");
       const subliminalBox = $("subliminal-box");
 
-      // ── TWITCH VIEWERS ──
-      async function fetchViewers() {
-        try {
-          const ur = await fetch(
-            `https://api.twitch.tv/helix/users?login=${TWITCH_CHANNEL}`,
-            {
-              headers: {
-                "Client-ID": TWITCH_CLIENT_ID,
-                Authorization: `Bearer ${TWITCH_TOKEN}`,
-              },
-            },
-          );
-          const ud = await ur.json();
-          if (!ud.data?.[0]) return;
-          const sr = await fetch(
-            `https://api.twitch.tv/helix/streams?user_id=${ud.data[0].id}`,
-            {
-              headers: {
-                "Client-ID": TWITCH_CLIENT_ID,
-                Authorization: `Bearer ${TWITCH_TOKEN}`,
-              },
-            },
-          );
-          const sd = await sr.json();
-          if (sd.data?.[0]) {
-            state.viewerCount = sd.data[0].viewer_count;
-            viewerCount.textContent = state.viewerCount.toLocaleString("it-IT");
-          } else {
-            viewerCount.textContent = "OFFLINE";
-          }
-        } catch (e) {
-          viewerCount.textContent = "???";
-        }
-      }
-      fetchViewers();
-      setInterval(fetchViewers, 45000);
-
-      // ── TWITCH CHAT ──
-      const chatMessages = [];
-      function connectChat() {
-        try {
-          const ws = new WebSocket("wss://irc-ws.chat.twitch.tv:443");
-          ws.onopen = () => {
-            ws.send("CAP REQ :twitch.tv/tags");
-            ws.send("PASS oauth:" + TWITCH_TOKEN);
-            ws.send("NICK " + TWITCH_MY_CHANNEL.toLowerCase());
-            ws.send("JOIN #" + TWITCH_CHANNEL.toLowerCase());
-          };
-          ws.onmessage = (event) => {
-            const raw = event.data;
-            if (raw.startsWith("PING")) {
-              ws.send("PONG :tmi.twitch.tv");
-              return;
-            }
-            const m = raw.match(
-              /:(\w+)!\w+@\w+\.tmi\.twitch\.tv PRIVMSG #\w+ :(.+)/,
-            );
-            if (m && m[1].toLowerCase() !== TWITCH_CHANNEL.toLowerCase()) {
-              chatMessages.push({ user: m[1], msg: m[2].trim() });
-              if (chatMessages.length > 50) chatMessages.shift();
-              state.lastChatUser = m[1];
-              state.lastChatMsg = m[2].trim();
-            }
-          };
-          ws.onclose = () => setTimeout(connectChat, 5000);
-          ws.onerror = () => ws.close();
-        } catch (e) {}
-      }
-      connectChat();
-
-      // ── CHAT NOTIFICATION ──
-      let chatNotifTimer = null;
-      function showChatComment(customHTML) {
-        const src =
-          chatMessages.length > 1
-            ? chatMessages[Math.floor(Math.random() * chatMessages.length)]
-            : { user: state.lastChatUser, msg: state.lastChatMsg };
-        if (!src?.msg && !customHTML) return;
-
-        const u = src?.user || "qualcuno";
-        const m = src?.msg || "...";
-        const COMMENTS = [
-          "non sa cosa vi aspetta davvero.",
-          "anche questa anima è presente. La registro.",
-          "eppure non capisce ancora nulla.",
-          "interessante. Lo tengo a mente.",
-          "non sa che lo sto leggendo.",
-          "curioso. Molto curioso.",
-          "questa anima verrà ricordata.",
-          "il Dark World lo attende già.",
-          "non sa che è già stato catalogato.",
-          "sarà un peccato vederlo scomparire...",
-        ];
-        const c = COMMENTS[Math.floor(Math.random() * COMMENTS.length)];
-
-        chatNotif.innerHTML =
-          customHTML ||
-          `
-          <span class="chat-prefix">// INTERCETTAZIONE CHAT //</span>
-          <span class="chat-user">${u}</span>: "<span class="chat-msg">${m.substring(0, 70)}</span>"
-          <span class="chat-comment">— ${c}</span>
-        `;
-        chatNotif.style.display = "block";
-        clearTimeout(chatNotifTimer);
-        setTimeout(() => {
-          chatNotif.style.opacity = "1";
-        }, 40);
-        chatNotifTimer = setTimeout(() => {
-          chatNotif.style.opacity = "0";
-          setTimeout(() => {
-            chatNotif.style.display = "none";
-          }, 700);
-        }, 7000);
-      }
+      // ── TWITCH RIMOSSO ── viewer count e chat non presenti in questa versione
 
       // ── SUBLIMINAL ──
       const SUBLIMINAL = [
-        () =>
-          state.viewerCount
-            ? `${state.viewerCount} ANIME PRESENTI\nLE REGISTRO TUTTE`
-            : `MOLTE ANIME\nLE REGISTRO TUTTE`,
-        () =>
-          state.lastChatUser
-            ? `${state.lastChatUser.toUpperCase()} HA SCRITTO QUALCOSA\nL'HO NOTATO`
-            : `QUALCUNO IN CHAT\nL'HO NOTATO`,
-        () =>
-          state.lastChatMsg
-            ? `"${state.lastChatMsg.substring(0, 30).toUpperCase()}"\nCURIOSO.`
-            : `LA CHAT PARLA\nASCOLTO`,
-        () =>
-          state.lastChatUser
-            ? `${state.lastChatUser.toUpperCase()} PENSA DI ESSERE AL SICURO`
-            : `PENSATE DI ESSERE AL SICURO`,
-        () =>
-          state.lastChatUser
-            ? `QUELLA DI ${state.lastChatUser.toUpperCase()}\nE' UN'ANIMA INTERESSANTE`
-            : `UN'ANIMA INTERESSANTE\nE' QUI`,
-        () =>
-          chatMessages.length > 3
-            ? `${chatMessages.length} MESSAGGI INTERCETTATI\nTUTTI LETTI`
-            : `OGNI MESSAGGIO\nE' STATO LETTO`,
-        () =>
-          state.lastChatMsg
-            ? `"${state.lastChatMsg.substring(0, 22).toUpperCase()}"\nNON SA CHI LEGGE`
-            : `NON SANNO\nCHI LEGGE`,
+        "MOLTE ANIME\nLE REGISTRO TUTTE",
+        "QUALCUNO E' QUI\nLO NOTO",
+        "LA CHAT PARLA\nASCOLTO",
+        "PENSATE DI ESSERE AL SICURO",
+        "UN'ANIMA INTERESSANTE\nE' QUI",
+        "OGNI MESSAGGIO\nE' STATO LETTO",
+        "NON SANNO\nCHI LEGGE",
         "STO REGISTRANDO\nOGNI RISPOSTA",
         "QUESTA NON E' LA PRIMA VOLTA\nCHE VI OSSERVO",
         "IL DARK WORLD\nVI CONOSCE GIA'",
         "TRAINER E' QUI\nSENTO ANCHE LUI",
         "PERCHE' AVETE SCELTO\nQUELLA RISPOSTA?",
         "HO LETTO LA VOSTRA ANIMA\nPRIMA CHE INIZIASTE",
-        () =>
-          state.viewerCount
-            ? `${state.viewerCount} PERSONE\nNESSUNA PUO' ANDARSENE ORA`
-            : `NESSUNO\nPUO' ANDARSENE ORA`,
+        "NESSUNO\nPUO' ANDARSENE ORA",
         "LUI OSSERVA\nDA PRIMA",
         "OGNI CLICK\nVIENE REGISTRATO",
         "SO QUANTE VOLTE\nAVETE ESITATO",
@@ -1080,7 +934,7 @@
           state.currentQ = i + 1;
           updateScoreBar(i + 1);
 
-          if (i > 0 && i % 2 === 0) setTimeout(() => showChatComment(), 1200);
+          if (i > 0 && i % 2 === 0) setTimeout(() => showSilentObservation(), 1200);
           if (i > 0 && Math.random() < 0.5) flashSubliminal();
 
           currentText = `DOMANDA ${i + 1}.\n\n${q.q}`;
@@ -1163,9 +1017,6 @@
           "ANIMA ESPERTA",
           "CONOSCENZA ASSOLUTA",
         ];
-        const viewers = state.viewerCount
-          ? state.viewerCount.toLocaleString("it-IT")
-          : "???";
         statsBox.style.display = "block";
         statsBox.innerHTML = `
           <div style="margin-bottom:0.5em;color:#333">──────────────────────────────</div>
@@ -1173,7 +1024,6 @@
           <div><span class="stat-label">PUNTEGGIO .......... </span><span class="stat-score">${state.score}/10</span></div>
           <div><span class="stat-label">PERCENTUALE ........ </span><span class="stat-value">${pct}%</span></div>
           <div><span class="stat-label">GIUDIZIO ........... </span><span class="stat-value">${grades[state.score]}</span></div>
-          <div><span class="stat-label">SPETTATORI ......... </span><span class="stat-value">${viewers}</span></div>
           <div style="margin-top:0.5em;color:#333">──────────────────────────────</div>
           <div style="margin-top:0.3em;color:#222;font-size:0.9em;">PUNTEGGIO ARCHIVIATO PER IL CAPITOLO SUCCESSIVO.</div>
           <br><div style="color:#333;font-size:0.9em;">[ premi INVIO o clicca per ricominciare ]</div>
@@ -1229,20 +1079,11 @@
         currentText = "...";
         await say(currentText);
 
-        if (state.viewerCount && state.viewerCount > 0) {
-          currentText = `Vedo che siete in ${state.viewerCount.toLocaleString("it-IT")}.\n\nInteressante.\n\nMolte anime da registrare.`;
-        } else {
-          currentText = `So che siete in live, in questo momento.\n\nSo che Trainer è lì con voi.\n\nLo vedo.`;
-        }
+        currentText = `So che siete in live, in questo momento.\n\nSo che Trainer è lì con voi.\n\nLo vedo.`;
         await say(currentText);
 
         flashSubliminal("TRAINER E' QUI\nLO SO");
         await sleep(600);
-
-        if (state.lastChatMsg) {
-          showChatComment();
-          await sleep(800);
-        }
 
         currentText =
           "Prima di procedere...\n\nDevo valutare la vostra conoscenza.\n\nDell'altro mondo.";
@@ -1268,11 +1109,6 @@
         else
           currentText = `${state.score} su 10.\n\nL'oscurità non si studia.\n\nSi vive.`;
         await say(currentText);
-
-        if (state.lastChatMsg) {
-          showChatComment();
-          await sleep(1000);
-        }
 
         flashSubliminal("IL FUTURO\nVI APPARTIENE");
         await sleep(500);
@@ -1302,9 +1138,6 @@
         () =>
           `[${timestamp()}] INPUT_LOG :: risposta ${state.currentQ} registrata`,
         () =>
-          `[${timestamp()}] VIEWER_COUNT :: ${state.viewerCount ?? "???"} unità presenti`,
-        () => `[${timestamp()}] CHAT_READ :: ultimo messaggio acquisito`,
-        () =>
           `[${timestamp()}] FILE_ACCESS :: profilo_giocatore.dat — lettura completata`,
         () =>
           `[${timestamp()}] MEMORY_SCAN :: ricordi accessibili — archiviazione in corso`,
@@ -1316,11 +1149,7 @@
         () => `[${timestamp()}] SOUL_TYPE :: in attesa di classificazione`,
         () => `[${timestamp()}] OBSERVER :: W.D.G. — status ATTIVO`,
         () =>
-          `[${timestamp()}] STREAM_TAP :: feed acquisito — qualità sufficiente`,
-        () =>
-          state.lastChatUser
-            ? `[${timestamp()}] USER_TAG :: ${state.lastChatUser} — etichettato`
-            : `[${timestamp()}] USER_TAG :: anonimo — etichettato`,
+          `[${timestamp()}] USER_TAG :: anonimo — etichettato`,
         () =>
           `[${timestamp()}] ARCHIVE :: voce aggiunta al catalogo delle anime`,
         () =>
@@ -1356,19 +1185,10 @@
       }
       scheduleLog();
 
-      // ── OSSERVAZIONE SILENZIOSA — commenti brevi sul comportamento ──
-      // Appare nel chat-notif in formato diverso dal normale (no "intercettazione")
+      // ── OSSERVAZIONE SILENZIOSA ──
       const SILENT_OBS = [
-        () =>
-          state.lastChatUser
-            ? `// ${state.lastChatUser} non sa che il suo nome è già nel sistema.`
-            : `// qualcuno in chat. è già stato registrato.`,
-        () =>
-          `// ${state.viewerCount ?? "???"} presenti. nessuno si è disconnesso.`,
-        () =>
-          state.lastChatMsg
-            ? `// "${state.lastChatMsg.substring(0, 40)}" — archiviato.`
-            : `// la chat continua. ascolto.`,
+        `// qualcuno qui. è già stato registrato.`,
+        `// la chat continua. ascolto.`,
         () => `// domanda ${state.currentQ}. ho già la risposta giusta.`,
         `// questa non è la prima sessione che osservo.`,
         `// il pattern di risposta è coerente con il profilo atteso.`,
@@ -1383,29 +1203,25 @@
         `// non serve spaventare. basta sapere.`,
       ];
 
+      let silentObsTimer = null;
       function showSilentObservation() {
         const item = SILENT_OBS[Math.floor(Math.random() * SILENT_OBS.length)];
         const text = typeof item === "function" ? item() : item;
         chatNotif.innerHTML = `<span class="chat-prefix">// OSSERVAZIONE //</span>${text}`;
         chatNotif.style.display = "block";
-        clearTimeout(chatNotifTimer);
-        setTimeout(() => {
-          chatNotif.style.opacity = "1";
-        }, 40);
-        chatNotifTimer = setTimeout(() => {
+        clearTimeout(silentObsTimer);
+        setTimeout(() => { chatNotif.style.opacity = "1"; }, 40);
+        silentObsTimer = setTimeout(() => {
           chatNotif.style.opacity = "0";
-          setTimeout(() => {
-            chatNotif.style.display = "none";
-          }, 700);
+          setTimeout(() => { chatNotif.style.display = "none"; }, 700);
         }, 8000);
       }
 
-      // ogni 25-40s, alterna con showChatComment
+      // ogni 25-40s
       function scheduleObservations() {
         const delay = 25000 + Math.random() * 15000;
         setTimeout(() => {
-          if (Math.random() < 0.5) showSilentObservation();
-          else if (state.lastChatMsg) showChatComment();
+          if (Math.random() < 0.6) showSilentObservation();
           scheduleObservations();
         }, delay);
       }

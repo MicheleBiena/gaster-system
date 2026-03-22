@@ -83,6 +83,7 @@ File: `chapters/pre-cap1/survey.html`
   - Credenziali Twitch presenti nel file (non esporre in log pubblici)
 - Effetti: typewriter, glitch flash, scanlines, vignette, messaggi subliminali, log di sistema
 - Modifica apportata: al termine del quiz, `state.score` viene salvato in `localStorage.gaster_system_data.quiz_precap1`
+- **Integrazione Twitch RIMOSSA** — nessuna credenziale nel codice pubblico. Viewer count e chat non presenti in questa versione statica.
 
 ---
 
