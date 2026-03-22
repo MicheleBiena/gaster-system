@@ -6,8 +6,7 @@
     <title>PRE-CAP 2 — GASTER SYSTEM</title>
     <link rel="stylesheet" href="../../assets/style.css" />
     <style>
-      /* ── SEZIONI ── */
-      .section-block {
+      .nav-grid {
         width: 100%;
         max-width: 700px;
         display: flex;
@@ -15,322 +14,58 @@
         gap: 0;
       }
 
-      .section-header {
-        font-family: var(--font-mono);
-        font-size: 12px;
-        color: var(--accent);
-        letter-spacing: 0.28em;
-        text-transform: uppercase;
-        padding: 0.5em 0.8em;
-        border: 2px solid var(--text);
-        border-bottom: none;
-        background: #050505;
-      }
-
-      /* ── SCHEDE PERSONAGGI ── */
-      .char-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        border: 2px solid var(--text);
-      }
-
-      .char-card {
-        display: grid;
-        grid-template-columns: 120px 1fr;
-        border-bottom: 1px solid #222;
-        cursor: pointer;
-        transition: background 0.05s;
-      }
-
-      .char-card:last-child {
-        border-bottom: none;
-      }
-      .char-card:hover {
-        background: #0a0a0a;
-      }
-
-      .char-card.open .char-body {
-        display: block;
-      }
-      .char-card.open .char-toggle {
-        color: var(--accent);
-      }
-
-      .char-left {
-        padding: 0.9em 1em;
-        border-right: 1px solid #222;
-        display: flex;
-        flex-direction: column;
-        gap: 0.4em;
-        justify-content: flex-start;
-      }
-
-      .char-name {
-        font-family: var(--font-display);
-        font-size: 1.6em;
-        letter-spacing: 0.06em;
-        color: var(--text);
-        line-height: 1.1;
-      }
-
-      .char-role {
-        font-family: var(--font-mono);
-        font-size: 11px;
-        color: var(--dim);
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        line-height: 1.5;
-      }
-
-      .char-toggle {
-        font-family: var(--font-mono);
-        font-size: 11px;
-        color: var(--dim);
-        letter-spacing: 0.1em;
-        margin-top: auto;
-        padding-top: 0.6em;
-      }
-
-      .char-right {
-        padding: 0.9em 1em;
-        display: flex;
-        flex-direction: column;
-        gap: 0.6em;
-      }
-
-      .char-stat-row {
-        display: flex;
-        flex-direction: column;
-        gap: 0.15em;
-      }
-
-      .char-stat-label {
-        font-family: var(--font-mono);
-        font-size: 11px;
-        color: var(--dim);
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-      }
-
-      .char-stat-value {
-        font-family: var(--font-display);
-        font-size: 1.15em;
-        color: var(--text);
-        letter-spacing: 0.04em;
-        line-height: 1.4;
-      }
-
-      .char-body {
-        display: none;
-        grid-column: 1 / -1;
-        border-top: 1px solid #222;
-        padding: 0.9em 1em;
-        background: #040404;
-      }
-
-      .char-body-text {
-        font-family: var(--font-mono);
-        font-size: 13px;
-        color: #999;
-        letter-spacing: 0.06em;
-        line-height: 1.8;
-      }
-
-      .char-body-text p + p {
-        margin-top: 0.8em;
-      }
-
-      /* ── ANALISI MUSICALE ── */
-      .music-list {
-        border: 2px solid var(--text);
-        display: flex;
-        flex-direction: column;
-      }
-
-      .music-track {
+      .nav-card {
         display: grid;
         grid-template-columns: 36px 1fr auto;
         align-items: center;
-        gap: 0.8em;
-        padding: 0.75em 1em;
-        border-bottom: 1px solid #1a1a1a;
-        cursor: pointer;
+        gap: 1em;
+        padding: 1.1em 1em;
+        border: 2px solid var(--text);
+        border-bottom: none;
+        text-decoration: none;
+        color: var(--text);
         transition: background 0.05s;
       }
 
-      .music-track:last-child {
-        border-bottom: none;
+      .nav-card:last-child {
+        border-bottom: 2px solid var(--text);
       }
-      .music-track:hover {
-        background: #0a0a0a;
-      }
-      .music-track.open {
-        background: #060606;
-      }
-      .music-track.open .track-arrow {
-        color: var(--accent);
-        transform: rotate(90deg);
+      .nav-card:hover {
+        background: #0d0d0d;
+        cursor: pointer;
       }
 
-      .track-num {
+      .nav-index {
         font-family: var(--font-mono);
         font-size: 11px;
-        color: var(--dim2);
+        color: var(--dim);
         letter-spacing: 0.1em;
         text-align: right;
       }
 
-      .track-info {
+      .nav-info {
         display: flex;
         flex-direction: column;
-        gap: 0.15em;
+        gap: 0.2em;
       }
 
-      .track-title {
+      .nav-title {
         font-family: var(--font-display);
-        font-size: 1.3em;
-        letter-spacing: 0.06em;
-        color: var(--text);
-      }
-
-      .track-context {
-        font-family: var(--font-mono);
-        font-size: 11px;
-        color: var(--dim);
-        letter-spacing: 0.1em;
-      }
-
-      .track-arrow {
-        font-family: var(--font-mono);
-        font-size: 14px;
-        color: var(--dim);
-        transition:
-          transform 0.15s,
-          color 0.1s;
-      }
-
-      .track-desc {
-        display: none;
-        grid-column: 1 / -1;
-        padding: 0 1em 0.9em 3em;
-      }
-
-      .track-desc.visible {
-        display: block;
-      }
-
-      .track-desc-text {
-        font-family: var(--font-mono);
-        font-size: 13px;
-        color: #888;
-        letter-spacing: 0.06em;
-        line-height: 1.8;
-        border-left: 2px solid #222;
-        padding-left: 0.8em;
-      }
-
-      /* ── VIDEO ── */
-      .video-list {
-        border: 2px solid var(--text);
-        display: flex;
-        flex-direction: column;
-      }
-
-      .video-entry {
-        border-bottom: 1px solid #1a1a1a;
-      }
-
-      .video-entry:last-child {
-        border-bottom: none;
-      }
-
-      .video-meta {
-        padding: 0.9em 1em;
-        display: flex;
-        flex-direction: column;
-        gap: 0.35em;
-        border-bottom: 1px solid #111;
-      }
-
-      .video-label {
-        font-family: var(--font-mono);
-        font-size: 11px;
-        color: var(--accent);
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-      }
-
-      .video-title {
-        font-family: var(--font-display);
-        font-size: 1.4em;
-        letter-spacing: 0.06em;
-        color: var(--text);
-      }
-
-      .video-note {
-        font-family: var(--font-mono);
-        font-size: 13px;
-        color: #888;
-        letter-spacing: 0.05em;
-        line-height: 1.8;
-        padding: 0.8em 1em;
-        border-bottom: 1px solid #111;
-      }
-
-      .video-note strong {
-        color: #aaa;
-        font-weight: normal;
+        font-size: 1.6em;
         letter-spacing: 0.08em;
       }
 
-      .video-embed {
-        position: relative;
-        width: 100%;
-        padding-top: 56.25%;
-        background: #050505;
-      }
-
-      .video-embed iframe {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
-
-      /* ── NAV SEZIONI ── */
-      #section-nav {
-        width: 100%;
-        max-width: 700px;
-        display: flex;
-        gap: 0;
-        border: 2px solid var(--text);
-      }
-
-      .snav-item {
-        flex: 1;
+      .nav-desc {
         font-family: var(--font-mono);
         font-size: 12px;
         color: var(--dim);
-        letter-spacing: 0.15em;
-        text-align: center;
-        padding: 0.5em 0.4em;
-        cursor: pointer;
-        border-right: 1px solid #222;
-        transition:
-          background 0.05s,
-          color 0.05s;
-        text-decoration: none;
-        text-transform: uppercase;
+        letter-spacing: 0.08em;
       }
 
-      .snav-item:last-child {
-        border-right: none;
-      }
-      .snav-item:hover {
-        background: #0d0d0d;
-        color: var(--text);
+      .nav-arrow {
+        font-family: var(--font-mono);
+        font-size: 16px;
+        color: var(--dim);
       }
     </style>
   </head>
@@ -354,436 +89,43 @@
           >
           &nbsp;&nbsp;PRE-CAP 2 — DELTARUNE CAP.1
         </span>
-        <span id="header-sub"
-          >schede personaggi · analisi musicale · video</span
-        >
+        <span id="header-sub">documentazione · prima del capitolo 2</span>
       </header>
 
-      <!-- NAV RAPIDA -->
-      <nav id="section-nav">
-        <a class="snav-item" href="#personaggi">personaggi</a>
-        <a class="snav-item" href="#musica">musica</a>
-        <a class="snav-item" href="#video">video</a>
+      <nav class="nav-grid">
+        <a class="nav-card" href="personaggi.html">
+          <div class="nav-index">01</div>
+          <div class="nav-info">
+            <div class="nav-title">PERSONAGGI</div>
+            <div class="nav-desc">Kris · Susie · Ralsei · Lancer · Jevil</div>
+          </div>
+          <div class="nav-arrow">→</div>
+        </a>
+
+        <a class="nav-card" href="musica.html">
+          <div class="nav-index">02</div>
+          <div class="nav-info">
+            <div class="nav-title">MUSICA</div>
+            <div class="nav-desc">OST Capitolo 1 · analisi · player</div>
+          </div>
+          <div class="nav-arrow">→</div>
+        </a>
+
+        <a class="nav-card" href="video.html">
+          <div class="nav-index">03</div>
+          <div class="nav-info">
+            <div class="nav-title">VIDEO</div>
+            <div class="nav-desc">Toby Fox · 5° anniversario Undertale</div>
+          </div>
+          <div class="nav-arrow">→</div>
+        </a>
       </nav>
 
-      <!-- ══════════════════════════════════════ -->
-      <!-- SCHEDE PERSONAGGI                      -->
-      <!-- ══════════════════════════════════════ -->
-      <section class="section-block" id="personaggi">
-        <div class="section-header">// 01 — SCHEDE PERSONAGGI //</div>
-        <div class="char-grid">
-          <!-- KRIS -->
-          <div class="char-card" onclick="toggleCard(this)">
-            <div class="char-left">
-              <div class="char-name">KRIS</div>
-              <div class="char-role">protagonista<br />umano · darkner</div>
-              <div class="char-toggle">[ espandi ]</div>
-            </div>
-            <div class="char-right">
-              <div class="char-stat-row">
-                <div class="char-stat-label">RUOLO</div>
-                <div class="char-stat-value">Personaggio giocante</div>
-              </div>
-              <div class="char-stat-row">
-                <div class="char-stat-label">SPECIE</div>
-                <div class="char-stat-value">Umano</div>
-              </div>
-              <div class="char-stat-row">
-                <div class="char-stat-label">COLORE ANIMA</div>
-                <div class="char-stat-value">Rosso — determinazione</div>
-              </div>
-            </div>
-            <div class="char-body">
-              <div class="char-body-text">
-                <p>
-                  Kris è l'unico umano rimasto nel villaggio dei mostri dopo gli
-                  eventi di Undertale. Silenzioso, distaccato, porta il peso di
-                  essere sempre l'elemento anomalo in un mondo che non gli
-                  appartiene del tutto.
-                </p>
-                <p>
-                  La tensione centrale del gioco ruota attorno alla separazione
-                  tra Kris come personaggio e il SOUL rosso che il giocatore
-                  controlla — un tema che Deltarune esplora fin dalla prima
-                  scena, quando Kris strappa via il SOUL dal proprio petto alla
-                  fine del Capitolo 1.
-                </p>
-                <p>
-                  Ha vissuto a lungo in casa di Toriel e Asgore prima del loro
-                  divorzio. Il fratello Asriel è andato al college. Kris vive
-                  ora solo con Toriel.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- SUSIE -->
-          <div class="char-card" onclick="toggleCard(this)">
-            <div class="char-left">
-              <div class="char-name">SUSIE</div>
-              <div class="char-role">compagna<br />mostro · darkner</div>
-              <div class="char-toggle">[ espandi ]</div>
-            </div>
-            <div class="char-right">
-              <div class="char-stat-row">
-                <div class="char-stat-label">RUOLO</div>
-                <div class="char-stat-value">Party member principale</div>
-              </div>
-              <div class="char-stat-row">
-                <div class="char-stat-label">SPECIE</div>
-                <div class="char-stat-value">Mostro (tipo non specificato)</div>
-              </div>
-              <div class="char-stat-row">
-                <div class="char-stat-label">ARMA</div>
-                <div class="char-stat-value">Ascia — attacco fisico</div>
-              </div>
-            </div>
-            <div class="char-body">
-              <div class="char-body-text">
-                <p>
-                  Bullo di scuola dalla reputazione violenta, Susie finisce nel
-                  Dark World insieme a Kris per caso. È abituata a risolvere i
-                  problemi con la forza e fatica enormemente con il concetto di
-                  "risolvere i conflitti senza combattere".
-                </p>
-                <p>
-                  Nel corso del Capitolo 1 il suo arco narrativo è il più
-                  marcato: da minaccia percepita a membro fondamentale del
-                  gruppo, con Ralsei che diventa il suo punto di riferimento
-                  inaspettato.
-                </p>
-                <p>
-                  La sua brutalità di facciata nasconde un isolamento profondo —
-                  non ha amici, mangia gesso, probabilmente vive in condizioni
-                  difficili. Toby Fox costruisce la sua simpatia in modo
-                  graduale e mai forzato.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- RALSEI -->
-          <div class="char-card" onclick="toggleCard(this)">
-            <div class="char-left">
-              <div class="char-name">RALSEI</div>
-              <div class="char-role">principe oscuro<br />darkner</div>
-              <div class="char-toggle">[ espandi ]</div>
-            </div>
-            <div class="char-right">
-              <div class="char-stat-row">
-                <div class="char-stat-label">RUOLO</div>
-                <div class="char-stat-value">Supporto / guaritore</div>
-              </div>
-              <div class="char-stat-row">
-                <div class="char-stat-label">SPECIE</div>
-                <div class="char-stat-value">Darkner — capra</div>
-              </div>
-              <div class="char-stat-row">
-                <div class="char-stat-label">NOTA</div>
-                <div class="char-stat-value">Nome anagramma di Asriel</div>
-              </div>
-            </div>
-            <div class="char-body">
-              <div class="char-body-text">
-                <p>
-                  Il "Principe delle Tenebre" che ha atteso per tutta la vita
-                  l'arrivo degli eroi della profezia. Vive da solo nel castello
-                  in cima al Dark World e ha imparato tutto da solo — comprese
-                  magie di guarigione rare.
-                </p>
-                <p>
-                  Fisicamente ricorda Asriel di Undertale, e il suo nome ne è
-                  l'anagramma. Questa somiglianza è intenzionale e ancora
-                  inspiegata — uno dei misteri centrali della narrativa di
-                  Deltarune.
-                </p>
-                <p>
-                  Ha un approccio pacifista ancora più marcato di quello di
-                  Undertale: la sua abilità speciale è addormentare i nemici
-                  invece di sconfiggerli. La sua gentilezza verso Susie è
-                  incondizionata e non performativa.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- LANCER -->
-          <div class="char-card" onclick="toggleCard(this)">
-            <div class="char-left">
-              <div class="char-name">LANCER</div>
-              <div class="char-role">
-                antagonista<br />darkner · figli del re
-              </div>
-              <div class="char-toggle">[ espandi ]</div>
-            </div>
-            <div class="char-right">
-              <div class="char-stat-row">
-                <div class="char-stat-label">RUOLO</div>
-                <div class="char-stat-value">Antagonista → alleato</div>
-              </div>
-              <div class="char-stat-row">
-                <div class="char-stat-label">PADRE</div>
-                <div class="char-stat-value">Il Re (boss finale Cap.1)</div>
-              </div>
-              <div class="char-stat-row">
-                <div class="char-stat-label">MEZZO</div>
-                <div class="char-stat-value">Bicicletta da battaglia</div>
-              </div>
-            </div>
-            <div class="char-body">
-              <div class="char-body-text">
-                <p>
-                  Si presenta come il grande villain del Dark World ma è
-                  fondamentalmente un bambino che vuole essere cattivo per
-                  compiacere il padre. I suoi piani malvagi sono goffi, le sue
-                  minacce sono tenere, e finisce invariabilmente per
-                  affezionarsi agli eroi che dovrebbe ostacolare.
-                </p>
-                <p>
-                  Il suo arco è costruito sull'ironia: più cerca di essere
-                  malvagio, più risulta simpatico. Quando realizza che Susie
-                  apprezza la sua "cattiveria" genuinamente, si lega a lei in
-                  modo immediato e totalizzante.
-                </p>
-                <p>
-                  Il rapporto con il padre è il nucleo più oscuro della sua
-                  storia — Il Re lo usa strumentalmente e non ricambia il suo
-                  affetto. Lancer non lo capisce ancora, ma il giocatore sì.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- JEVIL -->
-          <div class="char-card" onclick="toggleCard(this)">
-            <div class="char-left">
-              <div class="char-name">JEVIL</div>
-              <div class="char-role">boss segreto<br />darkner · ex jolly</div>
-              <div class="char-toggle">[ espandi ]</div>
-            </div>
-            <div class="char-right">
-              <div class="char-stat-row">
-                <div class="char-stat-label">RUOLO</div>
-                <div class="char-stat-value">Boss opzionale segreto</div>
-              </div>
-              <div class="char-stat-row">
-                <div class="char-stat-label">STATO</div>
-                <div class="char-stat-value">Rinchiuso nelle segrete</div>
-              </div>
-              <div class="char-stat-row">
-                <div class="char-stat-label">CLAIM</div>
-                <div class="char-stat-value">
-                  "Io solo posso fare qualsiasi cosa"
-                </div>
-              </div>
-            </div>
-            <div class="char-body">
-              <div class="char-body-text">
-                <p>
-                  Ex Jolly di carta del mazzo del Re, imprigionato nelle segrete
-                  del castello dopo essere "impazzito". Sostiene di aver
-                  incontrato qualcuno — mai nominato — che gli ha rivelato la
-                  vera natura del mondo: che tutto è un gioco, e solo lui lo sa.
-                </p>
-                <p>
-                  È il boss più difficile del Capitolo 1, completamente
-                  opzionale. Il suo combattimento è caotico per design: attacchi
-                  multipli simultanei, pattern imprevedibili, la sensazione
-                  costante di perdere il controllo.
-                </p>
-                <p>
-                  Il suo tema del "caos come libertà" è l'unico momento in cui
-                  Deltarune parla direttamente della sua natura di videogioco.
-                  Jevil sa di essere in un gioco. Gli altri no. Questo lo rende
-                  pericoloso — e malinconico.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ══════════════════════════════════════ -->
-      <!-- ANALISI MUSICALE                       -->
-      <!-- ══════════════════════════════════════ -->
-      <section class="section-block" id="musica">
-        <div class="section-header">
-          // 02 — ANALISI MUSICALE — CAPITOLO 1 //
-        </div>
-        <div class="music-list">
-          <div class="music-track" onclick="toggleTrack(this)">
-            <div class="track-num">01</div>
-            <div class="track-info">
-              <div class="track-title">Prologue</div>
-              <div class="track-context">
-                apertura · creazione del personaggio
-              </div>
-            </div>
-            <div class="track-arrow">▶</div>
-            <div class="track-desc">
-              <div class="track-desc-text">
-                Melodia semplice e sospesa che accompagna la creazione del
-                personaggio. Introduce il tema della "scelta senza senso" — il
-                gioco ti chiede di creare un personaggio e poi lo butta via.
-                L'innocenza del brano contrasta con ciò che sta per succedere.
-              </div>
-            </div>
-          </div>
-
-          <div class="music-track" onclick="toggleTrack(this)">
-            <div class="track-num">02</div>
-            <div class="track-info">
-              <div class="track-title">Don't Forget</div>
-              <div class="track-context">titoli · tema principale</div>
-            </div>
-            <div class="track-arrow">▶</div>
-            <div class="track-desc">
-              <div class="track-desc-text">
-                Il tema vocale di apertura. Lenta, pianistica, con testo che
-                parla di ricordare qualcosa di importante. È firmata da Toby Fox
-                ma il testo è scritto da Adriana Figueroa. Introduce subito il
-                tono nostalgico e malinconico di Deltarune rispetto a Undertale.
-              </div>
-            </div>
-          </div>
-
-          <div class="music-track" onclick="toggleTrack(this)">
-            <div class="track-num">03</div>
-            <div class="track-info">
-              <div class="track-title">Rude Buster</div>
-              <div class="track-context">battaglia · tema di Susie</div>
-            </div>
-            <div class="track-arrow">▶</div>
-            <div class="track-desc">
-              <div class="track-desc-text">
-                Il brano di battaglia principale del Capitolo 1, associato a
-                Susie. Energico, quasi punk, con un riff centrale
-                riconoscibilissimo. Rispecchia perfettamente il carattere del
-                personaggio: caotico, diretto, trascinante. Uno dei brani più
-                amati della community.
-              </div>
-            </div>
-          </div>
-
-          <div class="music-track" onclick="toggleTrack(this)">
-            <div class="track-num">04</div>
-            <div class="track-info">
-              <div class="track-title">THE WORLD REVOLVING</div>
-              <div class="track-context">boss segreto · tema di Jevil</div>
-            </div>
-            <div class="track-arrow">▶</div>
-            <div class="track-desc">
-              <div class="track-desc-text">
-                Il brano del boss segreto Jevil. Frenetico, distorto, con cambi
-                di tempo improvvisi che rispecchiano l'imprevedibilità del
-                combattimento. La voce campionata che ride è diventata iconica.
-                Toby usa qui una struttura musicale volutamente "spezzata" per
-                trasmettere il caos come condizione esistenziale.
-              </div>
-            </div>
-          </div>
-
-          <div class="music-track" onclick="toggleTrack(this)">
-            <div class="track-num">05</div>
-            <div class="track-info">
-              <div class="track-title">A Cyber's World?</div>
-              <div class="track-context">overworld · città card</div>
-            </div>
-            <div class="track-arrow">▶</div>
-            <div class="track-desc">
-              <div class="track-desc-text">
-                Tema esplorativo del villaggio dei Darkner. Ha un sapore
-                retrò-digitale che evoca videogiochi anni '80, coerente con
-                l'estetica delle carte da gioco animate. Leggero e misterioso
-                allo stesso tempo, crea un senso di meraviglia senza mai
-                diventare rassicurante del tutto.
-              </div>
-            </div>
-          </div>
-
-          <div class="music-track" onclick="toggleTrack(this)">
-            <div class="track-num">06</div>
-            <div class="track-info">
-              <div class="track-title">Lancer</div>
-              <div class="track-context">incontri · tema di Lancer</div>
-            </div>
-            <div class="track-arrow">▶</div>
-            <div class="track-desc">
-              <div class="track-desc-text">
-                Un tema volutamente pomposo e goffo che rispecchia la
-                personalità di Lancer — vuole sembrare minaccioso ma risulta
-                adorabile. Toby costruisce il personaggio attraverso la musica
-                prima ancora che attraverso i dialoghi: senti che non è
-                pericoloso nel momento in cui parte il brano.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ══════════════════════════════════════ -->
-      <!-- VIDEO                                  -->
-      <!-- ══════════════════════════════════════ -->
-      <section class="section-block" id="video">
-        <div class="section-header">// 03 — VIDEO — PREPARAZIONE CAP. 2 //</div>
-        <div class="video-list">
-          <div class="video-entry">
-            <div class="video-meta">
-              <div class="video-label">
-                concerto · 5° anniversario undertale
-              </div>
-              <div class="video-title">Toby Fox — esecuzione dal vivo</div>
-            </div>
-            <div class="video-note">
-              Brano suonato da Toby Fox in chiusura del concerto per il
-              <strong>5° anniversario di Undertale</strong>. È uno dei rari
-              momenti in cui Toby si esibisce di persona — e porta con sé un
-              peso specifico: è in questo periodo che inizia a sviluppare il
-              <strong>dolore cronico ai tendini</strong> che gli rende difficile
-              suonare il pianoforte. Una condizione che non lo ha fermato —
-              continua a suonare per produrre i nuovi capitoli — ma che rende
-              ogni sua esibizione qualcosa di più di un semplice concerto.
-            </div>
-            <div class="video-embed">
-              <iframe
-                src="https://www.youtube.com/embed/OXEkVJUUoZE"
-                title="Toby Fox — 5° anniversario Undertale"
-                allow="
-                  accelerometer;
-                  autoplay;
-                  clipboard-write;
-                  encrypted-media;
-                  gyroscope;
-                  picture-in-picture;
-                "
-                allowfullscreen
-              >
-              </iframe>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <footer id="site-footer">
-        <span>GASTER_SYSTEM // PRE-CAP 2 — DELTARUNE CAP.1</span>
+        <span>GASTER_SYSTEM // PRE-CAP 2</span>
       </footer>
     </div>
-    <!-- /screen -->
 
     <script src="../../assets/main.js"></script>
-    <script>
-      function toggleCard(card) {
-        const body = card.querySelector(".char-body");
-        const toggle = card.querySelector(".char-toggle");
-        const isOpen = card.classList.toggle("open");
-        toggle.textContent = isOpen ? "[ chiudi ]" : "[ espandi ]";
-      }
-
-      function toggleTrack(track) {
-        const desc = track.querySelector(".track-desc");
-        const isOpen = track.classList.toggle("open");
-        desc.classList.toggle("visible", isOpen);
-      }
-    </script>
   </body>
 </html>
