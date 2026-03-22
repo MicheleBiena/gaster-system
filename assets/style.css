@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap");
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -20,13 +22,14 @@
   --font-mono: "Share Tech Mono", monospace;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   min-height: 100%;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-display);
-  font-size: clamp(16px, 2vw, 22px);
+  font-size: 20px;
   line-height: 1.5;
   cursor: crosshair;
 }
@@ -49,7 +52,11 @@ html, body {
 #vignette {
   position: fixed;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.75) 100%);
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
   pointer-events: none;
   z-index: 9998;
 }
@@ -79,16 +86,16 @@ html, body {
 
 #header-title {
   font-family: var(--font-display);
-  font-size: 1.5em;
+  font-size: 2em;
   letter-spacing: 0.12em;
   color: var(--text);
 }
 
 #header-sub {
   font-family: var(--font-mono);
-  font-size: 0.5em;
+  font-size: 13px;
   color: var(--dim);
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
@@ -107,7 +114,7 @@ html, body {
 
 #hub-label {
   font-family: var(--font-mono);
-  font-size: 0.52em;
+  font-size: 13px;
   color: var(--dim);
   letter-spacing: 0.25em;
 }
@@ -121,11 +128,11 @@ html, body {
 
 .chapter-card {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 90px 1fr auto;
   grid-template-rows: auto auto;
-  column-gap: 1.2em;
-  row-gap: 0.1em;
-  padding: 0.8em 1em;
+  column-gap: 1em;
+  row-gap: 0.3em;
+  padding: 1em 1.1em;
   border: 2px solid var(--text);
   border-bottom: none;
   text-decoration: none;
@@ -150,9 +157,9 @@ html, body {
 
 .card-tag {
   font-family: var(--font-mono);
-  font-size: 0.45em;
+  font-size: 12px;
   color: var(--accent);
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   grid-column: 1;
   grid-row: 1;
   align-self: center;
@@ -161,7 +168,7 @@ html, body {
 
 .card-title {
   font-family: var(--font-display);
-  font-size: 1.1em;
+  font-size: 1.5em;
   letter-spacing: 0.08em;
   grid-column: 2;
   grid-row: 1;
@@ -170,17 +177,17 @@ html, body {
 
 .card-desc {
   font-family: var(--font-mono);
-  font-size: 0.44em;
+  font-size: 13px;
   color: var(--dim);
-  letter-spacing: 0.1em;
-  line-height: 1.6;
+  letter-spacing: 0.08em;
+  line-height: 1.7;
   grid-column: 2;
   grid-row: 2;
 }
 
 .card-status {
   font-family: var(--font-mono);
-  font-size: 0.42em;
+  font-size: 12px;
   color: var(--dim);
   letter-spacing: 0.15em;
   grid-column: 3;
@@ -196,7 +203,7 @@ html, body {
 /* ── SAVE DISPLAY ── */
 #save-display {
   font-family: var(--font-mono);
-  font-size: 0.46em;
+  font-size: 13px;
   color: var(--dim2);
   letter-spacing: 0.15em;
   border-left: 2px solid var(--dim2);
@@ -219,7 +226,7 @@ html, body {
 #site-footer {
   margin-top: auto;
   font-family: var(--font-mono);
-  font-size: 0.4em;
+  font-size: 12px;
   color: var(--dim2);
   letter-spacing: 0.18em;
   text-align: center;
@@ -235,13 +242,14 @@ html, body {
   padding: 0.9em 1.1em;
   background: var(--bg);
   font-family: var(--font-display);
+  font-size: 1.3em;
   letter-spacing: 0.02em;
   position: relative;
 }
 
 .gs-section-label {
   font-family: var(--font-mono);
-  font-size: 0.48em;
+  font-size: 13px;
   color: var(--dim);
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -260,8 +268,13 @@ html, body {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 /* ── GLITCH FLASH ── */
