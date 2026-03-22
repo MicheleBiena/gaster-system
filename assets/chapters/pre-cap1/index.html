@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRE-CAP 1 — GASTER SYSTEM</title>
+    <link rel="stylesheet" href="../../assets/style.css" />
+  </head>
+  <body>
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+    <div class="gs-glitch" id="glitch"></div>
+
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">
+          <a href="../../index.html" style="color:var(--dim);text-decoration:none;font-size:0.7em;letter-spacing:0.1em;">← INDIETRO</a>
+          &nbsp;&nbsp;PRE-CAP 1 — UNDERTALE
+        </span>
+        <span id="header-sub">documentazione · prima del capitolo 1</span>
+      </header>
+
+      <main id="hub">
+
+        <div class="gs-section-label">// CONTENUTI //</div>
+
+        <div id="chapter-nav">
+
+          <a class="chapter-card done" href="survey.html">
+            <span class="card-tag">SURVEY</span>
+            <span class="card-title">SURVEY_PROGRAM V12.25</span>
+            <span class="card-desc">Il programma di valutazione di W.D. Gaster.<br>Metti alla prova la tua conoscenza di Undertale.</span>
+            <span class="card-status" id="survey-status">○ ACCEDI</span>
+          </a>
+
+        </div>
+
+        <div id="save-display">
+          <span id="save-label">// ARCHIVIO //</span>
+          <span id="save-score">CARICAMENTO...</span>
+        </div>
+
+      </main>
+
+      <footer id="site-footer">
+        <span>GASTER_SYSTEM // PRE-CAP 1</span>
+      </footer>
+    </div>
+
+    <script src="../../assets/main.js"></script>
+    <script>
+      const saved = loadProgress();
+      const scoreEl = document.getElementById('save-score');
+      const statusEl = document.getElementById('survey-status');
+
+      if (saved && saved.quiz_precap1 !== undefined) {
+        scoreEl.textContent = `SURVEY_PROGRAM :: ${saved.quiz_precap1}/10 — COMPLETATO`;
+        statusEl.textContent = `● ${saved.quiz_precap1}/10`;
+        statusEl.style.color = 'var(--green)';
+      } else {
+        scoreEl.textContent = 'SURVEY NON ANCORA COMPLETATO';
+      }
+    </script>
+  </body>
+</html>

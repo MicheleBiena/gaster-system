@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRE-CAP 2 — GASTER SYSTEM</title>
+    <link rel="stylesheet" href="../../assets/style.css" />
+  </head>
+  <body>
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">
+          <a href="../../index.html" style="color:var(--dim);text-decoration:none;font-size:0.7em;">← INDIETRO</a>
+          &nbsp;&nbsp;PRE-CAP 2 — DELTARUNE CAP.1
+        </span>
+        <span id="header-sub">in costruzione</span>
+      </header>
+      <main id="hub">
+        <div class="gs-text-box" style="max-width:700px;width:100%;">
+          <span id="tc"></span><span class="cursor"></span>
+        </div>
+      </main>
+    </div>
+    <script src="../../assets/main.js"></script>
+    <script>
+      const lines = [
+        "CARICAMENTO...",
+        "......",
+        "Questo settore è ancora in costruzione.",
+        "Il Dark World non è pronto.",
+        "Torna presto."
+      ];
+      const el = document.getElementById('tc');
+      (async () => {
+        for (const line of lines) {
+          await typewrite(el, line, 45);
+          await sleep(900);
+        }
+      })();
+    </script>
+  </body>
+</html>

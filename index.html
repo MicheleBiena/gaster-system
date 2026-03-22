@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GASTER SYSTEM — Deltarune Blindrun</title>
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">GASTER_SYSTEM <span class="wingdings">v</span> DELTARUNE</span>
+        <span id="header-sub">gibbotto_x_red — blindrun documentation</span>
+      </header>
+
+      <main id="hub">
+        <div id="hub-label">// SELEZIONA CAPITOLO //</div>
+
+        <nav id="chapter-nav">
+
+          <a class="chapter-card done" href="chapters/pre-cap1/index.html">
+            <span class="card-tag">PRE-CAP 1</span>
+            <span class="card-title">UNDERTALE SURVEY</span>
+            <span class="card-desc">Conosci il mondo oscuro?<br>Accedi al SURVEY_PROGRAM.</span>
+            <span class="card-status">● COMPLETATO</span>
+          </a>
+
+          <a class="chapter-card locked" href="#" onclick="return false;">
+            <span class="card-tag">PRE-CAP 2</span>
+            <span class="card-title">DELTARUNE — CAPITOLO 1</span>
+            <span class="card-desc">Analisi musicale · Schede personaggi<br>Approfondimento Toby Fox</span>
+            <span class="card-status">○ IN ARRIVO</span>
+          </a>
+
+        </nav>
+
+        <div id="save-display">
+          <span id="save-label">// DATI SALVATI //</span>
+          <span id="save-score"></span>
+        </div>
+      </main>
+
+      <footer id="site-footer">
+        <span>GASTER_SYSTEM // github.com/MicheleBiena/gaster-system</span>
+      </footer>
+    </div>
+
+    <script src="assets/main.js"></script>
+    <script>
+      // Mostra punteggio salvato se presente
+      const saved = loadProgress();
+      const scoreEl = document.getElementById('save-score');
+      if (saved && saved.quiz_precap1 !== undefined) {
+        scoreEl.textContent = `SURVEY PRE-CAP 1 :: ${saved.quiz_precap1}/10 — ARCHIVIATO`;
+      } else {
+        scoreEl.textContent = 'NESSUN DATO ARCHIVIATO';
+      }
+    </script>
+  </body>
+</html>
