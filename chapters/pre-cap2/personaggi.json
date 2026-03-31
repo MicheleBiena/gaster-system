@@ -1,0 +1,24 @@
+[
+  {
+    "nome": "KRIS",
+    "img": "img/kris.png",
+    "desc": "Un umano silenzioso trascinato nel Dark World.",
+    "ruolo": "Protagonista",
+    "specie": "Umano",
+    "hp": "90",
+    "atk": "10",
+    "def": "2",
+    "note": "..."
+  },
+  {
+    "nome": "SUSIE",
+    "img": "img/susie.png",
+    "desc": "Ribelle e violenta... ma non troppo.",
+    "ruolo": "Tank",
+    "specie": "Mostro",
+    "hp": "110",
+    "atk": "14",
+    "def": "2",
+    "note": "..."
+  }
+]
