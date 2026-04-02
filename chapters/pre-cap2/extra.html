@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EXTRA — PRE-CAP 2 — GASTER SYSTEM</title>
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <style>
+      .page-content {
+        width: 100%;
+        max-width: 700px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.4em;
+      }
+
+      /* ── INTRO EDITORIALE ── */
+      .editorial {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: #777;
+        letter-spacing: 0.05em;
+        line-height: 1.85;
+        border-left: 3px solid var(--dim);
+        padding: 0.9em 1.1em;
+        background: #040404;
+      }
+
+      .editorial em {
+        color: #aaa;
+        font-style: normal;
+      }
+
+      /* ── SEZIONE LABEL ── */
+      .section-label {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--accent);
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        padding-bottom: 0.4em;
+        border-bottom: 1px solid #222;
+      }
+
+      /* ── Q&A BLOCK — estetica sito Toby ── */
+      .qa-block {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        border: 1px solid #1e1e1e;
+        background: #000;
+        font-family: "Share Tech Mono", monospace;
+      }
+
+      .qa-item {
+        padding: 1.1em 1.2em;
+        border-bottom: 1px solid #111;
+        display: grid;
+        grid-template-columns: 2.2em 1fr;
+        gap: 0 0.3em;
+      }
+
+      .qa-item:last-child {
+        border-bottom: none;
+      }
+
+      .qa-label-q {
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        line-height: 1.6;
+        padding-top: 1px;
+      }
+
+      .qa-label-a {
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        line-height: 1.6;
+        padding-top: 1px;
+      }
+
+      .qa-q {
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        line-height: 1.6;
+      }
+
+      .qa-a {
+        font-size: 14px;
+        color: #ccc;
+        line-height: 1.7;
+      }
+
+      /* separatore visivo tra coppie Q/A */
+      .qa-spacer {
+        height: 0;
+        border-bottom: 1px solid #1a1a1a;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">
+          <a
+            href="index.html"
+            style="
+              color: var(--dim);
+              text-decoration: none;
+              font-size: 0.75em;
+              font-family: var(--font-mono);
+              letter-spacing: 0.1em;
+            "
+            >← PRE-CAP 2</a
+          >
+          &nbsp;&nbsp;EXTRA — CAP.1
+        </span>
+        <span id="header-sub">q&a · materiale aggiuntivo</span>
+      </header>
+
+      <div class="page-content">
+        <!-- INTRO -->
+        <div class="section-label">// Q&A — TOBY FOX //</div>
+
+        <div class="editorial">
+          In occasione del rilascio di Deltarune Capitolo 1, Toby Fox pubblicò
+          sul sito ufficiale un Q&A scritto. Fra domande sul prezzo, le date di
+          uscita e i requisiti di sistema, ne emergevano alcune più interessanti
+          — quelle in cui Toby parlava del rapporto tra i due giochi, della
+          struttura narrativa, e di cosa significasse davvero "giocare"
+          Deltarune.<br /><br />
+          Ne ho selezionate <em>quattro</em>.
+        </div>
+
+        <!-- Q&A -->
+        <div class="qa-block">
+          <div class="qa-item">
+            <div class="qa-label-q">Q:</div>
+            <div class="qa-q">
+              How does this game relate to UNDERTALE? Is it a sequel?
+            </div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-label-a">A:</div>
+            <div class="qa-a">
+              Please don't worry too much about that. Essentially, this is not
+              the world of UNDERTALE. If you completed UNDERTALE, the ending and
+              world are as you left it. If everyone was happy there, the people
+              in the UNDERTALE world will still be happy. So, please don't worry
+              about those characters, and that world. It will remain untouched.
+              To rephrase that, DELTARUNE's world is a different one. With
+              different characters, that have lived different lives. A whole new
+              story will happen... I don't know what you call this kind of game.
+              It's just a game you can play after you complete UNDERTALE, if you
+              want to. That's all.
+            </div>
+          </div>
+
+          <div class="qa-spacer"></div>
+
+          <div class="qa-item">
+            <div class="qa-label-q">Q:</div>
+            <div class="qa-q">
+              So there's no connections between the two games?
+            </div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-label-a">A:</div>
+            <div class="qa-a">
+              It's a different world that might even have different rules. That
+              doesn't mean there will be no connections at all though.
+            </div>
+          </div>
+
+          <div class="qa-spacer"></div>
+
+          <div class="qa-item">
+            <div class="qa-label-q">Q:</div>
+            <div class="qa-q">How many endings are there?</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-label-a">A:</div>
+            <div class="qa-a">One.</div>
+          </div>
+
+          <div class="qa-spacer"></div>
+
+          <div class="qa-item">
+            <div class="qa-label-q">Q:</div>
+            <div class="qa-q">Then doesn't that mean nothing I do matters?</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-label-a">A:</div>
+            <div class="qa-a">
+              There's something more important than reaching the end.
+            </div>
+          </div>
+        </div>
+        <div class="section-label">// VIDEO EXTRA — ANNIVERSARIO //</div>
+
+        <div class="editorial">
+          In occasione del 5 anniversario di Undertale, in piena pandemia (16
+          Settembre 2020), Fangamer ha trasmesso sul canale ufficiale di
+          Undertale un concerto online, con musiche arrangiate e eseguite a
+          Maggio 2019 a Tokyo. Sono circa 3 ore di contenuto, con orchestra dal
+          vivo che suona magistralmente. Ma a noi ovviamente interessa un'altra
+          cosa. Andiamo direttamente ad ascoltare il finale del concerto.
+        </div>
+        <div>
+          <iframe
+            src="https://www.youtube.com/embed/srZdDAJbHfc?start=10980"
+            title=""
+            allow="
+              accelerometer;
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+            "
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+        <div class="editorial">
+          Toby Fox in persona sta suonando al pianoforte una versione nuova del
+          tema di Castle Town, la città di Ralsei. Oltre a lui Temmie Chang, la
+          disegnatrice, si mette a cantare il tema. Questo fu il teaser per
+          tutti quanti del secondo capitolo di Deltarune, che sarebbe uscito di
+          lì a breve. Una cosa importante da sottolineare è che in questo
+          periodo Toby Fox iniziò a sviluppare un problema alle articolazioni,
+          che lo obbligò a quasi smettere di suonare il pianoforte e lavorare al
+          gioco, costringendolo a volte a usare il Text To Speech per comunicare
+          con i suoi collaboratori. È quasi poetico quindi sentire proprio lui
+          suonare questo brano.
+        </div>
+      </div>
+
+      <footer id="site-footer">
+        <span>GASTER_SYSTEM // EXTRA — PRE-CAP 2</span>
+      </footer>
+    </div>
+
+    <script src="../../assets/main.js"></script>
+  </body>
+</html>
