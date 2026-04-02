@@ -16,15 +16,43 @@
   {
     "nome": "RALSEI",
     "img": "https://static.wikia.nocookie.net/deltarune/images/c/c6/Ralsei_overworld.png/revision/latest?cb=20220213001138",
-    "desc": "???",
+    "desc": "Ralsus",
     "specie": "Principe dei Darkner",
     "note": "Principe del Dark World, guida il gruppo con conoscenze misteriose. Rimane sempre calmo e idealista, forse troppo. Da notare: sembra sapere più di quanto dovrebbe su mondi e ruoli."
   },
   {
     "nome": "LANCER",
     "img": "https://static.wikia.nocookie.net/deltarune/images/c/c8/Lancer_face_joining.png/revision/latest?cb=20220704184317",
-    "desc": "???",
-    "specie": "Principe del Dark World dei giochi",
-    "note": "Figlio del Re di Carte, combina caos e ingenuità. Passa da antagonista a alleato, creando un forte legame con Susie. Da notare: il contrasto con suo padre e il tema famigliare."
+    "desc": "Figlio del mese",
+    "specie": "Darkner",
+    "note": "Figlio del Re di Picche, combina caos e ingenuità. Passa da antagonista a alleato, creando un forte legame con Susie. Da notare: il contrasto con suo padre e il tema famigliare."
+  },
+  {
+    "nome": "RE",
+    "img": "https://static.wikia.nocookie.net/deltarune/images/4/40/King_battle_idle.gif/revision/latest?cb=20201231205057",
+    "desc": "Per la sua gente, un eroe",
+    "specie": "Darkner",
+    "note": "Antagonista principale del capitolo, ossessionato dal difendere la fontana, per ordine del Cavaliere. Disprezza i Lightners dicendo che \"li hanno abbandonati\" e manipola Lancer. Da notare: il suo mantello è volato via prima della battaglia"
+  },
+  {
+    "nome": "SEAM",
+    "img": "https://static.wikia.nocookie.net/deltarune/images/c/c1/Seam_face.gif/revision/latest?cb=20211124072243",
+    "desc": "I'll make you tea... And we can toast... to the end of the world!",
+    "specie": "Darkner - Mercante",
+    "note": "Mercante enigmatico e apatico, ex conoscente di Jevil. Offre informazioni criptiche sul passato del Dark World. Da notare: accenna a eventi più grandi e fuori controllo, mettendo in risalto la figura del Cavaliere."
+  },
+  {
+    "nome": "JEVIL",
+    "img": "https://static.wikia.nocookie.net/deltarune/images/6/67/Jevil_dance_screenshot.gif/revision/latest?cb=20181104004938",
+    "desc": "CHAOS, CHAOS",
+    "specie": "Darkner - Boss Segreto",
+    "note": "Boss segreto, completamente folle ma stranamente consapevole. Vede il mondo come un gioco senza regole. Da notare: il tema libertà vs prigionia e il contatto col Cavaliere, che l'ha fatto impazzire."
+  },
+  {
+    "nome": "ROUXLS KAARD",
+    "img": "https://static.wikia.nocookie.net/deltarune/images/c/c3/Rouxls_Kaard_face_shop.gif/revision/latest?cb=20181107174724",
+    "desc": "Toil Worms!",
+    "specie": "Darkner",
+    "note": "Auto-proclamato “Duca dei puzzle”, teatrale e incompetente. Si presenta come ostacolo ma è più comico che minaccioso. Da notare: compare sempre attraverso un portale di luce e ha un volto simile al MysteryMan di Undertale (Gaster)."
   }
 ]

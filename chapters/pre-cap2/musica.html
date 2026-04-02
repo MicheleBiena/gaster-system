@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MUSICA — PRE-CAP 2 — GASTER SYSTEM</title>
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <style>
+      .page-content {
+        width: 100%;
+        max-width: 700px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      /* card orizzontale */
+      .ost-card {
+        border: 2px solid var(--text);
+        border-bottom: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .ost-card:last-child {
+        border-bottom: 2px solid var(--text);
+      }
+
+      /* colonna sinistra: testo */
+      .ost-text {
+        padding: 1.1em 1.1em;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7em;
+        border-right: 1px solid #222;
+      }
+
+      .ost-tag {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--accent);
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .ost-title {
+        font-family: var(--font-display);
+        font-size: 1.55em;
+        letter-spacing: 0.06em;
+        line-height: 1.15;
+      }
+
+      .ost-body {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: #999;
+        letter-spacing: 0.04em;
+        line-height: 1.85;
+      }
+
+      /* colonna destra: player */
+      .ost-player {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .ost-embed {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%;
+        background: #050505;
+        flex-shrink: 0;
+      }
+
+      .ost-embed iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .ost-start-note {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--dim);
+        letter-spacing: 0.12em;
+        padding: 0.4em 0.7em;
+        border-top: 1px solid #1a1a1a;
+        background: #050505;
+      }
+
+      .ost-image {
+        width: 100%;
+        max-height: 260px; /* limite verticale → non schiaccia il player */
+        object-fit: cover; /* riempie senza deformarsi */
+        border: 1px solid #222;
+        margin-top: 0.6em;
+        opacity: 0.95;
+      }
+
+      /* mobile: stack verticale */
+      @media (max-width: 560px) {
+        .ost-card {
+          grid-template-columns: 1fr;
+        }
+        .ost-text {
+          border-right: none;
+          border-bottom: 1px solid #222;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">
+          <a
+            href="index.html"
+            style="
+              color: var(--dim);
+              text-decoration: none;
+              font-size: 0.75em;
+              font-family: var(--font-mono);
+              letter-spacing: 0.1em;
+            "
+            >← PRE-CAP 2</a
+          >
+          &nbsp;&nbsp;MUSICA — CAP.1
+        </span>
+        <span id="header-sub">ost · analisi · commento</span>
+      </header>
+
+      <div class="page-content">
+        <!-- ── CARD ESEMPIO ── -->
+        <div class="ost-card">
+          <div class="ost-text">
+            <div class="ost-tag">Jevil Fight</div>
+            <div class="ost-title">THE WORLD REVOLVING</div>
+            <div class="ost-body">
+              Il brano introduce quello che la community chiama il
+              <em>"freedom motif"</em> — una progressione melodica breve e
+              ascendente che Toby Fox riprende in ogni capitolo di Deltarune, in
+              forme diverse e in contesti spesso opposti.<br /><br />
+              Qui suona come liberazione: Jevil si considera l'unico veramente
+              libero, mentre gli altri hanno "rinchiuso tutto il loro mondo"
+              fuori. Il motif tornerà più avanti — a volte distorto, a volte
+              appena accennato — come filo che attraversa tutta la serie.
+            </div>
+            <div>
+              <img
+                class="ost-image"
+                src="https://preview.redd.it/what-is-that-v0-946k4052arpf1.jpeg?auto=webp&s=8d6186507faafb81a0aedb9081bcc2a31a751ca3"
+                alt="Field of Hopes and Dreams visual"
+              />
+            </div>
+          </div>
+          <div class="ost-player">
+            <div class="ost-embed">
+              <iframe
+                src="https://www.youtube.com/embed/Z01Tsgwe2dQ?start=20"
+                title="Field of Hopes and Dreams — Deltarune"
+                allow="
+                  accelerometer;
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  gyroscope;
+                  picture-in-picture;
+                "
+                allowfullscreen
+              >
+              </iframe>
+            </div>
+            <div class="ost-start-note">
+              // parte da 0:20 — ingresso del freedom motif
+            </div>
+          </div>
+        </div>
+
+        <!-- altre card qui -->
+      </div>
+
+      <footer id="site-footer">
+        <span>GASTER_SYSTEM // MUSICA — PRE-CAP 2</span>
+      </footer>
+    </div>
+
+    <script src="../../assets/main.js"></script>
+  </body>
+</html>
