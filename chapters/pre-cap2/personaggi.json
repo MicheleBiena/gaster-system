@@ -3,14 +3,14 @@
     "nome": "KRIS",
     "img": "https://static.wikia.nocookie.net/deltarune/images/9/96/Kris_overworld_darkworld.png/revision/latest?cb=20220823074155",
     "desc": "???",
-    "specie": "Umano",
+    "specie": "Lightner (Umano)",
     "note": "Umano silenzioso trascinato nel Dark World, agisce come tramite tra giocatore e mondo. Nel Capitolo 1 resta enigmatico, con segnali inquietanti di autonomia. Da notare: il controllo dell’anima e il finale suggeriscono una sua volontà separata da quella dell'anima"
   },
   {
     "nome": "SUSIE",
     "img": "https://static.wikia.nocookie.net/deltarune/images/b/b6/Susie_overworld_dark_world_eyes.png/revision/latest?cb=20220213000440",
     "desc": "Bullismo o maschera?",
-    "specie": "Mostro",
+    "specie": "Lightner",
     "note": "Inizia come bullo aggressivo e isolato, ma nel viaggio impara cooperazione e empatia. Si lega a Lancer e sviluppa una morale più sfumata. Da notare: il suo cambiamento è rapido ma sincero, ed è chiave per i capitoli successivi."
   },
   {
@@ -54,5 +54,41 @@
     "desc": "Toil Worms!",
     "specie": "Darkner",
     "note": "Auto-proclamato “Duca dei puzzle”, teatrale e incompetente. Si presenta come ostacolo ma è più comico che minaccioso. Da notare: compare sempre attraverso un portale di luce e ha un volto simile al MysteryMan di Undertale (Gaster)."
+  },
+  {
+    "nome": "NOELLE",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQymlMRU9hChcMCJ7TthXNiXtJne4d4OYa6JA&s",
+    "desc": "A chi non piace il Natale",
+    "specie": "Lightner",
+    "note": "Compagna timida e gentile di Kris nel mondo reale. Conosce Kris da quando era piccola e lo descrive come una persona che faceva un sacco di scherzi. Molto legata al padre malato, passa però tanto tempo da sola perché la madre lavora spesso fuori. Da notare: sembra molto incuriosita da Susie."
+  },
+  {
+    "nome": "BERDLY",
+    "img": "https://static.wikia.nocookie.net/deltarune/images/e/e7/Berdly_artwork_LINE_sticker.png/revision/latest?cb=20240209002956",
+    "desc": "♫ Un'altra A, un'altra A, un'altra A, un'altra A ♫",
+    "specie": "Lightner",
+    "note": "Studente arrogante e competitivo, ossessionato dall’intelligenza. Da notare: ego fragile e bisogno di riconoscimento."
+  },
+
+  {
+    "nome": "RUDY",
+    "img": "https://static.wikia.nocookie.net/deltarune/images/7/73/Rudolph_Holiday_overworld.png/revision/latest?cb=20181130231143",
+    "desc": "Ehy KrisMas ;)",
+    "specie": "Lightner",
+    "note": "Padre di Noelle, malato ma sorprendentemente positivo. Offre momenti umani e realistici fuori dal Dark World, e vuole un mondo di bene a sua figlia. Da notare: il suo stato di salute potrebbe avere peso narrativo."
+  },
+  {
+    "nome": "ASGORE",
+    "img": "https://static.wikia.nocookie.net/deltarune/images/1/18/Asgore_Dreemurr_overworld_hug.gif/revision/latest?cb=20220409025104",
+    "desc": "King of Flowers",
+    "specie": "Lightner",
+    "note": "Padre di Kris e Asriel, gestisce un negozio di fiori. Appare gentile ma squattrinato e un po' attaccato al passato. Parla del ritorno di Asriel questo fine settimana, e di come possa riunirsi tutta la famiglia come ai vecchi tempi."
+  },
+  {
+    "nome": "TORIEL",
+    "img": "https://static.wikia.nocookie.net/deltarune/images/9/9b/Toriel_overworld_walking_Kris.gif/revision/latest?cb=20220409022513",
+    "desc": "Mommy Goat",
+    "specie": "Lightner",
+    "note": "Madre premurosa e protettiva di Kris e Asriel, vive separata da Asgore. Mantiene un tono caldo ma fermo. Da notare: forte parallelismo con Undertale ma con variazioni significative (principalmente nel vestiario)."
   }
 ]

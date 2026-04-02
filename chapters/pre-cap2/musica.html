@@ -14,7 +14,6 @@
         gap: 0;
       }
 
-      /* card orizzontale */
       .ost-card {
         border: 2px solid var(--text);
         border-bottom: none;
@@ -26,7 +25,6 @@
         border-bottom: 2px solid var(--text);
       }
 
-      /* colonna sinistra: testo */
       .ost-text {
         padding: 1.1em 1.1em;
         display: flex;
@@ -58,7 +56,15 @@
         line-height: 1.85;
       }
 
-      /* colonna destra: player */
+      .ost-image {
+        width: 100%;
+        max-height: 260px;
+        object-fit: cover;
+        border: 1px solid #222;
+        margin-top: 0.6em;
+        opacity: 0.95;
+      }
+
       .ost-player {
         display: flex;
         flex-direction: column;
@@ -90,16 +96,55 @@
         background: #050505;
       }
 
-      .ost-image {
+      .ost-loading {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--dim);
+        letter-spacing: 0.15em;
+        padding: 2em 0;
+        text-align: center;
         width: 100%;
-        max-height: 260px; /* limite verticale → non schiaccia il player */
-        object-fit: cover; /* riempie senza deformarsi */
-        border: 1px solid #222;
-        margin-top: 0.6em;
-        opacity: 0.95;
+        max-width: 700px;
       }
 
-      /* mobile: stack verticale */
+      .ost-closing {
+        width: 100%;
+        max-width: 700px;
+        border: 1px solid #222;
+        border-left: 3px solid var(--dim);
+        padding: 1.1em 1.2em;
+        background: #040404;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+      }
+
+      .ost-closing-text {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: #777;
+        letter-spacing: 0.05em;
+        line-height: 1.85;
+      }
+
+      .ost-closing-links {
+        display: flex;
+        gap: 1.5em;
+      }
+
+      .ost-link {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--dim);
+        letter-spacing: 0.18em;
+        text-decoration: none;
+        transition: color 0.1s;
+      }
+
+      .ost-link:hover {
+        color: var(--text);
+      }
+
       @media (max-width: 560px) {
         .ost-card {
           grid-template-columns: 1fr;
@@ -134,54 +179,34 @@
         <span id="header-sub">ost · analisi · commento</span>
       </header>
 
-      <div class="page-content">
-        <!-- ── CARD ESEMPIO ── -->
-        <div class="ost-card">
-          <div class="ost-text">
-            <div class="ost-tag">Jevil Fight</div>
-            <div class="ost-title">THE WORLD REVOLVING</div>
-            <div class="ost-body">
-              Il brano introduce quello che la community chiama il
-              <em>"freedom motif"</em> — una progressione melodica breve e
-              ascendente che Toby Fox riprende in ogni capitolo di Deltarune, in
-              forme diverse e in contesti spesso opposti.<br /><br />
-              Qui suona come liberazione: Jevil si considera l'unico veramente
-              libero, mentre gli altri hanno "rinchiuso tutto il loro mondo"
-              fuori. Il motif tornerà più avanti — a volte distorto, a volte
-              appena accennato — come filo che attraversa tutta la serie.
-            </div>
-            <div>
-              <img
-                class="ost-image"
-                src="https://preview.redd.it/what-is-that-v0-946k4052arpf1.jpeg?auto=webp&s=8d6186507faafb81a0aedb9081bcc2a31a751ca3"
-                alt="Field of Hopes and Dreams visual"
-              />
-            </div>
-          </div>
-          <div class="ost-player">
-            <div class="ost-embed">
-              <iframe
-                src="https://www.youtube.com/embed/Z01Tsgwe2dQ?start=20"
-                title="Field of Hopes and Dreams — Deltarune"
-                allow="
-                  accelerometer;
-                  autoplay;
-                  clipboard-write;
-                  encrypted-media;
-                  gyroscope;
-                  picture-in-picture;
-                "
-                allowfullscreen
-              >
-              </iframe>
-            </div>
-            <div class="ost-start-note">
-              // parte da 0:20 — ingresso del freedom motif
-            </div>
-          </div>
-        </div>
+      <div class="page-content" id="track-list">
+        <div class="ost-loading">CARICAMENTO...</div>
+      </div>
 
-        <!-- altre card qui -->
+      <div class="ost-closing" id="ost-closing" style="display: none">
+        <div class="ost-closing-text">
+          Queste sono solo alcune delle idee che attraversano la colonna sonora
+          del Capitolo 1. Ogni brano nasconde probabilmente citazioni, rimandi e
+          strutture che richiedono ascolti ripetuti per emergere — Toby Fox usa
+          i leitmotiv come strumento narrativo primario: prima ancora che un
+          personaggio parli, la sua musica ti ha già detto chi è e cosa
+          vuole.<br /><br />
+          Il resto lo scoprirete da soli.
+        </div>
+        <div class="ost-closing-links">
+          <a
+            href="https://open.spotify.com/album/6uyslsVGFsHKzdGUsEoSCR"
+            target="_blank"
+            class="ost-link"
+            >→ SPOTIFY</a
+          >
+          <a
+            href="https://www.youtube.com/playlist?list=PLpJl5XaLHtLX-pDk4kctGxtF4nq6BIyjg"
+            target="_blank"
+            class="ost-link"
+            >→ YOUTUBE</a
+          >
+        </div>
       </div>
 
       <footer id="site-footer">
@@ -190,5 +215,61 @@
     </div>
 
     <script src="../../assets/main.js"></script>
+    <script>
+      function buildCard(track, isLast) {
+        const embedSrc = `https://www.youtube.com/embed/${track.youtube_id}${track.start ? "?start=" + track.start : ""}`;
+
+        const imageHTML = track.image
+          ? `<img class="ost-image" src="${track.image}" alt="${track.image_alt || ""}" />`
+          : "";
+
+        const startNoteHTML = track.start_note
+          ? `<div class="ost-start-note">${track.start_note}</div>`
+          : "";
+
+        const card = document.createElement("div");
+        card.className = "ost-card" + (isLast ? " last" : "");
+        card.innerHTML = `
+          <div class="ost-text">
+            <div class="ost-tag">${track.tag}</div>
+            <div class="ost-title">${track.title}</div>
+            <div class="ost-body">${track.body}</div>
+            ${imageHTML}
+          </div>
+          <div class="ost-player">
+            <div class="ost-embed">
+              <iframe
+                src="${embedSrc}"
+                title="${track.title}"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+            ${startNoteHTML}
+          </div>
+        `;
+        return card;
+      }
+
+      async function loadTracks() {
+        const container = document.getElementById("track-list");
+        try {
+          const res = await fetch("./musica.json");
+          if (!res.ok) throw new Error();
+          const tracks = await res.json();
+
+          container.innerHTML = "";
+          tracks.forEach((track, i) => {
+            container.appendChild(buildCard(track, i === tracks.length - 1));
+          });
+          document.getElementById("ost-closing").style.display = "flex";
+        } catch (e) {
+          container.innerHTML =
+            '<div class="ost-loading">ERRORE CARICAMENTO DATI.</div>';
+        }
+      }
+
+      loadTracks();
+    </script>
   </body>
 </html>
