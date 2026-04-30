@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INTANTO... DAL WEB — GASTER SYSTEM</title>
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <style>
+      .page-content {
+        width: 100%;
+        max-width: 700px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.8em;
+      }
+
+      .section-header {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--accent);
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        padding-bottom: 0.4em;
+        border-bottom: 1px solid var(--dim2);
+      }
+
+      .section-block {
+        border: 2px solid var(--dim2);
+        padding: 1.2em;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8em;
+        position: relative;
+        opacity: 0;
+        transform: translateY(12px);
+        animation: fadeIn 0.4s ease forwards;
+      }
+
+      .section-block::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--dim2);
+      }
+
+      .section-block:nth-of-type(1) {
+        animation-delay: 0.2s;
+      }
+      .section-block:nth-of-type(2) {
+        animation-delay: 0.3s;
+      }
+      .section-block:nth-of-type(3) {
+        animation-delay: 0.4s;
+      }
+      .section-block:nth-of-type(4) {
+        animation-delay: 0.5s;
+      }
+
+      .card-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+      }
+
+      .web-card {
+        border: 1px solid var(--dim2);
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6em;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .web-card-title {
+        font-family: var(--font-display);
+        font-size: 1.1em;
+        letter-spacing: 0.06em;
+        color: var(--text);
+      }
+
+      .web-card-text {
+        font-family: var(--font-mono);
+        font-size: 15px;
+        color: var(--dim);
+        line-height: 1.6;
+        letter-spacing: 0.05em;
+      }
+
+      .web-card-media {
+        width: 100%;
+        border: 1px dashed var(--dim2);
+        padding: 1em;
+        text-align: center;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--dim2);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .web-card-media img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .web-card-media video {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .web-card-media iframe {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border: none;
+        display: block;
+      }
+
+      .yt-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3em;
+        text-decoration: none;
+        padding: 0.5em;
+        transition: background 0.1s;
+      }
+
+      .yt-link:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .yt-icon {
+        font-size: 28px;
+        color: var(--accent);
+      }
+
+      .yt-label {
+        font-family: var(--font-display);
+        font-size: 14px;
+        color: var(--text);
+        letter-spacing: 0.05em;
+      }
+
+      .yt-url {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--dim2);
+        letter-spacing: 0.05em;
+      }
+
+      .tag {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 0.15em 0.5em;
+        border: 1px solid var(--dim2);
+        color: var(--dim2);
+        margin-bottom: 0.3em;
+      }
+
+      .tag.hot {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">
+          <a
+            href="index.html"
+            style="
+              color: var(--dim);
+              text-decoration: none;
+              font-size: 0.75em;
+              font-family: var(--font-mono);
+              letter-spacing: 0.1em;
+            "
+            >← PRE-CAP 3</a
+          >
+          &nbsp;&nbsp;INTANTO... DAL WEB
+        </span>
+        <span id="header-sub">community posts · fan art · teorie</span>
+      </header>
+
+      <main class="page-content">
+        <div class="section-block">
+          <div class="section-header">// INTRO //</div>
+          <p class="web-card-text">
+            Nel frattempo, sul web la community impazziva. Fan art, teorie, meme
+            e scoperte si susseguivano a ritmo serrato. Ecco una raccolta di ciò
+            che circolava durante l'attesa.
+          </p>
+        </div>
+
+        <div class="section-block">
+          <div class="section-header">// POST DALLA COMMUNITY //</div>
+          <div class="card-grid">
+            <div class="web-card">
+              <span class="tag hot">FUN FACT</span>
+              <div class="web-card-title">
+                Toby Fox — "You've Got a Friend in Me" Cover
+              </div>
+              <div class="web-card-text">
+                Un giorno a caso Toby Fox ha postato questa cover di "You've Got
+                a Friend in Me" come puro shitposting e il panico fra i fan e'
+                stato immediato. La parola
+                <strong style="color: var(--text)">FRIEND</strong> nel titolo ha
+                fatto scattare un'ondata di teorie: tutti hanno iniziato a
+                collegarla a <em>IMAGE_FRIEND</em>, quella misteriosa immagine
+                trovata nei file del capitolo 2 che da mesi fa impazzire la
+                community. Ironia della sorte, oggi Toby collabora direttamente
+                con la Pixar. E' probabilmente solo una canzone, ma con lui non
+                si sa mai...
+              </div>
+              <div class="web-card-media">
+                <a
+                  href="https://www.youtube.com/watch?v=C0PgRC2BF6c"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="yt-link"
+                >
+                  <span class="yt-icon">▶</span>
+                  <span class="yt-label">Guarda su YouTube</span>
+                  <span class="yt-url">youtube.com/watch?v=C0PgRC2BF6c</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="web-card">
+              <span class="tag hot">TEORIA</span>
+              <div class="web-card-title">
+                Friend Inside Me — La Boss Fight di Woody
+              </div>
+              <div class="web-card-text">
+                Dopo la cover di Toby Fox, la comunita' ha iniziato a prendere
+                seriamente l'idea di una boss fight segreta ispirata a Toy Story
+                chiamata <em>Friend Inside Me</em>. La gente si aspettava
+                davvero di combattere Woody come boss segreto del capitolo 3,
+                con tanto di meccaniche legate ai giocattoli e ai film Pixar.
+                Evidentemente le teorie sono andate ben oltre una semplice
+                canzone...
+              </div>
+              <div class="web-card-media">
+                <a
+                  href="https://www.youtube.com/watch?v=V8KoQ8XDoCI"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="yt-link"
+                >
+                  <span class="yt-icon">▶</span>
+                  <span class="yt-label">Guarda su YouTube</span>
+                  <span class="yt-url">youtube.com/watch?v=V8KoQ8XDoCI</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer id="site-footer">
+        <span>GASTER_SYSTEM // INTANTO... DAL WEB</span>
+      </footer>
+    </div>
+
+    <script src="../../assets/main.js"></script>
+  </body>
+</html>

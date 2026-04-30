@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPAMTON VALUE NETWORK — GASTER SYSTEM</title>
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <style>
+      .page-content {
+        width: 100%;
+        max-width: 700px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.8em;
+      }
+
+      .section-header {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--accent);
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        padding-bottom: 0.4em;
+        border-bottom: 1px solid var(--dim2);
+      }
+
+      .section-block {
+        border: 2px solid var(--dim2);
+        padding: 1.2em;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8em;
+        position: relative;
+        opacity: 0;
+        transform: translateY(12px);
+        animation: fadeIn 0.4s ease forwards;
+      }
+
+      .section-block::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--dim2);
+      }
+
+      .section-block:nth-of-type(1) {
+        animation-delay: 0.2s;
+      }
+
+      .narrative {
+        font-family: var(--font-display);
+        font-size: 1.5em;
+        line-height: 1.65;
+        letter-spacing: 0.03em;
+        color: #ccc;
+        text-align: center;
+      }
+
+      .video-wrapper {
+        width: 100%;
+        border: 1px dashed var(--dim2);
+        padding: 0.8em;
+        text-align: center;
+      }
+
+      .yt-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3em;
+        text-decoration: none;
+        padding: 0.5em;
+        transition: background 0.1s;
+      }
+
+      .yt-link:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .yt-icon {
+        font-size: 28px;
+        color: var(--accent);
+      }
+
+      .yt-label {
+        font-family: var(--font-display);
+        font-size: 14px;
+        color: var(--text);
+        letter-spacing: 0.05em;
+      }
+
+      .yt-url {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--dim2);
+        letter-spacing: 0.05em;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">
+          <a
+            href="index.html"
+            style="
+              color: var(--dim);
+              text-decoration: none;
+              font-size: 0.75em;
+              font-family: var(--font-mono);
+              letter-spacing: 0.1em;
+            "
+            >← PRE-CAP 3</a
+          >
+          &nbsp;&nbsp;SPAMTON VALUE NETWORK
+        </span>
+        <span id="header-sub">spamton g. spamton — trasmissione</span>
+      </header>
+
+      <main class="page-content">
+        <div class="section-block">
+          <div class="section-header">// TRASMISSIONE //</div>
+          <div class="narrative">Non ho commenti. Godetevelo.</div>
+          <div class="video-wrapper">
+            <a
+              href="https://www.youtube.com/watch?v=tSGr2DFiOhg"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="yt-link"
+            >
+              <span class="yt-icon">▶</span>
+              <span class="yt-label">Guarda su YouTube</span>
+              <span class="yt-url">youtube.com/watch?v=tSGr2DFiOhg</span>
+            </a>
+          </div>
+        </div>
+      </main>
+
+      <footer id="site-footer">
+        <span>GASTER_SYSTEM // SPAMTON VALUE NETWORK</span>
+      </footer>
+    </div>
+
+    <script src="../../assets/main.js"></script>
+  </body>
+</html>

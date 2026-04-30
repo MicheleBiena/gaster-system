@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>THE LOST GIRL — GASTER SYSTEM</title>
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <style>
+      /* ── DOSSIER LAYOUT ── */
+      .dossier {
+        width: 100%;
+        max-width: 700px;
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+      }
+
+      /* ── CLASSIFIED BANNER ── */
+      .classified-banner {
+        border: 3px solid var(--red);
+        padding: 0.6em 1.2em;
+        text-align: center;
+        position: relative;
+        animation: flicker 4s infinite;
+      }
+
+      .classified-banner::before {
+        content: "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓";
+        display: block;
+        font-family: var(--font-mono);
+        font-size: 8px;
+        color: var(--red);
+        opacity: 0.3;
+        letter-spacing: 0;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      .classified-banner::after {
+        content: "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓";
+        display: block;
+        font-family: var(--font-mono);
+        font-size: 8px;
+        color: var(--red);
+        opacity: 0.3;
+        letter-spacing: 0;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      .classified-text {
+        font-family: var(--font-display);
+        font-size: 2.2em;
+        color: var(--red);
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+      }
+
+      .classified-sub {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--red);
+        letter-spacing: 0.2em;
+        opacity: 0.7;
+        margin-top: 0.3em;
+      }
+
+      @keyframes flicker {
+        0%, 95%, 100% { opacity: 1; }
+        96% { opacity: 0.7; }
+        97% { opacity: 1; }
+        98% { opacity: 0.6; }
+      }
+
+      /* ── CASE FILE HEADER ── */
+      .case-header {
+        border: 2px solid var(--text);
+        padding: 1.2em;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8em;
+        background: #050505;
+      }
+
+      .case-number {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--accent);
+        letter-spacing: 0.25em;
+      }
+
+      .case-title {
+        font-family: var(--font-display);
+        font-size: 2.4em;
+        letter-spacing: 0.1em;
+        line-height: 1.1;
+      }
+
+      .case-title .highlight {
+        color: var(--accent);
+      }
+
+      .case-meta {
+        display: flex;
+        gap: 2em;
+        flex-wrap: wrap;
+      }
+
+      .meta-item {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        letter-spacing: 0.1em;
+        color: var(--dim);
+      }
+
+      .meta-item span {
+        color: var(--text);
+      }
+
+      /* ── MUGSHOT ── */
+      .mugshot-wrapper {
+        border: 2px solid var(--text);
+        background: #050505;
+        padding: 1.2em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8em;
+        opacity: 0;
+        transform: translateY(12px);
+        animation: fadeIn 0.4s ease forwards;
+        animation-delay: 0.4s;
+      }
+
+      .mugshot-label {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--accent);
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        align-self: flex-start;
+        padding-bottom: 0.4em;
+        border-bottom: 1px solid var(--dim2);
+        width: 100%;
+      }
+
+      .mugshot-frame {
+        position: relative;
+        width: 220px;
+        border: 2px solid var(--dim);
+        overflow: hidden;
+        background: #000;
+      }
+
+      .mugshot-frame img {
+        display: block;
+        width: 100%;
+        height: auto;
+        filter: grayscale(0.6) contrast(1.2) brightness(0.8);
+      }
+
+      .mugshot-censor {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 38%;
+        transform: translateY(-50%);
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+      }
+
+      .mugshot-censor span {
+        font-family: var(--font-display);
+        font-size: 2.4em;
+        color: var(--red);
+        letter-spacing: 0.4em;
+        opacity: 0.85;
+      }
+
+      .mugshot-id {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--dim);
+        letter-spacing: 0.2em;
+        text-align: center;
+      }
+
+      /* ── DOSSIER SECTION ── */
+      .dossier-section {
+        border: 2px solid var(--dim2);
+        padding: 1.2em;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8em;
+        position: relative;
+      }
+
+      .dossier-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--dim2);
+      }
+
+      .section-header {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--accent);
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        padding-bottom: 0.4em;
+        border-bottom: 1px solid var(--dim2);
+      }
+
+      /* ── DATA FIELDS ── */
+      .data-grid {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 0.5em 1em;
+        align-items: baseline;
+      }
+
+      @media (max-width: 500px) {
+        .data-grid {
+          grid-template-columns: 1fr;
+          gap: 0.2em;
+        }
+        .data-label {
+          margin-top: 0.5em;
+        }
+      }
+
+      .data-label {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--dim);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .data-value {
+        font-family: var(--font-display);
+        font-size: 1.35em;
+        letter-spacing: 0.05em;
+      }
+
+      .data-value.redacted {
+        color: var(--red);
+        background: repeating-linear-gradient(
+          90deg,
+          var(--red) 0px,
+          var(--red) 8px,
+          transparent 8px,
+          transparent 10px
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        user-select: none;
+      }
+
+      .data-value.unknown {
+        color: var(--dim);
+        font-family: var(--font-mono);
+        font-size: 14px;
+        letter-spacing: 0.15em;
+      }
+
+      /* ── REDACTED BLOCK ── */
+      .redacted-block {
+        background: var(--red);
+        color: var(--red);
+        padding: 0.2em 0.6em;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        user-select: none;
+        display: inline-block;
+      }
+
+      /* ── REPORT NARRATIVE ── */
+      .narrative {
+        font-family: var(--font-display);
+        font-size: 1.3em;
+        line-height: 1.65;
+        letter-spacing: 0.03em;
+        color: #ccc;
+      }
+
+      .narrative .redacted-inline {
+        background: var(--red);
+        color: var(--red);
+        padding: 0 0.4em;
+        user-select: none;
+        font-size: 0.9em;
+      }
+
+      .narrative em {
+        color: var(--text);
+        font-style: normal;
+        border-bottom: 1px dotted var(--dim);
+      }
+
+      /* ── WITNESS QUOTE ── */
+      .witness-block {
+        border-left: 3px solid var(--accent);
+        padding: 0.9em 1.1em;
+        background: #040404;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+      }
+
+      .witness-label {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--accent);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .witness-text {
+        font-family: var(--font-display);
+        font-size: 1.35em;
+        color: #ccc;
+        letter-spacing: 0.03em;
+        line-height: 1.5;
+      }
+
+      .witness-text .pain {
+        color: var(--accent);
+      }
+
+      .witness-source {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--dim);
+        letter-spacing: 0.15em;
+        align-self: flex-end;
+      }
+
+      /* ── CONNECTIONS ── */
+      .connections-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6em;
+      }
+
+      .connection {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 1em;
+        padding: 0.6em 0;
+        border-bottom: 1px solid var(--dim2);
+        align-items: baseline;
+      }
+
+      .connection:last-child {
+        border-bottom: none;
+      }
+
+      .connection-name {
+        font-family: var(--font-display);
+        font-size: 1.25em;
+        letter-spacing: 0.06em;
+        color: var(--text);
+      }
+
+      .connection-rel {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--dim);
+        letter-spacing: 0.1em;
+      }
+
+      /* ── STATUS STAMP ── */
+      .status-stamp {
+        border: 4px solid var(--red);
+        padding: 1em 1.5em;
+        text-align: center;
+        transform: rotate(-2deg);
+        margin: 1em 0;
+        position: relative;
+      }
+
+      .status-stamp::after {
+        content: "";
+        position: absolute;
+        inset: 4px;
+        border: 1px solid var(--red);
+        opacity: 0.4;
+      }
+
+      .stamp-text {
+        font-family: var(--font-display);
+        font-size: 2.8em;
+        color: var(--red);
+        letter-spacing: 0.3em;
+        line-height: 1;
+      }
+
+      .stamp-sub {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--red);
+        letter-spacing: 0.2em;
+        opacity: 0.7;
+        margin-top: 0.5em;
+      }
+
+      /* ── DECEMBER NOTE ── */
+      .december-note {
+        border: 2px solid var(--accent);
+        padding: 1.2em;
+        background: rgba(255, 255, 0, 0.03);
+        display: flex;
+        flex-direction: column;
+        gap: 0.6em;
+      }
+
+      .december-note .note-header {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--accent);
+        letter-spacing: 0.25em;
+      }
+
+      .december-note .note-text {
+        font-family: var(--font-display);
+        font-size: 1.3em;
+        line-height: 1.6;
+        color: #ccc;
+        letter-spacing: 0.03em;
+      }
+
+      .december-note .note-text .word {
+        color: var(--accent);
+        font-size: 1.1em;
+      }
+
+      /* ── TYPEWRITER ENTRY ANIMATION ── */
+      .dossier-section,
+      .classified-banner,
+      .case-header,
+      .mugshot-wrapper,
+      .status-stamp,
+      .december-note {
+        opacity: 0;
+        transform: translateY(12px);
+        animation: fadeIn 0.4s ease forwards;
+      }
+
+      .classified-banner { animation-delay: 0.1s; }
+      .case-header { animation-delay: 0.3s; }
+      .mugshot-wrapper { animation-delay: 0.4s; }
+      .dossier-section:nth-of-type(1) { animation-delay: 0.6s; }
+      .dossier-section:nth-of-type(2) { animation-delay: 0.8s; }
+      .dossier-section:nth-of-type(3) { animation-delay: 1.0s; }
+      .dossier-section:nth-of-type(4) { animation-delay: 1.2s; }
+      .december-note { animation-delay: 1.4s; }
+      .status-stamp { animation-delay: 1.6s; }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">
+          <a
+            href="index.html"
+            style="
+              color: var(--dim);
+              text-decoration: none;
+              font-size: 0.75em;
+              font-family: var(--font-mono);
+              letter-spacing: 0.1em;
+            "
+            >← PRE-CAP 3</a
+          >
+          &nbsp;&nbsp;THE LOST GIRL
+        </span>
+        <span id="header-sub">fascicolo riservato · identikit</span>
+      </header>
+
+      <main class="dossier">
+
+        <!-- ══ CLASSIFIED BANNER ══ -->
+        <div class="classified-banner">
+          <div class="classified-text">RISERVATO</div>
+          <div class="classified-sub">HOMETOWN P.D. // ACCESSO LIMITATO // FASCICOLO SIGILLATO</div>
+        </div>
+
+        <!-- ══ CASE FILE HEADER ══ -->
+        <div class="case-header">
+          <div class="case-number">FASCICOLO N. HT-████-0912</div>
+          <div class="case-title">SOGGETTO: <span class="highlight">DESS HOLIDAY</span></div>
+          <div class="case-meta">
+            <div class="meta-item">TIPOLOGIA: <span>PERSONA SCOMPARSA</span></div>
+            <div class="meta-item">PRIORITA': <span style="color:var(--red);">ALTA</span></div>
+            <div class="meta-item">STATO: <span style="color:var(--red);">IRRISOLTO</span></div>
+          </div>
+        </div>
+
+        <!-- ══ MUGSHOT ══ -->
+        <div class="mugshot-wrapper">
+          <div class="mugshot-label">// FOTO SEGNALETICA //</div>
+          <div class="mugshot-frame">
+            <div class="mugshot-censor"><span>???</span></div>
+            <img
+              src="https://art.ngfiles.com/images/6899000/6899608_2253070_bartholomewdawson_dess-holiday.cb46d305527f4fe2cbb6315b3d663cb9.webp?f1753629182"
+              alt="Dess Holiday — foto censurata"
+            />
+          </div>
+          <div class="mugshot-id">SOGG. HOLIDAY, DESS // VOLTO CENSURATO — LIVELLO DI ACCESSO INSUFFICIENTE</div>
+        </div>
+
+        <!-- ══ DATI ANAGRAFICI ══ -->
+        <div class="dossier-section">
+          <div class="section-header">// DATI ANAGRAFICI //</div>
+          <div class="data-grid">
+            <div class="data-label">NOME</div>
+            <div class="data-value">DESS HOLIDAY</div>
+
+            <div class="data-label">LEGAME FAM.</div>
+            <div class="data-value">Sorella maggiore di <em>Noelle Holiday</em></div>
+
+            <div class="data-label">ETA'</div>
+            <div class="data-value unknown">[DATO NON DISPONIBILE]</div>
+
+            <div class="data-label">SPECIE</div>
+            <div class="data-value">Cerva (famiglia Holiday)</div>
+
+            <div class="data-label">RESIDENZA</div>
+            <div class="data-value">Hometown</div>
+
+            <div class="data-label">OCCUPAZIONE</div>
+            <div class="data-value unknown">[DATO NON DISPONIBILE]</div>
+          </div>
+        </div>
+
+        <!-- ══ PROFILO COMPORTAMENTALE ══ -->
+        <div class="dossier-section">
+          <div class="section-header">// PROFILO COMPORTAMENTALE //</div>
+          <div class="narrative">
+            Dess Holiday era nota nella comunita' di Hometown come una ragazza <em>energica e avventurosa</em>.
+            Appassionata di <em>baseball</em>, trascorreva gran parte del tempo libero all'aperto.
+            <br><br>
+            Era solita organizzare escursioni e avventure nei <em>boschi circostanti Hometown</em> insieme a un gruppo
+            ristretto di amici: <em>Kris</em>, <em>Asriel Dreemurr</em> e la sorella minore <em>Noelle</em>.
+            Il gruppo era particolarmente unito, e Dess ricopriva spesso il ruolo di guida e iniziatrice delle loro
+            spedizioni.
+            <br><br>
+            Descritta come la piu' grande del gruppo, rappresentava un punto di riferimento per gli altri,
+            in particolare per Noelle.
+          </div>
+        </div>
+
+        <!-- ══ COLLEGAMENTI ══ -->
+        <div class="dossier-section">
+          <div class="section-header">// COLLEGAMENTI NOTI //</div>
+          <div class="connections-list">
+            <div class="connection">
+              <div class="connection-name">NOELLE</div>
+              <div class="connection-rel">Sorella minore — profondamente legata a Dess. La scomparsa ha avuto un impatto devastante.</div>
+            </div>
+            <div class="connection">
+              <div class="connection-name">KRIS</div>
+              <div class="connection-rel">Amico d'infanzia — compagno di avventure nei boschi di Hometown.</div>
+            </div>
+            <div class="connection">
+              <div class="connection-name">ASRIEL</div>
+              <div class="connection-rel">Amico d'infanzia — partecipava alle escursioni organizzate da Dess.</div>
+            </div>
+            <div class="connection">
+              <div class="connection-name">RUDY HOLIDAY</div>
+              <div class="connection-rel">Padre — attualmente ricoverato in ospedale. Non menziona Dess direttamente.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ RAPPORTO INCIDENTE ══ -->
+        <div class="dossier-section">
+          <div class="section-header">// RAPPORTO — CIRCOSTANZE DELLA SCOMPARSA //</div>
+          <div class="narrative">
+            Le circostanze esatte della scomparsa di Dess Holiday restano <span class="redacted-inline">██████████</span>.
+            <br><br>
+            E' noto soltanto che <em>qualcosa di brutto e' accaduto</em> a Dess, ma nessun residente di
+            Hometown sembra disposto — o in grado — di fornire dettagli precisi sull'accaduto.
+            L'argomento viene sistematicamente evitato nella comunita'.
+            <br><br>
+            L'impatto psicologico sulla sorella minore Noelle e' stato significativo e duraturo.
+            <span class="redacted-inline">███████████████████████████</span>
+            <br><br>
+            Il fascicolo resta aperto. Nessun testimone diretto si e' fatto avanti.
+            Le indagini sono attualmente <span class="redacted-inline">██████</span>.
+          </div>
+        </div>
+
+        <!-- ══ NOTA: DECEMBER ══ -->
+        <div class="december-note">
+          <div class="note-header">// NOTA INVESTIGATIVA — ALLEGATO D //</div>
+          <div class="note-text">
+            Durante un concorso di spelling tenutosi a Hometown, alla giovane <em>Noelle Holiday</em>
+            e' stata assegnata la parola "<span class="word">December</span>".
+            <br><br>
+            Noelle non e' riuscita a completare la parola. Ha perso il concorso.
+            <br><br>
+            Il nome <span class="word">Dess</span> e' ampiamente ritenuto essere un diminutivo
+            di <span class="word">December</span>. La connessione tra il nome e la reazione
+            emotiva del soggetto Noelle Holiday e' considerata rilevante.
+          </div>
+        </div>
+
+        <!-- ══ STATUS STAMP ══ -->
+        <div class="status-stamp">
+          <div class="stamp-text">CASO APERTO</div>
+          <div class="stamp-sub">HOMETOWN P.D. // FASCICOLO NON ARCHIVIABILE</div>
+        </div>
+
+      </main>
+
+      <footer id="site-footer">
+        <span>GASTER_SYSTEM // THE LOST GIRL</span>
+      </footer>
+    </div>
+
+    <script src="../../assets/main.js"></script>
+  </body>
+</html>

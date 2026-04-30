@@ -32,8 +32,17 @@ gaster-system/
 │   ├── pre-cap1/
 │   │   ├── index.html                ← Pagina capitolo Pre-Cap 1
 │   │   └── survey.html               ← SURVEY_PROGRAM V12.25 (adattato)
-│   └── pre-cap2/
-│       └── index.html                ← Placeholder Pre-Cap 2
+│   ├── pre-cap2/
+│   │   ├── index.html                ← Placeholder Pre-Cap 2
+│   │   ├── musica.html               ← Analisi musicale Cap.1
+│   │   ├── musica.json               ← Dati tracce musicali
+│   │   ├── personaggi.html           ← Schede personaggi
+│   │   ├── personaggi.json           ← Dati personaggi
+│   │   └── extra.html                ← Q&A Toby Fox + video extra
+│   └── pre-cap3/
+│       ├── index.html                ← Pagina capitolo Pre-Cap 3
+│       ├── the-lost-girl.html        ← Fascicolo Dess Holiday
+│       └── spamton-sweepstakes.html  ← Spamton G. Spamton (scheletro, da compilare)
 └── data/
     ├── characters.json               ← Schede personaggi (da creare)
     └── music.json                    ← Analisi musicale (da creare)
@@ -45,12 +54,20 @@ gaster-system/
 
 | File | Stato | Note |
 |---|---|---|
-| `index.html` | ✅ Creato | Hub con menu capitoli, mostra score salvato |
+| `index.html` | ✅ Creato | Hub con menu capitoli, mostra score salvato. Pre-cap3 cita Spamton Sweepstakes |
 | `assets/style.css` | ✅ Creato | Tema dark completo, riusa variabili SURVEY_PROGRAM |
 | `assets/main.js` | ✅ Creato | `loadProgress()`, `saveProgress()`, `saveQuizScore()`, `typewrite()`, `glitchFlash()` |
 | `chapters/pre-cap1/index.html` | ✅ Creato | Pagina capitolo, mostra score localStorage |
 | `chapters/pre-cap1/survey.html` | ✅ Creato | SURVEY_PROGRAM V12.25 adattato: salva score in localStorage al termine |
 | `chapters/pre-cap2/index.html` | ✅ Creato | Placeholder con messaggio typewriter |
+| `chapters/pre-cap2/musica.html` | ✅ Creato | Analisi musicale Cap.1 |
+| `chapters/pre-cap2/musica.json` | ✅ Creato | Dati tracce musicali |
+| `chapters/pre-cap2/personaggi.html` | ✅ Creato | Schede personaggi |
+| `chapters/pre-cap2/personaggi.json` | ✅ Creato | Dati personaggi |
+| `chapters/pre-cap2/extra.html` | ✅ Creato | Q&A Toby Fox + video extra |
+| `chapters/pre-cap3/index.html` | ✅ Creato | Pagina capitolo con nav-grid |
+| `chapters/pre-cap3/the-lost-girl.html` | ✅ Creato | Fascicolo Dess Holiday |
+| `chapters/pre-cap3/spamton-sweepstakes.html` | ✅ Creato (scheletro) | Sezioni: introduzione (da compilare) + link/risorse (da compilare) |
 | `data/characters.json` | ⬜ Da creare | Schede: Kris, Susie, Ralsei, Lancer, altri |
 | `data/music.json` | ⬜ Da creare | Tracce Capitolo 1 + analisi Toby Fox |
 
@@ -121,6 +138,12 @@ File: `chapters/pre-cap1/survey.html`
 - Creato `chapters/pre-cap2/index.html` (placeholder)
 - Creato `PROJECT.md` (questo file)
 - **Prossimo passo:** utente clona la repo con GitHub Desktop e fa il primo push
+
+### Sessione 3 — Pre-Cap 3: Spamton Sweepstakes
+- Creato `chapters/pre-cap3/spamton-sweepstakes.html` (scheletro: introduzione vuota + slot link da compilare)
+- Aggiornato `chapters/pre-cap3/index.html` con link a Spamton Sweepstakes
+- Aggiornato `index.html` — card Pre-Cap 3 cita ora Spamton Sweepstakes
+- Aggiornato `PROJECT.md` con struttura repo e stato contenuti
 
 ---
 

@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPAMTON SWEEPSTAKES — GASTER SYSTEM</title>
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <style>
+      .page-content {
+        width: 100%;
+        max-width: 700px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.8em;
+      }
+
+      .section-header {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--accent);
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        padding-bottom: 0.4em;
+        border-bottom: 1px solid var(--dim2);
+      }
+
+      .section-block {
+        border: 2px solid var(--dim2);
+        padding: 1.2em;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8em;
+        position: relative;
+        opacity: 0;
+        transform: translateY(12px);
+        animation: fadeIn 0.4s ease forwards;
+      }
+
+      .section-block::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--dim2);
+      }
+
+      .section-block:nth-of-type(1) {
+        animation-delay: 0.2s;
+      }
+      .section-block:nth-of-type(2) {
+        animation-delay: 0.3s;
+      }
+      .section-block:nth-of-type(3) {
+        animation-delay: 0.4s;
+      }
+      .section-block:nth-of-type(4) {
+        animation-delay: 0.5s;
+      }
+      .section-block:nth-of-type(5) {
+        animation-delay: 0.6s;
+      }
+      .section-block:nth-of-type(6) {
+        animation-delay: 0.7s;
+      }
+
+      .narrative {
+        font-family: var(--font-display);
+        font-size: 1.3em;
+        line-height: 1.65;
+        letter-spacing: 0.03em;
+        color: #ccc;
+      }
+
+      .intro-image {
+        display: flex;
+        justify-content: center;
+        padding: 0.5em 0;
+      }
+
+      .intro-image img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .link-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7em;
+      }
+
+      .link-item {
+        display: grid;
+        grid-template-columns: 36px 1fr;
+        gap: 0.8em;
+        padding: 0.7em 0;
+        border-bottom: 1px solid var(--dim2);
+        align-items: baseline;
+      }
+
+      .link-item:last-child {
+        border-bottom: none;
+      }
+
+      .link-num {
+        font-family: var(--font-mono);
+        font-size: 20px;
+        color: var(--accent);
+        text-align: center;
+        line-height: 1;
+      }
+
+      .link-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2em;
+      }
+
+      .link-title {
+        font-family: var(--font-display);
+        font-size: 1.25em;
+        letter-spacing: 0.06em;
+        color: var(--text);
+      }
+
+      .link-desc {
+        font-family: var(--font-mono);
+        font-size: 14px;
+        color: var(--dim);
+        letter-spacing: 0.1em;
+        line-height: 1.5;
+      }
+
+      .link-desc a {
+        color: var(--dim);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--dim2);
+        transition: color 0.1s;
+      }
+
+      .link-desc a:hover {
+        color: var(--accent);
+      }
+
+      .sub-label {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--dim2);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-top: 0.6em;
+        margin-bottom: 0.2em;
+        padding-bottom: 0.3em;
+        border-bottom: 1px dashed var(--dim2);
+      }
+
+      .sub-label:first-of-type {
+        margin-top: 0;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">
+          <a
+            href="index.html"
+            style="
+              color: var(--dim);
+              text-decoration: none;
+              font-size: 0.75em;
+              font-family: var(--font-mono);
+              letter-spacing: 0.1em;
+            "
+            >← PRE-CAP 3</a
+          >
+          &nbsp;&nbsp;SPAMTON SWEEPSTAKES
+        </span>
+        <span id="header-sub">spamton g. spamton — raccolta link</span>
+      </header>
+
+      <main class="page-content">
+        <!-- ══ INTRODUZIONE ══ -->
+        <div class="section-block">
+          <div class="section-header">// INTRODUZIONE //</div>
+          <div class="narrative">
+            Durante il primo anniversario di Deltarune successivo all'uscita del
+            capitolo 2, Toby Fox trasforma il sito web di Deltarune in un sito
+            per aste, simulando un invasione da parte di Spamton. L'evento è
+            ovviamente un evento di beneficenza molto simpatico, con premi
+            offerti da Fangamer e una partecipazione incredibile da parte della
+            community. Tuttavia, alcuni utenti hanno iniziato a esplorare
+            accuratamente il sito, e hanno notato che, come accadeva in molti
+            siti web stile anni 90, ci si poteva avventurare in pagine e
+            sottopagine collegate fra loro da link, immagini, prompt nascosti.
+            Spaghetti Project ha gentilmente tradotto questo sito web, ma se
+            vorrai esplorare l'originale questo è il link:
+            <a href="https://deltarune.com/sweepstakes/">SWEEPSTAKES</a>
+          </div>
+          <div class="intro-image">
+            <img
+              src="https://deltarune.com/assets/images/spamton-sweepstakes-logo.png"
+              alt="Spamton Sweepstakes Logo"
+            />
+          </div>
+        </div>
+
+        <!-- ══ BANNER ROTANTI ══ -->
+        <div class="section-block">
+          <div class="section-header">// BANNER ROTANTI — TEASERS //</div>
+          <div class="link-list">
+            <div class="link-item">
+              <div class="link-num">01</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/icee/">/icee/</a>
+                </div>
+                <div class="link-desc">
+                  "Have you seen him?" — Avvistamento di un mascotte ICE-E.
+                  Testimonianza di una giovane Noelle e della sorella Dess.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">02</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/december/">/december/</a>
+                </div>
+                <div class="link-desc">
+                  Pagina HTTP 404 in stile Internet Explorer anni '90.
+                  Raggiungibile da /icee/ cliccando su "sister".
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">03</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/secret/">/secret/</a>
+                </div>
+                <div class="link-desc">
+                  "What's behind door number one?" — Gioco con 16 armadietti
+                  cliccabili. Premi: Ralsei plush, Pipis, gumball machine, e un
+                  link a /chair/.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">04</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/chair/">/chair/</a>
+                </div>
+                <div class="link-desc">
+                  "But what if it could... get darker than dark?" — Una sedia
+                  nell'oscurità. Cliccandola si oscura. 5% di probabilità di
+                  jumpscare con gli occhi di FRIEND.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">05</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/secretpipis/">/secretpipis/</a>
+                </div>
+                <div class="link-desc">
+                  "You lost!" — Un singolo Pipis. Banner "CLICK HERE TO CLAIM
+                  YOUR PRIZE!".
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ BLOG DI NOELLE ══ -->
+        <div class="section-block">
+          <div class="section-header">
+            // BLOG DI NOELLE — holidaygirl1225 //
+          </div>
+          <div class="link-list">
+            <div class="link-item">
+              <div class="link-num">06</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/code/">/code/</a>
+                </div>
+                <div class="link-desc">
+                  Blog di Noelle su segreti e glitch di Dragon Blazers. Nota che
+                  il sito ha 40 link nascosti (aggiornato a 40 con Silence).
+                  Link a /egg/ e /chapter1/.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">07</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/code/comments/"
+                    >/code/comments/</a
+                  >
+                </div>
+                <div class="link-desc">
+                  Sezione commenti del blog. Berdly chiede di essere admin,
+                  riceve prank call e cancella "Minecrap" per sbaglio.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">08</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/catpetterz/">/catpetterz/</a>
+                </div>
+                <div class="link-desc">
+                  Noelle parla di Cat Petterz 2 e delle mod. Un messaggio
+                  d'errore la spaventa, inizia a scartare le uova.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">09</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/egg/">/egg/</a>
+                </div>
+                <div class="link-desc">
+                  Noelle trova un uovo bianco "SPECIAL" che non riesce a
+                  cancellare dal computer. Quando lo tratta normale, "se ne va
+                  per la felicità". Link a /rain/ dopo Silence.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">10</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/kris_dreemurr_kris/"
+                    >/kris_dreemurr_kris/</a
+                  >
+                </div>
+                <div class="link-desc">
+                  Post privato: Kris andava a casa di Noelle per giocare, ma poi
+                  si metteva al pianoforte. Smetteva se lei guardava.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">11</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/bluecircle/">/bluecircle/</a>
+                </div>
+                <div class="link-desc">
+                  Noelle riceve una spam mail, la applica come mod a Cat Petterz
+                  2. Appare un cerchio blu che si moltiplica incontrollato.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">12</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/the_n3w3st_g1rl_g1rl/"
+                    >/the_n3w3st_g1rl_g1rl/</a
+                  >
+                </div>
+                <div class="link-desc">
+                  Post privato: Susie bullizzava Kris e loro non lo diceva a
+                  Toriel. Episodio dello shampoo alla mela.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">13</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/icepalace_glaceir/"
+                    >/icepalace_glaceir/</a
+                  >
+                </div>
+                <div class="link-desc">
+                  Noelle racconta di un softlock in Dragon Blazers: una porta
+                  bloccata senza chiave. Raggiungibile da
+                  /d_a_m_n_y_o_u_t_e_n_n_a/.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ LINK DAI PREMI — CHAPTER 3 TEASERS ══ -->
+        <div class="section-block">
+          <div class="section-header">
+            // LINK DAI PREMI — CHAPTER 3 TEASERS //
+          </div>
+          <div class="link-list">
+            <div class="link-item">
+              <div class="link-num">14</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/ramb/">/ramb/</a>
+                </div>
+                <div class="link-desc">
+                  "Where could this be?" → "Welcome to the Green Room!" —
+                  Immagine della Green Room dal Status Update. Cliccando si
+                  rivela la stanza intera e suona una versione early di "Welcome
+                  to the Green Room". Porte collegano ad altre pagine.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">15</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/weather/">/weather/</a>
+                </div>
+                <div class="link-desc">
+                  "You're the Annoying Now Dog!" — Lanino e Elnina con
+                  animazione e brano da Vapor Buster.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">16</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/tv/">/tv/</a>
+                </div>
+                <div class="link-desc">
+                  "* It's off." — Il TV della casa Dreemurr, spento e
+                  nell'oscurità. Nessun'interazione.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">17</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/changingroom/"
+                    >/changingroom/</a
+                  >
+                </div>
+                <div class="link-desc">
+                  "(Private...)" — Sipario che rivela uno Shadowguy che si mette
+                  un calzino. 10% probabilità di Lancer 8-bit invece. Click su
+                  Shadowguy → /shadowmen/, su Lancer → /lancer/.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">18</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/sighting/">/sighting/</a>
+                </div>
+                <div class="link-desc">
+                  "SIGHTING 1997" — Foto in bianco e nero del plush parlante di
+                  Spamton su un water. Click cambia angolazione e suona Digital
+                  Roots.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">19</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://bluebubble.rodeo/">bluebubble.rodeo</a>
+                </div>
+                <div class="link-desc">
+                  "2 minutes of mildly entertaining shoot-out action!" — Kris e
+                  Susie in abiti da cowboy per il minigioco. Unico link non su
+                  deltarune.com.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">20</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/dog/">/dog/</a>
+                </div>
+                <div class="link-desc">
+                  "HALL OF FAME" — Cornice vuota. Click appare l'Annoying Dog
+                  con scritta "BEST INU". Suona "Hall of Fame".
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">21</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/lancer/">/lancer/</a>
+                </div>
+                <div class="link-desc">
+                  "You're the Annoying Now Dog!" — Lancer 8-bit da The Legend of
+                  Tenna. Click: Lancer multipli rotanti con "YOU JUST GOT
+                  LANCERED!!!". Suona "Dig! Dig! To The Center of the Earth!".
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">22</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/shadowmen/">/shadowmen/</a>
+                </div>
+                <div class="link-desc">
+                  Video encounter: Kris, Susie e Ralsei contro due Shadowguys.
+                  Uno suona il sassofono per i proiettili.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">23</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/blink/">/blink/</a>
+                </div>
+                <div class="link-desc">
+                  "What?" — Susie sdraiata in abiti Dark World. Click apre gli
+                  occhi e blinka a intervalli casuali.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">24</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/d_a_m_n_y_o_u_t_e_n_n_a/"
+                    >/d_a_m_n_y_o_u_t_e_n_n_a/</a
+                  >
+                </div>
+                <div class="link-desc">
+                  "DELETE THIS !" — Spamton accusa il televisore delle sue
+                  sfortune, promette vendetta su tutti tranne Mike. Click sul TV
+                  → statico con "YOU'RE EARLY!" → mappa isola pixelata →
+                  /icepalace_glaceir/.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ LINK EXTRA E SILENCE ══ -->
+        <div class="section-block">
+          <div class="section-header">// EXTRA & SILENCE TEASERS //</div>
+          <div class="link-list">
+            <div class="sub-label">EXTRA</div>
+
+            <div class="link-item">
+              <div class="link-num">25</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/room_dogcheck"
+                    >room_dogcheck</a
+                  >
+                </div>
+                <div class="link-desc">
+                  Pagina 404 custom del sito. Annoying Dog con maracas. Appare
+                  da qualsiasi URL inesistente su deltarune.com.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">26</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/man/">/man/</a>
+                </div>
+                <div class="link-desc">
+                  "HAI HAI HAI" — Un albero su sfondo nero. Click → "YOU FOUND
+                  THE TREE!" → redirect a /egg/.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">27</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/dess/">/dess/</a>
+                </div>
+                <div class="link-desc">
+                  "??????" — Solamente una chitarra...
+                </div>
+              </div>
+            </div>
+
+            <div class="sub-label" style="margin-top: 1em">
+              SILENCE (Maggio 2025)
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">28</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/romb/">/romb/</a>
+                </div>
+                <div class="link-desc">
+                  Accessibile da /ramb/. Riferimento alla "Alternate Path"
+                  (Spamton's Silence).
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">29</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/rain/">/rain/</a>
+                </div>
+                <div class="link-desc">
+                  Accessibile da /egg/. Teaser nascosto aggiunto con l'update
+                  Silence.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">30</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/rarecats/">/rarecats/</a>
+                </div>
+                <div class="link-desc">
+                  Teaser Silence. Contenuto nascosto collegato alla alternate
+                  path.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">31</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/windows/">/windows/</a>
+                </div>
+                <div class="link-desc">Teaser Silence. Un set di finestre.</div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">32</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/lostwheretheforestwouldgrow/"
+                    >/lostwheretheforestwouldgrow/</a
+                  >
+                </div>
+                <div class="link-desc">
+                  Teaser Silence. Titolo poetico, possibile riferimento a
+                  locazioni future.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">33</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/window/">/window/</a>
+                </div>
+                <div class="link-desc">
+                  Teaser Silence. Singolare di /windows/.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">34</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/thepoorchildren/"
+                    >/thepoorchildren/</a
+                  >
+                </div>
+                <div class="link-desc">Teaser Silence. "I poveri bambini".</div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">35</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/chapter1/">/chapter1/</a>
+                </div>
+                <div class="link-desc">
+                  Raggiungibile da /code/ (click sul punto nero). Teaser Chapter
+                  1 nella Silence path.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">36</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/chapter2/">/chapter2/</a>
+                </div>
+                <div class="link-desc">
+                  Teaser Chapter 2 nella Silence path.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">37</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/chapter3/">/chapter3/</a>
+                </div>
+                <div class="link-desc">
+                  Teaser Chapter 3 nella Silence path.
+                </div>
+              </div>
+            </div>
+
+            <div class="link-item">
+              <div class="link-num">38</div>
+              <div class="link-info">
+                <div class="link-title">
+                  <a href="https://deltarune.com/chapter4/">/chapter4/</a>
+                </div>
+                <div class="link-desc">
+                  Teaser Chapter 4 nella Silence path.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ NOTE E CREDITI ══ -->
+        <div class="section-block">
+          <div class="section-header">// NOTE //</div>
+          <div class="narrative">
+            <p>
+              Il totale dei link nascosti sul sito deltarune.com è
+              <strong>40</strong>: 26 aggiunti durante l'evento Sweepstakes
+              originale (settembre 2022), e 14 aggiunti con l'update Silence
+              (maggio 2025).
+            </p>
+            <p>
+              Toby Fox ha dichiarato nella newsletter che considera "canon" solo
+              ciò che è presente nel gioco stesso, quindi nulla di trovato sul
+              sito è criticamente importante per la lore. Ma questo non toglie
+              che sia tutto incredibilmente affascinante.
+            </p>
+            <p style="margin-top: 0.8em; font-size: 0.85em; color: var(--dim2)">
+              Fonti:
+              <a href="https://deltarune.wiki/w/Spamton_Sweepstakes"
+                >Deltarune Wiki</a
+              >
+              ·
+              <a
+                href="https://docs.google.com/document/u/0/d/17Z7mxQj4FjJlqC0Y7WLI1vPBuUAAMWxR2VbJhW3gPCc/mobilebasic"
+                >Google Doc secrets</a
+              >
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer id="site-footer">
+        <span>GASTER_SYSTEM // SPAMTON SWEEPSTAKES</span>
+      </footer>
+    </div>
+
+    <script src="../../assets/main.js"></script>
+  </body>
+</html>
