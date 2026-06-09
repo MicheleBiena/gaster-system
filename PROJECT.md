@@ -63,7 +63,7 @@ gaster-system/
 |---|---|---|
 | `index.html` | ✅ Aggiornato | Hub ridisegnato come soglia Chapter 4; Pre-Cap 4 è aperto |
 | `assets/style.css` | ✅ Aggiornato | Tema globale Chapter 4: nero, acqua digitale blu/ciano, cuore rosso |
-| `assets/main.js` | ✅ Creato | `loadProgress()`, `saveProgress()`, `saveQuizScore()`, `typewrite()`, `glitchFlash()` |
+| `assets/main.js` | ✅ Aggiornato | Utility condivise + player YouTube globale in loop |
 | `assets/img/pre-cap4/manhole-dungeon-map.png` | ✅ Estratto | Mappa Manhole dungeon per "The Roots Theory" |
 | `assets/img/pre-cap4/hometown-map.webp` | ✅ Estratto | Mappa Hometown per confronto a tasselli |
 | `chapters/pre-cap1/index.html` | ✅ Creato | Pagina capitolo, mostra score localStorage |
@@ -94,12 +94,20 @@ Chiave root: `gaster_system_data` (oggetto JSON)
 |---|---|---|
 | `quiz_precap1` | number | Punteggio SURVEY_PROGRAM (0–10) |
 | `quiz_precap2` | number | Punteggio quiz Pre-Cap 2 (da implementare) |
+| `music_volume` | number | Volume del player musicale globale (0–100) |
 
 **API disponibile in `main.js`:**
 - `loadProgress()` → oggetto con tutti i dati salvati
 - `saveProgress({ key: value })` → merge e salva
 - `saveQuizScore('precap1', 6)` → shorthand per punteggi quiz
 - `clearProgress()` → reset completo
+
+**Player musicale globale:**
+- Iniettato da `assets/main.js` nelle pagine che caricano lo script condiviso
+- UI minimale solo audio: play/pausa, label e volume, senza riquadro video visibile
+- Video YouTube in loop: `6z7x_hu4t4Y`
+- Volume salvato in `music_volume`
+- Il `SURVEY_PROGRAM` resta escluso perché non carica `main.js`
 
 ---
 
@@ -193,6 +201,13 @@ File: `chapters/pre-cap1/survey.html`
 - Trasformato `chapters/pre-cap4/index.html` in hub a tre schede
 - Spostato il viewer "The Roots Theory" in `chapters/pre-cap4/the-roots-theory.html`
 - Creati gli scheletri `chicche-cap3.html` e `varie-ed-eventuali.html`
+
+### Sessione 9 — player musicale globale
+- Aggiunto player YouTube in loop a tutte le pagine che caricano `assets/main.js`
+- Implementati controlli play/pausa e volume
+- Ridotta la UI a player audio minimale senza video visibile e senza titolo brano
+- Salvato il volume in `localStorage.gaster_system_data.music_volume`
+- Lasciato escluso `chapters/pre-cap1/survey.html` per non alterare il core del SURVEY_PROGRAM
 
 ---
 
