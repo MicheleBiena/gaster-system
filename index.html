@@ -18,10 +18,36 @@
         <span id="header-sub">gibbotto_x_red — blindrun documentation</span>
       </header>
 
-      <main id="hub">
-        <div id="hub-label">// SELEZIONA CAPITOLO //</div>
+      <main id="hub" class="home-hub">
+        <section class="title-gate" aria-labelledby="gate-title">
+          <div class="system-kicker">// SOGLIA SUPERATA //</div>
+          <h1 class="deltarune-title" id="gate-title" aria-label="Deltarune">
+            delta<span class="heart-rune">♥</span>rune
+          </h1>
+          <div class="chapter-mark">CHAPTER 4</div>
+          <p class="gate-line">
+            The Roaring Knight... The one who's making the dark. The one who's
+            trying to destroy the world... so that's our enemy.
+          </p>
+          <div class="gate-meta">
+            Intro completata · archivio operativo · Pre-Cap 4 aperto
+          </div>
+        </section>
 
-        <nav id="chapter-nav">
+        <div class="threshold-ribbon">
+          <span
+            ><strong>Linea di demarcazione:</strong> ora si fa sul serio.</span
+          >
+          <span>GASTER_SYSTEM // serious mode</span>
+        </div>
+
+        <div id="hub-label">// ARCHIVIO DI AVANZAMENTO //</div>
+
+        <nav
+          id="chapter-nav"
+          class="chapter-grid"
+          aria-label="Seleziona sezione"
+        >
           <a class="chapter-card done" href="chapters/pre-cap1/index.html">
             <span class="card-tag">PRE-CAP 1</span>
             <span class="card-title">UNDERTALE SURVEY</span>
@@ -51,11 +77,14 @@
             <span class="card-status">● DISPONIBILE</span>
           </a>
 
-          <a class="chapter-card locked" href="chapters/pre-cap4/index.html">
+          <a class="chapter-card current" href="chapters/pre-cap4/index.html">
             <span class="card-tag">PRE-CAP 4</span>
             <span class="card-title">DELTARUNE — CAPITOLO 3</span>
-            <span class="card-desc">TBD</span>
-            <span class="card-status">● IN ARRIVO</span>
+            <span class="card-desc"
+              >La TV si è accesa. Da qui si prepara il salto al Capitolo
+              4.</span
+            >
+            <span class="card-status">● APERTO</span>
           </a>
         </nav>
 
@@ -76,9 +105,9 @@
       const saved = loadProgress();
       const scoreEl = document.getElementById("save-score");
       if (saved && saved.quiz_precap1 !== undefined) {
-        scoreEl.textContent = `SURVEY PRE-CAP 1 :: ${saved.quiz_precap1}/10 — ARCHIVIATO`;
+        scoreEl.textContent = `SURVEY PRE-CAP 1 :: ${saved.quiz_precap1}/10 — ARCHIVIATO // SOGLIA RAGGIUNTA`;
       } else {
-        scoreEl.textContent = "NESSUN DATO ARCHIVIATO";
+        scoreEl.textContent = "NESSUN DATO ARCHIVIATO // SISTEMA PRONTO";
       }
     </script>
   </body>

@@ -13,7 +13,7 @@ Sito web statico hostato su **GitHub Pages** (branch `main`, root `/`).
 Documentazione interattiva per una **blindrun comunitaria di Deltarune** condotta dallo streamer **gibbotto_x_red** (con Trainer).
 Il sito accompagna la community fra un capitolo e l'altro con approfondimenti, analisi musicali, schede personaggi, embed YouTube e quiz/survey interattivi.
 
-**Stile visivo:** dark / retro-terminal, font VT323 + Share Tech Mono, scanlines, vignette, effetti glitch — fedele all'estetica di W.D. Gaster e Deltarune.
+**Stile visivo:** dark / retro-terminal evoluto in title-card Chapter 4: nero pieno, acqua digitale blu/ciano, cuore rosso, scanlines, vignette, effetti glitch — fedele all'estetica di W.D. Gaster e Deltarune.
 **Persistenza dati:** `localStorage` sotto la chiave `gaster_system_data` (lato client, nessun backend).
 
 ---
@@ -27,25 +27,32 @@ gaster-system/
 ├── assets/
 │   ├── style.css                     ← Tema dark pixel-art globale (VT323 + Share Tech Mono)
 │   ├── main.js                       ← Utility: localStorage, typewriter, glitch
-│   └── img/                          ← Sprite, sfondi, icone (da popolare)
-├── chapters/
-│   ├── pre-cap1/
-│   │   ├── index.html                ← Pagina capitolo Pre-Cap 1
-│   │   └── survey.html               ← SURVEY_PROGRAM V12.25 (adattato)
-│   ├── pre-cap2/
-│   │   ├── index.html                ← Placeholder Pre-Cap 2
-│   │   ├── musica.html               ← Analisi musicale Cap.1
-│   │   ├── musica.json               ← Dati tracce musicali
-│   │   ├── personaggi.html           ← Schede personaggi
-│   │   ├── personaggi.json           ← Dati personaggi
-│   │   └── extra.html                ← Q&A Toby Fox + video extra
-│   └── pre-cap3/
-│       ├── index.html                ← Pagina capitolo Pre-Cap 3
-│       ├── the-lost-girl.html        ← Fascicolo Dess Holiday
-│       └── spamton-sweepstakes.html  ← Spamton G. Spamton (scheletro, da compilare)
-└── data/
-    ├── characters.json               ← Schede personaggi (da creare)
-    └── music.json                    ← Analisi musicale (da creare)
+│   └── img/
+│       └── pre-cap4/
+│           ├── manhole-dungeon-map.png ← Mappa Manhole dungeon da Deltarune Wiki
+│           └── hometown-map.webp       ← Mappa Hometown per overlay The Roots Theory
+└── chapters/
+    ├── pre-cap1/
+    │   ├── index.html                ← Pagina capitolo Pre-Cap 1
+    │   └── survey.html               ← SURVEY_PROGRAM V12.25 (adattato)
+    ├── pre-cap2/
+    │   ├── index.html                ← Placeholder Pre-Cap 2
+    │   ├── musica.html               ← Analisi musicale Cap.1
+    │   ├── musica.json               ← Dati tracce musicali
+    │   ├── personaggi.html           ← Schede personaggi
+    │   ├── personaggi.json           ← Dati personaggi
+    │   └── extra.html                ← Q&A Toby Fox + video extra
+    ├── pre-cap3/
+    │   ├── index.html                ← Pagina capitolo Pre-Cap 3
+    │   ├── the-lost-girl.html        ← Fascicolo Dess Holiday
+    │   ├── intanto-dal-web.html      ← Raccolta community / fan theory
+    │   ├── spamton-sweepstakes.html  ← Spamton G. Spamton + link nascosti
+    │   └── spamton-value-network.html ← Trasmissione Spamton Value Network
+    └── pre-cap4/
+        ├── index.html                ← Hub sezioni Pre-Cap 4
+        ├── the-roots-theory.html     ← Mappa Manhole/Hometown e teoria roots
+        ├── chicche-cap3.html         ← Dettagli e segreti Capitolo 3
+        └── varie-ed-eventuali.html   ← Fan theories, meme, community
 ```
 
 ---
@@ -54,9 +61,11 @@ gaster-system/
 
 | File | Stato | Note |
 |---|---|---|
-| `index.html` | ✅ Creato | Hub con menu capitoli, mostra score salvato. Pre-cap3 cita Spamton Sweepstakes |
-| `assets/style.css` | ✅ Creato | Tema dark completo, riusa variabili SURVEY_PROGRAM |
+| `index.html` | ✅ Aggiornato | Hub ridisegnato come soglia Chapter 4; Pre-Cap 4 è aperto |
+| `assets/style.css` | ✅ Aggiornato | Tema globale Chapter 4: nero, acqua digitale blu/ciano, cuore rosso |
 | `assets/main.js` | ✅ Creato | `loadProgress()`, `saveProgress()`, `saveQuizScore()`, `typewrite()`, `glitchFlash()` |
+| `assets/img/pre-cap4/manhole-dungeon-map.png` | ✅ Estratto | Mappa Manhole dungeon per "The Roots Theory" |
+| `assets/img/pre-cap4/hometown-map.webp` | ✅ Estratto | Mappa Hometown per confronto a tasselli |
 | `chapters/pre-cap1/index.html` | ✅ Creato | Pagina capitolo, mostra score localStorage |
 | `chapters/pre-cap1/survey.html` | ✅ Creato | SURVEY_PROGRAM V12.25 adattato: salva score in localStorage al termine |
 | `chapters/pre-cap2/index.html` | ✅ Creato | Placeholder con messaggio typewriter |
@@ -67,9 +76,13 @@ gaster-system/
 | `chapters/pre-cap2/extra.html` | ✅ Creato | Q&A Toby Fox + video extra |
 | `chapters/pre-cap3/index.html` | ✅ Creato | Pagina capitolo con nav-grid |
 | `chapters/pre-cap3/the-lost-girl.html` | ✅ Creato | Fascicolo Dess Holiday |
-| `chapters/pre-cap3/spamton-sweepstakes.html` | ✅ Creato (scheletro) | Sezioni: introduzione (da compilare) + link/risorse (da compilare) |
-| `data/characters.json` | ⬜ Da creare | Schede: Kris, Susie, Ralsei, Lancer, altri |
-| `data/music.json` | ⬜ Da creare | Tracce Capitolo 1 + analisi Toby Fox |
+| `chapters/pre-cap3/intanto-dal-web.html` | ✅ Creato | Raccolta community, teorie e video |
+| `chapters/pre-cap3/spamton-sweepstakes.html` | ✅ Creato | Introduzione e raccolta link Sweepstakes/Silence |
+| `chapters/pre-cap3/spamton-value-network.html` | ✅ Creato | Link alla trasmissione Spamton Value Network |
+| `chapters/pre-cap4/index.html` | ✅ Aggiornato | Hub con tre sottoschede Pre-Cap 4 |
+| `chapters/pre-cap4/the-roots-theory.html` | ✅ Creato | Mappa Manhole/Hometown con zoom, drag e tasselli cliccabili |
+| `chapters/pre-cap4/chicche-cap3.html` | ✅ Creato | Scheletro per dettagli, segreti e rimandi del Capitolo 3 |
+| `chapters/pre-cap4/varie-ed-eventuali.html` | ✅ Creato | Scheletro per fan theories, meme e materiali community |
 
 ---
 
@@ -111,6 +124,13 @@ File: `chapters/pre-cap1/survey.html`
 3. **Approfondimento Toby Fox** — embed YouTube (video in cui suona dal vivo)
 4. **Link esterni** — wiki, risorse community, altri siti correlati
 
+## Contenuti pianificati: Pre-Cap 4
+
+1. **Recap Capitolo 3** — eventi principali, cambio di tono, preparazione alla blindrun del Capitolo 4
+2. **TV, Tenna, Mike** — personaggi, trasmissioni, suggestioni meta e collegamenti ai teaser
+3. **Musica e motivi** — leitmotiv nuovi, ritorni nascosti, brani chiave
+4. **Verso Capitolo 4** — domande aperte, teorie e linee narrative da portare in live
+
 ---
 
 ## GitHub Pages: istruzioni setup
@@ -145,12 +165,41 @@ File: `chapters/pre-cap1/survey.html`
 - Aggiornato `index.html` — card Pre-Cap 3 cita ora Spamton Sweepstakes
 - Aggiornato `PROJECT.md` con struttura repo e stato contenuti
 
+### Sessione 4 — soglia Chapter 4 / apertura Pre-Cap 4
+- Ridisegnato `index.html` come title-card Chapter 4 con frase guida "Ora siamo nel vivo del gioco"
+- Aggiornato `assets/style.css` con palette acqua digitale blu/ciano, cuore rosso e layout hub più ampio
+- Creato `chapters/pre-cap4/index.html` come sezione aperta e cantiere contenuti
+- Aggiornato `PROJECT.md` con struttura reale, stato contenuti e pianificazione Pre-Cap 4
+
+### Sessione 5 — leggibilità microtesti
+- Aumentata la dimensione minima dei testi mono/label nelle pagine normali
+- Schiariti alcuni testi secondari troppo scuri rispetto al nuovo tema blu/ciano
+- Ritoccati menu Pre-Cap 2/3, pagine musica/extra/personaggi e dossier Pre-Cap 3
+- Lasciato invariato il core di `chapters/pre-cap1/survey.html`
+
+### Sessione 6 — asset The Roots Theory
+- Identificato nella Deltarune Wiki il file `Manhole dungeon map.png`
+- Estratta la mappa locale in `assets/img/pre-cap4/manhole-dungeon-map.png`
+- Presa nota della fonte per la futura sezione Pre-Cap 4 "The Roots Theory"
+
+### Sessione 7 — The Roots Theory map viewer
+- Aggiunta la prima sezione "The Roots Theory"
+- Integrata la mappa Manhole dungeon con viewport navigabile
+- Aggiunto overlay Hometown calibrato sulla zona delle stanze iniziali
+- Implementati tasselli cliccabili per alternare singole celle tra Manhole e Hometown
+- Implementati zoom, reset vista e trascinamento mouse/touch senza librerie esterne
+
+### Sessione 8 — sottoschede Pre-Cap 4
+- Trasformato `chapters/pre-cap4/index.html` in hub a tre schede
+- Spostato il viewer "The Roots Theory" in `chapters/pre-cap4/the-roots-theory.html`
+- Creati gli scheletri `chicche-cap3.html` e `varie-ed-eventuali.html`
+
 ---
 
 ## Istruzioni per agenti successivi
 
 1. **Leggi questo file per intero** prima di qualsiasi operazione
-2. **Stile:** sempre dark retro-terminal (VT323 + Share Tech Mono), mai deviare
+2. **Stile:** dark retro-terminal + title-card Chapter 4 (VT323 + Share Tech Mono, nero/ciano/blu, cuore rosso), mai deviare
 3. **Persistenza:** tutto `localStorage` con chiave `gaster_system_data`, nessun backend
 4. **Aggiorna** la tabella "Stato dei contenuti" dopo ogni modifica
 5. **Aggiungi** una voce al "Log sessioni" con i lavori svolti

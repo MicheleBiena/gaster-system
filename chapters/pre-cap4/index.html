@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRE-CAP 4 — GASTER SYSTEM</title>
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <style>
+      .nav-grid {
+        width: 100%;
+        max-width: 860px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .nav-card {
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 1em;
+        padding: 1.1em 1em;
+        border: 2px solid var(--text);
+        border-bottom: none;
+        text-decoration: none;
+        color: var(--text);
+        background: rgba(0, 13, 28, 0.58);
+        transition:
+          background 0.08s ease,
+          border-color 0.08s ease;
+      }
+
+      .nav-card:last-child {
+        border-bottom: 2px solid var(--text);
+      }
+
+      .nav-card:hover {
+        background: rgba(0, 28, 52, 0.9);
+        border-color: var(--accent);
+        cursor: pointer;
+      }
+
+      .nav-index {
+        font-family: var(--font-mono);
+        font-size: 14px;
+        color: var(--accent-3);
+        letter-spacing: 0.08em;
+        text-align: right;
+      }
+
+      .nav-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2em;
+      }
+
+      .nav-title {
+        font-family: var(--font-display);
+        font-size: 1.7em;
+        letter-spacing: 0.08em;
+        line-height: 1.05;
+      }
+
+      .nav-desc {
+        font-family: var(--font-mono);
+        font-size: 14px;
+        color: var(--dim);
+        letter-spacing: 0.04em;
+        line-height: 1.5;
+      }
+
+      .nav-arrow {
+        font-family: var(--font-mono);
+        font-size: 18px;
+        color: var(--dim);
+      }
+
+      @media (max-width: 560px) {
+        .nav-card {
+          grid-template-columns: 34px minmax(0, 1fr);
+        }
+
+        .nav-arrow {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">
+          <a class="back-link" href="../../index.html">← INDIETRO</a>
+          PRE-CAP 4 — DELTARUNE CAP.3
+        </span>
+        <span id="header-sub">documentazione · prima del capitolo 4</span>
+      </header>
+
+      <main class="page-content">
+        <section class="section-block">
+          <div class="section-header">// ORA SIAMO NEL VIVO //</div>
+          <div class="narrative">
+            La preparazione al Capitolo 4 si divide in tre fascicoli: una teoria
+            strutturale, una raccolta di dettagli dal Capitolo 3 e uno spazio
+            più libero per community, meme e ipotesi laterali.
+          </div>
+        </section>
+
+        <nav class="nav-grid" aria-label="Sezioni Pre-Cap 4">
+          <a class="nav-card" href="the-roots-theory.html">
+            <div class="nav-index">01</div>
+            <div class="nav-info">
+              <div class="nav-title">THE ROOTS THEORY</div>
+              <div class="nav-desc">
+                Manhole dungeon · overlay Hometown · mappa a tasselli
+              </div>
+            </div>
+            <div class="nav-arrow">→</div>
+          </a>
+
+          <a class="nav-card" href="chicche-cap3.html">
+            <div class="nav-index">02</div>
+            <div class="nav-info">
+              <div class="nav-title">CHICCHE DAL CAP 3</div>
+              <div class="nav-desc">
+                Dettagli, segreti, rimandi e appunti utili dalla run
+              </div>
+            </div>
+            <div class="nav-arrow">→</div>
+          </a>
+
+          <a class="nav-card" href="varie-ed-eventuali.html">
+            <div class="nav-index">03</div>
+            <div class="nav-info">
+              <div class="nav-title">VARIE ED EVENTUALI</div>
+              <div class="nav-desc">Fan theories · meme · materiali community</div>
+            </div>
+            <div class="nav-arrow">→</div>
+          </a>
+        </nav>
+      </main>
+
+      <footer id="site-footer">
+        <span>GASTER_SYSTEM // PRE-CAP 4</span>
+      </footer>
+    </div>
+
+    <script src="../../assets/main.js"></script>
+  </body>
+</html>
