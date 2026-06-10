@@ -87,8 +87,8 @@ gaster-system/
 | `chapters/pre-cap3/spamton-value-network.html` | ✅ Creato | Link alla trasmissione Spamton Value Network |
 | `chapters/pre-cap4/index.html` | ✅ Aggiornato | Hub con tre sottoschede Pre-Cap 4 |
 | `chapters/pre-cap4/the-roots-theory.html` | ✅ Aggiornato | Dossier Roots Theory con cover, sintesi da sottotitoli e viewer tile Hometown/Manhole |
-| `chapters/pre-cap4/chicche-cap3.html` | ✅ Creato | Scheletro per dettagli, segreti e rimandi del Capitolo 3 |
-| `chapters/pre-cap4/varie-ed-eventuali.html` | ✅ Creato | Scheletro per fan theories, meme e materiali community |
+| `chapters/pre-cap4/chicche-cap3.html` | ✅ Aggiornato | Schede: Susie/Ralsei, Raise Up Your Bat, Gachapon e Board 3 restored |
+| `chapters/pre-cap4/varie-ed-eventuali.html` | ✅ Aggiornato | Sezioni: Dess/Asgore, Tenna host TV e Tenna/Steve Harvey |
 
 ---
 
@@ -240,6 +240,73 @@ File: `chapters/pre-cap1/survey.html`
 - Rimossa da `chapters/pre-cap4/the-roots-theory.html` la sezione "Cosa cambia per Capitolo 5"
 - Puliti gli stili locali `route-*` legati alla sezione eliminata
 - Annotato implicitamente che le speculazioni post Chapter 4 potranno vivere in una futura sezione dedicata
+
+### Sessione 15 — Chicche Cap 3: Susie/Ralsei
+- Aggiornata `chapters/pre-cap4/chicche-cap3.html` con la prima scheda contenuto
+- Inserito miniplayer YouTube per il video `APqXtcvo00M`
+- Aggiunta breve spiegazione sulle varianti di dialogo e sulle dinamiche Susie/Ralsei
+- Sistemati titolo/header della pagina e stati delle card senza caratteri corrotti
+
+### Sessione 16 — Chicche Cap 3: Raise Up Your Bat
+- Aggiunta seconda scheda in `chapters/pre-cap4/chicche-cap3.html`
+- Inserito confronto parafrasato tra lyrics originali e versione censurata da Ralsei
+- Evidenziato che Ralsei corregge la violenza esplicita ma mantiene il nucleo motivazionale della canzone
+
+### Sessione 17 — Raise Up Your Bat: fonte lyrics
+- Aggiornata la scheda `Raise Up Your Bat` con link diretto alla pagina lyrics della Deltarune Wiki
+- Sostituiti i pannelli separati con un solo tasto "apri lyrics"
+- Mantenuta nel sito una sintesi critica senza riportare integralmente il testo della canzone
+
+### Sessione 18 — Chicche Cap 3: Gachapon
+- Aggiunta terza scheda `Gachapon` in `chapters/pre-cap4/chicche-cap3.html`
+- Elencati premi normali e gold della Ball Machine
+- Sintetizzate le dodici Fortunes con il rispettivo significato/indizio
+- Aggiunta nota trivia su 1225, `gacharoom_unknown`, Dess/Holiday e TripTicket
+
+### Sessione 19 — Gachapon: fortune in inglese
+- Aggiornata la lista Fortunes della scheda Gachapon
+- Mantenuti i titoli delle fortune in inglese con spiegazione italiana
+
+### Sessione 20 — Chicche Cap 3: Board 3 restored
+- Aggiunta quarta scheda in `chapters/pre-cap4/chicche-cap3.html`
+- Inserito miniplayer YouTube per il video `ATQrzgdWQms`
+- Spiegato il fun fact: Board 3 sembra nata come normale terza board di Tenna, con lotte/gameplay e Susiezilla come probabile challenge fisica finale
+
+### Sessione 21 — Varie ed eventuali: Dess spiegata
+- Ricostruita `chapters/pre-cap4/varie-ed-eventuali.html` come sezione community/meme
+- Aggiunta prima parte "La scomparsa di Dess... spiegata"
+- Inserito embed YouTube per il video `L4MlbwcaKLo`
+- Riscritta la spiegazione in tono ironico su Dess, Asgore e l'escalation della community
+
+### Sessione 22 — Dess meme: versioni correlate
+- Cambiato il video principale della sezione Dess/Asgore su `u5NqO2v_xnY`
+- Aggiunti link sotto al player alla versione extended `L4MlbwcaKLo` e alla versione multiverse `pB9pemjNS1U`
+
+### Sessione 23 — Varie ed eventuali: Tenna host era
+- Aggiunta seconda parte in `chapters/pre-cap4/varie-ed-eventuali.html`
+- Inseriti due iframe YouTube: `gn_q38zPJZg` e `4T-UhZg-TB0`
+- Aggiunto testo su Tenna, Vox, Caine/TADC e il 2025 come anno dei personaggi host/TV
+- Aggiornata la card di riepilogo "Host Wars"
+
+### Sessione 24 — Host era: Caine positivo, Vox controesempio
+- Inserite immagini di Caine e Vox nella sezione Tenna/host TV
+- Riscritto il confronto: Caine come paragone positivo, Vox come esempio di personaggio TV rovinato da trama/scrittura fragili
+- Rafforzata la lettura di Tenna come host eccessivo ma emotivamente più leggibile
+
+### Sessione 25 — Host era: iframe allineati
+- Aggiornato l'iframe Caine al video `xKDtAS-sLU8`
+- Invertito l'ordine dei due iframe per allinearli alle immagini Caine/Vox
+- Riordinati i link fonte della sezione Host Wars
+
+### Sessione 26 — Varie ed eventuali: Tenna Steve Harvey
+- Aggiunta ultima sezione `Tenna Steve Harvey` in `chapters/pre-cap4/varie-ed-eventuali.html`
+- Inserito iframe YouTube `kG7fMExx9kk` con start a 23 secondi
+- Aggiunta immagine/thumbnail Steve Harvey tenna-ficato
+- Aggiornata la card meme wall su Steve Harvey
+
+### Sessione 27 — Pulizia finale Varie ed eventuali
+- Rimosse le card riepilogative/placeholder in fondo a `chapters/pre-cap4/varie-ed-eventuali.html`
+- La pagina ora termina direttamente dopo le sezioni contenuto
 
 ---
 
