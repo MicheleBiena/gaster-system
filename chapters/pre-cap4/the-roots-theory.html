@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>THE ROOTS THEORY — PRE-CAP 4 — GASTER SYSTEM</title>
+    <title>THE ROOTS THEORY - PRE-CAP 4 - GASTER SYSTEM</title>
     <link rel="stylesheet" href="../../assets/style.css" />
     <style>
       .roots-map-shell {
@@ -11,8 +11,154 @@
         background: #000;
         display: flex;
         flex-direction: column;
-        gap: 0;
         overflow: hidden;
+      }
+
+      .roots-cover {
+        margin: 0;
+        border: 1px solid rgba(121, 239, 255, 0.38);
+        background: #000;
+        overflow: hidden;
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+          0 0 26px rgba(20, 121, 255, 0.14);
+      }
+
+      .roots-cover img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 7;
+        min-height: 260px;
+        max-height: 460px;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .roots-brief {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+        gap: 1em;
+        align-items: stretch;
+      }
+
+      .source-strip,
+      .theory-callout,
+      .theory-row,
+      .tile-reading {
+        border: 1px solid rgba(121, 239, 255, 0.3);
+        background:
+          linear-gradient(180deg, rgba(0, 13, 28, 0.76), rgba(0, 4, 10, 0.8)),
+          repeating-linear-gradient(
+            90deg,
+            rgba(85, 231, 255, 0.035) 0,
+            rgba(85, 231, 255, 0.035) 2px,
+            transparent 2px,
+            transparent 11px
+          );
+      }
+
+      .source-strip {
+        padding: 0.85em 1em;
+        font-family: var(--font-mono);
+        font-size: 15px;
+        color: var(--dim);
+        line-height: 1.6;
+      }
+
+      .source-strip a {
+        color: var(--accent-3);
+        text-decoration: none;
+      }
+
+      .source-strip a:hover {
+        color: var(--accent);
+      }
+
+      .theory-callout {
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        gap: 0.55em;
+      }
+
+      .callout-label,
+      .theory-index {
+        font-family: var(--font-mono);
+        font-size: 14px;
+        color: var(--accent-3);
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+      }
+
+      .callout-title {
+        font-family: var(--font-display);
+        font-size: 1.55em;
+        color: var(--text);
+        letter-spacing: 0.06em;
+        line-height: 1.05;
+      }
+
+      .callout-text,
+      .theory-row p,
+      .tile-reading p {
+        margin: 0;
+        font-family: var(--font-mono);
+        font-size: 15px;
+        color: var(--dim);
+        letter-spacing: 0.03em;
+        line-height: 1.65;
+      }
+
+      .theory-ladder,
+      .tile-reading-grid {
+        display: grid;
+        gap: 0.75em;
+      }
+
+      .theory-ladder {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .theory-row {
+        padding: 0.95em;
+        display: grid;
+        gap: 0.45em;
+      }
+
+      .theory-row strong,
+      .tile-reading strong {
+        font-family: var(--font-display);
+        font-size: 1.25em;
+        color: #effaff;
+        letter-spacing: 0.06em;
+        line-height: 1.1;
+      }
+
+      .map-intro {
+        font-family: var(--font-display);
+        font-size: 1.18em;
+        color: #d7e7ef;
+        line-height: 1.55;
+        letter-spacing: 0.03em;
+      }
+
+      .tile-reading-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .tile-reading {
+        padding: 0.95em;
+        display: flex;
+        flex-direction: column;
+        gap: 0.45em;
+      }
+
+      .tile-reading span {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--red);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
       }
 
       .roots-map-toolbar {
@@ -39,24 +185,9 @@
         cursor: pointer;
       }
 
-      .map-tool.wide {
-        width: auto;
-        min-width: 76px;
-        padding: 0 0.7em;
-        font-size: 14px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
       .map-tool:hover {
         border-color: var(--accent);
         color: var(--accent);
-      }
-
-      .map-tool.active {
-        border-color: var(--red);
-        color: var(--red);
-        box-shadow: inset 0 0 14px rgba(255, 35, 76, 0.18);
       }
 
       .map-readout {
@@ -71,11 +202,15 @@
       .roots-map-viewport {
         position: relative;
         width: 100%;
-        height: min(62vh, 560px);
-        min-height: 330px;
+        height: min(66vh, 640px);
+        min-height: 360px;
         overflow: hidden;
         background:
-          radial-gradient(circle at 50% 50%, rgba(20, 121, 255, 0.16), transparent 42%),
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(20, 121, 255, 0.16),
+            transparent 42%
+          ),
           #000;
         cursor: grab;
         touch-action: none;
@@ -90,79 +225,81 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 4992px;
-        height: 1792px;
         transform-origin: 0 0;
         will-change: transform;
       }
 
-      .map-base-image {
-        display: block;
-        width: 4992px;
-        max-width: none;
-        height: auto;
-        image-rendering: pixelated;
-        pointer-events: none;
+      .tile-map {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: grid;
+        background: #000;
       }
 
-      .city-overlay-grid {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-      }
-
-      .city-tile {
-        position: absolute;
-        border: 2px solid rgba(0, 0, 0, 0.84);
+      .tile-slot {
+        position: relative;
+        border: 2px solid rgba(0, 0, 0, 0.86);
         border-radius: 0;
-        background-image: url("../../assets/img/pre-cap4/hometown-map.webp");
-        background-repeat: no-repeat;
-        background-color: transparent;
-        image-rendering: pixelated;
-        opacity: 0;
+        background: #000;
         padding: 0;
-        pointer-events: auto;
+        overflow: hidden;
         cursor: pointer;
         appearance: none;
-        transition:
-          opacity 0.08s ease,
-          box-shadow 0.08s ease,
-          border-color 0.08s ease;
       }
 
-      .city-tile::after {
+      .tile-slot::after {
         content: "";
         position: absolute;
         inset: 0;
-        border: 1px solid rgba(255, 241, 120, 0.3);
+        border: 1px solid rgba(255, 241, 120, 0.26);
         pointer-events: none;
       }
 
-      .city-tile.active {
-        opacity: 0.66;
+      .tile-slot:hover {
+        border-color: rgba(255, 241, 120, 0.9);
+        box-shadow: inset 0 0 0 2px rgba(255, 241, 120, 0.2);
       }
 
-      .city-tile:hover {
-        border-color: rgba(255, 241, 120, 0.86);
-        box-shadow: inset 0 0 0 2px rgba(255, 241, 120, 0.18);
-      }
-
-      .city-tile:focus-visible {
+      .tile-slot:focus-visible {
         outline: 3px solid var(--accent-3);
         outline-offset: 2px;
       }
 
-      .map-note {
-        border-top: 1px solid var(--dim2);
-        padding: 0.65em 0.8em;
-        background: rgba(0, 0, 0, 0.72);
-        font-family: var(--font-mono);
-        font-size: 14px;
-        color: var(--dim);
-        letter-spacing: 0.04em;
-        line-height: 1.55;
+      .tile-layer {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        image-rendering: pixelated;
+        pointer-events: none;
+        transition: opacity 0.08s ease;
       }
 
+      .tile-layer.hometown {
+        opacity: 0;
+      }
+
+      .tile-slot[data-map="hometown"] .tile-layer.hometown {
+        opacity: 1;
+      }
+
+      .tile-slot[data-map="hometown"] .tile-layer.manhole {
+        opacity: 0;
+      }
+
+      .tile-slot[data-map="both"] .tile-layer.manhole,
+      .tile-slot[data-map="both"] .tile-layer.hometown {
+        opacity: 0.5;
+      }
+
+      .tile-empty {
+        border: 2px solid transparent;
+        background: transparent;
+      }
+
+      .map-note,
       .map-credit {
         border-top: 1px solid var(--dim2);
         padding: 0.65em 0.8em;
@@ -174,7 +311,24 @@
         line-height: 1.55;
       }
 
+      .map-note {
+        background: rgba(0, 0, 0, 0.72);
+      }
+
+      @media (max-width: 900px) {
+        .roots-brief,
+        .theory-ladder,
+        .tile-reading-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
       @media (max-width: 560px) {
+        .roots-cover img {
+          aspect-ratio: 4 / 3;
+          min-height: 220px;
+        }
+
         .roots-map-toolbar {
           flex-wrap: wrap;
         }
@@ -185,7 +339,7 @@
         }
 
         .roots-map-viewport {
-          height: 430px;
+          height: 460px;
         }
       }
     </style>
@@ -197,67 +351,237 @@
     <div id="screen">
       <header id="site-header">
         <span id="header-title">
-          <a class="back-link" href="index.html">← PRE-CAP 4</a>
+          <a class="back-link" href="index.html">&larr; PRE-CAP 4</a>
           THE ROOTS THEORY
         </span>
-        <span id="header-sub">mappa · manhole dungeon · hometown overlay</span>
+        <span id="header-sub"
+          >mappa &middot; manhole dungeon &middot; hometown overlay</span
+        >
       </header>
 
       <main class="page-content">
+        <figure class="roots-cover">
+          <img
+            src="https://preview.redd.it/thoughts-on-roots-theory-v0-96en4t93yj3g1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=3a14d7ed488c1a7506fa7f03ffcfab1bbc3888f3"
+            alt="Copertina visuale della Roots Theory con estetica Deltarune"
+            decoding="async"
+            fetchpriority="high"
+            referrerpolicy="no-referrer"
+          />
+        </figure>
+
         <section class="section-block" id="the-roots-theory">
-          <div class="section-header">// THE ROOTS THEORY //</div>
-          <div class="narrative">
-            Nel Manhole dungeon la mappa smette di essere solo geografia: è una
-            radice esposta. Il percorso parte come labirinto da videogioco, poi
-            si allunga in una linea quasi chirurgica fino allo shelter e alla
-            stanza finale. Prima di parlare della teoria, conviene guardarla
-            come una struttura.
+          <div class="section-header">// TESI DI PARTENZA //</div>
+          <div class="roots-brief">
+            <div class="narrative">
+              La Roots Theory prova a leggere il terzo tabellone dello Shadow
+              Mantle game come qualcosa di più di un minigioco: una versione
+              compressa a 8 bit di Hometown. Se il secondo tabellone presenta la
+              Route Alternativa, il terzo potrebbe anticipare il passo
+              successivo del percorso proibito: un Dark World cittadino, legato
+              al festival e a una zona nascosta oltre gli alberi.
+            </div>
+
+            <aside class="theory-callout">
+              <div class="callout-label">ipotesi centrale</div>
+              <div class="callout-title">
+                BIT ROOTS non mostra solo un dungeon.
+              </div>
+              <p class="callout-text">
+                Potrebbe essere una mappa deformata di Hometown: non perfetta,
+                non letterale, ma abbastanza coerente da trattarla come un
+                indizio strutturale.
+              </p>
+            </aside>
+          </div>
+          <div class="source-strip">
+            Appunti rielaborati dal video
+            <a href="https://www.youtube.com/watch?v=n8WHKVwAw00"
+              >DELTARUNE: The ROOTS Theory</a
+            >
+            di Goldpro.
+          </div>
+        </section>
+
+        <section class="section-block" id="roots-evidence">
+          <div class="section-header">// DA DOVE NASCE "ROOTS" //</div>
+          <div class="theory-ladder" aria-label="Indizi principali su Roots">
+            <article class="theory-row">
+              <div class="theory-index">01 // ricorrenze</div>
+              <strong>La parola torna in posti troppo scelti.</strong>
+              <p>
+                "Roots" appare come nome o frammento in musica (Bit Roots,
+                Digital Roots) e pagine nascoste. Non sembra solo un motivo
+                botanico: sembra il nome di un luogo, o almeno di un'area
+                futura.
+              </p>
+            </article>
+
+            <article class="theory-row">
+              <div class="theory-index">02 // copie imperfette</div>
+              <strong
+                >Digital Roots e BIT ROOTS sembrano versioni
+                artificiali.</strong
+              >
+              <p>
+                La cantina della Queen è una ricostruzione digitale, il
+                tabellone dello Shadow Mantle è una ricostruzione 8 bit. Due
+                copie con la stessa estetica: marrone sporco, corridoi,
+                vegetazione, qualcosa che cresce sotto la superficie.
+              </p>
+            </article>
+
+            <article class="theory-row">
+              <div class="theory-index">03 // Shadow Mantle</div>
+              <strong
+                >Il minigioco non si ferma all'essere una semplice attività
+                secondaria.</strong
+              >
+              <p>
+                Il primo tabellone insegna a diventare più forti, il secondo
+                rimette in scena la rotta di Chapter 2, il terzo arriva subito
+                dopo. Per questo BIT ROOTS può essere letto come istruzione e
+                foreshadowing per continuare o concludere il path alternativo.
+              </p>
+            </article>
+
+            <article class="theory-row">
+              <div class="theory-index">04 // accesso</div>
+              <strong>Si entra da un manhole.</strong>
+              <p>
+                Il passaggio verso BIT ROOTS richiama un tombino: dove abbiamo
+                già visto questo elemento?
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block" id="roots-map-reader">
+          <div class="section-header">// MAPPA DI LAVORO //</div>
+          <div class="map-intro">
+            La griglia qui sotto serve proprio a testare l'idea: parti dal
+            Manhole dungeon, clicca i riquadri e sovrapponi Hometown cella per
+            cella. Alcune corrispondenze sono molto forti, altre sono più
+            elastiche; la forza della teoria sta nel fatto che il disegno
+            generale continua a reggere.
           </div>
 
           <div class="roots-map-shell">
             <div class="roots-map-toolbar" aria-label="Controlli mappa">
-              <button class="map-tool" type="button" id="map-zoom-out" title="Zoom indietro" aria-label="Zoom indietro">−</button>
-              <button class="map-tool" type="button" id="map-zoom-in" title="Zoom avanti" aria-label="Zoom avanti">+</button>
-              <button class="map-tool" type="button" id="map-reset" title="Reimposta vista" aria-label="Reimposta vista">↺</button>
-              <button class="map-tool wide" type="button" id="map-mode-dungeon" title="Mostra solo Manhole" aria-label="Mostra solo Manhole">MANHOLE</button>
-              <button class="map-tool wide active" type="button" id="map-mode-city" title="Mostra overlay Hometown" aria-label="Mostra overlay Hometown">CITTÀ</button>
-              <button class="map-tool wide" type="button" id="map-mode-mix" title="Alterna celle Hometown e Manhole" aria-label="Alterna celle Hometown e Manhole">MIX</button>
+              <button
+                class="map-tool"
+                type="button"
+                id="map-zoom-out"
+                title="Zoom indietro"
+                aria-label="Zoom indietro"
+              >
+                −
+              </button>
+              <button
+                class="map-tool"
+                type="button"
+                id="map-zoom-in"
+                title="Zoom avanti"
+                aria-label="Zoom avanti"
+              >
+                +
+              </button>
+              <button
+                class="map-tool"
+                type="button"
+                id="map-reset"
+                title="Reimposta vista"
+                aria-label="Reimposta vista"
+              >
+                ↺
+              </button>
               <div class="map-readout" id="map-readout">MAPPA // 100%</div>
             </div>
 
             <div class="roots-map-viewport" id="roots-map-viewport">
               <div class="roots-map-stage" id="roots-map-stage">
-                <img
-                  class="map-base-image"
-                  src="../../assets/img/pre-cap4/manhole-dungeon-map.png"
-                  alt="Mappa completa del Manhole dungeon di Deltarune"
-                  draggable="false"
-                />
-                <div
-                  class="city-overlay-grid"
-                  id="city-overlay-grid"
-                  aria-label="Celle cliccabili Hometown sopra Manhole dungeon"
-                ></div>
+                <div class="tile-map" id="tile-map"></div>
               </div>
             </div>
 
             <div class="map-note">
-              I riquadri sono tasselli cliccabili: ogni click alterna quel
-              pezzo tra Manhole dungeon e Hometown. La calibrazione è
-              intenzionalmente visiva, pensata per mostrare la sovrapposizione
-              delle forme più che una misura cartografica assoluta.
+              Ogni riquadro è una cella 384x256. Il click su un tassello alterna
+              quella posizione in ciclo: Manhole, Hometown, entrambe al 50%, poi
+              di nuovo Manhole.
             </div>
 
             <div class="map-credit">
-              Fonte mappa:
-              <a href="https://deltarune.wiki/w/File:Manhole_dungeon_map.png"
-                >Deltarune Wiki</a
-              >. Overlay Hometown dalla mappa community/Fandom indicata.
-              Deltarune © Toby Fox.
+              Tile locali:
+              <code>assets/img/pre-cap4/hometown/</code> e
+              <code>assets/img/pre-cap4/manhole/</code>. Deltarune © Toby Fox.
             </div>
           </div>
-        </section>
 
+          <div class="tile-reading-grid" aria-label="Lettura dei tasselli">
+            <article class="tile-reading">
+              <span>case in alto</span>
+              <strong>Catty e Bratty come chiave di allineamento.</strong>
+              <p>
+                Le due stanze con i nemici gatto/lucertola sono il punto di
+                partenza: stanno una accanto all'altra come le loro case, e
+                aiutano a orientare il resto della mappa.
+              </p>
+            </article>
+
+            <article class="tile-reading">
+              <span>bordo destro</span>
+              <strong>Il lago e l'entità che imita.</strong>
+              <p>
+                La stanza con il nemico-ombra, se allineata a Hometown, cade
+                vicino al lago: il limite laterale della stanza può ricordare
+                l'altra riva, quella che resta fuori portata, da cui Onionsan
+                sente arrivare una canzone.
+              </p>
+            </article>
+
+            <article class="tile-reading">
+              <span>case e negozi</span>
+              <strong>Toriel, Sans e le facce aggressive.</strong>
+              <p>
+                I nemici bianchi si attivano in modo sospetto nelle zone legate
+                a Toriel/Sans. Nel capitolo 1 Sans fa battute sull'aver
+                conosciuto Toriel, nel capitolo 2 la incontrà al market (dove
+                fra l'altro entra pure in scena Asgore). Che sia un riflesso
+                della "promessa" fatta in Undertale da Sans a Toriel?
+              </p>
+            </article>
+
+            <article class="tile-reading">
+              <span>area centrale</span>
+              <strong>Asgore è fuori posto, quindi forse è il punto.</strong>
+              <p>
+                Il riquadro "Asgore" non cade sulla Flower King. Potrebbe invece
+                anticipare uno stand floreale durante il festival, in una
+                Hometown già trasformata dalle decorazioni.
+              </p>
+            </article>
+
+            <article class="tile-reading">
+              <span>scuola</span>
+              <strong>Gli alberi non sono un muro qualunque.</strong>
+              <p>
+                In fondo a destra, gli alberi bloccano la strada proprio dove
+                Hometown diventa bordo/foresta. Romperli porta al corridoio che
+                somiglia a Digital Roots.
+              </p>
+            </article>
+
+            <article class="tile-reading">
+              <span>cautela</span>
+              <strong>Non tutto deve combaciare al millimetro.</strong>
+              <p>
+                Anche il terzo tabellone prima del tombino non replica Cyber
+                City in modo topografico. Qui conta il linguaggio: posizione,
+                ruolo, colore, nemici e progressione.
+              </p>
+            </article>
+          </div>
+        </section>
       </main>
 
       <footer id="site-footer">
@@ -269,50 +593,11 @@
     <script>
       const viewport = document.getElementById("roots-map-viewport");
       const stage = document.getElementById("roots-map-stage");
-      const overlayGrid = document.getElementById("city-overlay-grid");
+      const tileMap = document.getElementById("tile-map");
       const readout = document.getElementById("map-readout");
       const zoomInBtn = document.getElementById("map-zoom-in");
       const zoomOutBtn = document.getElementById("map-zoom-out");
       const resetBtn = document.getElementById("map-reset");
-      const dungeonModeBtn = document.getElementById("map-mode-dungeon");
-      const cityModeBtn = document.getElementById("map-mode-city");
-      const mixModeBtn = document.getElementById("map-mode-mix");
-
-      const imageSize = {
-        manholeWidth: 4992,
-        manholeHeight: 1792,
-        hometownWidth: 1000,
-        hometownHeight: 1148,
-      };
-
-      const comparisonBounds = {
-        x: 0,
-        y: 0,
-        width: 1536,
-        height: 1024,
-      };
-
-      const hometownOverlay = {
-        x: -120,
-        y: -10,
-        scale: 1.5,
-      };
-
-      const comparisonCells = [
-        { x: 384, y: 0, width: 384, height: 256 },
-        { x: 0, y: 256, width: 384, height: 256 },
-        { x: 384, y: 256, width: 384, height: 256 },
-        { x: 768, y: 256, width: 384, height: 256 },
-        { x: 1152, y: 256, width: 384, height: 256 },
-        { x: 0, y: 512, width: 384, height: 256 },
-        { x: 384, y: 512, width: 384, height: 256 },
-        { x: 768, y: 512, width: 384, height: 256 },
-        { x: 1152, y: 512, width: 384, height: 256 },
-        { x: 0, y: 768, width: 384, height: 256 },
-        { x: 384, y: 768, width: 384, height: 256 },
-        { x: 768, y: 768, width: 384, height: 256 },
-        { x: 1152, y: 768, width: 384, height: 256 },
-      ];
 
       const mapState = {
         scale: 1,
@@ -321,6 +606,8 @@
         fitScale: 1,
         x: 0,
         y: 0,
+        width: 1,
+        height: 1,
         isDragging: false,
         pointerId: null,
         lastX: 0,
@@ -329,7 +616,7 @@
         startY: 0,
         hasMoved: false,
         suppressClick: false,
-        mode: "city",
+        pressedTile: null,
       };
 
       function clamp(value, min, max) {
@@ -338,31 +625,25 @@
 
       function applyMapTransform() {
         stage.style.transform = `translate(${mapState.x}px, ${mapState.y}px) scale(${mapState.scale})`;
-        const relativeZoom = Math.round((mapState.scale / mapState.fitScale) * 100);
+        const relativeZoom = Math.round(
+          (mapState.scale / mapState.fitScale) * 100,
+        );
         readout.textContent = `MAPPA // ${relativeZoom}%`;
       }
 
-      function fitToBounds(targetBounds) {
+      function fitMap() {
         const bounds = viewport.getBoundingClientRect();
         const padding = 44;
         mapState.fitScale = Math.min(
-          (bounds.width - padding) / targetBounds.width,
-          (bounds.height - padding) / targetBounds.height
+          (bounds.width - padding) / mapState.width,
+          (bounds.height - padding) / mapState.height,
         );
-        mapState.minScale = mapState.fitScale * 0.55;
-        mapState.maxScale = mapState.fitScale * 6;
+        mapState.minScale = mapState.fitScale * 0.7;
+        mapState.maxScale = mapState.fitScale * 7;
         mapState.scale = mapState.fitScale;
-        mapState.x =
-          (bounds.width - targetBounds.width * mapState.scale) / 2 -
-          targetBounds.x * mapState.scale;
-        mapState.y =
-          (bounds.height - targetBounds.height * mapState.scale) / 2 -
-          targetBounds.y * mapState.scale;
+        mapState.x = (bounds.width - mapState.width * mapState.scale) / 2;
+        mapState.y = (bounds.height - mapState.height * mapState.scale) / 2;
         applyMapTransform();
-      }
-
-      function fitMap() {
-        fitToBounds(comparisonBounds);
       }
 
       function zoomMap(multiplier, originX, originY) {
@@ -375,7 +656,7 @@
         const nextScale = clamp(
           previousScale * multiplier,
           mapState.minScale,
-          mapState.maxScale
+          mapState.maxScale,
         );
 
         if (nextScale === previousScale) return;
@@ -388,63 +669,90 @@
         applyMapTransform();
       }
 
-      function updateModeButtons() {
-        dungeonModeBtn.classList.toggle("active", mapState.mode === "dungeon");
-        cityModeBtn.classList.toggle("active", mapState.mode === "city");
-        mixModeBtn.classList.toggle("active", mapState.mode === "mix");
+      function setTileMap(tile, mapName) {
+        tile.dataset.map = mapName;
+        tile.setAttribute("aria-label", `${tile.dataset.cell}: ${mapName}`);
       }
 
-      function setTileState(tile, isActive) {
-        tile.classList.toggle("active", isActive);
-        tile.setAttribute("aria-pressed", String(isActive));
+      function getNextTileMap(currentMap) {
+        if (currentMap === "manhole") return "hometown";
+        if (currentMap === "hometown") return "both";
+        return "manhole";
       }
 
-      function setMapMode(mode) {
-        mapState.mode = mode;
-        const tiles = overlayGrid.querySelectorAll(".city-tile");
-        tiles.forEach((tile, index) => {
-          if (mode === "dungeon") {
-            setTileState(tile, false);
-          } else if (mode === "city") {
-            setTileState(tile, true);
-          } else {
-            setTileState(tile, index % 2 === 0);
-          }
+      function createTileButton(tile, tileWidth, tileHeight) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "tile-slot";
+        button.dataset.map = "manhole";
+        button.dataset.cell = `cella ${tile.row}_${tile.column}`;
+        button.style.gridColumn = String(tile.column + 1);
+        button.style.gridRow = String(tile.row + 1);
+        button.style.width = `${tileWidth}px`;
+        button.style.height = `${tileHeight}px`;
+        button.setAttribute(
+          "aria-label",
+          `cella ${tile.row}_${tile.column}: manhole`,
+        );
+        button.innerHTML = `
+          <img class="tile-layer manhole" src="../../assets/img/pre-cap4/manhole/${tile.file}" alt="" draggable="false" />
+          <img class="tile-layer hometown" src="../../assets/img/pre-cap4/hometown/${tile.file}" alt="" draggable="false" />
+        `;
+
+        button.addEventListener("click", (event) => {
+          if (mapState.suppressClick) return;
+          setTileMap(button, getNextTileMap(button.dataset.map));
+          event.stopPropagation();
         });
-        updateModeButtons();
+
+        return button;
       }
 
-      function createCityTiles() {
-        const backgroundWidth = imageSize.hometownWidth * hometownOverlay.scale;
-        const backgroundHeight = imageSize.hometownHeight * hometownOverlay.scale;
+      async function buildTileMap() {
+        try {
+          const response = await fetch(
+            "../../assets/img/pre-cap4/roots-tiles.json",
+          );
+          if (!response.ok) throw new Error("manifest");
+          const manifest = await response.json();
+          const { tileWidth, tileHeight, columns, rows, tiles } = manifest;
 
-        comparisonCells.forEach((cell, index) => {
-          const tile = document.createElement("button");
-          tile.type = "button";
-          tile.className = "city-tile active";
-          tile.setAttribute("aria-label", `Alterna tassello confronto ${index + 1}`);
-          tile.setAttribute("aria-pressed", "true");
-          tile.style.left = `${cell.x}px`;
-          tile.style.top = `${cell.y}px`;
-          tile.style.width = `${cell.width}px`;
-          tile.style.height = `${cell.height}px`;
-          tile.style.backgroundSize = `${backgroundWidth}px ${backgroundHeight}px`;
-          tile.style.backgroundPosition =
-            `${hometownOverlay.x - cell.x}px ${hometownOverlay.y - cell.y}px`;
+          mapState.width = columns * tileWidth;
+          mapState.height = rows * tileHeight;
+          stage.style.width = `${mapState.width}px`;
+          stage.style.height = `${mapState.height}px`;
+          tileMap.style.width = `${mapState.width}px`;
+          tileMap.style.height = `${mapState.height}px`;
+          tileMap.style.gridTemplateColumns = `repeat(${columns}, ${tileWidth}px)`;
+          tileMap.style.gridTemplateRows = `repeat(${rows}, ${tileHeight}px)`;
 
-          tile.addEventListener("click", event => {
-            if (mapState.suppressClick) return;
-            mapState.mode = "custom";
-            setTileState(tile, !tile.classList.contains("active"));
-            updateModeButtons();
-            event.stopPropagation();
+          for (let row = 0; row < rows; row += 1) {
+            for (let column = 0; column < columns; column += 1) {
+              if (
+                !tiles.some(
+                  (tile) => tile.row === row && tile.column === column,
+                )
+              ) {
+                const empty = document.createElement("div");
+                empty.className = "tile-empty";
+                empty.style.gridColumn = String(column + 1);
+                empty.style.gridRow = String(row + 1);
+                tileMap.appendChild(empty);
+              }
+            }
+          }
+
+          tiles.forEach((tile) => {
+            tileMap.appendChild(createTileButton(tile, tileWidth, tileHeight));
           });
 
-          overlayGrid.appendChild(tile);
-        });
+          fitMap();
+        } catch (error) {
+          readout.textContent = "MAPPA // ERRORE DATI";
+        }
       }
 
-      viewport.addEventListener("pointerdown", event => {
+      viewport.addEventListener("pointerdown", (event) => {
         mapState.isDragging = true;
         mapState.pointerId = event.pointerId;
         mapState.lastX = event.clientX;
@@ -452,11 +760,12 @@
         mapState.startX = event.clientX;
         mapState.startY = event.clientY;
         mapState.hasMoved = false;
+        mapState.pressedTile = event.target.closest(".tile-slot");
         viewport.classList.add("dragging");
         viewport.setPointerCapture(event.pointerId);
       });
 
-      viewport.addEventListener("pointermove", event => {
+      viewport.addEventListener("pointermove", (event) => {
         if (!mapState.isDragging || event.pointerId !== mapState.pointerId) {
           return;
         }
@@ -471,45 +780,50 @@
           mapState.hasMoved ||
           Math.hypot(
             event.clientX - mapState.startX,
-            event.clientY - mapState.startY
+            event.clientY - mapState.startY,
           ) > 5;
         applyMapTransform();
       });
 
       function stopDragging(event) {
         if (event.pointerId !== mapState.pointerId) return;
-        if (mapState.hasMoved) {
+        if (!mapState.hasMoved && mapState.pressedTile) {
+          mapState.suppressClick = true;
+          setTileMap(
+            mapState.pressedTile,
+            getNextTileMap(mapState.pressedTile.dataset.map),
+          );
+          window.setTimeout(() => {
+            mapState.suppressClick = false;
+          }, 80);
+        } else if (mapState.hasMoved) {
           mapState.suppressClick = true;
           window.setTimeout(() => {
             mapState.suppressClick = false;
-          }, 0);
+          }, 80);
         }
         mapState.isDragging = false;
         mapState.pointerId = null;
+        mapState.pressedTile = null;
         viewport.classList.remove("dragging");
       }
 
       viewport.addEventListener("pointerup", stopDragging);
       viewport.addEventListener("pointercancel", stopDragging);
-      viewport.addEventListener("wheel", event => {
-        event.preventDefault();
-        zoomMap(event.deltaY < 0 ? 1.18 : 0.84, event.clientX, event.clientY);
-      }, { passive: false });
-      viewport.addEventListener("dblclick", event => {
-        zoomMap(1.55, event.clientX, event.clientY);
-      });
+      viewport.addEventListener(
+        "wheel",
+        (event) => {
+          event.preventDefault();
+          zoomMap(event.deltaY < 0 ? 1.18 : 0.84, event.clientX, event.clientY);
+        },
+        { passive: false },
+      );
 
       zoomInBtn.addEventListener("click", () => zoomMap(1.25));
       zoomOutBtn.addEventListener("click", () => zoomMap(0.8));
       resetBtn.addEventListener("click", fitMap);
-      dungeonModeBtn.addEventListener("click", () => setMapMode("dungeon"));
-      cityModeBtn.addEventListener("click", () => setMapMode("city"));
-      mixModeBtn.addEventListener("click", () => setMapMode("mix"));
       window.addEventListener("resize", fitMap);
-      window.addEventListener("load", () => {
-        createCityTiles();
-        fitMap();
-      });
+      window.addEventListener("load", buildTileMap);
     </script>
   </body>
 </html>

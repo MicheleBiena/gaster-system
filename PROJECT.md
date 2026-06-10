@@ -29,8 +29,11 @@ gaster-system/
 │   ├── main.js                       ← Utility: localStorage, typewriter, glitch
 │   └── img/
 │       └── pre-cap4/
-│           ├── manhole-dungeon-map.png ← Mappa Manhole dungeon da Deltarune Wiki
-│           └── hometown-map.webp       ← Mappa Hometown per overlay The Roots Theory
+│           ├── roots-tiles.json        ← Manifest griglia Roots Theory
+│           ├── hometown/               ← Tile Hometown 384x256
+│           ├── manhole/                ← Tile Manhole dungeon 384x256
+│           ├── manhole-dungeon-map.png ← Mappa Manhole dungeon originale
+│           └── hometown-map.webp       ← Mappa Hometown originale
 └── chapters/
     ├── pre-cap1/
     │   ├── index.html                ← Pagina capitolo Pre-Cap 1
@@ -64,8 +67,11 @@ gaster-system/
 | `index.html` | ✅ Aggiornato | Hub ridisegnato come soglia Chapter 4; Pre-Cap 4 è aperto |
 | `assets/style.css` | ✅ Aggiornato | Tema globale Chapter 4: nero, acqua digitale blu/ciano, cuore rosso |
 | `assets/main.js` | ✅ Aggiornato | Utility condivise + player YouTube globale in loop |
-| `assets/img/pre-cap4/manhole-dungeon-map.png` | ✅ Estratto | Mappa Manhole dungeon per "The Roots Theory" |
-| `assets/img/pre-cap4/hometown-map.webp` | ✅ Estratto | Mappa Hometown per confronto a tasselli |
+| `assets/img/pre-cap4/roots-tiles.json` | ✅ Creato | Manifest tile Roots Theory: griglia 4x4 con cella `0_0` vuota |
+| `assets/img/pre-cap4/hometown/` | ✅ Creato | Tile Hometown 384x256 nominate per posizione griglia |
+| `assets/img/pre-cap4/manhole/` | ✅ Creato | Tile Manhole 384x256 nominate per posizione griglia |
+| `assets/img/pre-cap4/manhole-dungeon-map.png` | ✅ Archiviato | Mappa Manhole dungeon originale |
+| `assets/img/pre-cap4/hometown-map.webp` | ✅ Archiviato | Mappa Hometown originale |
 | `chapters/pre-cap1/index.html` | ✅ Creato | Pagina capitolo, mostra score localStorage |
 | `chapters/pre-cap1/survey.html` | ✅ Creato | SURVEY_PROGRAM V12.25 adattato: salva score in localStorage al termine |
 | `chapters/pre-cap2/index.html` | ✅ Creato | Placeholder con messaggio typewriter |
@@ -80,7 +86,7 @@ gaster-system/
 | `chapters/pre-cap3/spamton-sweepstakes.html` | ✅ Creato | Introduzione e raccolta link Sweepstakes/Silence |
 | `chapters/pre-cap3/spamton-value-network.html` | ✅ Creato | Link alla trasmissione Spamton Value Network |
 | `chapters/pre-cap4/index.html` | ✅ Aggiornato | Hub con tre sottoschede Pre-Cap 4 |
-| `chapters/pre-cap4/the-roots-theory.html` | ✅ Creato | Mappa Manhole/Hometown con zoom, drag e tasselli cliccabili |
+| `chapters/pre-cap4/the-roots-theory.html` | ✅ Aggiornato | Dossier Roots Theory con cover, sintesi da sottotitoli e viewer tile Hometown/Manhole |
 | `chapters/pre-cap4/chicche-cap3.html` | ✅ Creato | Scheletro per dettagli, segreti e rimandi del Capitolo 3 |
 | `chapters/pre-cap4/varie-ed-eventuali.html` | ✅ Creato | Scheletro per fan theories, meme e materiali community |
 
@@ -208,6 +214,32 @@ File: `chapters/pre-cap1/survey.html`
 - Ridotta la UI a player audio minimale senza video visibile e senza titolo brano
 - Salvato il volume in `localStorage.gaster_system_data.music_volume`
 - Lasciato escluso `chapters/pre-cap1/survey.html` per non alterare il core del SURVEY_PROGRAM
+
+### Sessione 10 — Roots Theory a tile
+- Rimosso il modello visivo basato su due mappe composite sovrapposte a mano
+- Aggiunto `assets/img/pre-cap4/roots-tiles.json` come manifest della griglia
+- Aggiornato `chapters/pre-cap4/the-roots-theory.html` per comporre la mappa da tile Hometown/Manhole
+- Rimossi i controlli globali Manhole/Città/Mix sopra la viewport
+- Impostato ogni tile per ciclare al click: Manhole → Hometown → entrambe 50% → Manhole
+
+### Sessione 11 — testo Roots Theory
+- Rifinita la narrazione introduttiva di `chapters/pre-cap4/the-roots-theory.html`
+
+### Sessione 12 — fix click tile Roots Theory
+- Corretto il cambio stato dei tile nel viewer Roots Theory
+- Il ciclo Manhole → Hometown → entrambe 50% ora avviene su `pointerup` se non c'è stato trascinamento
+- Rimosso lo zoom su doppio click: restano rotella mouse e pulsanti
+
+### Sessione 13 — dossier Roots Theory
+- Letto il TXT dei sottotitoli locali del video `DELTARUNE: The ROOTS Theory`
+- Arricchita `chapters/pre-cap4/the-roots-theory.html` con tesi, indizi e lettura dei tasselli
+- Inserita una cover remota in cima alla pagina Roots Theory
+- Aggiunti stili locali responsive per le nuove sezioni testuali
+
+### Sessione 14 — focus Roots Theory pre-Cap 4
+- Rimossa da `chapters/pre-cap4/the-roots-theory.html` la sezione "Cosa cambia per Capitolo 5"
+- Puliti gli stili locali `route-*` legati alla sezione eliminata
+- Annotato implicitamente che le speculazioni post Chapter 4 potranno vivere in una futura sezione dedicata
 
 ---
 
