@@ -13,7 +13,7 @@ Sito web statico hostato su **GitHub Pages** (branch `main`, root `/`).
 Documentazione interattiva per una **blindrun comunitaria di Deltarune** condotta dallo streamer **gibbotto_x_red** (con Trainer).
 Il sito accompagna la community fra un capitolo e l'altro con approfondimenti, analisi musicali, schede personaggi, embed YouTube e quiz/survey interattivi.
 
-**Stile visivo:** dark / retro-terminal evoluto in title-card Chapter 4: nero pieno, acqua digitale blu/ciano, cuore rosso, scanlines, vignette, effetti glitch — fedele all'estetica di W.D. Gaster e Deltarune.
+**Stile visivo:** dark / retro-terminal evoluto in title-card Chapter 5: nero pieno, logo bianco/rosso, fiori blu-verde ispirati al sito ufficiale e palette invertita rosa/oro, scanlines, vignette, effetti glitch — fedele all'estetica di W.D. Gaster e Deltarune.
 **Persistenza dati:** `localStorage` sotto la chiave `gaster_system_data` (lato client, nessun backend).
 
 ---
@@ -27,13 +27,17 @@ gaster-system/
 ├── assets/
 │   ├── style.css                     ← Tema dark pixel-art globale (VT323 + Share Tech Mono)
 │   ├── main.js                       ← Utility: localStorage, typewriter, glitch
+│   ├── audio/
+│   │   └── chapter5-home.mp3         ← Audio ufficiale Chapter 5 per la home
 │   └── img/
-│       └── pre-cap4/
-│           ├── roots-tiles.json        ← Manifest griglia Roots Theory
-│           ├── hometown/               ← Tile Hometown 384x256
-│           ├── manhole/                ← Tile Manhole dungeon 384x256
-│           ├── manhole-dungeon-map.png ← Mappa Manhole dungeon originale
-│           └── hometown-map.webp       ← Mappa Hometown originale
+│       ├── pre-cap4/
+│       │   ├── roots-tiles.json        ← Manifest griglia Roots Theory
+│       │   ├── hometown/               ← Tile Hometown 384x256
+│       │   ├── manhole/                ← Tile Manhole dungeon 384x256
+│       │   ├── manhole-dungeon-map.png ← Mappa Manhole dungeon originale
+│       │   └── hometown-map.webp       ← Mappa Hometown originale
+│       └── pre-cap5/
+│           └── ch5-flowers.png         ← Motivo floreale ufficiale Chapter 5
 └── chapters/
     ├── pre-cap1/
     │   ├── index.html                ← Pagina capitolo Pre-Cap 1
@@ -51,11 +55,15 @@ gaster-system/
     │   ├── intanto-dal-web.html      ← Raccolta community / fan theory
     │   ├── spamton-sweepstakes.html  ← Spamton G. Spamton + link nascosti
     │   └── spamton-value-network.html ← Trasmissione Spamton Value Network
-    └── pre-cap4/
-        ├── index.html                ← Hub sezioni Pre-Cap 4
-        ├── the-roots-theory.html     ← Mappa Manhole/Hometown e teoria roots
-        ├── chicche-cap3.html         ← Dettagli e segreti Capitolo 3
-        └── varie-ed-eventuali.html   ← Fan theories, meme, community
+    ├── pre-cap4/
+    │   ├── index.html                ← Hub sezioni Pre-Cap 4
+    │   ├── the-roots-theory.html     ← Mappa Manhole/Hometown e teoria roots
+    │   ├── chicche-cap3.html         ← Dettagli e segreti Capitolo 3
+    │   └── varie-ed-eventuali.html   ← Fan theories, meme, community
+    └── pre-cap5/
+        ├── index.html                ← Hub sezioni Pre-Cap 5
+        ├── curiosita-cap4.html       ← Curiosità e segreti Capitolo 4
+        └── meme-community.html       ← Meme e lavori community verso Capitolo 5
 ```
 
 ---
@@ -64,20 +72,22 @@ gaster-system/
 
 | File | Stato | Note |
 |---|---|---|
-| `index.html` | ✅ Aggiornato | Hub ridisegnato come soglia Chapter 4; Pre-Cap 4 è aperto |
-| `assets/style.css` | ✅ Aggiornato | Tema globale Chapter 4: nero, acqua digitale blu/ciano, cuore rosso |
-| `assets/main.js` | ✅ Aggiornato | Utility condivise + player YouTube globale in loop |
+| `index.html` | ✅ Aggiornato | Hub ridisegnato come soglia Chapter 5; Pre-Cap 5 è aperto |
+| `assets/style.css` | ✅ Aggiornato | Tema globale Chapter 5: nero, fiori, rosa/oro, accenti blu-verde |
+| `assets/main.js` | ✅ Aggiornato | Utility, temi per archivio, accessibilità, lazy media, player YouTube e sakura |
+| `assets/audio/chapter5-home.mp3` | ✅ Creato | Nuovo audio home Chapter 5, riproduzione singola senza loop |
 | `assets/img/pre-cap4/roots-tiles.json` | ✅ Creato | Manifest tile Roots Theory: griglia 4x4 con cella `0_0` vuota |
 | `assets/img/pre-cap4/hometown/` | ✅ Creato | Tile Hometown 384x256 nominate per posizione griglia |
 | `assets/img/pre-cap4/manhole/` | ✅ Creato | Tile Manhole 384x256 nominate per posizione griglia |
 | `assets/img/pre-cap4/manhole-dungeon-map.png` | ✅ Archiviato | Mappa Manhole dungeon originale |
 | `assets/img/pre-cap4/hometown-map.webp` | ✅ Archiviato | Mappa Hometown originale |
+| `assets/img/pre-cap5/ch5-flowers.png` | ✅ Creato | Copia locale del motivo floreale ufficiale Chapter 5 |
 | `chapters/pre-cap1/index.html` | ✅ Creato | Pagina capitolo, mostra score localStorage |
 | `chapters/pre-cap1/survey.html` | ✅ Creato | SURVEY_PROGRAM V12.25 adattato: salva score in localStorage al termine |
 | `chapters/pre-cap2/index.html` | ✅ Creato | Placeholder con messaggio typewriter |
 | `chapters/pre-cap2/musica.html` | ✅ Creato | Analisi musicale Cap.1 |
 | `chapters/pre-cap2/musica.json` | ✅ Creato | Dati tracce musicali |
-| `chapters/pre-cap2/personaggi.html` | ✅ Creato | Schede personaggi |
+| `chapters/pre-cap2/personaggi.html` | ✅ Aggiornato | Schede personaggi accessibili via hover, click, touch e tastiera |
 | `chapters/pre-cap2/personaggi.json` | ✅ Creato | Dati personaggi |
 | `chapters/pre-cap2/extra.html` | ✅ Creato | Q&A Toby Fox + video extra |
 | `chapters/pre-cap3/index.html` | ✅ Creato | Pagina capitolo con nav-grid |
@@ -86,9 +96,12 @@ gaster-system/
 | `chapters/pre-cap3/spamton-sweepstakes.html` | ✅ Creato | Introduzione e raccolta link Sweepstakes/Silence |
 | `chapters/pre-cap3/spamton-value-network.html` | ✅ Creato | Link alla trasmissione Spamton Value Network |
 | `chapters/pre-cap4/index.html` | ✅ Aggiornato | Hub con tre sottoschede Pre-Cap 4 |
-| `chapters/pre-cap4/the-roots-theory.html` | ✅ Aggiornato | Dossier Roots Theory con cover, sintesi da sottotitoli e viewer tile Hometown/Manhole |
+| `chapters/pre-cap4/the-roots-theory.html` | ✅ Aggiornato | Dossier Roots Theory con viewer accessibile, zoom, pan e tile Hometown/Manhole |
 | `chapters/pre-cap4/chicche-cap3.html` | ✅ Aggiornato | Schede: Susie/Ralsei, Raise Up Your Bat, Gachapon e Board 3 restored |
 | `chapters/pre-cap4/varie-ed-eventuali.html` | ✅ Aggiornato | Sezioni: Dess/Asgore, Tenna host TV e Tenna/Steve Harvey |
+| `chapters/pre-cap5/index.html` | ✅ Creato | Hub con sezioni Curiosità Capitolo 4 e Meme/Community |
+| `chapters/pre-cap5/curiosita-cap4.html` | ✅ Aggiornato | Organo con dialoghi originali espandibili + otto video "Kris al pianoforte" |
+| `chapters/pre-cap5/meme-community.html` | ✅ Creato | Prima scheda: Carpet by Toby Fox |
 
 ---
 
@@ -144,6 +157,12 @@ File: `chapters/pre-cap1/survey.html`
 2. **TV, Tenna, Mike** — personaggi, trasmissioni, suggestioni meta e collegamenti ai teaser
 3. **Musica e motivi** — leitmotiv nuovi, ritorni nascosti, brani chiave
 4. **Verso Capitolo 4** — domande aperte, teorie e linee narrative da portare in live
+
+## Contenuti pianificati: Pre-Cap 5
+
+1. **Curiosità Capitolo 4** — segreti, dettagli meccanici e reazioni nascoste
+2. **Meme / community work** — video, gag e produzioni fan nate dopo il Capitolo 4
+3. **Sezione teoria futura** — da decidere in base agli sviluppi community e alla prossima run
 
 ---
 
@@ -308,12 +327,58 @@ File: `chapters/pre-cap1/survey.html`
 - Rimosse le card riepilogative/placeholder in fondo a `chapters/pre-cap4/varie-ed-eventuali.html`
 - La pagina ora termina direttamente dopo le sezioni contenuto
 
+### Sessione 28 — Apertura Pre-Cap 5
+- Aggiornato `index.html` come soglia verso Chapter 5 e marcato Pre-Cap 4 come completato
+- Creato `chapters/pre-cap5/index.html` come hub delle nuove sezioni
+- Creato `chapters/pre-cap5/curiosita-cap4.html` con la scheda sull'organo del Dark Sanctuary, tracce suonabili e commenti dei personaggi
+- Creato `chapters/pre-cap5/meme-community.html` con la prima scheda community: `Carpet by Toby Fox`
+
+### Sessione 29 — Restyle Chapter 5
+- Consultato il sito ufficiale `deltarune.com` per la direzione visiva del Capitolo 5
+- Aggiornato `assets/style.css` verso una palette Chapter 5: nero, logo bianco, cuore rosso, rosa/oro e fiori blu-verde
+- Integrato il motivo floreale ufficiale come riferimento decorativo di fondo e nella title-card
+- Ammorbidita l'estetica acqua digitale del Capitolo 4 in favore di una vibe più rituale/floreale
+
+### Sessione 30 — Sakura / vibe giapponese
+- Aggiunto font JP e lettering verticale nella title-card della home
+- Inserite etichette verticali per la soglia Chapter 5
+- Aggiunto layer globale di petali di ciliegio generato da `assets/main.js`
+- Tradotti in giapponese i motivi `Roots`, `The fields of pink and gold` e `They all will`
+- Rimosso lo scorrimento digitale dal fondo in favore di un glow floreale più organico
+- Aumentata visibilità dei petali e portato il layer sopra la vignette, con fallback statico per reduced motion
+- Resa l'animazione dei petali più robusta rimuovendo `calc()` dalle rotazioni CSS e pre-calcolando gli angoli in JS
+
+### Sessione 31 — Audit UI/UX Pro Max
+- Applicata la skill `ui-ux-pro-max` a tutto il sito tranne Pre-Cap 1
+- Aggiunti skip-link, focus visibili, ruoli heading e lazy loading dei media statici/dinamici
+- Separato il tema Chapter 5 dagli archivi Pre-Cap 2/3/4; sakura e fiori restano nel nuovo archivio
+- Reso il player globale più stabile, touch-friendly e lazy: l'API YouTube viene caricata solo al primo Play
+- Trasformate le schede personaggi in controlli accessibili con click, touch e tastiera
+- Aggiunti controlli pan visibili al viewer Roots Theory e ripristinato lo scroll verticale mobile
+- Consolidato il componente di navigazione Pre-Cap 4/5 nel CSS globale
+- Salvato localmente `ch5-flowers.png` per evitare dipendenze visuali dall'hotlink
+- Aggiunto un solo comando espandi/compatta alla raccolta delle tracce dell'organo
+- Aggiunta la scheda "Kris al pianoforte" con i primi otto video della playlist, esclusa la traccia OST finale
+
+### Sessione 32 — Nuovo audio home
+- Scaricato localmente `h.mp3` dal sito ufficiale Deltarune
+- Impostato l'audio solo sulla home, con riproduzione singola senza loop
+- Cambiata l'etichetta del player home da `AUDIO LOOP` a `HOME AUDIO`
+- Mantenuto il precedente loop YouTube nelle pagine interne
+
+### Sessione 33 — Dialoghi organo originali
+- Letto il testo fornito dall'utente con le reazioni dell'organo del Dark Sanctuary
+- Sostituite tutte le parafrasi italiane con i dialoghi originali inglesi
+- Impaginati speaker e battute come dialogue log separati
+- Conservate come note di sistema le reazioni prive di dialogo, come MEGALOVANIA
+- Rimossi il paragrafo tecnico e la legenda dei tasti, superflui per un giocatore
+
 ---
 
 ## Istruzioni per agenti successivi
 
 1. **Leggi questo file per intero** prima di qualsiasi operazione
-2. **Stile:** dark retro-terminal + title-card Chapter 4 (VT323 + Share Tech Mono, nero/ciano/blu, cuore rosso), mai deviare
+2. **Stile:** dark retro-terminal + title-card Chapter 5 (VT323 + Share Tech Mono, nero, bianco/rosso, fiori blu-verde e palette invertita rosa/oro), mai deviare
 3. **Persistenza:** tutto `localStorage` con chiave `gaster_system_data`, nessun backend
 4. **Aggiorna** la tabella "Stato dei contenuti" dopo ogni modifica
 5. **Aggiungi** una voce al "Log sessioni" con i lavori svolti

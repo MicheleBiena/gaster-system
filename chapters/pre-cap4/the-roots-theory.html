@@ -163,6 +163,7 @@
 
       .roots-map-toolbar {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         gap: 0.5em;
         border-bottom: 1px solid var(--dim2);
@@ -171,8 +172,8 @@
       }
 
       .map-tool {
-        width: 38px;
-        height: 38px;
+        width: 44px;
+        height: 44px;
         border: 1px solid rgba(121, 239, 255, 0.58);
         background: rgba(0, 0, 0, 0.68);
         color: var(--text);
@@ -213,7 +214,7 @@
           ),
           #000;
         cursor: grab;
-        touch-action: none;
+        touch-action: pan-y pinch-zoom;
         user-select: none;
       }
 
@@ -467,7 +468,7 @@
           </div>
 
           <div class="roots-map-shell">
-            <div class="roots-map-toolbar" aria-label="Controlli mappa">
+            <div class="roots-map-toolbar" role="toolbar" aria-label="Controlli mappa">
               <button
                 class="map-tool"
                 type="button"
@@ -494,6 +495,42 @@
                 aria-label="Reimposta vista"
               >
                 ↺
+              </button>
+              <button
+                class="map-tool"
+                type="button"
+                id="map-pan-left"
+                title="Sposta a sinistra"
+                aria-label="Sposta la mappa a sinistra"
+              >
+                ←
+              </button>
+              <button
+                class="map-tool"
+                type="button"
+                id="map-pan-up"
+                title="Sposta in alto"
+                aria-label="Sposta la mappa in alto"
+              >
+                ↑
+              </button>
+              <button
+                class="map-tool"
+                type="button"
+                id="map-pan-down"
+                title="Sposta in basso"
+                aria-label="Sposta la mappa in basso"
+              >
+                ↓
+              </button>
+              <button
+                class="map-tool"
+                type="button"
+                id="map-pan-right"
+                title="Sposta a destra"
+                aria-label="Sposta la mappa a destra"
+              >
+                →
               </button>
               <div class="map-readout" id="map-readout">MAPPA // 100%</div>
             </div>
@@ -598,6 +635,10 @@
       const zoomInBtn = document.getElementById("map-zoom-in");
       const zoomOutBtn = document.getElementById("map-zoom-out");
       const resetBtn = document.getElementById("map-reset");
+      const panLeftBtn = document.getElementById("map-pan-left");
+      const panUpBtn = document.getElementById("map-pan-up");
+      const panDownBtn = document.getElementById("map-pan-down");
+      const panRightBtn = document.getElementById("map-pan-right");
 
       const mapState = {
         scale: 1,
@@ -666,6 +707,12 @@
         mapState.scale = nextScale;
         mapState.x = pointX - imageX * nextScale;
         mapState.y = pointY - imageY * nextScale;
+        applyMapTransform();
+      }
+
+      function panMap(dx, dy) {
+        mapState.x += dx;
+        mapState.y += dy;
         applyMapTransform();
       }
 
@@ -822,6 +869,10 @@
       zoomInBtn.addEventListener("click", () => zoomMap(1.25));
       zoomOutBtn.addEventListener("click", () => zoomMap(0.8));
       resetBtn.addEventListener("click", fitMap);
+      panLeftBtn.addEventListener("click", () => panMap(-72, 0));
+      panUpBtn.addEventListener("click", () => panMap(0, -72));
+      panDownBtn.addEventListener("click", () => panMap(0, 72));
+      panRightBtn.addEventListener("click", () => panMap(72, 0));
       window.addEventListener("resize", fitMap);
       window.addEventListener("load", buildTileMap);
     </script>

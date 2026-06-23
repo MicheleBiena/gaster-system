@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="../../assets/style.css" />
 
     <style>
-     .card-grid {
+.card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   gap: 2.5em;
   width: 100%;
   max-width: 1000px;
@@ -19,6 +19,15 @@
 .card {
   perspective: 1200px;
   position: relative;
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  background: transparent;
+  cursor: pointer;
 }
 
 /* RAPPORTO PIÙ VERTICALE */
@@ -30,7 +39,7 @@
   transform-style: preserve-3d;
 }
 
-.card:hover .card-inner {
+.card.is-flipped .card-inner {
   transform: rotateY(180deg);
 }
 
@@ -50,7 +59,8 @@
   transition: opacity 0.15s;
 }
 
-.card:hover::after {
+.card:hover::after,
+.card.is-flipped::after {
   opacity: 1;
 }
 
@@ -112,6 +122,25 @@
   gap: 0.4em;
   letter-spacing: 0.04em;
 }
+
+.card-hint {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.character-loading {
+  grid-column: 1 / -1;
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--dim2);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--dim);
+}
     </style>
   </head>
 
@@ -128,7 +157,9 @@
         <span id="header-sub">database · deltarune</span>
       </header>
 
-      <main class="card-grid" id="card-container"></main>
+      <main class="card-grid" id="card-container">
+        <div class="character-loading" role="status">CARICAMENTO DATABASE...</div>
+      </main>
 
       <footer id="site-footer">
         <span>GASTER_SYSTEM // PERSONAGGI</span>
@@ -137,37 +168,58 @@
 
     <script>
       async function loadCharacters() {
-        const res = await fetch("personaggi.json");
-        const data = await res.json();
+        try {
+          const res = await fetch("personaggi.json");
+          if (!res.ok) throw new Error("database");
+          const data = await res.json();
 
-        const container = document.getElementById("card-container");
+          const container = document.getElementById("card-container");
+          container.innerHTML = "";
 
-        data.forEach(char => {
-          const card = document.createElement("div");
-          card.className = "card";
+          data.forEach(char => {
+            const card = document.createElement("button");
+            card.type = "button";
+            card.className = "card";
+            card.setAttribute("aria-expanded", "false");
+            card.setAttribute("aria-label", `Apri i dati di ${char.nome}`);
 
-          card.innerHTML = `
-            <div class="card-inner">
-              <div class="card-face">
-                <div class="card-title">${char.nome}</div>
-                <div class="card-img">
-                  <img src="${char.img}" alt="${char.nome}" />
+            card.innerHTML = `
+              <div class="card-inner">
+                <div class="card-face">
+                  <div class="card-title">${char.nome}</div>
+                  <div class="card-img">
+                    <img src="${char.img}" alt="${char.nome}" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="card-desc">${char.desc}</div>
+                  <div class="card-hint">CLICK / INVIO // MOSTRA DATI</div>
                 </div>
-                <div class="card-desc">${char.desc}</div>
-              </div>
 
-              <div class="card-face card-back">
-                <div class="card-title">DATI</div>
-                <div class="card-stats">
-                  <div>Specie: ${char.specie}</div>
+                <div class="card-face card-back">
+                  <div class="card-title">DATI</div>
+                  <div class="card-stats">
+                    <div>Specie: ${char.specie}</div>
+                  </div>
+                  <div class="card-desc">${char.note}</div>
+                  <div class="card-hint">CLICK / INVIO // TORNA AL PROFILO</div>
                 </div>
-                <div class="card-desc">${char.note}</div>
               </div>
-            </div>
-          `;
+            `;
 
-          container.appendChild(card);
-        });
+            card.addEventListener("click", () => {
+              const isFlipped = card.classList.toggle("is-flipped");
+              card.setAttribute("aria-expanded", String(isFlipped));
+              card.setAttribute(
+                "aria-label",
+                `${isFlipped ? "Chiudi" : "Apri"} i dati di ${char.nome}`,
+              );
+            });
+
+            container.appendChild(card);
+          });
+        } catch (error) {
+          document.getElementById("card-container").innerHTML =
+            '<div class="character-loading" role="alert">ERRORE CARICAMENTO DATABASE.</div>';
+        }
       }
 
       loadCharacters();

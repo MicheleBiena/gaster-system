@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CURIOSITA CAPITOLO 4 - PRE-CAP 5 - GASTER SYSTEM</title>
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <style>
+      .curio-copy {
+        border: 1px solid rgba(255, 183, 214, 0.32);
+        background:
+          linear-gradient(180deg, rgba(0, 13, 28, 0.82), rgba(0, 4, 10, 0.84)),
+          repeating-linear-gradient(
+            90deg,
+            rgba(255, 120, 184, 0.04) 0,
+            rgba(255, 120, 184, 0.04) 2px,
+            transparent 2px,
+            transparent 10px
+          );
+        padding: 1em;
+        display: grid;
+        gap: 0.8em;
+      }
+
+      .curio-kicker,
+      .curio-source,
+      .organ-meta {
+        font-family: var(--font-mono);
+        font-size: 14px;
+        color: var(--accent-3);
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+      }
+
+      .curio-title {
+        font-family: var(--font-display);
+        font-size: 1.75em;
+        color: var(--text);
+        letter-spacing: 0.06em;
+        line-height: 1.05;
+      }
+
+      .curio-text {
+        margin: 0;
+        font-family: var(--font-mono);
+        font-size: 15px;
+        color: var(--dim);
+        letter-spacing: 0.03em;
+        line-height: 1.65;
+      }
+
+      .organ-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75em;
+      }
+
+      .organ-grid:not(.is-expanded) .organ-card:nth-child(n + 9) {
+        display: none;
+      }
+
+      .organ-expand {
+        min-height: 44px;
+        width: fit-content;
+        border: 1px solid var(--accent-2);
+        background: rgba(0, 0, 0, 0.68);
+        color: var(--text);
+        padding: 0.65em 0.9em;
+        font-family: var(--font-mono);
+        font-size: 15px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
+      .organ-expand:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .organ-card {
+        border: 1px solid rgba(255, 183, 214, 0.3);
+        background: rgba(0, 4, 10, 0.64);
+        padding: 0.85em;
+        display: grid;
+        gap: 0.55em;
+        min-width: 0;
+      }
+
+      .organ-card.puzzle {
+        border-color: rgba(229, 183, 61, 0.48);
+        box-shadow: inset 0 0 18px rgba(229, 183, 61, 0.08);
+      }
+
+      .organ-title {
+        font-family: var(--font-display);
+        font-size: 1.35em;
+        letter-spacing: 0.06em;
+        line-height: 1.08;
+      }
+
+      .organ-sequence {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.28em;
+        align-items: center;
+      }
+
+      .organ-note {
+        width: 1.72em;
+        height: 1.72em;
+        border: 1px solid rgba(255, 183, 214, 0.48);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Segoe UI Symbol", "Noto Sans Symbols", var(--font-mono);
+        font-size: 0.78em;
+        line-height: 1;
+        color: #fff9f0;
+        background: rgba(255, 120, 184, 0.12);
+        box-shadow: inset 0 0 10px rgba(229, 183, 61, 0.08);
+      }
+
+      .organ-note.shift {
+        color: var(--accent-3);
+        border-color: rgba(229, 183, 61, 0.52);
+        background: rgba(229, 183, 61, 0.1);
+      }
+
+      .organ-note.neutral {
+        color: var(--red);
+        border-color: rgba(255, 35, 76, 0.5);
+        background: rgba(255, 35, 76, 0.1);
+      }
+
+      .organ-comment {
+        font-family: var(--font-mono);
+        font-size: 15px;
+        color: var(--dim);
+        letter-spacing: 0.03em;
+        line-height: 1.6;
+        border-left: 3px solid rgba(229, 183, 61, 0.42);
+        padding-left: 0.65em;
+      }
+
+      .dialogue-line {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 0.5em;
+      }
+
+      .dialogue-line + .dialogue-line,
+      .dialogue-note + .dialogue-line {
+        margin-top: 0.3em;
+      }
+
+      .dialogue-speaker {
+        color: var(--accent-2);
+        text-transform: uppercase;
+      }
+
+      .dialogue-line.susie .dialogue-speaker {
+        color: var(--accent);
+      }
+
+      .dialogue-note {
+        color: var(--dim);
+        font-style: italic;
+      }
+
+      .curio-source {
+        color: var(--dim);
+      }
+
+      .curio-source a {
+        color: var(--accent-3);
+      }
+
+      .curio-source a:hover {
+        color: var(--accent);
+      }
+
+      .piano-video-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75em;
+      }
+
+      .piano-video {
+        border: 1px solid rgba(255, 183, 214, 0.34);
+        background: rgba(5, 1, 4, 0.84);
+        overflow: hidden;
+      }
+
+      .video-facade {
+        position: relative;
+        display: block;
+        width: 100%;
+        border: 0;
+        padding: 0;
+        color: var(--text);
+        background: #000;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .video-facade img,
+      .piano-video iframe {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border: 0;
+      }
+
+      .video-facade img {
+        opacity: 0.72;
+        transition:
+          opacity 180ms ease-out,
+          filter 180ms ease-out;
+      }
+
+      .video-facade:hover img {
+        opacity: 0.9;
+        filter: saturate(1.15);
+      }
+
+      .video-play {
+        position: absolute;
+        inset: 50% auto auto 50%;
+        min-width: 64px;
+        min-height: 44px;
+        transform: translate(-50%, -50%);
+        border: 1px solid var(--accent-2);
+        display: grid;
+        place-items: center;
+        background: rgba(0, 0, 0, 0.84);
+        font-family: var(--font-mono);
+        font-size: 15px;
+        letter-spacing: 0.08em;
+      }
+
+      .piano-video-title {
+        padding: 0.7em 0.8em;
+        font-family: var(--font-mono);
+        font-size: 15px;
+        color: var(--dim);
+        line-height: 1.45;
+      }
+
+      @media (max-width: 820px) {
+        .organ-grid,
+        .piano-video-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">
+          <a class="back-link" href="index.html">&larr; PRE-CAP 5</a>
+          CURIOSITA CAPITOLO 4
+        </span>
+        <span id="header-sub">dark sanctuary &middot; organo &middot; tracce segrete</span>
+      </header>
+
+      <main class="page-content">
+        <section class="section-block">
+          <div class="section-header">// RACCOLTA //</div>
+          <div class="narrative">
+            Prima curiosità: l'organo in cima all'East Belltower non serve
+            solo al puzzle principale. Se Kris inserisce alcune melodie
+            riconoscibili, Susie e Ralsei reagiscono come se il Dark Sanctuary
+            avesse un jukebox segreto nascosto dentro la liturgia.
+          </div>
+        </section>
+
+        <section class="section-block" id="dark-sanctuary-organ">
+          <div class="section-header">// SCHEDA 01: ORGAN //</div>
+          <div class="curio-copy">
+            <div class="curio-kicker">dark sanctuary / east belltower</div>
+            <div class="curio-title">
+              Tutte le tracce riconosciute dall'organo.
+            </div>
+
+            <div class="organ-grid" id="organ-grid">
+              <article class="organ-card">
+                <div class="organ-meta">undertale</div>
+                <div class="organ-title">His Theme</div>
+                <div class="organ-sequence" aria-label="Sequenza His Theme">
+                  <span class="organ-note shift">⬃</span><span class="organ-note">➡</span><span class="organ-note shift">⇧</span><span class="organ-note shift">⬃</span><span class="organ-note shift">⬁</span><span class="organ-note shift">⬁</span><span class="organ-note shift">⇧</span><span class="organ-note shift">⬃</span><span class="organ-note shift">⇧</span><span class="organ-note shift">⬃</span><span class="organ-note shift">⬁</span><span class="organ-note shift">⬁</span><span class="organ-note shift">⇧</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-line ralsei">
+                    <span class="dialogue-speaker">Ralsei:</span>
+                    <span>Aww, what a pretty melody! It's like a lullaby...!</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="organ-card">
+                <div class="organ-meta">undertale</div>
+                <div class="organ-title">Your Best Friend</div>
+                <div class="organ-sequence" aria-label="Sequenza Your Best Friend">
+                  <span class="organ-note">⬊</span><span class="organ-note">⬊</span><span class="organ-note">⬇</span><span class="organ-note">⬋</span><span class="organ-note">⬊</span><span class="organ-note">⬇</span><span class="organ-note">⬇</span><span class="organ-note">⬋</span><span class="organ-note">➡</span><span class="organ-note shift">⬃</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-line ralsei">
+                    <span class="dialogue-speaker">Ralsei:</span>
+                    <span>Aww, that song sounds so friendly and sweet!</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="organ-card">
+                <div class="organ-meta">unknown</div>
+                <div class="organ-title">Traccia non identificata</div>
+                <div class="organ-sequence" aria-label="Sequenza traccia non identificata">
+                  <span class="organ-note neutral">●</span><span class="organ-note">⬇</span><span class="organ-note">⬋</span><span class="organ-note">⬅</span><span class="organ-note">⬇</span><span class="organ-note">⬇</span><span class="organ-note">⬊</span><span class="organ-note">⬇</span><span class="organ-note">➡</span><span class="organ-note neutral">●</span><span class="organ-note">⬇</span><span class="organ-note">⬋</span><span class="organ-note">⬇</span><span class="organ-note">⬊</span><span class="organ-note">⬇</span><span class="organ-note">⬇</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-line ralsei">
+                    <span class="dialogue-speaker">Ralsei:</span>
+                    <span>Umm... that melody's a little...</span>
+                  </div>
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>Annoying?</span>
+                  </div>
+                  <div class="dialogue-line ralsei">
+                    <span class="dialogue-speaker">Ralsei:</span>
+                    <span>UM...! I wouldn't say that!</span>
+                  </div>
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>Duh, YOU wouldn't.</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="organ-card">
+                <div class="organ-meta">deltarune</div>
+                <div class="organ-title">The Legend</div>
+                <div class="organ-sequence" aria-label="Sequenza The Legend">
+                  <span class="organ-note shift">⇦</span><span class="organ-note neutral">●</span><span class="organ-note">⬊</span><span class="organ-note">⬆</span><span class="organ-note">⬉</span><span class="organ-note">⬋</span><span class="organ-note">➡</span><span class="organ-note">⬊</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-line ralsei">
+                    <span class="dialogue-speaker">Ralsei:</span>
+                    <span>Oh...!</span>
+                  </div>
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>What, you gonna serenade Ralsei with that one?</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="organ-card">
+                <div class="organ-meta">deltarune</div>
+                <div class="organ-title">Don't Forget</div>
+                <div class="organ-sequence" aria-label="Sequenza Don't Forget">
+                  <span class="organ-note">⬊</span><span class="organ-note">⬇</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note neutral">●</span><span class="organ-note">⬊</span><span class="organ-note">➡</span><span class="organ-note">➡</span><span class="organ-note">➡</span><span class="organ-note">➡</span><span class="organ-note">➡</span><span class="organ-note">➡</span><span class="organ-note">⬊</span><span class="organ-note">➡</span><span class="organ-note neutral">●</span><span class="organ-note neutral">●</span><span class="organ-note neutral">●</span><span class="organ-note neutral">●</span><span class="organ-note neutral">●</span><span class="organ-note neutral">●</span><span class="organ-note">⬉</span><span class="organ-note">⬆</span><span class="organ-note">⬉</span><span class="organ-note">⬋</span><span class="organ-note">⬊</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>...</span>
+                  </div>
+                  <div class="dialogue-line ralsei">
+                    <span class="dialogue-speaker">Ralsei:</span>
+                    <span>... Susie?</span>
+                  </div>
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>Nothing... just thought it was a kinda cool song.</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="organ-card">
+                <div class="organ-meta">deltarune</div>
+                <div class="organ-title">Lost Girl</div>
+                <div class="organ-sequence" aria-label="Sequenza Lost Girl">
+                  <span class="organ-note shift">⇦</span><span class="organ-note shift">⇧</span><span class="organ-note">⬊</span><span class="organ-note">⬉</span><span class="organ-note">⬆</span><span class="organ-note">⬋</span><span class="organ-note">⬊</span><span class="organ-note">⬅</span><span class="organ-note shift">⬁</span><span class="organ-note shift">⇧</span><span class="organ-note">⬋</span><span class="organ-note shift">⬁</span><span class="organ-note shift">⇧</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>That one's... kinda nice.</span>
+                  </div>
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>Wonder if I could learn it on, uh, guitar.</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="organ-card">
+                <div class="organ-meta">deltarune</div>
+                <div class="organ-title">It's Pronounced "Rules"</div>
+                <div class="organ-sequence" aria-label="Sequenza It's Pronounced Rules">
+                  <span class="organ-note">⬊</span><span class="organ-note neutral">●</span><span class="organ-note shift">⬁</span><span class="organ-note shift">⇦</span><span class="organ-note shift">⇦</span><span class="organ-note">⬅</span><span class="organ-note">⬋</span><span class="organ-note">⬇</span><span class="organ-note">⬊</span><span class="organ-note">➡</span><span class="organ-note neutral">●</span><span class="organ-note">➡</span><span class="organ-note">⬊</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-line ralsei">
+                    <span class="dialogue-speaker">Ralsei:</span>
+                    <span>Oh, that's Mr. Rouxls's theme!</span>
+                  </div>
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>More like theme of him getting his ass kicked.</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="organ-card">
+                <div class="organ-meta">deltarune</div>
+                <div class="organ-title">Hammer of Justice</div>
+                <div class="organ-sequence" aria-label="Sequenza Hammer of Justice">
+                  <span class="organ-note">⬋</span><span class="organ-note">⬇</span><span class="organ-note">➡</span><span class="organ-note">⬊</span><span class="organ-note neutral">●</span><span class="organ-note">➡</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>Hell yeah, that's majestic!</span>
+                  </div>
+                  <div class="dialogue-line ralsei">
+                    <span class="dialogue-speaker">Ralsei:</span>
+                    <span>Perhaps the Old Man would enjoy that one!</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="organ-card">
+                <div class="organ-meta">undertale</div>
+                <div class="organ-title">Heartache</div>
+                <div class="organ-sequence" aria-label="Sequenza Heartache">
+                  <span class="organ-note shift">⇦</span><span class="organ-note shift">⇧</span><span class="organ-note shift">⬁</span><span class="organ-note shift">⇧</span><span class="organ-note shift">⇦</span><span class="organ-note shift">⇦</span><span class="organ-note shift">⬁</span><span class="organ-note shift">⇧</span><span class="organ-note">⬋</span><span class="organ-note">⬊</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-line ralsei">
+                    <span class="dialogue-speaker">Ralsei:</span>
+                    <span>How emotional...</span>
+                  </div>
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>Maybe you should play that for your mom.</span>
+                  </div>
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>Y'know... she hasn't heard you play in a while.</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="organ-card">
+                <div class="organ-meta">toy story</div>
+                <div class="organ-title">You've Got a Friend in Me</div>
+                <div class="organ-sequence" aria-label="Sequenza You've Got a Friend in Me">
+                  <span class="organ-note">⬊</span><span class="organ-note">⬋</span><span class="organ-note">⬊</span><span class="organ-note">⬅</span><span class="organ-note">⬋</span><span class="organ-note neutral">●</span><span class="organ-note">⬅</span><span class="organ-note">⬆</span><span class="organ-note">⬅</span><span class="organ-note">⬆</span><span class="organ-note">⬋</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>Dude, stop messing around!</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="organ-card">
+                <div class="organ-meta">classic</div>
+                <div class="organ-title">Chopsticks</div>
+                <div class="organ-sequence" aria-label="Sequenza Chopsticks">
+                  <span class="organ-note">⬇</span><span class="organ-note">⬇</span><span class="organ-note">⬇</span><span class="organ-note">⬇</span><span class="organ-note">⬇</span><span class="organ-note">⬇</span><span class="organ-note">⬇</span><span class="organ-note">⬇</span><span class="organ-note">⬊</span><span class="organ-note">⬊</span><span class="organ-note">⬊</span><span class="organ-note">⬊</span><span class="organ-note">⬊</span><span class="organ-note">⬊</span><span class="organ-note">⬊</span><span class="organ-note">⬊</span><span class="organ-note">⬉</span><span class="organ-note">⬉</span><span class="organ-note">⬉</span><span class="organ-note">⬉</span><span class="organ-note">⬉</span><span class="organ-note">⬅</span><span class="organ-note">⬉</span><span class="organ-note">⬆</span><span class="organ-note">⬆</span><span class="organ-note">⬆</span><span class="organ-note">⬆</span><span class="organ-note">⬉</span><span class="organ-note">⬅</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>Dude, stop messing around!</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="organ-card">
+                <div class="organ-meta">classic</div>
+                <div class="organ-title">Heart and Soul</div>
+                <div class="organ-sequence" aria-label="Sequenza Heart and Soul">
+                  <span class="organ-note neutral">●</span><span class="organ-note neutral">●</span><span class="organ-note neutral">●</span><span class="organ-note neutral">●</span><span class="organ-note shift">⬁</span><span class="organ-note shift">⇦</span><span class="organ-note shift">⬁</span><span class="organ-note neutral">●</span><span class="organ-note">➡</span><span class="organ-note">⬊</span><span class="organ-note">⬊</span><span class="organ-note">⬊</span><span class="organ-note">⬊</span><span class="organ-note">➡</span><span class="organ-note neutral">●</span><span class="organ-note">➡</span><span class="organ-note">⬊</span><span class="organ-note">⬇</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>Dude, stop messing around!</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="organ-card">
+                <div class="organ-meta">undertale</div>
+                <div class="organ-title">Once Upon A Time</div>
+                <div class="organ-sequence" aria-label="Sequenza Once Upon A Time">
+                  <span class="organ-note shift">⬃</span><span class="organ-note">⬋</span><span class="organ-note">➡</span><span class="organ-note neutral">●</span><span class="organ-note">⬋</span><span class="organ-note shift">⬃</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>What's that song? Sounds like crap.</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="organ-card">
+                <div class="organ-meta">deltarune</div>
+                <div class="organ-title">Dark Sanctuary</div>
+                <div class="organ-sequence" aria-label="Sequenza Dark Sanctuary">
+                  <span class="organ-note shift">⇦</span><span class="organ-note neutral">●</span><span class="organ-note">⬋</span><span class="organ-note">➡</span><span class="organ-note neutral">●</span><span class="organ-note">➡</span><span class="organ-note neutral">●</span><span class="organ-note">➡</span><span class="organ-note">⬋</span><span class="organ-note">➡</span><span class="organ-note neutral">●</span><span class="organ-note">➡</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>Feel like I heard that one...</span>
+                  </div>
+                  <div class="dialogue-line ralsei">
+                    <span class="dialogue-speaker">Ralsei:</span>
+                    <span>...?</span>
+                  </div>
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>Yeah, that's right. Ralsei was humming it earlier.</span>
+                  </div>
+                  <div class="dialogue-line ralsei">
+                    <span class="dialogue-speaker">Ralsei:</span>
+                    <span>O-oh, was I...? S-sorry...!</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="organ-card">
+                <div class="organ-meta">undertale</div>
+                <div class="organ-title">MEGALOVANIA</div>
+                <div class="organ-sequence" aria-label="Sequenza MEGALOVANIA">
+                  <span class="organ-note shift">⇦</span><span class="organ-note shift">⇦</span><span class="organ-note">⬅</span><span class="organ-note">⬊</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-note">
+                    The first time this is played, the Annoying Dog crashes into
+                    Kris with a Little Tikes car. On subsequent plays, Kris
+                    fails the last note and plays Concert for you instead.
+                  </div>
+                </div>
+              </article>
+
+              <article class="organ-card puzzle">
+                <div class="organ-meta">puzzle</div>
+                <div class="organ-title">Piano that may not be played that well</div>
+                <div class="organ-sequence" aria-label="Sequenza Piano that may not be played that well">
+                  <span class="organ-note shift">⇧</span><span class="organ-note shift">⬁</span><span class="organ-note shift">⇧</span><span class="organ-note shift">⬃</span><span class="organ-note">⬊</span><span class="organ-note">⬇</span><span class="organ-note">➡</span><span class="organ-note shift">⇧</span><span class="organ-note shift">⇧</span><span class="organ-note shift">⬁</span><span class="organ-note shift">⇧</span><span class="organ-note">⬋</span><span class="organ-note">➡</span><span class="organ-note">⬊</span><span class="organ-note">⬇</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note neutral">●</span><span class="organ-note">⬊</span><span class="organ-note">➡</span><span class="organ-note shift">⇦</span><span class="organ-note shift">⇧</span><span class="organ-note shift">⇧</span><span class="organ-note shift">⬁</span><span class="organ-note">⬊</span><span class="organ-note">⬇</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬅</span><span class="organ-note">⬉</span><span class="organ-note">⬆</span><span class="organ-note">⬉</span><span class="organ-note">⬅</span><span class="organ-note">⬋</span><span class="organ-note">⬊</span><span class="organ-note shift">⇧</span><span class="organ-note shift">⬁</span><span class="organ-note shift">⇧</span><span class="organ-note shift">⬃</span><span class="organ-note">⬊</span><span class="organ-note">⬇</span><span class="organ-note">➡</span><span class="organ-note neutral">●</span><span class="organ-note shift">⬂</span><span class="organ-note shift">⇩</span><span class="organ-note shift">⇨</span><span class="organ-note neutral">○</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-note">
+                    If this is played before obtaining the SheetMusic or Kris
+                    playing the track on their own, Kris fails the last note.
+                    Otherwise:
+                  </div>
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>Huh... why'd you play it so different?</span>
+                  </div>
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>Are you like... nervous or something?</span>
+                  </div>
+                  <div class="dialogue-line ralsei">
+                    <span class="dialogue-speaker">Ralsei:</span>
+                    <span>I, thought... they were both really nice renditions!</span>
+                  </div>
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>(... does he?)</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="organ-card puzzle">
+                <div class="organ-meta">puzzle variant</div>
+                <div class="organ-title">Piano that may not be played that well, senza shift</div>
+                <div class="organ-sequence" aria-label="Sequenza Piano that may not be played that well senza shift">
+                  <span class="organ-note neutral">●</span><span class="organ-note">⬉</span><span class="organ-note neutral">●</span><span class="organ-note">⬋</span><span class="organ-note">⬊</span><span class="organ-note">⬇</span><span class="organ-note">➡</span><span class="organ-note neutral">●</span><span class="organ-note neutral">●</span><span class="organ-note">⬉</span><span class="organ-note neutral">●</span><span class="organ-note">⬋</span><span class="organ-note">➡</span><span class="organ-note">⬊</span><span class="organ-note">⬇</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note neutral">●</span><span class="organ-note">⬊</span><span class="organ-note">➡</span><span class="organ-note">⬅</span><span class="organ-note neutral">●</span><span class="organ-note neutral">●</span><span class="organ-note">⬉</span><span class="organ-note">⬊</span><span class="organ-note">⬇</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬋</span><span class="organ-note">⬅</span><span class="organ-note">⬉</span><span class="organ-note">⬆</span><span class="organ-note">⬉</span><span class="organ-note">⬅</span><span class="organ-note">⬋</span><span class="organ-note">⬊</span><span class="organ-note neutral">●</span><span class="organ-note">⬉</span><span class="organ-note neutral">●</span><span class="organ-note">⬋</span><span class="organ-note">⬊</span><span class="organ-note">⬇</span><span class="organ-note">➡</span><span class="organ-note neutral">●</span><span class="organ-note">⬊</span><span class="organ-note">⬇</span><span class="organ-note">➡</span><span class="organ-note neutral">●</span>
+                </div>
+                <div class="organ-comment">
+                  <div class="dialogue-line ralsei">
+                    <span class="dialogue-speaker">Ralsei:</span>
+                    <span>Amazing, you played the whole thing, Kris!</span>
+                  </div>
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>I dunno, that sounded kinda... off.</span>
+                  </div>
+                  <div class="dialogue-line susie">
+                    <span class="dialogue-speaker">Susie:</span>
+                    <span>Isn't there a switcher key or something you gotta use?</span>
+                  </div>
+                  <div class="dialogue-line ralsei">
+                    <span class="dialogue-speaker">Ralsei:</span>
+                    <span>Umm, it sounded nice without it, too!</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <button
+              class="organ-expand"
+              id="organ-expand"
+              type="button"
+              aria-controls="organ-grid"
+              aria-expanded="false"
+            >
+              Espandi tutte le tracce
+            </button>
+
+            <div class="curio-source">
+              Fonte:
+              <a href="https://deltarune.wiki/w/Dark_Sanctuary#Organ"
+                >Dark Sanctuary - Organ, Deltarune Wiki</a
+              >
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block" id="kris-al-pianoforte">
+          <div class="section-header">// SCHEDA 02: KRIS AL PIANOFORTE //</div>
+          <div class="curio-copy">
+            <div class="curio-kicker">noelle's house / musica offscreen</div>
+            <div class="curio-title">
+              Quando nessuno guarda, Kris sa ancora suonare.
+            </div>
+            <p class="curio-text">
+              Nella casa di Noelle è possibile ascoltare Kris suonare il
+              pianoforte in autonomia mentre resta fuori campo. Non è la
+              performance incerta che vediamo quando il giocatore controlla
+              direttamente la scena: offscreen Kris passa tra melodie note,
+              variazioni e temi legati ai diversi momenti del gioco.
+            </p>
+            <p class="curio-text">
+              La playlist raccoglie otto esecuzioni. L'ultimo video della
+              raccolta originale è la traccia OST completa e non fa parte di
+              questa selezione.
+            </p>
+
+            <div class="piano-video-grid" aria-label="Brani suonati da Kris al pianoforte">
+              <article class="piano-video">
+                <button class="video-facade" type="button" data-video="4p5vNdTA63g" aria-label="Riproduci Kris piano Rouxls">
+                  <img src="https://i.ytimg.com/vi/4p5vNdTA63g/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" />
+                  <span class="video-play">PLAY</span>
+                </button>
+                <div class="piano-video-title">01 // Rouxls</div>
+              </article>
+
+              <article class="piano-video">
+                <button class="video-facade" type="button" data-video="9cDRvSa3bfk" aria-label="Riproduci Kris piano Lancer Waltz">
+                  <img src="https://i.ytimg.com/vi/9cDRvSa3bfk/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" />
+                  <span class="video-play">PLAY</span>
+                </button>
+                <div class="piano-video-title">02 // Lancer Waltz</div>
+              </article>
+
+              <article class="piano-video">
+                <button class="video-facade" type="button" data-video="pFMa14tmAUw" aria-label="Riproduci Kris piano Quiz">
+                  <img src="https://i.ytimg.com/vi/pFMa14tmAUw/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" />
+                  <span class="video-play">PLAY</span>
+                </button>
+                <div class="piano-video-title">03 // Quiz</div>
+              </article>
+
+              <article class="piano-video">
+                <button class="video-facade" type="button" data-video="DqbzExv7wNI" aria-label="Riproduci Kris piano Sevenfour">
+                  <img src="https://i.ytimg.com/vi/DqbzExv7wNI/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" />
+                  <span class="video-play">PLAY</span>
+                </button>
+                <div class="piano-video-title">04 // Sevenfour</div>
+              </article>
+
+              <article class="piano-video">
+                <button class="video-facade" type="button" data-video="MEXiaOHeYEU" aria-label="Riproduci Kris piano Waiting Room">
+                  <img src="https://i.ytimg.com/vi/MEXiaOHeYEU/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" />
+                  <span class="video-play">PLAY</span>
+                </button>
+                <div class="piano-video-title">05 // Waiting Room</div>
+              </article>
+
+              <article class="piano-video">
+                <button class="video-facade" type="button" data-video="NNAQ4RJXsZU" aria-label="Riproduci Kris piano Shop">
+                  <img src="https://i.ytimg.com/vi/NNAQ4RJXsZU/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" />
+                  <span class="video-play">PLAY</span>
+                </button>
+                <div class="piano-video-title">06 // Shop</div>
+              </article>
+
+              <article class="piano-video">
+                <button class="video-facade" type="button" data-video="SZftxqEwZ6E" aria-label="Riproduci Kris piano Last Prophecy">
+                  <img src="https://i.ytimg.com/vi/SZftxqEwZ6E/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" />
+                  <span class="video-play">PLAY</span>
+                </button>
+                <div class="piano-video-title">07 // Last Prophecy</div>
+              </article>
+
+              <article class="piano-video">
+                <button class="video-facade" type="button" data-video="0V6WmHDPD9k" aria-label="Riproduci Kris piano Prophecy">
+                  <img src="https://i.ytimg.com/vi/0V6WmHDPD9k/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" />
+                  <span class="video-play">PLAY</span>
+                </button>
+                <div class="piano-video-title">08 // Prophecy</div>
+              </article>
+            </div>
+
+            <div class="curio-source">
+              Fonte:
+              <a href="https://www.youtube.com/playlist?list=PLdouayyl3-VYvmkMUoltUEWBDH7_lpaPV"
+                >Kris piano songs - Deltarune Chapter 4</a
+              >
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer id="site-footer">
+        <span>GASTER_SYSTEM // CURIOSITA CAPITOLO 4</span>
+      </footer>
+    </div>
+
+    <script src="../../assets/main.js"></script>
+    <script>
+      const organExpand = document.getElementById("organ-expand");
+      const organGrid = document.getElementById("organ-grid");
+
+      organExpand.addEventListener("click", () => {
+        const expanded = organGrid.classList.toggle("is-expanded");
+        organExpand.setAttribute("aria-expanded", String(expanded));
+        organExpand.textContent = expanded
+          ? "Compatta le tracce"
+          : "Espandi tutte le tracce";
+      });
+
+      document.querySelectorAll(".video-facade").forEach((facade) => {
+        facade.addEventListener("click", () => {
+          const videoId = facade.dataset.video;
+          const title = facade.getAttribute("aria-label").replace("Riproduci ", "");
+          const iframe = document.createElement("iframe");
+          iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+          iframe.title = title;
+          iframe.allow =
+            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+          iframe.allowFullscreen = true;
+          iframe.referrerPolicy = "strict-origin-when-cross-origin";
+          facade.replaceWith(iframe);
+        });
+      });
+    </script>
+  </body>
+</html>

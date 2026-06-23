@@ -220,7 +220,7 @@
         const embedSrc = `https://www.youtube.com/embed/${track.youtube_id}${track.start ? "?start=" + track.start : ""}`;
 
         const imageHTML = track.image
-          ? `<img class="ost-image" src="${track.image}" alt="${track.image_alt || ""}" />`
+          ? `<img class="ost-image" src="${track.image}" alt="${track.image_alt || ""}" loading="lazy" decoding="async" />`
           : "";
 
         const startNoteHTML = track.start_note
@@ -241,6 +241,7 @@
               <iframe
                 src="${embedSrc}"
                 title="${track.title}"
+                loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
               </iframe>

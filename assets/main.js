@@ -5,6 +5,100 @@
 
 const STORAGE_KEY = 'gaster_system_data';
 
+function getArchiveTheme() {
+  const path = window.location.pathname.replace(/\\/g, '/');
+  if (path.includes('/pre-cap2/')) return 'chapter2';
+  if (path.includes('/pre-cap3/')) return 'chapter3';
+  if (path.includes('/pre-cap4/')) return 'chapter4';
+  return 'chapter5';
+}
+
+function applyArchiveTheme() {
+  document.body.dataset.archiveTheme = getArchiveTheme();
+}
+
+function enhanceDocumentSemantics() {
+  const main = document.querySelector('main');
+  if (main && !main.id) {
+    main.id = 'main-content';
+  }
+
+  if (main && !document.querySelector('.skip-link')) {
+    const skipLink = document.createElement('a');
+    skipLink.className = 'skip-link';
+    skipLink.href = `#${main.id}`;
+    skipLink.textContent = 'SALTA AL CONTENUTO';
+    document.body.prepend(skipLink);
+  }
+
+  const pageTitle = document.getElementById('header-title');
+  if (
+    pageTitle &&
+    !document.querySelector('h1') &&
+    !pageTitle.hasAttribute('role')
+  ) {
+    pageTitle.setAttribute('role', 'heading');
+    pageTitle.setAttribute('aria-level', '1');
+  }
+
+  document.querySelectorAll('.section-header').forEach((heading) => {
+    heading.setAttribute('role', 'heading');
+    heading.setAttribute('aria-level', '2');
+  });
+
+  document
+    .querySelectorAll('.curio-title, .organ-title, .work-title, .nav-title')
+    .forEach((heading) => {
+      heading.setAttribute('role', 'heading');
+      heading.setAttribute('aria-level', '3');
+    });
+
+  function prepareMedia(element) {
+    if (element.tagName === 'IFRAME') {
+      const frame = element;
+      if (!frame.getAttribute('title')) {
+        frame.setAttribute('title', 'Contenuto video incorporato');
+      }
+      if (!frame.hasAttribute('loading')) {
+        frame.loading = 'lazy';
+      }
+    }
+
+    if (element.tagName === 'IMG') {
+      const image = element;
+      if (!image.hasAttribute('decoding')) {
+        image.decoding = 'async';
+      }
+      if (
+        !image.hasAttribute('loading') &&
+        image.getAttribute('fetchpriority') !== 'high'
+      ) {
+        image.loading = 'lazy';
+      }
+    }
+  }
+
+  document.querySelectorAll('iframe, img').forEach((element) => {
+    prepareMedia(element);
+  });
+
+  const mediaObserver = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
+        if (!(node instanceof Element)) return;
+        if (node.matches('iframe, img')) prepareMedia(node);
+        node.querySelectorAll?.('iframe, img').forEach(prepareMedia);
+      });
+    });
+  });
+
+  mediaObserver.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+
+}
+
 // ── LETTURA / SCRITTURA ──
 function loadProgress() {
   try {
@@ -60,6 +154,7 @@ function glitchFlash(el, duration = 80) {
 
 // ── GLOBAL MUSIC PLAYER ──
 const MUSIC_VIDEO_ID = '6z7x_hu4t4Y';
+const HOME_AUDIO_FILE = 'assets/audio/chapter5-home.mp3';
 const MUSIC_DEFAULT_VOLUME = 35;
 const youtubeReadyCallbacks = [];
 
@@ -95,6 +190,8 @@ function loadYouTubeAPI(callback) {
 function initGlobalMusicPlayer() {
   const screen = document.getElementById('screen');
   const header = document.getElementById('site-header');
+  const path = window.location.pathname.replace(/\\/g, '/');
+  const isHomeAudio = !path.includes('/chapters/');
 
   if (!screen || !header || document.getElementById('gs-music-player')) {
     return;
@@ -109,12 +206,15 @@ function initGlobalMusicPlayer() {
   const playerEl = document.createElement('section');
   playerEl.className = 'gs-music-player';
   playerEl.id = 'gs-music-player';
-  playerEl.setAttribute('aria-label', 'Player musicale globale');
+  playerEl.setAttribute(
+    'aria-label',
+    isHomeAudio ? 'Player audio della home' : 'Player musicale globale',
+  );
   playerEl.innerHTML = `
     <div class="gs-music-main">
       <div class="gs-music-controls">
-        <button class="gs-music-button" type="button" id="gs-music-toggle">PLAY</button>
-        <div class="gs-music-label">// AUDIO LOOP //</div>
+        <button class="gs-music-button" type="button" id="gs-music-toggle" aria-pressed="false">PLAY</button>
+        <div class="gs-music-label">// ${isHomeAudio ? 'HOME AUDIO' : 'AUDIO LOOP'} //</div>
         <input
           class="gs-music-volume"
           id="gs-music-volume"
@@ -124,11 +224,15 @@ function initGlobalMusicPlayer() {
           value="${initialVolume}"
           aria-label="Volume musica"
         />
-        <div class="gs-music-status" id="gs-music-status">VOL ${initialVolume}%</div>
+        <div class="gs-music-status" id="gs-music-status" role="status" aria-live="polite">VOL ${initialVolume}%</div>
       </div>
     </div>
     <div class="gs-music-frame">
-      <div id="gs-music-youtube"></div>
+      ${
+        isHomeAudio
+          ? `<audio id="gs-home-audio" src="${HOME_AUDIO_FILE}" preload="metadata"></audio>`
+          : '<div id="gs-music-youtube"></div>'
+      }
     </div>
   `;
 
@@ -137,9 +241,72 @@ function initGlobalMusicPlayer() {
   const toggleButton = document.getElementById('gs-music-toggle');
   const volumeInput = document.getElementById('gs-music-volume');
   const statusEl = document.getElementById('gs-music-status');
+
+  if (isHomeAudio) {
+    const homeAudio = document.getElementById('gs-home-audio');
+    homeAudio.volume = initialVolume / 100;
+
+    function setHomeStatus(text) {
+      statusEl.textContent = text;
+    }
+
+    function setHomePlayingState(isPlaying) {
+      toggleButton.textContent = isPlaying ? 'PAUSA' : 'PLAY';
+      toggleButton.setAttribute('aria-pressed', String(isPlaying));
+      setHomeStatus(
+        isPlaying
+          ? `IN RIPRODUZIONE // VOL ${volumeInput.value}%`
+          : `VOL ${volumeInput.value}%`,
+      );
+    }
+
+    toggleButton.addEventListener('click', async () => {
+      if (homeAudio.paused) {
+        if (homeAudio.ended) homeAudio.currentTime = 0;
+        try {
+          await homeAudio.play();
+        } catch (error) {
+          toggleButton.textContent = 'RIPROVA';
+          setHomeStatus('AUDIO NON DISPONIBILE');
+        }
+      } else {
+        homeAudio.pause();
+      }
+    });
+
+    volumeInput.addEventListener('input', () => {
+      const volume = Number(volumeInput.value);
+      homeAudio.volume = volume / 100;
+      saveProgress({ music_volume: volume });
+      setHomeStatus(
+        homeAudio.paused
+          ? `VOL ${volume}%`
+          : `IN RIPRODUZIONE // VOL ${volume}%`,
+      );
+    });
+
+    homeAudio.addEventListener('play', () => setHomePlayingState(true));
+    homeAudio.addEventListener('pause', () => {
+      if (!homeAudio.ended) setHomePlayingState(false);
+    });
+    homeAudio.addEventListener('ended', () => {
+      toggleButton.textContent = 'PLAY';
+      toggleButton.setAttribute('aria-pressed', 'false');
+      setHomeStatus(`FINE // VOL ${volumeInput.value}%`);
+    });
+    homeAudio.addEventListener('error', () => {
+      toggleButton.textContent = 'RIPROVA';
+      toggleButton.setAttribute('aria-pressed', 'false');
+      setHomeStatus('AUDIO NON DISPONIBILE');
+    });
+
+    return;
+  }
+
   let musicPlayer = null;
   let isReady = false;
   let wantsPlayback = false;
+  let isLoadingPlayer = false;
 
   function setStatus(text) {
     statusEl.textContent = text;
@@ -147,6 +314,7 @@ function initGlobalMusicPlayer() {
 
   function setPlayingState(isPlaying) {
     toggleButton.textContent = isPlaying ? 'PAUSA' : 'PLAY';
+    toggleButton.setAttribute('aria-pressed', String(isPlaying));
     setStatus(isPlaying ? `LOOP // VOL ${volumeInput.value}%` : `VOL ${volumeInput.value}%`);
   }
 
@@ -166,7 +334,12 @@ function initGlobalMusicPlayer() {
     wantsPlayback = !wantsPlayback;
 
     if (!musicPlayer || !isReady) {
-      setStatus(wantsPlayback ? 'CARICAMENTO...' : `VOL ${volumeInput.value}%`);
+      if (wantsPlayback) {
+        setStatus('CARICAMENTO...');
+        ensureMusicPlayer();
+      } else {
+        setStatus(`VOL ${volumeInput.value}%`);
+      }
       return;
     }
 
@@ -182,55 +355,127 @@ function initGlobalMusicPlayer() {
   toggleButton.addEventListener('click', togglePlayback);
   volumeInput.addEventListener('input', applyVolume);
 
-  loadYouTubeAPI(() => {
-    musicPlayer = new window.YT.Player('gs-music-youtube', {
-      videoId: MUSIC_VIDEO_ID,
-      playerVars: {
-        autoplay: 0,
-        controls: 0,
-        disablekb: 1,
-        loop: 1,
-        modestbranding: 1,
-        playlist: MUSIC_VIDEO_ID,
-        playsinline: 1,
-        rel: 0,
-      },
-      events: {
-        onReady(event) {
-          isReady = true;
-          event.target.setVolume(initialVolume);
-          event.target.cueVideoById({
-            videoId: MUSIC_VIDEO_ID,
-          });
-          if (wantsPlayback) {
-            event.target.playVideo();
-          } else {
-            setPlayingState(false);
-          }
-        },
-        onStateChange(event) {
-          if (event.data === window.YT.PlayerState.PLAYING) {
-            wantsPlayback = true;
-            setPlayingState(true);
-          }
+  function ensureMusicPlayer() {
+    if (isLoadingPlayer || musicPlayer) return;
+    isLoadingPlayer = true;
 
-          if (event.data === window.YT.PlayerState.PAUSED) {
+    loadYouTubeAPI(() => {
+      musicPlayer = new window.YT.Player('gs-music-youtube', {
+        videoId: MUSIC_VIDEO_ID,
+        playerVars: {
+          autoplay: 0,
+          controls: 0,
+          disablekb: 1,
+          loop: 1,
+          modestbranding: 1,
+          playlist: MUSIC_VIDEO_ID,
+          playsinline: 1,
+          rel: 0,
+        },
+        events: {
+          onReady(event) {
+            isReady = true;
+            isLoadingPlayer = false;
+            event.target.setVolume(initialVolume);
+            if (wantsPlayback) {
+              event.target.playVideo();
+            } else {
+              setPlayingState(false);
+            }
+          },
+          onStateChange(event) {
+            if (event.data === window.YT.PlayerState.PLAYING) {
+              wantsPlayback = true;
+              setPlayingState(true);
+            }
+
+            if (event.data === window.YT.PlayerState.PAUSED) {
+              wantsPlayback = false;
+              setPlayingState(false);
+            }
+
+            if (event.data === window.YT.PlayerState.ENDED) {
+              event.target.seekTo(0);
+              event.target.playVideo();
+            }
+          },
+          onError() {
+            isLoadingPlayer = false;
+            isReady = false;
             wantsPlayback = false;
-            setPlayingState(false);
-          }
-
-          if (event.data === window.YT.PlayerState.ENDED) {
-            event.target.seekTo(0);
-            event.target.playVideo();
-          }
+            musicPlayer = null;
+            toggleButton.setAttribute('aria-pressed', 'false');
+            toggleButton.textContent = 'RIPROVA';
+            setStatus('AUDIO NON DISPONIBILE');
+          },
         },
-      },
+      });
     });
+  }
+}
+
+function initChapter5Atmosphere() {
+  if (getArchiveTheme() !== 'chapter5') {
+    return;
+  }
+
+  if (document.getElementById('sakura-layer')) {
+    return;
+  }
+
+  const layer = document.createElement('div');
+  layer.className = 'sakura-layer';
+  layer.id = 'sakura-layer';
+  layer.setAttribute('aria-hidden', 'true');
+
+  const petals = [
+    [3, -1, 16, 18, 80],
+    [7, -8, 22, -22, 56],
+    [12, -14, 18, 26, 68],
+    [17, -4, 24, -36, 74],
+    [23, -19, 17, 30, 48],
+    [28, -10, 23, -18, 62],
+    [34, -2, 19, 38, 70],
+    [39, -16, 26, -28, 52],
+    [45, -6, 18, 22, 78],
+    [51, -22, 25, -34, 60],
+    [57, -12, 20, 36, 72],
+    [63, -3, 27, -24, 50],
+    [69, -17, 18, 28, 66],
+    [74, -9, 24, -42, 58],
+    [79, -15, 21, 20, 86],
+    [84, -5, 28, -28, 44],
+    [89, -20, 19, 34, 92],
+    [95, -11, 23, -18, 36],
+  ];
+
+  petals.forEach(([x, delay, duration, drift, spin], index) => {
+    const petal = document.createElement('span');
+    petal.className = 'sakura-petal';
+    petal.style.setProperty('--x', `${x}vw`);
+    petal.style.setProperty('--delay', `${delay}s`);
+    petal.style.setProperty('--duration', `${duration}s`);
+    petal.style.setProperty('--drift', `${drift}vw`);
+    petal.style.setProperty('--drift-mid', `${drift * 0.54}vw`);
+    petal.style.setProperty('--r0', `${spin}deg`);
+    petal.style.setProperty('--r1', `${spin + 190}deg`);
+    petal.style.setProperty('--r2', `${spin + 380}deg`);
+    petal.style.setProperty('--size', `${13 + (index % 5) * 3}px`);
+    layer.appendChild(petal);
   });
+
+  document.body.appendChild(layer);
+}
+
+function initSharedUi() {
+  applyArchiveTheme();
+  enhanceDocumentSemantics();
+  initChapter5Atmosphere();
+  initGlobalMusicPlayer();
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initGlobalMusicPlayer);
+  document.addEventListener('DOMContentLoaded', initSharedUi);
 } else {
-  initGlobalMusicPlayer();
+  initSharedUi();
 }
