@@ -193,7 +193,12 @@ function initGlobalMusicPlayer() {
   const path = window.location.pathname.replace(/\\/g, '/');
   const isHomeAudio = !path.includes('/chapters/');
 
-  if (!screen || !header || document.getElementById('gs-music-player')) {
+  if (
+    !isHomeAudio ||
+    !screen ||
+    !header ||
+    document.getElementById('gs-music-player')
+  ) {
     return;
   }
 

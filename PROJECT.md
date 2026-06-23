@@ -74,7 +74,7 @@ gaster-system/
 |---|---|---|
 | `index.html` | ✅ Aggiornato | Hub ridisegnato come soglia Chapter 5; Pre-Cap 5 è aperto |
 | `assets/style.css` | ✅ Aggiornato | Tema globale Chapter 5: nero, fiori, rosa/oro, accenti blu-verde |
-| `assets/main.js` | ✅ Aggiornato | Utility, temi per archivio, accessibilità, lazy media, player YouTube e sakura |
+| `assets/main.js` | ✅ Aggiornato | Utility, temi, accessibilità, lazy media, audio esclusivo home e sakura |
 | `assets/audio/chapter5-home.mp3` | ✅ Creato | Nuovo audio home Chapter 5, riproduzione singola senza loop |
 | `assets/img/pre-cap4/roots-tiles.json` | ✅ Creato | Manifest tile Roots Theory: griglia 4x4 con cella `0_0` vuota |
 | `assets/img/pre-cap4/hometown/` | ✅ Creato | Tile Hometown 384x256 nominate per posizione griglia |
@@ -100,8 +100,8 @@ gaster-system/
 | `chapters/pre-cap4/chicche-cap3.html` | ✅ Aggiornato | Schede: Susie/Ralsei, Raise Up Your Bat, Gachapon e Board 3 restored |
 | `chapters/pre-cap4/varie-ed-eventuali.html` | ✅ Aggiornato | Sezioni: Dess/Asgore, Tenna host TV e Tenna/Steve Harvey |
 | `chapters/pre-cap5/index.html` | ✅ Creato | Hub con sezioni Curiosità Capitolo 4 e Meme/Community |
-| `chapters/pre-cap5/curiosita-cap4.html` | ✅ Aggiornato | Organo con dialoghi originali espandibili + otto video "Kris al pianoforte" |
-| `chapters/pre-cap5/meme-community.html` | ✅ Creato | Prima scheda: Carpet by Toby Fox |
+| `chapters/pre-cap5/curiosita-cap4.html` | ✅ Aggiornato | Organo, Kris al pianoforte e analisi ritmica di Third Sanctuary |
+| `chapters/pre-cap5/meme-community.html` | ✅ Aggiornato | Carpet by Toby Fox con embed privacy-enhanced caricato al Play |
 
 ---
 
@@ -121,12 +121,13 @@ Chiave root: `gaster_system_data` (oggetto JSON)
 - `saveQuizScore('precap1', 6)` → shorthand per punteggi quiz
 - `clearProgress()` → reset completo
 
-**Player musicale globale:**
-- Iniettato da `assets/main.js` nelle pagine che caricano lo script condiviso
+**Player musicale home:**
+- Iniettato da `assets/main.js` esclusivamente nella pagina generale `index.html`
 - UI minimale solo audio: play/pausa, label e volume, senza riquadro video visibile
-- Video YouTube in loop: `6z7x_hu4t4Y`
+- File locale: `assets/audio/chapter5-home.mp3`
+- Riproduzione singola, senza loop
 - Volume salvato in `music_volume`
-- Il `SURVEY_PROGRAM` resta escluso perché non carica `main.js`
+- Le sottopagine non mostrano o caricano sorgenti audio
 
 ---
 
@@ -364,7 +365,7 @@ File: `chapters/pre-cap1/survey.html`
 - Scaricato localmente `h.mp3` dal sito ufficiale Deltarune
 - Impostato l'audio solo sulla home, con riproduzione singola senza loop
 - Cambiata l'etichetta del player home da `AUDIO LOOP` a `HOME AUDIO`
-- Mantenuto il precedente loop YouTube nelle pagine interne
+- Rimosso il player e ogni sorgente audio visibile dalle pagine interne
 
 ### Sessione 33 — Dialoghi organo originali
 - Letto il testo fornito dall'utente con le reazioni dell'organo del Dark Sanctuary
@@ -372,6 +373,16 @@ File: `chapters/pre-cap1/survey.html`
 - Impaginati speaker e battute come dialogue log separati
 - Conservate come note di sistema le reazioni prive di dialogo, come MEGALOVANIA
 - Rimossi il paragrafo tecnico e la legenda dei tasti, superflui per un giocatore
+
+### Sessione 34 — Third Sanctuary time signatures
+- Aggiunta la terza scheda di analisi musicale in `curiosita-cap4.html`
+- Inserito il video `De0FDShxgrs` tramite player-facade con caricamento su richiesta
+- Spiegata la complessità metrica di `Third Sanctuary` e il valore della visualizzazione delle time signature
+
+### Sessione 35 — Player Meme/Community
+- Sostituito l'iframe YouTube immediato di `Carpet by Toby Fox` con una video facade
+- Il player viene ora creato solo al click
+- Usato `youtube-nocookie.com` con modalità privacy-enhanced e URL embed pulito
 
 ---
 
