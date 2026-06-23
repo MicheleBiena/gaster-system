@@ -4,11 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GASTER SYSTEM — Deltarune Blindrun</title>
-    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="assets/style.css?v=20260623-3" />
   </head>
-  <body>
+  <body data-archive-theme="chapter5">
     <div id="scanlines"></div>
     <div id="vignette"></div>
+    <div class="sakura-layer" id="sakura-layer" aria-hidden="true">
+      <span class="sakura-petal" style="--x: 3vw; --delay: -1s; --duration: 16s; --drift: 18vw; --drift-mid: 9.72vw; --r0: 80deg; --r1: 270deg; --r2: 460deg; --size: 13px"></span>
+      <span class="sakura-petal" style="--x: 9vw; --delay: -8s; --duration: 22s; --drift: -22vw; --drift-mid: -11.88vw; --r0: 56deg; --r1: 246deg; --r2: 436deg; --size: 18px"></span>
+      <span class="sakura-petal" style="--x: 16vw; --delay: -14s; --duration: 18s; --drift: 26vw; --drift-mid: 14.04vw; --r0: 68deg; --r1: 258deg; --r2: 448deg; --size: 23px"></span>
+      <span class="sakura-petal" style="--x: 24vw; --delay: -4s; --duration: 24s; --drift: -36vw; --drift-mid: -19.44vw; --r0: 74deg; --r1: 264deg; --r2: 454deg; --size: 16px"></span>
+      <span class="sakura-petal" style="--x: 32vw; --delay: -11s; --duration: 17s; --drift: 30vw; --drift-mid: 16.2vw; --r0: 48deg; --r1: 238deg; --r2: 428deg; --size: 21px"></span>
+      <span class="sakura-petal" style="--x: 40vw; --delay: -6s; --duration: 23s; --drift: -18vw; --drift-mid: -9.72vw; --r0: 62deg; --r1: 252deg; --r2: 442deg; --size: 26px"></span>
+      <span class="sakura-petal" style="--x: 48vw; --delay: -16s; --duration: 19s; --drift: 38vw; --drift-mid: 20.52vw; --r0: 70deg; --r1: 260deg; --r2: 450deg; --size: 15px"></span>
+      <span class="sakura-petal" style="--x: 56vw; --delay: -3s; --duration: 26s; --drift: -28vw; --drift-mid: -15.12vw; --r0: 52deg; --r1: 242deg; --r2: 432deg; --size: 20px"></span>
+      <span class="sakura-petal" style="--x: 64vw; --delay: -12s; --duration: 18s; --drift: 22vw; --drift-mid: 11.88vw; --r0: 78deg; --r1: 268deg; --r2: 458deg; --size: 25px"></span>
+      <span class="sakura-petal" style="--x: 72vw; --delay: -20s; --duration: 25s; --drift: -34vw; --drift-mid: -18.36vw; --r0: 60deg; --r1: 250deg; --r2: 440deg; --size: 17px"></span>
+      <span class="sakura-petal" style="--x: 81vw; --delay: -7s; --duration: 20s; --drift: 36vw; --drift-mid: 19.44vw; --r0: 72deg; --r1: 262deg; --r2: 452deg; --size: 22px"></span>
+      <span class="sakura-petal" style="--x: 90vw; --delay: -15s; --duration: 23s; --drift: -24vw; --drift-mid: -12.96vw; --r0: 50deg; --r1: 240deg; --r2: 430deg; --size: 27px"></span>
+      <span class="sakura-petal" style="--x: 96vw; --delay: -9s; --duration: 19s; --drift: -42vw; --drift-mid: -22.68vw; --r0: 58deg; --r1: 248deg; --r2: 438deg; --size: 19px"></span>
+    </div>
 
     <div id="screen">
       <header id="site-header">
@@ -115,7 +130,7 @@
       </footer>
     </div>
 
-    <script src="assets/main.js"></script>
+    <script src="assets/main.js?v=20260623-4"></script>
     <script>
       // Mostra punteggio salvato se presente
       const saved = loadProgress();

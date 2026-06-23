@@ -29,8 +29,8 @@
   --font-jp: "Noto Serif JP", "Yu Mincho", "Yu Gothic", "MS Mincho", serif;
   --focus-ring: #fff178;
   --z-content: 10;
-  --z-atmosphere: 20;
   --z-vignette: 30;
+  --z-atmosphere: 35;
   --z-scanlines: 40;
   --z-skip: 50;
 }
@@ -214,12 +214,17 @@ input[type="range"] {
   background:
     radial-gradient(circle at 34% 32%, rgba(255, 255, 255, 0.86), transparent 25%),
     linear-gradient(135deg, rgba(255, 196, 220, 0.96), rgba(255, 120, 184, 0.68) 58%, rgba(229, 183, 61, 0.42));
-  opacity: 0.88;
+  opacity: 0.94;
   box-shadow:
-    0 0 10px rgba(255, 120, 184, 0.28),
-    0 0 18px rgba(229, 183, 61, 0.12);
-  transform: translate3d(0, -16vh, 0) rotate(var(--r0));
-  animation: sakuraFall var(--duration) linear var(--delay) infinite both;
+    0 0 12px rgba(255, 120, 184, 0.42),
+    0 0 20px rgba(229, 183, 61, 0.18);
+  transform: translate3d(0, -16vh, 0) rotate(35deg);
+  animation-name: sakuraFall;
+  animation-duration: var(--duration, 20s);
+  animation-timing-function: linear;
+  animation-delay: var(--delay, 0s);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
   will-change: transform;
 }
 
@@ -1106,21 +1111,21 @@ input[type="range"] {
 
 @keyframes sakuraFall {
   0% {
-    transform: translate3d(0, -16vh, 0) rotate(var(--r0));
+    transform: translate3d(0, -16vh, 0) rotate(35deg);
     opacity: 0;
   }
   8% {
     opacity: 0.9;
   }
   50% {
-    transform: translate3d(var(--drift-mid), 52vh, 0) rotate(var(--r1));
+    transform: translate3d(var(--drift-mid, 8vw), 52vh, 0) rotate(220deg);
     opacity: 0.88;
   }
   92% {
     opacity: 0.84;
   }
   100% {
-    transform: translate3d(var(--drift), 116vh, 0) rotate(var(--r2));
+    transform: translate3d(var(--drift, 16vw), 116vh, 0) rotate(405deg);
     opacity: 0;
   }
 }
@@ -1237,22 +1242,24 @@ input[type="range"] {
 @media (prefers-reduced-motion: reduce) {
   body::before,
   .title-gate::before,
-  .sakura-petal,
   .cursor {
     animation: none !important;
   }
 
   .sakura-layer {
-    display: none;
+    display: block !important;
   }
 
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .sakura-petal {
+    animation-duration: 28s !important;
+    animation-iteration-count: infinite !important;
   }
 }
 

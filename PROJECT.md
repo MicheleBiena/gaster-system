@@ -384,6 +384,15 @@ File: `chapters/pre-cap1/survey.html`
 - Il player viene ora creato solo al click
 - Usato `youtube-nocookie.com` con modalità privacy-enhanced e URL embed pulito
 
+### Sessione 36 — Visibilità petali home
+- Corretto l'ordine dei layer dopo il refactor UI/UX
+- Riportati i petali sopra la vignetta e sotto le scanline
+- Aumentati leggermente opacità e bagliore dei petali
+- Inseriti i petali direttamente nell'HTML della home come fallback indipendente da JavaScript
+- Aggiunto cache-busting a CSS e JS della home
+- Rimossa la regola reduced-motion che nascondeva il layer e semplificati i keyframe per maggiore compatibilità
+- Aggiunto fallback Web Animations API che muove esplicitamente i petali già presenti nella home
+
 ---
 
 ## Istruzioni per agenti successivi

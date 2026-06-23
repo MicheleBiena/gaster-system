@@ -419,12 +419,51 @@ function initGlobalMusicPlayer() {
   }
 }
 
+function animateSakuraPetals(layer) {
+  if (!layer || typeof Element.prototype.animate !== 'function') return;
+
+  layer.querySelectorAll('.sakura-petal').forEach((petal, index) => {
+    const styles = getComputedStyle(petal);
+    const drift = Number.parseFloat(styles.getPropertyValue('--drift')) || 16;
+    const duration =
+      Number.parseFloat(styles.getPropertyValue('--duration')) || 20;
+    const delay = Number.parseFloat(styles.getPropertyValue('--delay')) || 0;
+
+    petal.style.animation = 'none';
+    petal.animate(
+      [
+        {
+          transform: 'translate3d(0, -16vh, 0) rotate(35deg)',
+          opacity: 0,
+        },
+        {
+          transform: `translate3d(${drift * 0.54}vw, 52vh, 0) rotate(220deg)`,
+          opacity: 0.94,
+          offset: 0.5,
+        },
+        {
+          transform: `translate3d(${drift}vw, 116vh, 0) rotate(405deg)`,
+          opacity: 0,
+        },
+      ],
+      {
+        duration: duration * 1000,
+        delay: delay * 1000 - index * 90,
+        iterations: Infinity,
+        easing: 'linear',
+      },
+    );
+  });
+}
+
 function initChapter5Atmosphere() {
   if (getArchiveTheme() !== 'chapter5') {
     return;
   }
 
-  if (document.getElementById('sakura-layer')) {
+  const existingLayer = document.getElementById('sakura-layer');
+  if (existingLayer) {
+    animateSakuraPetals(existingLayer);
     return;
   }
 
@@ -470,6 +509,7 @@ function initChapter5Atmosphere() {
   });
 
   document.body.appendChild(layer);
+  animateSakuraPetals(layer);
 }
 
 function initSharedUi() {
