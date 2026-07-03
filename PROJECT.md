@@ -23,6 +23,8 @@ Il sito accompagna la community fra un capitolo e l'altro con approfondimenti, a
 ```
 gaster-system/
 ├── index.html                        ← Hub principale (menu capitoli)
+├── 10anniversary.png                 ← Still stream Undertale 10th Anniversary
+├── newhome.png                       ← Still New Home dal 10th Anniversary Stream
 ├── PROJECT.md                        ← Questo file
 ├── assets/
 │   ├── style.css                     ← Tema dark pixel-art globale (VT323 + Share Tech Mono)
@@ -63,7 +65,8 @@ gaster-system/
     └── pre-cap5/
         ├── index.html                ← Hub sezioni Pre-Cap 5
         ├── curiosita-cap4.html       ← Curiosità e segreti Capitolo 4
-        └── meme-community.html       ← Meme e lavori community verso Capitolo 5
+        ├── meme-community.html       ← Meme e lavori community verso Capitolo 5
+        └── undertale-10th-anniversary.html ← Dossier stream Undertale 10th Anniversary
 ```
 
 ---
@@ -73,6 +76,8 @@ gaster-system/
 | File | Stato | Note |
 |---|---|---|
 | `index.html` | ✅ Aggiornato | Hub ridisegnato come soglia Chapter 5; Pre-Cap 5 è aperto |
+| `10anniversary.png` | ✅ Creato | Still del couch stream Undertale 10th Anniversary |
+| `newhome.png` | ✅ Creato | Still della nuova area New Home dal 10th Anniversary Stream |
 | `assets/style.css` | ✅ Aggiornato | Tema globale Chapter 5: nero, fiori, rosa/oro, accenti blu-verde |
 | `assets/main.js` | ✅ Aggiornato | Utility, temi, accessibilità, lazy media, audio esclusivo home e sakura |
 | `assets/audio/chapter5-home.mp3` | ✅ Creato | Nuovo audio home Chapter 5, riproduzione singola senza loop |
@@ -99,9 +104,10 @@ gaster-system/
 | `chapters/pre-cap4/the-roots-theory.html` | ✅ Aggiornato | Dossier Roots Theory con viewer accessibile, zoom, pan e tile Hometown/Manhole |
 | `chapters/pre-cap4/chicche-cap3.html` | ✅ Aggiornato | Schede: Susie/Ralsei, Raise Up Your Bat, Gachapon e Board 3 restored |
 | `chapters/pre-cap4/varie-ed-eventuali.html` | ✅ Aggiornato | Sezioni: Dess/Asgore, Tenna host TV e Tenna/Steve Harvey |
-| `chapters/pre-cap5/index.html` | ✅ Creato | Hub con sezioni Curiosità Capitolo 4 e Meme/Community |
-| `chapters/pre-cap5/curiosita-cap4.html` | ✅ Aggiornato | Organo, Kris al pianoforte e analisi ritmica di Third Sanctuary |
+| `chapters/pre-cap5/index.html` | ✅ Aggiornato | Hub con Curiosità Capitolo 4, Meme/Community e Undertale 10th Anniversary |
+| `chapters/pre-cap5/curiosita-cap4.html` | ✅ Aggiornato | Organo, Kris al pianoforte, Third Sanctuary e teoria visuale GUARDIAN/Gaster |
 | `chapters/pre-cap5/meme-community.html` | ✅ Aggiornato | Carpet by Toby Fox con embed privacy-enhanced caricato al Play |
+| `chapters/pre-cap5/undertale-10th-anniversary.html` | ✅ Creato | Dossier sui peak momenti della stream del decimo anniversario di Undertale |
 
 ---
 
@@ -163,7 +169,8 @@ File: `chapters/pre-cap1/survey.html`
 
 1. **Curiosità Capitolo 4** — segreti, dettagli meccanici e reazioni nascoste
 2. **Meme / community work** — video, gag e produzioni fan nate dopo il Capitolo 4
-3. **Sezione teoria futura** — da decidere in base agli sviluppi community e alla prossima run
+3. **Undertale 10th Anniversary Event** — Old Home, Gerson, Gaster door e materiali emersi dalle stream
+4. **Sezione teoria futura** — da decidere in base agli sviluppi community e alla prossima run
 
 ---
 
@@ -392,6 +399,29 @@ File: `chapters/pre-cap1/survey.html`
 - Aggiunto cache-busting a CSS e JS della home
 - Rimossa la regola reduced-motion che nascondeva il layer e semplificati i keyframe per maggiore compatibilità
 - Aggiunto fallback Web Animations API che muove esplicitamente i petali già presenti nella home
+
+### Sessione 37 — Undertale 10th Anniversary Event
+- Letti i sottotitoli locali in `tmp/` dei due breakdown sull'Undertale 10th Anniversary Event
+- Creata `chapters/pre-cap5/undertale-10th-anniversary.html` come dossier dedicato
+- Inseriti i due video tramite player-facade con avvio ai timestamp indicati
+- Riassunti i punti chiave: Old Home, Noelle bambina, porta di Gaster, Spamton/Tenna, fight pacifista di Sans e dialogo di Gerson
+- Inserite le still wiki della città delle Rovine, di Noelle bambina e della porta di Gaster nelle rispettive schede del dossier
+- Collegata la porta colorata alla frase del Capitolo 3 "le copie sono monocromatiche" come possibile lettura sulle copie/tracce di Gaster
+- Ripulito il testo del dossier da formule troppo schematiche e riscritto con tono più naturale/community
+- Aggiunta in cima alla pagina la still del couch stream con Reid Young, Dan Moore, Toby Fox cuscino e Charlie Verdin
+- Inserita una still dedicata nella scheda Spamton/Tenna dell'anniversary dossier
+- Inserita immagine community nella sezione Gerson dell'anniversary dossier
+- Riorganizzato il dossier seguendo la struttura della wiki: contesto, aggiunte per area, argomenti forti, live action e stranezze
+- Inserite le immagini Pacifist Sans e `newhome.png` nelle rispettive sezioni
+- Inserita l'end card dello stream come immagine conclusiva/saluto del dossier
+- Rimossi dalla pagina i due breakdown video usati come sorgente dei sottotitoli; resta solo il replay ufficiale Day 1 al timestamp indicato
+- Aggiornato l'hub Pre-Cap 5 con la terza scheda dedicata all'evento anniversario
+
+### Sessione 38 — GUARDIAN e volto di Gaster
+- Aggiunta in `chapters/pre-cap5/curiosita-cap4.html` la quarta scheda dedicata al Titano finale del Capitolo 4
+- Inserita immagine community sul possibile volto simile a Gaster nello sprite sfocato del Titano
+- Collegato il dubbio al titolo OST `GUARDIAN`, tutto in caps, come possibile nome proprio o primo indizio sui nomi dei Titani
+- Resa più generale l'introduzione della pagina Curiosità Capitolo 4
 
 ---
 

@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNDERTALE 10TH ANNIVERSARY - PRE-CAP 5 - GASTER SYSTEM</title>
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <style>
+      .anniversary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.85em;
+      }
+
+      .anniversary-video,
+      .anniversary-card,
+      .anniversary-quote {
+        border: 1px solid rgba(255, 183, 214, 0.32);
+        background:
+          linear-gradient(180deg, rgba(0, 13, 28, 0.84), rgba(0, 4, 10, 0.88)),
+          repeating-linear-gradient(
+            90deg,
+            rgba(255, 120, 184, 0.04) 0,
+            rgba(255, 120, 184, 0.04) 2px,
+            transparent 2px,
+            transparent 10px
+          );
+      }
+
+      .anniversary-video {
+        overflow: hidden;
+      }
+
+      .anniversary-video.feature {
+        grid-column: 1 / -1;
+        width: min(100%, 760px);
+      }
+
+      .anniversary-hero {
+        margin: 0;
+        border: 1px solid rgba(255, 183, 214, 0.34);
+        background: rgba(0, 0, 0, 0.62);
+        overflow: hidden;
+        box-shadow: 0 0 24px rgba(229, 183, 61, 0.1);
+      }
+
+      .anniversary-hero img {
+        display: block;
+        width: 100%;
+      }
+
+      .anniversary-hero figcaption {
+        padding: 0.75em 0.85em;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        color: var(--dim);
+        letter-spacing: 0.04em;
+        line-height: 1.55;
+      }
+
+      .anniversary-hero strong {
+        color: var(--accent-3);
+        font-weight: normal;
+      }
+
+      .video-facade {
+        position: relative;
+        display: block;
+        width: 100%;
+        border: 0;
+        padding: 0;
+        color: var(--text);
+        background: #000;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .video-facade img,
+      .anniversary-video iframe {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border: 0;
+      }
+
+      .video-facade img {
+        opacity: 0.76;
+        transition:
+          opacity 180ms ease-out,
+          filter 180ms ease-out;
+      }
+
+      .video-facade:hover img {
+        opacity: 0.94;
+        filter: saturate(1.12);
+      }
+
+      .video-play {
+        position: absolute;
+        inset: 50% auto auto 50%;
+        min-width: 64px;
+        min-height: 44px;
+        transform: translate(-50%, -50%);
+        border: 1px solid var(--accent-2);
+        display: grid;
+        place-items: center;
+        background: rgba(0, 0, 0, 0.86);
+        font-family: var(--font-mono);
+        font-size: 15px;
+        letter-spacing: 0.08em;
+      }
+
+      .video-caption,
+      .anniversary-kicker,
+      .anniversary-source {
+        font-family: var(--font-mono);
+        font-size: 14px;
+        color: var(--accent-3);
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+      }
+
+      .video-caption {
+        padding: 0.7em 0.8em;
+        color: var(--dim);
+        line-height: 1.45;
+      }
+
+      .anniversary-card {
+        padding: 1em;
+        display: grid;
+        gap: 0.65em;
+      }
+
+      .anniversary-card.wide {
+        grid-column: 1 / -1;
+      }
+
+      .anniversary-title {
+        font-family: var(--font-display);
+        font-size: 1.55em;
+        color: var(--text);
+        letter-spacing: 0.06em;
+        line-height: 1.05;
+      }
+
+      .anniversary-still {
+        margin: 0;
+        border: 1px solid rgba(229, 183, 61, 0.34);
+        background: rgba(0, 0, 0, 0.48);
+        overflow: hidden;
+      }
+
+      .anniversary-still img {
+        display: block;
+        width: 100%;
+        image-rendering: pixelated;
+      }
+
+      .anniversary-still.photo img {
+        image-rendering: auto;
+      }
+
+      .anniversary-still figcaption {
+        padding: 0.55em 0.65em;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--dim);
+        letter-spacing: 0.08em;
+        line-height: 1.35;
+        text-transform: uppercase;
+      }
+
+      .anniversary-still a {
+        color: var(--accent-3);
+      }
+
+      .anniversary-still a:hover {
+        color: var(--accent);
+      }
+
+      .anniversary-text {
+        margin: 0;
+        font-family: var(--font-mono);
+        font-size: 15px;
+        color: var(--dim);
+        letter-spacing: 0.03em;
+        line-height: 1.65;
+      }
+
+      .anniversary-list {
+        margin: 0;
+        padding-left: 1.2em;
+        display: grid;
+        gap: 0.45em;
+        font-family: var(--font-mono);
+        font-size: 15px;
+        color: var(--dim);
+        letter-spacing: 0.03em;
+        line-height: 1.55;
+      }
+
+      .anniversary-pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45em;
+      }
+
+      .anniversary-pill {
+        border: 1px solid rgba(255, 183, 214, 0.34);
+        background: rgba(255, 120, 184, 0.08);
+        color: var(--dim);
+        padding: 0.38em 0.55em;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .anniversary-quote {
+        padding: 1em;
+        border-left: 3px solid var(--accent-2);
+      }
+
+      .anniversary-quote p {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: 1.35em;
+        color: var(--text);
+        letter-spacing: 0.04em;
+        line-height: 1.2;
+      }
+
+      .anniversary-source {
+        color: var(--dim);
+      }
+
+      .anniversary-source a {
+        color: var(--accent-3);
+      }
+
+      .anniversary-source a:hover {
+        color: var(--accent);
+      }
+
+      @media (max-width: 820px) {
+        .anniversary-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">
+          <a class="back-link" href="index.html">&larr; PRE-CAP 5</a>
+          UNDERTALE 10TH ANNIVERSARY EVENT
+        </span>
+        <span id="header-sub">stream &middot; lore &middot; old home</span>
+      </header>
+
+      <main class="page-content">
+        <section class="section-block">
+          <div class="section-header">// EVENTO //</div>
+          <div class="narrative">
+            Per il decimo anniversario di Undertale, Toby Fox ha fatto Toby
+            Fox: una celebrazione nostalgica che a un certo punto inizia a
+            mostrare aree inedite, dialoghi nuovi, gag giocabili e frammenti
+            di lore piazzati con precisione chirurgica per far deragliare la
+            community.
+          </div>
+        </section>
+
+        <section class="section-block" id="stream-cast">
+          <div class="section-header">// STREAM COUCH //</div>
+          <figure class="anniversary-hero">
+            <img
+              src="../../10anniversary.png"
+              alt="Set dello stream del decimo anniversario di Undertale con Reid Young, Dan Moore, Toby Fox in forma cuscino parlante e Charlie Verdin"
+              loading="lazy"
+            />
+            <figcaption>
+              Da sinistra a destra:
+              <strong>Reid Young</strong>, founder di Fangamer e ispirazione
+              di Toby per Asgore;
+              <strong>Dan Moore</strong>, editor di Fangamer;
+              <strong>Toby Fox</strong>, qui nella sua elegante forma di
+              cuscino parlante;
+              <strong>Charlie Verdin</strong>, manager a Fangamer.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section class="section-block" id="stream-replay">
+          <div class="section-header">// REPLAY UFFICIALE //</div>
+          <div class="anniversary-grid">
+            <article class="anniversary-video feature">
+              <button
+                class="video-facade"
+                type="button"
+                data-video="JJWXlVClFt0"
+                data-start="3716"
+                aria-label="Riproduci Undertale 10th Anniversary Stream Day 1"
+              >
+                <img
+                  src="https://i.ytimg.com/vi/JJWXlVClFt0/hqdefault.jpg"
+                  alt=""
+                  width="480"
+                  height="360"
+                  loading="lazy"
+                />
+                <span class="video-play">PLAY</span>
+              </button>
+              <div class="video-caption">
+                DAY 1 REPLAY // dal momento indicato dello stream ufficiale.
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block" id="scaletta-wiki">
+          <div class="section-header">// COME LEGGERLO //</div>
+          <article class="anniversary-card wide">
+            <div class="anniversary-kicker">charity stream / modified build</div>
+            <div class="anniversary-title">
+              Una run celebrativa diventata museo interattivo.
+            </div>
+            <p class="anniversary-text">
+              La wiki organizza bene la cosa: lo stream e' un evento charity
+              con una build modificata di Undertale, piena di incentivi,
+              commenti di sviluppo, nuove aree, NPC, live action e materiale
+              musicale. Il risultato somiglia meno a una retrospettiva e piu'
+              a un piccolo museo interattivo costruito sopra il gioco originale.
+            </p>
+            <div class="anniversary-pill-list" aria-label="Categorie principali">
+              <span class="anniversary-pill">development commentary</span>
+              <span class="anniversary-pill">new rooms</span>
+              <span class="anniversary-pill">new NPCs</span>
+              <span class="anniversary-pill">charity incentives</span>
+              <span class="anniversary-pill">live action</span>
+              <span class="anniversary-pill">new music</span>
+            </div>
+          </article>
+        </section>
+
+        <section class="section-block" id="cosa-cambia">
+          <div class="section-header">// AGGIUNTE IMPORTANTI //</div>
+          <div class="anniversary-grid">
+            <article class="anniversary-card">
+              <div class="anniversary-kicker">ruins / old home</div>
+              <div class="anniversary-title">Old Home, la citta' sotto le Rovine.</div>
+              <figure class="anniversary-still">
+                <img
+                  src="https://undertale.wiki/images/Home_location_10th_anniversary_stream.png"
+                  alt="La citta' delle Rovine mostrata durante lo stream del decimo anniversario"
+                  loading="lazy"
+                />
+                <figcaption>
+                  Old Home / citta' delle Rovine -
+                  <a
+                    href="https://undertale.wiki/w/10th_Anniversary_Stream#/media/File:Home_location_10th_anniversary_stream.png"
+                    >fonte</a
+                  >
+                </figcaption>
+              </figure>
+              <p class="anniversary-text">
+                La zona urbana dietro le Rovine diventa esplorabile. La wiki
+                la tratta come Old Home, un nome che la mette subito accanto a
+                New Home e cambia il peso di quella vecchia skyline: dietro al
+                fondale c'era memoria storica.
+              </p>
+            </article>
+
+            <article class="anniversary-card">
+              <div class="anniversary-kicker">snowdin / holiday family</div>
+              <div class="anniversary-title">Noelle compare a Snowdin.</div>
+              <figure class="anniversary-still">
+                <img
+                  src="https://undertale.wiki/images/Snowdin_Town_location_Noelle_10th_anniversary_stream.png?cb=1zkvix&amp;h=thumb.php&amp;f=Snowdin_Town_location_Noelle_10th_anniversary_stream.png"
+                  alt="Noelle bambina a Snowdin durante lo stream del decimo anniversario"
+                  loading="lazy"
+                />
+                <figcaption>
+                  Noelle bambina / Snowdin Town -
+                  <a
+                    href="https://undertale.wiki/images/Snowdin_Town_location_Noelle_10th_anniversary_stream.png?cb=1zkvix&amp;h=thumb.php&amp;f=Snowdin_Town_location_Noelle_10th_anniversary_stream.png"
+                    >fonte</a
+                  >
+                </figcaption>
+              </figure>
+              <p class="anniversary-text">
+                La wiki nota che Noelle non viene nemmeno interagita durante
+                lo stream, ed e' forse proprio questo il bello: sta li', in
+                Snowdin, come conferma silenziosa che la famiglia Holiday ha
+                un'ombra anche nel mondo di Undertale.
+              </p>
+            </article>
+
+            <article class="anniversary-card">
+              <div class="anniversary-kicker">waterfall / gaster</div>
+              <div class="anniversary-title">La porta marrone nel fake hallway.</div>
+              <figure class="anniversary-still">
+                <img
+                  src="https://undertale.wiki/images/Waterfall_location_fake_hallway_10th_anniversary_stream.png?cb=p0vvc9&amp;h=thumb.php&amp;f=Waterfall_location_fake_hallway_10th_anniversary_stream.png"
+                  alt="La porta del falso corridoio di Waterfall mostrata durante lo stream del decimo anniversario"
+                  loading="lazy"
+                />
+                <figcaption>
+                  Fake hallway / porta di Gaster -
+                  <a
+                    href="https://undertale.wiki/images/Waterfall_location_fake_hallway_10th_anniversary_stream.png?cb=p0vvc9&amp;h=thumb.php&amp;f=Waterfall_location_fake_hallway_10th_anniversary_stream.png"
+                    >fonte</a
+                  >
+                </figcaption>
+              </figure>
+              <p class="anniversary-text">
+                La porta che normalmente porta verso `room_mysteryman` viene
+                sostituita da una porta marrone che ricorda quella della stanza
+                di Sans. I conduttori la ignorano; quando l'area viene
+                rivisitata nell'epilogo, il corridoio non c'e' piu'.
+              </p>
+            </article>
+
+            <article class="anniversary-card">
+              <div class="anniversary-kicker">new home / nose-nuzzling</div>
+              <div class="anniversary-title">New Home finalmente abitata.</div>
+              <figure class="anniversary-still">
+                <img
+                  src="../../newhome.png"
+                  alt="Nuova area di New Home mostrata nello stream del decimo anniversario"
+                  loading="lazy"
+                />
+                <figcaption>New Home / nuovo percorso verso lo stage</figcaption>
+              </figure>
+              <p class="anniversary-text">
+                Dopo l'incentivo dedicato, appare un nuovo percorso prima del
+                Last Corridor. La zona porta a una versione popolata e in scala
+                di grigi di Home, con uno stage per il Nose-Nuzzling. E' una
+                sciocchezza tenerissima, e riempie un luogo che nel gioco base
+                era quasi tutto memoria e silenzio.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block" id="tre-argomenti-forti">
+          <div class="section-header">// TRE ARGOMENTI FORTI //</div>
+          <div class="anniversary-grid">
+            <article class="anniversary-card">
+              <div class="anniversary-kicker">history rewritten / gerson</div>
+              <div class="anniversary-title">
+                Gerson riapre la guerra umani-mostri.
+              </div>
+              <figure class="anniversary-still">
+                <img
+                  src="https://preview.redd.it/i-am-expecting-at-least-6-different-comics-of-this-thank-v0-nwrfndgmymqf1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=32330787f1c562d97e16c5243969c788f2fe46fd"
+                  alt="Fan image collegata al dialogo di Gerson nello stream del decimo anniversario"
+                  loading="lazy"
+                />
+                <figcaption>Gerson / il dialogo che ha acceso la community</figcaption>
+              </figure>
+              <p class="anniversary-text">
+                A Old Home Gerson parla di storia cambiata, pagine levigate,
+                amicizie spezzate e rapporti fra umani e mostri molto meno
+                netti di quanto sembrasse. Per Deltarune e' oro: Gerson e'
+                gia' collegato alle storie riscritte, e qui Undertale stesso
+                sembra ammettere che il passato ufficiale e' stato sistemato
+                da qualcuno.
+              </p>
+            </article>
+
+            <article class="anniversary-card">
+              <div class="anniversary-kicker">gaster / copies</div>
+              <div class="anniversary-title">La porta colorata e le copie.</div>
+              <p class="anniversary-text">
+                Dopo il Capitolo 3, la frase "le copie sono monocromatiche"
+                rende questa porta ancora piu' sospetta. Se quella grigia era
+                una copia, una traccia o una riproduzione, la versione colorata
+                dello stream potrebbe suggerire un contatto piu' vicino alla
+                fonte. Speculazione, certo, del tipo che Toby sembra
+                apparecchiare con calma crudele.
+              </p>
+            </article>
+
+            <article class="anniversary-card">
+              <div class="anniversary-kicker">charity incentive / sans</div>
+              <div class="anniversary-title">La pacifist fight di Sans.</div>
+              <figure class="anniversary-still photo">
+                <img
+                  src="https://www.shanethegamer.com/wp-content/uploads/2025/09/guilds-esports-3-1.webp"
+                  alt="Immagine collegata alla pacifist fight di Sans"
+                  loading="lazy"
+                />
+                <figcaption>Pacifist Sans / charity battle</figcaption>
+              </figure>
+              <p class="anniversary-text">
+                Gli incentivi charity trasformano Sans in una specie di gag
+                meccanica: prima la richiesta di un combattimento, poi la
+                versione "go all out" che scivola invece verso un gesto gentile
+                e una prank. E' molto Sans: la community chiede la boss fight,
+                lui trova un modo per farci ridere e abbassare l'arma.
+              </p>
+            </article>
+
+            <article class="anniversary-card">
+              <div class="anniversary-kicker">barrier / asriel</div>
+              <div class="anniversary-title">Asriel e il peso dei dieci anni.</div>
+              <p class="anniversary-text">
+                Il nuovo dialogo durante il SAVE di Asriel insiste sul tempo
+                che passa, sugli anni che allontanano le persone amate e sulla
+                paura di crescere senza qualcuno accanto. Dentro un evento del
+                decimo anniversario e' una botta piuttosto precisa: Toby usa la
+                nostalgia, poi la gira dalla parte della perdita.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block" id="live-action-e-stranezze">
+          <div class="section-header">// LIVE ACTION E STRANEZZE //</div>
+          <div class="anniversary-grid">
+            <article class="anniversary-card">
+              <div class="anniversary-kicker">spamton / tenna</div>
+              <div class="anniversary-title">Spamton si prende il divano.</div>
+              <figure class="anniversary-still">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqaynvfVKksmhxk9ous8qM81rFM0xdY4uSwDrCJVe7iupWYSNdh7pqXVz7&amp;s=10"
+                  alt="Spamton durante l'intermezzo dello stream del decimo anniversario di Undertale"
+                  loading="lazy"
+                />
+                <figcaption>Spamton / intermezzo anniversario</figcaption>
+              </figure>
+              <p class="anniversary-text">
+                La live action di Day 1 porta Spamton nella stanza fisica:
+                entra, infila un disco nella TV, prende il controllo del gioco
+                e sostituisce Sans da Grillby's. E' una gag enorme, ma anche
+                un promemoria: dopo Deltarune, Undertale diventa un oggetto piu'
+                contaminabile. I due mondi si sporcano a vicenda.
+              </p>
+            </article>
+
+            <article class="anniversary-card">
+              <div class="anniversary-kicker">hotland / true lab / dog hole</div>
+              <div class="anniversary-title">Il resto del museo degli scarti vivi.</div>
+              <p class="anniversary-text">
+                Hotland High, il Dog Hole da cento piani, il nuovo NPC "you
+                should knock" nel True Lab, Omega Flowey con facce inutilizzate,
+                remix e nuove musiche: la parte piu' bella dell'evento e' che
+                mischia prototipo, joke e lore nello stesso spazio. Sembra
+                davvero un archivio vivo del modo in cui Toby pensa i suoi
+                giochi.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block" id="chiusura">
+          <div class="section-header">// LETTURA PRE-CAP 5 //</div>
+          <div class="anniversary-quote">
+            <p>
+              Il decimo anniversario sembra dire una cosa semplice: il mondo e'
+              piu' grande di quello che abbiamo esplorato, e la storia che
+              conosciamo potrebbe essere solo una versione comoda.
+            </p>
+          </div>
+          <p class="anniversary-text">
+            Per arrivare al Capitolo 5, questa e' benzina pura: fiori, vecchie
+            case, memorie sepolte, storie riscritte e un confine Undertale /
+            Deltarune sempre meno tranquillo. Piu' che una risposta, sembra
+            una nuova soglia.
+          </p>
+          <figure class="anniversary-still">
+            <img
+              src="https://undertale.wiki/images/End_card_screenshot_10th_anniversary_stream.png?cb=rds8yn&amp;h=thumb.php&amp;f=End_card_screenshot_10th_anniversary_stream.png"
+              alt="End card dello stream del decimo anniversario di Undertale"
+              loading="lazy"
+            />
+            <figcaption>End card / where will you go next?</figcaption>
+          </figure>
+          <div class="anniversary-source">
+            Fonti:
+            <a href="https://www.youtube.com/watch?v=JJWXlVClFt0&t=3716s"
+              >Undertale 10th Anniversary Stream - Day 1</a
+            >
+            &middot;
+            <a href="https://undertale.com/10/">pagina ufficiale evento</a>
+            &middot;
+            <a href="https://undertale.wiki/w/10th_Anniversary_Stream"
+              >Undertale Wiki - 10th Anniversary Stream</a
+            >
+          </div>
+        </section>
+      </main>
+
+      <footer id="site-footer">
+        <span>GASTER_SYSTEM // UNDERTALE 10TH ANNIVERSARY</span>
+      </footer>
+    </div>
+
+    <script src="../../assets/main.js"></script>
+    <script>
+      document.querySelectorAll(".video-facade").forEach((facade) => {
+        facade.addEventListener("click", () => {
+          const videoId = facade.dataset.video;
+          const start = facade.dataset.start;
+          const params = new URLSearchParams({
+            autoplay: "1",
+            rel: "0",
+          });
+
+          if (start) {
+            params.set("start", start);
+          }
+
+          const iframe = document.createElement("iframe");
+          iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}`;
+          iframe.title = facade
+            .getAttribute("aria-label")
+            .replace("Riproduci ", "");
+          iframe.allow =
+            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+          iframe.allowFullscreen = true;
+          iframe.referrerPolicy = "strict-origin-when-cross-origin";
+          facade.replaceWith(iframe);
+        });
+      });
+    </script>
+  </body>
+</html>
