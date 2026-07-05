@@ -106,7 +106,7 @@ gaster-system/
 | `chapters/pre-cap4/varie-ed-eventuali.html` | ✅ Aggiornato | Sezioni: Dess/Asgore, Tenna host TV e Tenna/Steve Harvey |
 | `chapters/pre-cap5/index.html` | ✅ Aggiornato | Hub con Curiosità Capitolo 4, Meme/Community e Undertale 10th Anniversary |
 | `chapters/pre-cap5/curiosita-cap4.html` | ✅ Aggiornato | Organo, Kris al pianoforte, Third Sanctuary e teoria visuale GUARDIAN/Gaster |
-| `chapters/pre-cap5/meme-community.html` | ✅ Aggiornato | Carpet by Toby Fox con embed privacy-enhanced caricato al Play |
+| `chapters/pre-cap5/meme-community.html` | ✅ Aggiornato | Carpet by Toby Fox, Asgore/Don't Forget e wave The Boys/Larper con embed caricati al Play |
 | `chapters/pre-cap5/undertale-10th-anniversary.html` | ✅ Creato | Dossier sui peak momenti della stream del decimo anniversario di Undertale |
 
 ---
@@ -422,6 +422,24 @@ File: `chapters/pre-cap1/survey.html`
 - Inserita immagine community sul possibile volto simile a Gaster nello sprite sfocato del Titano
 - Collegato il dubbio al titolo OST `GUARDIAN`, tutto in caps, come possibile nome proprio o primo indizio sui nomi dei Titani
 - Resa più generale l'introduzione della pagina Curiosità Capitolo 4
+
+### Sessione 39 — Meme Asgore / Don't Forget
+- Aggiunta in `chapters/pre-cap5/meme-community.html` la seconda scheda dedicata alla versione Don't Forget del meme sull'incidente di Asgore
+- Inserito video YouTube `BXyAmWifTXA` con player-facade privacy-enhanced
+- Generalizzato lo script della pagina Meme/Community per supportare più video caricati al Play
+
+### Sessione 40 — Meme The Boys / Larper
+- Aggiunta in `chapters/pre-cap5/meme-community.html` la terza scheda dedicata alla wave meme derivata da The Boys
+- Inserito video YouTube `D3kMoaz3Fhg` con player-facade privacy-enhanced
+- Contestualizzato l'uso di `Charlie's Inferno` di That Handsome Devil e la variante Deltarune del meme
+
+### Sessione 41 — Pulizia Anniversary dossier
+- Rimossa dalla sezione "Tre argomenti forti" la card duplicata su porta colorata e copie
+- La sezione ora contiene tre blocchi effettivi: Gerson, pacifist Sans e Asriel
+
+### Sessione 42 — Link giocabile Pacifist Sans
+- Aggiunto nella card Pacifist Sans il link ufficiale `https://ut10-battle.undertale.com/`
+- Specificato che la fight è stata resa giocabile online da Toby dopo la fine dello stream
 
 ---
 

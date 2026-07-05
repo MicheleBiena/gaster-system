@@ -204,6 +204,105 @@
             </article>
           </div>
         </section>
+
+        <section class="section-block" id="asgore-dont-forget">
+          <div class="section-header">// SCHEDA 02: ASGORE INCIDENT //</div>
+          <div class="community-feature">
+            <div class="mini-player">
+              <button
+                class="video-facade"
+                type="button"
+                data-video="BXyAmWifTXA"
+                data-title="Asgore car incident Don't Forget"
+                aria-label="Riproduci Asgore car incident Don't Forget"
+              >
+                <img
+                  src="https://i.ytimg.com/vi/BXyAmWifTXA/hqdefault.jpg"
+                  alt=""
+                  width="480"
+                  height="360"
+                  loading="lazy"
+                />
+                <span class="video-play">PLAY</span>
+              </button>
+            </div>
+
+            <article class="community-copy">
+              <div class="community-kicker">community arrangement</div>
+              <div class="community-title">Asgore, ma sulle note di Don't Forget</div>
+              <p class="community-text">
+                Ricordate il vociferato incidente in automobile di Asgore?
+                Naturalmente la community non poteva lasciarlo in pace nella
+                sua forma base: esiste anche la versione costruita sulle note
+                di <em>Don't Forget</em>.
+              </p>
+              <p class="community-text community-note">
+                Non aggiunge lore, non risolve Dess, non assolve Asgore.
+                Pero' per completismo tocca ascoltarla: siamo ormai nel punto
+                in cui anche il meme ha la sua variante leitmotiv.
+              </p>
+              <div class="community-source">
+                Fonte:
+                <a href="https://www.youtube.com/watch?v=BXyAmWifTXA"
+                  >Asgore car incident / Don't Forget su YouTube</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block" id="the-boys-larper-meme">
+          <div class="section-header">// SCHEDA 03: THE BOYS LARPER WAVE //</div>
+          <div class="community-feature">
+            <div class="mini-player">
+              <button
+                class="video-facade"
+                type="button"
+                data-video="D3kMoaz3Fhg"
+                data-title="Deltarune The Boys larper meme"
+                aria-label="Riproduci Deltarune The Boys larper meme"
+              >
+                <img
+                  src="https://i.ytimg.com/vi/D3kMoaz3Fhg/hqdefault.jpg"
+                  alt=""
+                  width="480"
+                  height="360"
+                  loading="lazy"
+                />
+                <span class="video-play">PLAY</span>
+              </button>
+            </div>
+
+            <article class="community-copy">
+              <div class="community-kicker">the boys / larper meme</div>
+              <div class="community-title">La wave The Boys arriva anche qui</div>
+              <p class="community-text">
+                Questa appartiene alla wave di meme derivati da <em>The Boys</em>:
+                proprio mentre l'ultima stagione della serie riportava il
+                fandom in superficie, nasceva anche il meme del larper e delle
+                sue mille reincarnazioni.
+              </p>
+              <p class="community-text">
+                L'originale gira attorno a una versione animata con AI delle
+                scene finali del fumetto di <em>The Boys</em>, montata su
+                <em>Charlie's Inferno</em>, brano di That Handsome Devil.
+                Qui, ovviamente, Deltarune diventa la variante alternativa
+                della stessa idiozia.
+              </p>
+              <p class="community-text community-note">
+                Non ha troppo senso mettersi a spiegare il significato: e'
+                stupido, contagioso e abbastanza specifico da meritarsi un
+                posto nella categoria.
+              </p>
+              <div class="community-source">
+                Fonte:
+                <a href="https://www.youtube.com/watch?v=D3kMoaz3Fhg"
+                  >Deltarune The Boys meme su YouTube</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
       </main>
 
       <footer id="site-footer">
@@ -213,17 +312,19 @@
 
     <script src="../../assets/main.js"></script>
     <script>
-      const videoFacade = document.querySelector(".video-facade");
-
-      videoFacade.addEventListener("click", () => {
-        const iframe = document.createElement("iframe");
-        iframe.src = `https://www.youtube-nocookie.com/embed/${videoFacade.dataset.video}?autoplay=1&rel=0`;
-        iframe.title = "Carpet by Toby Fox";
-        iframe.allow =
-          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-        iframe.allowFullscreen = true;
-        iframe.referrerPolicy = "strict-origin-when-cross-origin";
-        videoFacade.replaceWith(iframe);
+      document.querySelectorAll(".video-facade").forEach((videoFacade) => {
+        videoFacade.addEventListener("click", () => {
+          const iframe = document.createElement("iframe");
+          iframe.src = `https://www.youtube-nocookie.com/embed/${videoFacade.dataset.video}?autoplay=1&rel=0`;
+          iframe.title =
+            videoFacade.dataset.title ||
+            videoFacade.getAttribute("aria-label").replace("Riproduci ", "");
+          iframe.allow =
+            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+          iframe.allowFullscreen = true;
+          iframe.referrerPolicy = "strict-origin-when-cross-origin";
+          videoFacade.replaceWith(iframe);
+        });
       });
     </script>
   </body>
