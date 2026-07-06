@@ -105,7 +105,7 @@ gaster-system/
 | `chapters/pre-cap4/chicche-cap3.html` | ✅ Aggiornato | Schede: Susie/Ralsei, Raise Up Your Bat, Gachapon e Board 3 restored |
 | `chapters/pre-cap4/varie-ed-eventuali.html` | ✅ Aggiornato | Sezioni: Dess/Asgore, Tenna host TV e Tenna/Steve Harvey |
 | `chapters/pre-cap5/index.html` | ✅ Aggiornato | Hub con Curiosità Capitolo 4, Meme/Community e Undertale 10th Anniversary |
-| `chapters/pre-cap5/curiosita-cap4.html` | ✅ Aggiornato | Organo, Kris al pianoforte, Third Sanctuary e teoria visuale GUARDIAN/Gaster |
+| `chapters/pre-cap5/curiosita-cap4.html` | ✅ Aggiornato | Organo, Kris al pianoforte, Third Sanctuary, GUARDIAN/Gaster e Switch 2 mouse mode |
 | `chapters/pre-cap5/meme-community.html` | ✅ Aggiornato | Carpet by Toby Fox, Asgore/Don't Forget e wave The Boys/Larper con embed caricati al Play |
 | `chapters/pre-cap5/undertale-10th-anniversary.html` | ✅ Creato | Dossier sui peak momenti della stream del decimo anniversario di Undertale |
 
@@ -440,6 +440,11 @@ File: `chapters/pre-cap1/survey.html`
 ### Sessione 42 — Link giocabile Pacifist Sans
 - Aggiunto nella card Pacifist Sans il link ufficiale `https://ut10-battle.undertale.com/`
 - Specificato che la fight è stata resa giocabile online da Toby dopo la fine dello stream
+
+### Sessione 43 — Switch 2 mouse mode
+- Aggiunta in `chapters/pre-cap5/curiosita-cap4.html` la quinta scheda dedicata alle modifiche Switch 2
+- Inserito video YouTube `qpeK2RVQvrk` con player-facade
+- Spiegato l'uso della modalità mouse dei Joy-Con nella fight di Mike e nei tre minigiochi
 
 ---
 
