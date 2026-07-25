@@ -155,6 +155,7 @@ function glitchFlash(el, duration = 80) {
 // ── GLOBAL MUSIC PLAYER ──
 const MUSIC_VIDEO_ID = '6z7x_hu4t4Y';
 const HOME_AUDIO_FILE = 'assets/audio/chapter5-home.mp3';
+const ROUTE_TOGGLE_SOUND = 'assets/audio/snd_icespell.ogg';
 const MUSIC_DEFAULT_VOLUME = 35;
 const youtubeReadyCallbacks = [];
 
@@ -512,10 +513,64 @@ function initChapter5Atmosphere() {
   animateSakuraPetals(layer);
 }
 
+function initHomeRouteToggle() {
+  const toggleButton = document.getElementById('route-toggle');
+  const path = window.location.pathname.replace(/\\/g, '/');
+  const isHome = !path.includes('/chapters/');
+  let toggleSound = null;
+
+  if (!isHome || !toggleButton) {
+    return;
+  }
+
+  const saved = loadProgress();
+  const savedVariant =
+    saved.home_route_variant === 'alternate' ? 'alternate' : 'normal';
+
+  function setRouteVariant(variant) {
+    const isAlternate = variant === 'alternate';
+    document.body.dataset.routeVariant = isAlternate ? 'alternate' : 'normal';
+    toggleButton.setAttribute('aria-pressed', String(isAlternate));
+    toggleButton.textContent = isAlternate
+      ? 'ROUTE // FORBIDDEN'
+      : 'ROUTE // NORMAL';
+    toggleButton.setAttribute(
+      'aria-label',
+      isAlternate
+        ? 'Ripristina la home normale'
+        : 'Attiva route proibita della home',
+    );
+  }
+
+  setRouteVariant(savedVariant);
+
+  toggleButton.addEventListener('click', () => {
+    const nextVariant =
+      document.body.dataset.routeVariant === 'alternate'
+        ? 'normal'
+        : 'alternate';
+
+    if (nextVariant === 'alternate') {
+      if (!toggleSound) {
+        toggleSound = new Audio(ROUTE_TOGGLE_SOUND);
+        toggleSound.volume = 0.42;
+        toggleSound.preload = 'auto';
+      }
+
+      toggleSound.currentTime = 0;
+      toggleSound.play().catch(() => {});
+    }
+
+    setRouteVariant(nextVariant);
+    saveProgress({ home_route_variant: nextVariant });
+  });
+}
+
 function initSharedUi() {
   applyArchiveTheme();
   enhanceDocumentSemantics();
   initChapter5Atmosphere();
+  initHomeRouteToggle();
   initGlobalMusicPlayer();
 }
 

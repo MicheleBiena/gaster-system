@@ -30,7 +30,8 @@ gaster-system/
 │   ├── style.css                     ← Tema dark pixel-art globale (VT323 + Share Tech Mono)
 │   ├── main.js                       ← Utility: localStorage, typewriter, glitch
 │   ├── audio/
-│   │   └── chapter5-home.mp3         ← Audio ufficiale Chapter 5 per la home
+│   │   ├── chapter5-home.mp3         ← Audio ufficiale Chapter 5 per la home
+│   │   └── snd_icespell.ogg          ← SFX toggle route proibita
 │   └── img/
 │       ├── pre-cap4/
 │       │   ├── roots-tiles.json        ← Manifest griglia Roots Theory
@@ -62,11 +63,16 @@ gaster-system/
     │   ├── the-roots-theory.html     ← Mappa Manhole/Hometown e teoria roots
     │   ├── chicche-cap3.html         ← Dettagli e segreti Capitolo 3
     │   └── varie-ed-eventuali.html   ← Fan theories, meme, community
-    └── pre-cap5/
-        ├── index.html                ← Hub sezioni Pre-Cap 5
-        ├── curiosita-cap4.html       ← Curiosità e segreti Capitolo 4
-        ├── meme-community.html       ← Meme e lavori community verso Capitolo 5
-        └── undertale-10th-anniversary.html ← Dossier stream Undertale 10th Anniversary
+    ├── pre-cap5/
+    │   ├── index.html                ← Hub sezioni Pre-Cap 5
+    │   ├── curiosita-cap4.html       ← Curiosità e segreti Capitolo 4
+    │   ├── meme-community.html       ← Meme e lavori community verso Capitolo 5
+    │   └── undertale-10th-anniversary.html ← Dossier stream Undertale 10th Anniversary
+    ├── pre-cap6/
+    │   └── index.html                ← Hub "Attendendo il capitolo 6"
+    └── forbidden-route/
+        └── pre-chapter-1/
+            └── index.html            ← Primo archivio route proibita
 ```
 
 ---
@@ -75,12 +81,13 @@ gaster-system/
 
 | File | Stato | Note |
 |---|---|---|
-| `index.html` | ✅ Aggiornato | Hub ridisegnato come soglia Chapter 5; Pre-Cap 5 è aperto |
+| `index.html` | ✅ Aggiornato | Hub ridisegnato come soglia Chapter 5; Pre-Cap 6 è aperto con toggle route proibita e navigazione alternativa |
 | `10anniversary.png` | ✅ Creato | Still del couch stream Undertale 10th Anniversary |
 | `newhome.png` | ✅ Creato | Still della nuova area New Home dal 10th Anniversary Stream |
 | `assets/style.css` | ✅ Aggiornato | Tema globale Chapter 5: nero, fiori, rosa/oro, accenti blu-verde |
 | `assets/main.js` | ✅ Aggiornato | Utility, temi, accessibilità, lazy media, audio esclusivo home e sakura |
 | `assets/audio/chapter5-home.mp3` | ✅ Creato | Nuovo audio home Chapter 5, riproduzione singola senza loop |
+| `assets/audio/snd_icespell.ogg` | ✅ Creato | Effetto sonoro ice spell per il toggle route proibita della home |
 | `assets/img/pre-cap4/roots-tiles.json` | ✅ Creato | Manifest tile Roots Theory: griglia 4x4 con cella `0_0` vuota |
 | `assets/img/pre-cap4/hometown/` | ✅ Creato | Tile Hometown 384x256 nominate per posizione griglia |
 | `assets/img/pre-cap4/manhole/` | ✅ Creato | Tile Manhole 384x256 nominate per posizione griglia |
@@ -108,6 +115,8 @@ gaster-system/
 | `chapters/pre-cap5/curiosita-cap4.html` | ✅ Aggiornato | Organo, Kris al pianoforte, Third Sanctuary, GUARDIAN/Gaster e Switch 2 mouse mode |
 | `chapters/pre-cap5/meme-community.html` | ✅ Aggiornato | Carpet by Toby Fox, Asgore/Don't Forget e wave The Boys/Larper con embed caricati al Play |
 | `chapters/pre-cap5/undertale-10th-anniversary.html` | ✅ Creato | Dossier sui peak momenti della stream del decimo anniversario di Undertale |
+| `chapters/pre-cap6/index.html` | ✅ Creato | Hub "Attendendo il Capitolo 6" con curiosità, community work, route proibita e teoria futura |
+| `chapters/forbidden-route/pre-chapter-1/index.html` | ✅ Creato | Primo hub separato per la route proibita |
 
 ---
 
@@ -120,6 +129,7 @@ Chiave root: `gaster_system_data` (oggetto JSON)
 | `quiz_precap1` | number | Punteggio SURVEY_PROGRAM (0–10) |
 | `quiz_precap2` | number | Punteggio quiz Pre-Cap 2 (da implementare) |
 | `music_volume` | number | Volume del player musicale globale (0–100) |
+| `home_route_variant` | string | Variante homepage: `normal` o `alternate` |
 
 **API disponibile in `main.js`:**
 - `loadProgress()` → oggetto con tutti i dati salvati
@@ -171,6 +181,13 @@ File: `chapters/pre-cap1/survey.html`
 2. **Meme / community work** — video, gag e produzioni fan nate dopo il Capitolo 4
 3. **Undertale 10th Anniversary Event** — Old Home, Gerson, Gaster door e materiali emersi dalle stream
 4. **Sezione teoria futura** — da decidere in base agli sviluppi community e alla prossima run
+
+## Contenuti pianificati: Pre-Cap 6
+
+1. **Curiosità Capitolo 5** — segreti, dialoghi, musica e dettagli da archiviare dopo la run
+2. **Meme / community work** — video, gag, edit e fan work nati dopo il Capitolo 5
+3. **Route proibita** — sezione separata per chicche e contenuti della strada cominciata con magie del ghiaccio
+4. **Teoria futura** — spazio libero per un dossier grande o per un formato diverso in base agli sviluppi
 
 ---
 
@@ -445,6 +462,32 @@ File: `chapters/pre-cap1/survey.html`
 - Aggiunta in `chapters/pre-cap5/curiosita-cap4.html` la quinta scheda dedicata alle modifiche Switch 2
 - Inserito video YouTube `qpeK2RVQvrk` con player-facade
 - Spiegato l'uso della modalità mouse dei Joy-Con nella fight di Mike e nei tre minigiochi
+
+### Sessione 44 — Apertura Pre-Cap 6 e route proibita home
+- Aggiornato `index.html`: Pre-Cap 5 archiviato e nuova card `Attendendo il Capitolo 6`
+- Creato `chapters/pre-cap6/index.html` come hub provvisorio con curiosità, community work, route proibita e teoria futura
+- Aggiunto in home il tasto `ROUTE // NORMAL` / `ROUTE // FORBIDDEN`
+- Implementata una variante corrotta/glaciale della homepage ispirata alla route proibita, con stato salvato in `localStorage.home_route_variant`
+- Aggiornati `assets/style.css` e `assets/main.js` per supportare lo switch visivo senza ricaricare la pagina
+
+### Sessione 45 — Dark forbidden restyle
+- Rimossi dalla home i testi giapponesi legati alla fase Pre-Cap 5
+- Sostituiti i motivi laterali e secondari con simboli Wingdings, stringhe terminal e testo glitch
+- Resa la variante `ROUTE // FORBIDDEN` più scura e proibita: gelo nero, accenti cyan/viola, cuore rosso e linee di corruzione
+- I petali della home diventano frammenti di ghiaccio sporco nella route proibita
+
+### Sessione 46 — SFX toggle route
+- Collegato `assets/audio/snd_icespell.ogg` al tasto route della homepage
+- Il suono parte solo al click del toggle e non usa autoplay
+- Limitato l'SFX al solo passaggio `ROUTE // NORMAL` → `ROUTE // FORBIDDEN`
+
+### Sessione 47 — Navigazione route proibita
+- Rimossi dalla home riferimenti troppo specifici ai contenuti futuri della route proibita
+- La route proibita ora si appoggia solo alla premessa nota: il path proibito inizia con magie del ghiaccio
+- Separata la navigazione della homepage: archivio normale e archivio proibito puntano a sezioni diverse
+- Creato `chapters/forbidden-route/pre-chapter-1/index.html` come prima sezione della route proibita
+- Corretto il CSS della home: in route proibita le card dell'archivio normale vengono davvero nascoste e rese non cliccabili
+- Sostituiti i petali ricolorati della route proibita con fiocchi di neve CSS e sfondo più buio
 
 ---
 

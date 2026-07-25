@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GASTER SYSTEM — Deltarune Blindrun</title>
-    <link rel="stylesheet" href="assets/style.css?v=20260623-3" />
+    <link rel="stylesheet" href="assets/style.css?v=20260725-3" />
   </head>
-  <body data-archive-theme="chapter5">
+  <body data-archive-theme="chapter5" data-route-variant="normal">
     <div id="scanlines"></div>
     <div id="vignette"></div>
     <div class="sakura-layer" id="sakura-layer" aria-hidden="true">
@@ -200,39 +200,68 @@
           >GASTER_SYSTEM <span class="wingdings">v</span> DELTARUNE</span
         >
         <span id="header-sub">gibbotto_x_red — blindrun documentation</span>
+        <button
+          class="route-toggle"
+          id="route-toggle"
+          type="button"
+          aria-pressed="false"
+          aria-label="Attiva route proibita della home"
+        >
+          ROUTE // NORMAL
+        </button>
       </header>
 
       <main id="hub" class="home-hub">
         <section class="title-gate" aria-labelledby="gate-title">
-          <div class="title-jp-side left">根</div>
-          <div class="title-jp-side right">みな、そうなる</div>
-          <div class="system-kicker">// NUOVA SOGLIA //</div>
-          <div class="jp-title-band">桃色と黄金の野</div>
+          <div class="title-symbol-side left wingdings">v v v v v</div>
+          <div class="title-symbol-side right">ENTRY_17 // COLD TRACE</div>
+          <div class="system-kicker">
+            <span class="route-normal-only">// NUOVA SOGLIA //</span>
+            <span class="route-alt-only">// ROUTE ALTERNATIVA //</span>
+          </div>
+          <div class="glitch-title-band">
+            <span class="route-normal-only">NO RETURN // SYSTEM TRACE // NEXT DOOR</span>
+            <span class="route-alt-only">ICE MAGIC // FIRST STEP // FORBIDDEN PATH</span>
+          </div>
           <h1 class="deltarune-title" id="gate-title" aria-label="Deltarune">
             delta<span class="heart-rune">♥</span>rune
-            <span class="jp-rune">根 // 開花 // みな、そうなる</span>
+            <span class="sub-rune route-normal-only">ROOTS // PINK AND GOLD // THEY ALL WILL</span>
+            <span class="sub-rune route-alt-only">THE FORBIDDEN PATH BEGAN WITH ICE MAGIC</span>
           </h1>
           <div class="chapter-mark">
-            CHAPTER 5
-            <span class="jp-chapter">第五章</span>
+            <span class="route-normal-only">PRE-CHAPTER 6</span>
+            <span class="route-alt-only">FORBIDDEN ROUTE</span>
+            <span class="chapter-sub route-normal-only">WAITING FOR CHAPTER 6</span>
+            <span class="chapter-sub route-alt-only">THE PATH PROHIBITED</span>
           </div>
           <p class="gate-line">
-            This time for sure... Tori will finally see. See what really
-            happened. That I just wanted to... protect everyone. And this time,
-            she'll have to believe me. They all will.
+            <span class="route-normal-only">
+              This time for sure... Tori will finally see. See what really
+              happened. That I just wanted to... protect everyone. And this
+              time, she'll have to believe me. They all will.
+            </span>
+            <span class="route-alt-only">
+              La stessa home, ma vista dalla strada che non doveva aprirsi.
+              Per ora sappiamo solo da dove comincia: magie del ghiaccio,
+              deviazione netta, archivio separato.
+            </span>
           </p>
-          <div class="gate-meta">Capitolo 4 archiviato · Cap 5 aperto</div>
+          <div class="gate-meta">
+            <span class="route-normal-only">Capitolo 5 archiviato · Cap 6 aperto</span>
+            <span class="route-alt-only">Forbidden path · alternate archive</span>
+          </div>
         </section>
 
         <div class="threshold-ribbon">
-          <span class="jp-ribbon">根 // 桃色と黄金 // みな、そうなる</span>
+          <span class="threshold-code route-normal-only">ROOTS // THE FIELDS OF PINK AND GOLD // THEY ALL WILL</span>
+          <span class="threshold-code route-alt-only">ICE MAGIC // THRESHOLD // DIFFERENT ARCHIVE</span>
         </div>
 
         <div id="hub-label">// ARCHIVIO DI AVANZAMENTO //</div>
 
         <nav
           id="chapter-nav"
-          class="chapter-grid"
+          class="chapter-grid normal-route-nav"
           aria-label="Seleziona sezione"
         >
           <a class="chapter-card done" href="chapters/pre-cap1/index.html">
@@ -274,11 +303,39 @@
             <span class="card-status">● COMPLETATO</span>
           </a>
 
-          <a class="chapter-card current" href="chapters/pre-cap5/index.html">
+          <a class="chapter-card done" href="chapters/pre-cap5/index.html">
             <span class="card-tag">PRE-CAP 5</span>
             <span class="card-title">DELTARUNE — CAPITOLO 4</span>
             <span class="card-desc"
               >10th Anniversary<br />Memes · community work</span
+            >
+            <span class="card-status">● COMPLETATO</span>
+          </a>
+
+          <a class="chapter-card current" href="chapters/pre-cap6/index.html">
+            <span class="card-tag">PRE-CAP 6</span>
+            <span class="card-title">ATTENDENDO IL CAPITOLO 6</span>
+            <span class="card-desc"
+              >Capitolo 5 archiviato.<br />Curiosita, community work e route
+              alternative.</span
+            >
+            <span class="card-status">● APERTO</span>
+          </a>
+        </nav>
+
+        <nav
+          class="chapter-grid forbidden-route-nav"
+          aria-label="Seleziona sezione della route proibita"
+        >
+          <a
+            class="chapter-card current forbidden-card"
+            href="chapters/forbidden-route/pre-chapter-1/index.html"
+          >
+            <span class="card-tag">PRE-CHAPTER 1</span>
+            <span class="card-title">IL PRIMO STRAPPO</span>
+            <span class="card-desc"
+              >Archivio separato della route proibita.<br />Per ora: il punto
+              in cui il ghiaccio entra nel sistema.</span
             >
             <span class="card-status">● APERTO</span>
           </a>
@@ -295,7 +352,7 @@
       </footer>
     </div>
 
-    <script src="assets/main.js?v=20260623-4"></script>
+    <script src="assets/main.js?v=20260725-3"></script>
     <script>
       // Mostra punteggio salvato se presente
       const saved = loadProgress();
