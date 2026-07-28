@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curiosita - PRE-CAP 6</title>
+    <link rel="stylesheet" href="../../assets/style.css?v=20260728-noelle-2" />
+    <style>
+      .curiosity-feature {
+        border-color: rgba(127, 223, 255, 0.34);
+      }
+
+      .curiosity-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(220px, 0.32fr);
+        gap: 1.4rem;
+        align-items: stretch;
+      }
+
+      .curiosity-copy {
+        border: 1px solid rgba(127, 223, 255, 0.26);
+        background: rgba(7, 27, 38, 0.58);
+        padding: clamp(1rem, 3vw, 1.7rem);
+      }
+
+      .curiosity-copy h1 {
+        margin: 0.2rem 0 1rem;
+        color: #f7fbff;
+        font-size: clamp(1.75rem, 5vw, 3.2rem);
+        line-height: 1.05;
+      }
+
+      .curiosity-copy p {
+        max-width: 76ch;
+      }
+
+      .micro-label {
+        margin: 0;
+        color: #ff6c98;
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .curiosity-facts {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .curiosity-facts div {
+        border: 1px solid rgba(127, 223, 255, 0.26);
+        background: rgba(4, 18, 28, 0.76);
+        padding: 1rem;
+        color: #f7fbff;
+        font-size: clamp(1rem, 2.4vw, 1.25rem);
+      }
+
+      .curiosity-facts span {
+        display: block;
+        margin-bottom: 0.42rem;
+        color: #8be8ff;
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+      }
+
+      .lyric-reading {
+        margin-top: 1.6rem;
+      }
+
+      .lyric-grid {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .lyric-row {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        border: 1px solid rgba(127, 223, 255, 0.22);
+        background: rgba(6, 19, 28, 0.62);
+      }
+
+      .lyric-original,
+      .lyric-translation {
+        padding: 1rem;
+        font-size: clamp(1rem, 2.2vw, 1.12rem);
+        line-height: 1.55;
+      }
+
+      .lyric-original {
+        color: #ffd7e4;
+        border-right: 1px solid rgba(127, 223, 255, 0.18);
+      }
+
+      .lyric-original span {
+        display: block;
+        margin-bottom: 0.42rem;
+        color: #8be8ff;
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+      }
+
+      .lyric-translation {
+        color: #d9f7ff;
+      }
+
+      .video-curiosity {
+        display: grid;
+        grid-template-columns: minmax(0, 0.58fr) minmax(0, 0.42fr);
+        gap: 1.2rem;
+        align-items: stretch;
+      }
+
+      .curiosity-video-frame {
+        position: relative;
+        overflow: hidden;
+        min-height: 260px;
+        border: 1px solid rgba(127, 223, 255, 0.26);
+        background: rgba(4, 18, 28, 0.76);
+        aspect-ratio: 16 / 9;
+      }
+
+      .curiosity-video-frame iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .curiosity-note {
+        border: 1px solid rgba(127, 223, 255, 0.26);
+        background: rgba(7, 27, 38, 0.58);
+        padding: clamp(1rem, 3vw, 1.45rem);
+      }
+
+      .curiosity-note h2 {
+        margin: 0.2rem 0 0.9rem;
+        color: #f7fbff;
+        font-size: clamp(1.45rem, 4vw, 2.25rem);
+        line-height: 1.05;
+      }
+
+      @media (max-width: 760px) {
+        .curiosity-hero,
+        .video-curiosity,
+        .lyric-row {
+          grid-template-columns: 1fr;
+        }
+
+        .lyric-original {
+          border-right: 0;
+          border-bottom: 1px solid rgba(127, 223, 255, 0.18);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">
+          <a class="back-link" href="index.html">&larr; INDIETRO</a>
+          PRE-CAP 6 - CURIOSITA
+        </span>
+        <span id="header-sub"
+          >capitolo 5 &middot; dev letter &middot; dettagli vari</span
+        >
+      </header>
+
+      <main class="page-content">
+        <section class="section-block">
+          <div class="section-header">// COSA CI FINISCE QUI //</div>
+          <div class="narrative">
+            Curiosita sul Capitolo 5, note dalle dev letter, dettagli di
+            produzione, piccole cose nascoste, roba che non merita una sezione
+            enorme ma che vale la pena tenere da parte.
+          </div>
+        </section>
+
+        <section class="section-block curiosity-feature">
+          <div class="section-header">// 01 - PINK //</div>
+          <div class="curiosity-hero">
+            <div class="curiosity-copy">
+              <p class="micro-label">SECRET BOSS // CUTIE MEW MEW MAGIC</p>
+              <h1>La fight contro Pink canta in due lingue</h1>
+              <p>
+                Il boss segreto del Capitolo 5 arriva con una delle scelte piu
+                fuori scala della OST: <em>Cutie Mew Mew Magic</em>, brano di
+                battaglia con Hatsune Miku come voce ospite e Camellia al
+                tuning.
+              </p>
+              <p>
+                La wiki segnala il brano come traccia 32 della OST del Capitolo
+                5: 3:04, BPM 180, tonalita fra Do minore e Do diesis minore,
+                leitmotiv di <em>Don't Forget</em>,
+                <em>THE WORLD REVOLVING</em>, Pink e <em>Spooktune</em>.
+              </p>
+            </div>
+            <aside class="curiosity-facts">
+              <div>
+                <span>VOCE</span>
+                Hatsune Miku
+              </div>
+              <div>
+                <span>MUSICA</span>
+                Toby Fox
+              </div>
+              <div>
+                <span>TUNING</span>
+                Camellia
+              </div>
+              <div>
+                <span>FILE</span>
+                pink
+              </div>
+            </aside>
+          </div>
+
+          <div class="lyric-reading">
+            <div class="section-header">// TESTO E TRADUZIONE //</div>
+            <div class="lyric-grid">
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>INGLESE</span>
+                  She's the nya nya girl with the mya mya brigade
+                </div>
+                <div class="lyric-translation">
+                  E' la ragazza nya nya con la brigata mya mya
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>GIAPPONESE</span>
+                  地獄で燃えればいいの プリティ革命
+                </div>
+                <div class="lyric-translation">
+                  Se brucio all'inferno va bene, pretty rivoluzione!
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>GIAPPONESE</span>
+                  世界を守りーる ネコのにゃもりずむ
+                </div>
+                <div class="lyric-translation">
+                  Proteggo il mondo, tengo il ritmo anche con le mie fusa
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>MISTO</span>
+                  She's saving the day, ミュウ ミュウ 助けて
+                </div>
+                <div class="lyric-translation">
+                  Sta salvando la giornata, Mew Mew aiutami
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>INGLESE</span>
+                  She's the nya nya girl who is ready to play
+                </div>
+                <div class="lyric-translation">
+                  E' la ragazza nya nya pronta a giocare
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>GIAPPONESE</span>
+                  天国で kiss すればいいの キューティ革命
+                </div>
+                <div class="lyric-translation">
+                  Se bacio in paradiso va bene, cutie rivoluzione!
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>GIAPPONESE</span>
+                  世界をさつりーく 弁当を忘りーちゅ
+                </div>
+                <div class="lyric-translation">
+                  Massacro il mondo mentre dimentico il mio pranzo
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>MISTO</span>
+                  She's saving the day, ミュウ ミュウ 助けて
+                </div>
+                <div class="lyric-translation">
+                  Sta salvando la giornata, Mew Mew aiutami
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>MISTO</span>
+                  She is saving the day, ネコあつめめ
+                </div>
+                <div class="lyric-translation">
+                  Sta salvando la giornata, colleziona gattini
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>MISTO</span>
+                  She is saving the day, 歌詞分からね
+                </div>
+                <div class="lyric-translation">
+                  Sta salvando la giornata, non capisco il testo
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>MISTO</span>
+                  Cutie mew, mew, magic で変身しちゃいましょう
+                </div>
+                <div class="lyric-translation">
+                  Usiamo la Cutie Mew Mew Magic per trasformarci!
+                </div>
+              </div>
+
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>MEOW</span>
+                  Meow, meow-meow-meow-meow / Meow-meow-meow-meow,
+                  meow-meow, meow / Meow, meow-meow-meow-meow /
+                  Meow-meow-meow-meow, meow-meow, meow
+                </div>
+                <div class="lyric-translation">
+                  Miao, miao-miao-miao-miao / Miao-miao-miao-miao, miao-miao,
+                  miao / Miao, miao-miao-miao-miao / Miao-miao-miao-miao,
+                  miao-miao, miao
+                </div>
+              </div>
+
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>MISTO</span>
+                  Sweetなアナタへ bullet, bullet, wish you luck
+                </div>
+                <div class="lyric-translation">
+                  A te che sei sweet, bullet, bullet, ti auguro buona fortuna
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>MISTO</span>
+                  ほらぷんすか歌声 mew it, mew it, you'll be struck
+                </div>
+                <div class="lyric-translation">
+                  Senti la mia voce imbronciata, mew it, mew it, verrai colpito
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>GIAPPONESE</span>
+                  でも dream なココロで
+                </div>
+                <div class="lyric-translation">Ma con un cuore da dream</div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>GIAPPONESE</span>
+                  ぎゅーっとぎゅーっとケツイして
+                </div>
+                <div class="lyric-translation">
+                  Stringi, stringi, e riempiti di determinazione
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>INGLESE</span>
+                  Cutie's here, kitty's here
+                </div>
+                <div class="lyric-translation">Cutie e' qui, Kitty e' qui</div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>INGLESE</span>
+                  To save you
+                </div>
+                <div class="lyric-translation">Per salvarti</div>
+              </div>
+
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>INGLESE</span>
+                  She's the nya nya girl with the mya mya brigade
+                </div>
+                <div class="lyric-translation">
+                  E' la ragazza nya nya con la brigata mya mya
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>GIAPPONESE</span>
+                  地獄で燃えればいいの プリティ革命
+                </div>
+                <div class="lyric-translation">
+                  Se brucio all'inferno va bene, pretty rivoluzione!
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>GIAPPONESE</span>
+                  世界を守りーる ネコのにゃもりずむ
+                </div>
+                <div class="lyric-translation">
+                  Proteggo il mondo, tengo il ritmo anche con le mie fusa
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>GIAPPONESE</span>
+                  世界周りに 残んのリズム
+                </div>
+                <div class="lyric-translation">
+                  Il ritmo rimane mentre il mondo gira
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>MISTO</span>
+                  She's saving the day, ミュウ ミュウ 助けて
+                </div>
+                <div class="lyric-translation">
+                  Sta salvando la giornata, Mew Mew aiutami
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>INGLESE</span>
+                  She's the nya nya girl who is ready to play
+                </div>
+                <div class="lyric-translation">
+                  E' la ragazza nya nya pronta a giocare
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>GIAPPONESE</span>
+                  天国でKISSすればいいの キューティ革命
+                </div>
+                <div class="lyric-translation">
+                  Se bacio in paradiso va bene, cutie rivoluzione!
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>GIAPPONESE</span>
+                  世界をさつりーく 弁当を忘りーちゅ
+                </div>
+                <div class="lyric-translation">
+                  Massacro il mondo mentre dimentico il mio pranzo
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>MISTO</span>
+                  She's saving the day, ミュウ ミュウ 助けて
+                </div>
+                <div class="lyric-translation">
+                  Sta salvando la giornata, Mew Mew aiutami
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>MISTO</span>
+                  She is saving the day, ネコあつめめ
+                </div>
+                <div class="lyric-translation">
+                  Sta salvando la giornata, colleziona gattini
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>MISTO</span>
+                  She is saving the day, 歌詞分からね
+                </div>
+                <div class="lyric-translation">
+                  Sta salvando la giornata, non capisco il testo
+                </div>
+              </div>
+              <div class="lyric-row">
+                <div class="lyric-original">
+                  <span>MISTO</span>
+                  Cutie mew, mew, magic で変身しちゃいましょう
+                </div>
+                <div class="lyric-translation">
+                  Usiamo la Cutie Mew Mew Magic per trasformarci!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block curiosity-feature">
+          <div class="section-header">// 02 - FLOWERY ALL'ORGANO //</div>
+          <div class="video-curiosity">
+            <div class="curiosity-video-frame">
+              <iframe
+                src="https://www.youtube.com/embed/OBmXYN3YRuM"
+                title="Flowery theme organ reference"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="curiosity-note">
+              <p class="micro-label">CHAPTER 4 ORGAN // CHAPTER 5 PAYOFF</p>
+              <h2>La traccia "annoying" era Flowery</h2>
+              <p>
+                Nell'organo del Capitolo 4 c'era una melodia suonabile che
+                riceveva una reazione stranamente precisa: sembrava
+                <em>annoying</em>, ma non avevamo ancora un riferimento chiaro
+                a cui agganciarla.
+              </p>
+              <p>
+                Col Capitolo 5 il pezzo torna al suo posto: quella melodia era
+                il tema di Flowery. Il dettaglio cambia retroattivamente la
+                scena dell'organo, perche' anticipava gia' l'odio di Ralsei nei
+                suoi confronti prima che sapessimo davvero chi stavamo
+                ascoltando.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer id="site-footer">
+        <span>GASTER_SYSTEM // PRE-CAP 6 // CURIOSITA</span>
+      </footer>
+    </div>
+
+    <script src="../../assets/main.js"></script>
+  </body>
+</html>

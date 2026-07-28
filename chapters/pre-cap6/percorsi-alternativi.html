@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Percorsi alternativi - PRE-CAP 6</title>
+    <link rel="stylesheet" href="../../assets/style.css?v=20260728-noelle-2" />
+    <style>
+      .alt-path-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+      }
+
+      .alt-path-card {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1fr);
+        gap: 1em;
+        align-items: stretch;
+        border: 1px solid color-mix(in srgb, var(--border) 44%, transparent);
+        background:
+          linear-gradient(180deg, rgba(6, 20, 30, 0.88), rgba(2, 8, 14, 0.88)),
+          repeating-linear-gradient(
+            90deg,
+            color-mix(in srgb, var(--accent-2) 4%, transparent) 0,
+            color-mix(in srgb, var(--accent-2) 4%, transparent) 2px,
+            transparent 2px,
+            transparent 10px
+          );
+        padding: 1em;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .alt-path-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-left: 4px solid var(--accent-2);
+        pointer-events: none;
+      }
+
+      .alt-path-video {
+        min-width: 0;
+      }
+
+      .alt-path-video iframe {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        height: auto;
+        border: 1px solid color-mix(in srgb, var(--border) 42%, transparent);
+        background: #000;
+      }
+
+      .alt-path-copy {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.65em;
+      }
+
+      .alt-path-kicker,
+      .alt-path-note {
+        font-family: var(--font-mono);
+        font-size: 14px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .alt-path-kicker {
+        color: var(--accent-3);
+      }
+
+      .alt-path-title {
+        font-family: var(--font-display);
+        font-size: 1.8em;
+        line-height: 1;
+        letter-spacing: 0.06em;
+      }
+
+      .alt-path-text {
+        font-family: var(--font-mono);
+        font-size: 15px;
+        line-height: 1.65;
+        color: var(--dim);
+        letter-spacing: 0.03em;
+      }
+
+      .alt-path-note {
+        color: var(--accent-2);
+        margin-top: auto;
+      }
+
+      .alt-path-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        width: fit-content;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 820px) {
+        .alt-path-card {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">
+          <a class="back-link" href="index.html">&larr; INDIETRO</a>
+          PRE-CAP 6 - PERCORSI ALTERNATIVI
+        </span>
+        <span id="header-sub"
+          >capitolo 5 &middot; quando il gioco prende nota</span
+        >
+      </header>
+
+      <main class="page-content">
+        <section class="section-block">
+          <div class="section-header">// COSA STIAMO GUARDANDO //</div>
+          <div class="narrative">
+            Il capitolo 5 è pieno di variazioni e momenti di scelta. Ovviamente
+            la rigiocabilità è un pregio, ma è tosta per noi recuperare tutto
+            ciò che conta alla prima run.
+          </div>
+          <div class="narrative">
+            Questa pagina serve a raccogliere quei bivi, sia nel light world che
+            nel mondo dei fiori.
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-header">// ARCHIVIO //</div>
+          <div class="alt-path-list">
+            <article class="alt-path-card">
+              <div class="alt-path-video">
+                <iframe
+                  src="https://www.youtube.com/embed/1utf9XZIv5E"
+                  title="Deltarune Chapter 5 - Pizzapants confession choices"
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                  "
+                  allowfullscreen
+                  referrerpolicy="strict-origin-when-cross-origin"
+                ></iframe>
+              </div>
+
+              <div class="alt-path-copy">
+                <div class="alt-path-kicker">01 // LIGHT WORLD</div>
+                <div class="alt-path-title">Pizzapants e la finta ragazza</div>
+                <div class="alt-path-text">
+                  Qui il gioco ci lascia confessare a Pizzapants cosa e'
+                  successo davvero con la sua "ragazza". Non c'e' un singolo
+                  modo pulito per farlo: si puo' girarci intorno, essere piu'
+                  diretti, scegliere quanto male fargli arrivare la notizia.
+                </div>
+
+                <a
+                  class="alt-path-link"
+                  href="https://www.youtube.com/watch?v=1utf9XZIv5E"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Apri video</a
+                >
+              </div>
+            </article>
+
+            <article class="alt-path-card">
+              <div class="alt-path-video">
+                <iframe
+                  src="https://www.youtube.com/embed/toRnZv7Dnwg"
+                  title="Deltarune Chapter 5 - Flower Castle east and west dialogue choices"
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                  "
+                  allowfullscreen
+                  referrerpolicy="strict-origin-when-cross-origin"
+                ></iframe>
+              </div>
+
+              <div class="alt-path-copy">
+                <div class="alt-path-kicker">02 // FLOWER CASTLE</div>
+                <div class="alt-path-title">
+                  Castello dei fiori: est e ovest
+                </div>
+                <div class="alt-path-text">
+                  Nel castello dei fiori, sui lati destro e sinistro, possiamo
+                  vedere scene particolari: momenti intimi tra Susie e Ralsei,
+                  oppure dialoghi rivolti direttamente a noi.
+                </div>
+                <div class="alt-path-text">
+                  Sono variazioni brevi, ma pesanti. Scavano nella psicologia
+                  dei personaggi e, ovviamente, hanno fatto esplodere il web con
+                  teorie di ogni tipo.
+                </div>
+
+                <a
+                  class="alt-path-link"
+                  href="https://www.youtube.com/watch?v=toRnZv7Dnwg"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Apri video</a
+                >
+              </div>
+            </article>
+
+            <article class="alt-path-card">
+              <div class="alt-path-video">
+                <iframe
+                  src="https://www.youtube.com/embed/q12v4R1-QOo"
+                  title="Deltarune Chapter 5 - Tenna scenes if not delivered to Mettaton"
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                  "
+                  allowfullscreen
+                  referrerpolicy="strict-origin-when-cross-origin"
+                ></iframe>
+              </div>
+
+              <div class="alt-path-copy">
+                <div class="alt-path-kicker">03 // CONSEGUENZA CAPITOLO 4</div>
+                <div class="alt-path-title">
+                  Tenna non consegnato a Mettaton
+                </div>
+                <div class="alt-path-text">
+                  Se nel Capitolo 4 non abbiamo consegnato Tenna a casa di
+                  Mettaton, il Capitolo 5 conserva quella scelta e gli lascia
+                  spazio in scene dedicate.
+                </div>
+                <div class="alt-path-text">
+                  E' una variazione bella grossa perche' non nasce da un bivio
+                  interno al Capitolo 5, ma da una decisione precedente che il
+                  gioco si porta dietro.
+                </div>
+
+                <a
+                  class="alt-path-link"
+                  href="https://www.youtube.com/watch?v=q12v4R1-QOo"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Apri video</a
+                >
+              </div>
+            </article>
+
+            <article class="alt-path-card">
+              <div class="alt-path-video">
+                <iframe
+                  src="https://www.youtube.com/embed/tA06MRjmNMg"
+                  title="Deltarune Chapter 5 - Climbing contest possible prizes"
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                  "
+                  allowfullscreen
+                  referrerpolicy="strict-origin-when-cross-origin"
+                ></iframe>
+              </div>
+
+              <div class="alt-path-copy">
+                <div class="alt-path-kicker">04 // GARA DI SCALATA</div>
+                <div class="alt-path-title">Tutti i premi possibili</div>
+                <div class="alt-path-text">
+                  La gara di scalata puo' chiudersi con premi diversi. Le varie
+                  "principesse" cambiano a seconda del tuo tempo.
+                </div>
+
+                <a
+                  class="alt-path-link"
+                  href="https://www.youtube.com/watch?v=tA06MRjmNMg"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Apri video</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer id="site-footer">
+        <span>GASTER_SYSTEM // PRE-CAP 6 // PERCORSI ALTERNATIVI</span>
+      </footer>
+    </div>
+
+    <script src="../../assets/main.js"></script>
+  </body>
+</html>

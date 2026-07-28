@@ -458,10 +458,6 @@ function animateSakuraPetals(layer) {
 }
 
 function initChapter5Atmosphere() {
-  if (getArchiveTheme() !== 'chapter5') {
-    return;
-  }
-
   const existingLayer = document.getElementById('sakura-layer');
   if (existingLayer) {
     animateSakuraPetals(existingLayer);

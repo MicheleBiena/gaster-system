@@ -69,6 +69,23 @@ body[data-route-variant="alternate"] {
   --shadow-cyan: rgba(119, 234, 255, 0.3);
 }
 
+body:not([data-route-variant="alternate"]) {
+  --text: #fff9ed;
+  --dim: #d8d5c7;
+  --dim2: #24463f;
+  --panel: rgba(6, 20, 30, 0.82);
+  --panel-solid: #050d14;
+  --accent: #f7d37c;
+  --accent-2: #7fd7b2;
+  --accent-3: #ff7894;
+  --red: #ff3f69;
+  --green: #7fd7b2;
+  --scanline: rgba(127, 215, 178, 0.038);
+  --border: #72c2ff;
+  --shadow-blue: rgba(114, 194, 255, 0.26);
+  --shadow-cyan: rgba(127, 215, 178, 0.24);
+}
+
 html,
 body {
   width: 100%;
@@ -137,7 +154,33 @@ body[data-route-variant="alternate"]::before {
   animation: frostBreath 12s ease-in-out infinite alternate;
 }
 
-body:not([data-archive-theme="chapter5"])::before {
+body:not([data-route-variant="alternate"])::before {
+  background:
+    radial-gradient(circle at 18% 16%, rgba(247, 211, 124, 0.22) 0 2px, transparent 3px),
+    radial-gradient(circle at 28% 22%, rgba(255, 63, 105, 0.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 41% 14%, rgba(127, 215, 178, 0.2) 0 2px, transparent 3px),
+    radial-gradient(circle at 63% 18%, rgba(247, 211, 124, 0.2) 0 2px, transparent 3px),
+    radial-gradient(circle at 78% 13%, rgba(114, 194, 255, 0.18) 0 2px, transparent 3px),
+    radial-gradient(ellipse at 50% 92%, rgba(127, 215, 178, 0.18), transparent 58%),
+    radial-gradient(ellipse at 10% 18%, rgba(114, 194, 255, 0.18), transparent 28%),
+    radial-gradient(ellipse at 90% 28%, rgba(255, 63, 105, 0.12), transparent 28%),
+    linear-gradient(180deg, rgba(2, 9, 18, 0.48), rgba(4, 15, 24, 0.88));
+  background-size:
+    220px 110px,
+    240px 120px,
+    210px 100px,
+    260px 130px,
+    230px 120px,
+    auto,
+    auto,
+    auto,
+    auto;
+  opacity: 0.72;
+  mix-blend-mode: screen;
+  animation: noelleWelcomeGlow 14s ease-in-out infinite alternate;
+}
+
+body[data-archive-theme="legacy-archive"]::before {
   background:
     radial-gradient(ellipse at 50% 92%, rgba(31, 124, 255, 0.26), transparent 58%),
     radial-gradient(ellipse at 10% 18%, rgba(255, 35, 76, 0.1), transparent 24%);
@@ -145,7 +188,7 @@ body:not([data-archive-theme="chapter5"])::before {
   animation: none;
 }
 
-body:not([data-archive-theme="chapter5"])::after {
+body[data-archive-theme="legacy-archive"]::after {
   background:
     linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.36) 42%, rgba(0, 0, 0, 0.94) 100%),
     repeating-linear-gradient(
@@ -188,6 +231,19 @@ body[data-route-variant="alternate"]::after {
       transparent 7px
     );
   opacity: 0.94;
+}
+
+body:not([data-route-variant="alternate"])::after {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.02) 0%, rgba(2, 10, 18, 0.46) 45%, rgba(0, 0, 0, 0.94) 100%),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 249, 237, 0.032) 0,
+      rgba(255, 249, 237, 0.032) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+  opacity: 0.76;
 }
 
 .route-alt-only {
@@ -293,6 +349,34 @@ input[type="range"] {
   animation-iteration-count: infinite;
   animation-fill-mode: both;
   will-change: transform;
+}
+
+body:not([data-route-variant="alternate"]) .sakura-petal {
+  width: calc(var(--size) * 0.44);
+  height: calc(var(--size) * 0.44);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.98), transparent 24%),
+    radial-gradient(circle at center, rgba(255, 249, 237, 0.92), rgba(114, 194, 255, 0.22) 68%, transparent 72%);
+  opacity: 0.86;
+  box-shadow:
+    0 0 10px rgba(255, 249, 237, 0.38),
+    0 0 18px rgba(114, 194, 255, 0.16);
+}
+
+body:not([data-route-variant="alternate"]) .sakura-petal:nth-child(3n) {
+  background: radial-gradient(circle at center, #fff7cc 0 42%, #f7d37c 44% 72%, transparent 74%);
+  box-shadow: 0 0 12px rgba(247, 211, 124, 0.52);
+}
+
+body:not([data-route-variant="alternate"]) .sakura-petal:nth-child(4n) {
+  background: radial-gradient(circle at center, #ffe6ed 0 40%, #ff7894 42% 72%, transparent 74%);
+  box-shadow: 0 0 12px rgba(255, 120, 148, 0.5);
+}
+
+body:not([data-route-variant="alternate"]) .sakura-petal:nth-child(5n) {
+  background: radial-gradient(circle at center, #eafff4 0 40%, #7fd7b2 42% 72%, transparent 74%);
+  box-shadow: 0 0 12px rgba(127, 215, 178, 0.48);
 }
 
 body[data-route-variant="alternate"] .sakura-petal {
@@ -534,6 +618,27 @@ body[data-route-variant="alternate"] .route-toggle::before {
   text-align: center;
 }
 
+body:not([data-route-variant="alternate"]) .title-gate {
+  border-color: rgba(114, 194, 255, 0.76);
+  background:
+    linear-gradient(180deg, rgba(3, 17, 34, 0.97), rgba(4, 28, 48, 0.92)),
+    radial-gradient(ellipse at 50% 14%, rgba(114, 194, 255, 0.16), transparent 40%),
+    radial-gradient(ellipse at 18% 72%, rgba(127, 215, 178, 0.12), transparent 28%),
+    radial-gradient(ellipse at 84% 70%, rgba(114, 194, 255, 0.1), transparent 30%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(114, 194, 255, 0.042) 0,
+      rgba(114, 194, 255, 0.042) 2px,
+      transparent 2px,
+      transparent 14px
+    );
+  background-blend-mode: normal;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 249, 237, 0.08),
+    inset 0 0 38px rgba(114, 194, 255, 0.1),
+    0 0 34px rgba(114, 194, 255, 0.14);
+}
+
 body[data-route-variant="alternate"] .title-gate {
   border-color: rgba(119, 234, 255, 0.68);
   background:
@@ -566,6 +671,25 @@ body[data-route-variant="alternate"] .title-gate {
   animation: shrineGlow 7s ease-in-out infinite alternate;
 }
 
+body:not([data-route-variant="alternate"]) .title-gate::before {
+  inset: 0;
+  background:
+    radial-gradient(circle at 9% 10%, #72c2ff 0 3px, transparent 4px),
+    radial-gradient(circle at 17% 10%, #ff7894 0 3px, transparent 4px),
+    radial-gradient(circle at 25% 10%, #7fd7b2 0 3px, transparent 4px),
+    radial-gradient(circle at 33% 10%, #72c2ff 0 3px, transparent 4px),
+    radial-gradient(circle at 41% 10%, #bfe8ff 0 3px, transparent 4px),
+    radial-gradient(circle at 49% 10%, #ff7894 0 3px, transparent 4px),
+    radial-gradient(circle at 57% 10%, #7fd7b2 0 3px, transparent 4px),
+    radial-gradient(circle at 65% 10%, #72c2ff 0 3px, transparent 4px),
+    radial-gradient(circle at 73% 10%, #bfe8ff 0 3px, transparent 4px),
+    radial-gradient(circle at 81% 10%, #ff7894 0 3px, transparent 4px),
+    radial-gradient(circle at 89% 10%, #7fd7b2 0 3px, transparent 4px),
+    linear-gradient(90deg, transparent 0 7%, rgba(114, 194, 255, 0.28) 7.5% 90%, transparent 91%);
+  opacity: 0.52;
+  animation: welcomeLights 2.8s ease-in-out infinite alternate;
+}
+
 body[data-route-variant="alternate"] .title-gate::before {
   background:
     linear-gradient(90deg, transparent 0 12%, rgba(119, 234, 255, 0.09) 13% 13.6%, transparent 14% 100%),
@@ -589,6 +713,13 @@ body[data-route-variant="alternate"] .title-gate::before {
     linear-gradient(90deg, transparent 0%, rgba(255, 120, 184, 0.16) 50%, transparent 100%),
     radial-gradient(circle at 50% 48%, rgba(229, 183, 61, 0.18), transparent 12%);
   opacity: 0.5;
+}
+
+body:not([data-route-variant="alternate"]) .title-gate::after {
+  background:
+    linear-gradient(90deg, rgba(4, 18, 34, 0.52) 0%, rgba(114, 194, 255, 0.08) 50%, rgba(4, 18, 34, 0.52) 100%),
+    radial-gradient(circle at 50% 48%, rgba(114, 194, 255, 0.08), transparent 16%);
+  opacity: 0.72;
 }
 
 body[data-route-variant="alternate"] .title-gate::after {
@@ -623,6 +754,18 @@ body[data-route-variant="alternate"] .title-gate::after {
   content: "";
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(229, 183, 61, 0.72), transparent);
+}
+
+body:not([data-route-variant="alternate"]) .glitch-title-band {
+  color: #bfe8ff;
+  text-shadow:
+    0 0 12px rgba(114, 194, 255, 0.3),
+    2px 0 0 rgba(127, 215, 178, 0.14);
+}
+
+body:not([data-route-variant="alternate"]) .glitch-title-band::before,
+body:not([data-route-variant="alternate"]) .glitch-title-band::after {
+  background: linear-gradient(90deg, transparent, rgba(114, 194, 255, 0.72), rgba(247, 211, 124, 0.38), transparent);
 }
 
 body[data-route-variant="alternate"] .glitch-title-band {
@@ -665,6 +808,21 @@ body[data-route-variant="alternate"] .glitch-title-band::after {
     0 0 18px rgba(255, 120, 184, 0.16);
 }
 
+body:not([data-route-variant="alternate"]) .deltarune-title {
+  color: #fff9ed;
+  text-shadow:
+    0 0 16px rgba(247, 211, 124, 0.22),
+    4px 0 0 rgba(127, 215, 178, 0.18),
+    -4px 0 0 rgba(255, 120, 148, 0.14);
+}
+
+body:not([data-route-variant="alternate"]) .deltarune-title .sub-rune {
+  color: #bfe8ff;
+  text-shadow:
+    0 0 10px rgba(114, 194, 255, 0.36),
+    0 0 18px rgba(127, 215, 178, 0.14);
+}
+
 body[data-route-variant="alternate"] .deltarune-title {
   color: #dffbff;
   text-shadow:
@@ -703,6 +861,14 @@ body[data-route-variant="alternate"] .chapter-mark .chapter-sub.route-alt-only {
   vertical-align: 0.08em;
 }
 
+body:not([data-route-variant="alternate"]) .heart-rune {
+  color: #ff3f69;
+  -webkit-text-fill-color: #ff3f69;
+  text-shadow:
+    0 0 12px rgba(255, 63, 105, 0.78),
+    0 0 24px rgba(247, 211, 124, 0.28);
+}
+
 body[data-route-variant="alternate"] .heart-rune {
   color: #ff2f6d;
   -webkit-text-fill-color: #ff2f6d;
@@ -730,6 +896,11 @@ body[data-route-variant="alternate"] .heart-rune {
   letter-spacing: 0.16em;
   color: var(--accent);
   text-shadow: 0 0 12px rgba(255, 120, 184, 0.42);
+}
+
+body:not([data-route-variant="alternate"]) .chapter-mark .chapter-sub {
+  color: var(--accent-2);
+  text-shadow: 0 0 12px rgba(127, 215, 178, 0.3);
 }
 
 .title-symbol-side {
@@ -789,6 +960,12 @@ body[data-route-variant="alternate"] .title-symbol-side {
   border: 1px solid rgba(229, 183, 61, 0.66);
   background: rgba(229, 183, 61, 0.08);
   padding: 0.65em 0.85em;
+}
+
+body:not([data-route-variant="alternate"]) .threshold-ribbon {
+  border-color: rgba(114, 194, 255, 0.64);
+  background:
+    linear-gradient(90deg, rgba(114, 194, 255, 0.1), rgba(127, 215, 178, 0.07), rgba(247, 211, 124, 0.05));
 }
 
 .threshold-ribbon .threshold-code {
@@ -1002,6 +1179,47 @@ body[data-route-variant="alternate"] .forbidden-route-nav {
 
 .chapter-card.current .card-status {
   color: var(--accent);
+}
+
+body:not([data-route-variant="alternate"]) .chapter-card {
+  border-color: rgba(114, 194, 255, 0.42);
+  background:
+    linear-gradient(180deg, rgba(6, 20, 30, 0.9), rgba(2, 8, 14, 0.88)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(127, 215, 178, 0.042) 0,
+      rgba(127, 215, 178, 0.042) 2px,
+      transparent 2px,
+      transparent 9px
+    );
+}
+
+body:not([data-route-variant="alternate"]) .chapter-card::before {
+  border-left-color: var(--accent-2);
+}
+
+body:not([data-route-variant="alternate"]) .chapter-card::after {
+  background: linear-gradient(90deg, var(--accent-2), var(--accent), var(--accent-3), transparent);
+}
+
+body:not([data-route-variant="alternate"]) .chapter-card.done:hover,
+body:not([data-route-variant="alternate"]) .chapter-card.current:hover {
+  background:
+    linear-gradient(180deg, rgba(11, 32, 39, 0.94), rgba(4, 13, 20, 0.92)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(247, 211, 124, 0.06) 0,
+      rgba(247, 211, 124, 0.06) 2px,
+      transparent 2px,
+      transparent 9px
+    );
+}
+
+body:not([data-route-variant="alternate"]) .chapter-card.current {
+  border-color: #bfe8ff;
+  box-shadow:
+    inset 0 0 0 1px rgba(114, 194, 255, 0.18),
+    0 0 22px rgba(114, 194, 255, 0.12);
 }
 
 body[data-route-variant="alternate"] .chapter-card {
@@ -1408,6 +1626,28 @@ body[data-route-variant="alternate"] .forbidden-card {
   100% {
     opacity: 0.92;
     filter: saturate(1.08) brightness(0.82);
+  }
+}
+
+@keyframes noelleWelcomeGlow {
+  0% {
+    opacity: 0.6;
+    filter: saturate(0.92) brightness(0.88);
+  }
+  100% {
+    opacity: 0.78;
+    filter: saturate(1.08) brightness(1.02);
+  }
+}
+
+@keyframes welcomeLights {
+  0% {
+    opacity: 0.55;
+    filter: brightness(0.86);
+  }
+  100% {
+    opacity: 0.82;
+    filter: brightness(1.18);
   }
 }
 

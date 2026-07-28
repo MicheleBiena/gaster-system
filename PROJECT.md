@@ -69,7 +69,9 @@ gaster-system/
     │   ├── meme-community.html       ← Meme e lavori community verso Capitolo 5
     │   └── undertale-10th-anniversary.html ← Dossier stream Undertale 10th Anniversary
     ├── pre-cap6/
-    │   └── index.html                ← Hub "Attendendo il capitolo 6"
+    │   ├── index.html                ← Hub "Attendendo il capitolo 6"
+    │   ├── curiosita.html            ← Curiosità Cap.5, dev letter e dettagli sparsi
+    │   └── percorsi-alternativi.html ← Scelte diverse e variazioni Capitolo 5
     └── forbidden-route/
         └── pre-chapter-1/
             └── index.html            ← Primo archivio route proibita
@@ -116,6 +118,8 @@ gaster-system/
 | `chapters/pre-cap5/meme-community.html` | ✅ Aggiornato | Carpet by Toby Fox, Asgore/Don't Forget e wave The Boys/Larper con embed caricati al Play |
 | `chapters/pre-cap5/undertale-10th-anniversary.html` | ✅ Creato | Dossier sui peak momenti della stream del decimo anniversario di Undertale |
 | `chapters/pre-cap6/index.html` | ✅ Creato | Hub "Attendendo il Capitolo 6" con curiosità, community work, route proibita e teoria futura |
+| `chapters/pre-cap6/curiosita.html` | ✅ Creato | Sezione Curiosità per Capitolo 5, dev letter e dettagli sparsi |
+| `chapters/pre-cap6/percorsi-alternativi.html` | ✅ Creato | Prima sezione Pre-Cap 6: bivi, scelte e variazioni del Capitolo 5 |
 | `chapters/forbidden-route/pre-chapter-1/index.html` | ✅ Creato | Primo hub separato per la route proibita |
 
 ---
@@ -488,6 +492,37 @@ File: `chapters/pre-cap1/survey.html`
 - Creato `chapters/forbidden-route/pre-chapter-1/index.html` come prima sezione della route proibita
 - Corretto il CSS della home: in route proibita le card dell'archivio normale vengono davvero nascoste e rese non cliccabili
 - Sostituiti i petali ricolorati della route proibita con fiocchi di neve CSS e sfondo più buio
+
+### Sessione 48 — Makeover Noelle homepage
+- Aggiornata la home normale per accogliere Noelle nel party dopo il Capitolo 5
+- Introdotta una palette Castle Town decorata: blu notte, verde pino, rosso Holiday, oro caldo e neve morbida
+- Sostituita l'atmosfera floreale della home con luci decorative e particelle neve/luci
+- La route proibita resta separata e mantiene il look glaciale scuro
+- Spostata la hero normale su una base azzurra/notturna, lasciando l'oro solo come dettaglio luminoso
+
+### Sessione 49 — Pre-Cap 6: Percorsi alternativi
+- Collegata in `chapters/pre-cap6/index.html` la prima sezione `Percorsi alternativi`
+- Creata `chapters/pre-cap6/percorsi-alternativi.html`
+- Impostato il formato della pagina per raccogliere scelte diverse del Capitolo 5 e relative variazioni
+- Convertito l'archivio in schede video con testo a lato
+- Aggiunta prima scheda: opzioni per confessare a Pizzapants cosa e' successo con la sua finta ragazza
+- Aggiunta seconda scheda: castello dei fiori, scelte di dialogo alternative sui lati est e ovest
+- Aggiunta terza scheda: scene di Tenna nel Capitolo 5 se non e' stato consegnato a Mettaton nel Capitolo 4
+- Aggiunta quarta scheda: tutti i premi possibili della gara di scalata
+
+### Sessione 50 — CSS attuale globale
+- Esteso il tema Noelle/Castle Town a tutte le pagine normali del sito, non solo alla homepage
+- Disattivati i vecchi fondi archive-theme che facevano sembrare Pre-Cap 6 nel tema precedente
+- Aggiornati tutti i link stylesheet HTML con cache-busting `v=20260728-noelle-2`
+- L'atmosfera neve/luci viene ora generata da `assets/main.js` su tutte le pagine che caricano lo script
+- La route proibita resta esclusa dal tema normale e mantiene il look glaciale scuro
+
+### Sessione 51 — Pre-Cap 6: Curiosità
+- Aggiunta in `chapters/pre-cap6/index.html` la seconda sezione `Curiosita`
+- Creata `chapters/pre-cap6/curiosita.html`
+- La pagina raccogliera' curiosita del Capitolo 5, dev letter, dettagli di produzione e note sparse
+- Inserita la prima curiosita su Pink / `Cutie Mew Mew Magic`, con sintesi del brano e tabella testo/traduzione
+- Aggiunta seconda curiosita: la melodia "annoying" dell'organo del Capitolo 4 rivelata come tema di Flowery
 
 ---
 
