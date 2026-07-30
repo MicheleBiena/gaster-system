@@ -141,6 +141,25 @@
         line-height: 1.05;
       }
 
+      .playlist-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.75rem;
+        margin-top: 0.8rem;
+        border: 1px solid rgba(255, 108, 152, 0.68);
+        padding: 0.75rem 1rem;
+        color: #fff8fb;
+        background: rgba(255, 108, 152, 0.16);
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .playlist-link:hover {
+        background: rgba(255, 108, 152, 0.28);
+      }
+
       @media (max-width: 760px) {
         .curiosity-hero,
         .video-curiosity,
@@ -325,9 +344,9 @@
               <div class="lyric-row">
                 <div class="lyric-original">
                   <span>MEOW</span>
-                  Meow, meow-meow-meow-meow / Meow-meow-meow-meow,
-                  meow-meow, meow / Meow, meow-meow-meow-meow /
-                  Meow-meow-meow-meow, meow-meow, meow
+                  Meow, meow-meow-meow-meow / Meow-meow-meow-meow, meow-meow,
+                  meow / Meow, meow-meow-meow-meow / Meow-meow-meow-meow,
+                  meow-meow, meow
                 </div>
                 <div class="lyric-translation">
                   Miao, miao-miao-miao-miao / Miao-miao-miao-miao, miao-miao,
@@ -505,7 +524,15 @@
                 src="https://www.youtube.com/embed/OBmXYN3YRuM"
                 title="Flowery theme organ reference"
                 loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allow="
+                  accelerometer;
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  gyroscope;
+                  picture-in-picture;
+                  web-share;
+                "
                 allowfullscreen
               ></iframe>
             </div>
@@ -515,8 +542,8 @@
               <p>
                 Nell'organo del Capitolo 4 c'era una melodia suonabile che
                 riceveva una reazione stranamente precisa: sembrava
-                <em>annoying</em>, ma non avevamo ancora un riferimento chiaro
-                a cui agganciarla.
+                <em>annoying</em>, ma non avevamo ancora un riferimento chiaro a
+                cui agganciarla.
               </p>
               <p>
                 Col Capitolo 5 il pezzo torna al suo posto: quella melodia era
@@ -526,6 +553,31 @@
                 ascoltando.
               </p>
             </div>
+          </div>
+        </section>
+
+        <section class="section-block curiosity-feature">
+          <div class="section-header">// 03 - OST DA DEV LETTER //</div>
+          <div class="curiosity-note">
+            <p class="micro-label">PLACEHOLDER // BETA // SCARTATE</p>
+            <h2>La musica che non dovevamo ancora sentire</h2>
+            <p>
+              Nelle varie dev letter sono apparse tracce usate come placeholder,
+              versioni beta o brani poi scartati.
+            </p>
+            <p>
+              Alcune ost sono rimaste abbastanza invariate o anticipavano solo
+              parte di un brano più completo, altre invece offrivano
+              un'interpretazione completamente diversa di alcuni personaggi
+              (Queen ne è l'esempio più lampante).
+            </p>
+            <a
+              class="playlist-link"
+              href="https://www.youtube.com/playlist?list=PLNseaTepgGQAup-Ks6dlaJRfUF7U2Bc4a"
+              target="_blank"
+              rel="noreferrer"
+              >Apri playlist</a
+            >
           </div>
         </section>
       </main>

@@ -523,6 +523,7 @@ File: `chapters/pre-cap1/survey.html`
 - La pagina raccogliera' curiosita del Capitolo 5, dev letter, dettagli di produzione e note sparse
 - Inserita la prima curiosita su Pink / `Cutie Mew Mew Magic`, con sintesi del brano e tabella testo/traduzione
 - Aggiunta seconda curiosita: la melodia "annoying" dell'organo del Capitolo 4 rivelata come tema di Flowery
+- Aggiunta terza curiosita: playlist delle OST placeholder, beta o scartate apparse nelle dev letter
 
 ---
 
