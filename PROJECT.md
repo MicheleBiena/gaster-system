@@ -524,6 +524,8 @@ File: `chapters/pre-cap1/survey.html`
 - Inserita la prima curiosita su Pink / `Cutie Mew Mew Magic`, con sintesi del brano e tabella testo/traduzione
 - Aggiunta seconda curiosita: la melodia "annoying" dell'organo del Capitolo 4 rivelata come tema di Flowery
 - Aggiunta terza curiosita: playlist delle OST placeholder, beta o scartate apparse nelle dev letter
+- Creata `chapters/pre-cap6/meme.html` e collegata dall'hub Pre-Cap 6
+- Inserito focus meme su "Gaster pirata", con video, paragone Togore e ciurma Aqua/Friend/Normal_NPC
 
 ---
 

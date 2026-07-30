@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meme - PRE-CAP 6</title>
+    <link rel="stylesheet" href="../../assets/style.css?v=20260728-noelle-2" />
+    <style>
+      .meme-stack {
+        display: grid;
+        gap: 1em;
+      }
+
+      .meme-card {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1fr);
+        gap: 1em;
+        align-items: stretch;
+        border: 1px solid color-mix(in srgb, var(--border) 44%, transparent);
+        background:
+          linear-gradient(180deg, rgba(6, 20, 30, 0.88), rgba(2, 8, 14, 0.88)),
+          repeating-linear-gradient(
+            90deg,
+            color-mix(in srgb, var(--accent-2) 4%, transparent) 0,
+            color-mix(in srgb, var(--accent-2) 4%, transparent) 2px,
+            transparent 2px,
+            transparent 10px
+          );
+        padding: 1em;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .meme-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-left: 4px solid var(--accent-2);
+        pointer-events: none;
+      }
+
+      .meme-media iframe,
+      .meme-media img {
+        display: block;
+        width: 100%;
+        border: 1px solid color-mix(in srgb, var(--border) 42%, transparent);
+        background: #000;
+      }
+
+      .meme-media iframe {
+        aspect-ratio: 16 / 9;
+        height: auto;
+      }
+
+      .meme-media img {
+        max-height: 420px;
+        object-fit: contain;
+      }
+
+      .meme-copy {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7em;
+      }
+
+      .meme-kicker {
+        font-family: var(--font-mono);
+        color: var(--accent-3);
+        font-size: 14px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .meme-title {
+        font-family: var(--font-display);
+        font-size: clamp(1.8rem, 5vw, 3rem);
+        line-height: 1;
+        letter-spacing: 0.06em;
+      }
+
+      .meme-text {
+        font-family: var(--font-mono);
+        color: var(--dim);
+        font-size: 15px;
+        line-height: 1.65;
+        letter-spacing: 0.03em;
+      }
+
+      .meme-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        width: fit-content;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .meme-timeline {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.8em;
+      }
+
+      .meme-step {
+        border: 1px solid color-mix(in srgb, var(--border) 40%, transparent);
+        background: rgba(5, 18, 28, 0.72);
+        padding: 1em;
+      }
+
+      .meme-step strong {
+        display: block;
+        margin-bottom: 0.45em;
+        color: var(--accent-2);
+        font-family: var(--font-mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .meme-step span {
+        color: var(--dim);
+        font-family: var(--font-mono);
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      @media (max-width: 840px) {
+        .meme-card,
+        .meme-timeline {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">
+          <a class="back-link" href="index.html">&larr; INDIETRO</a>
+          PRE-CAP 6 - MEME
+        </span>
+        <span id="header-sub"
+          >community work &middot; fanon &middot; brainrot</span
+        >
+      </header>
+
+      <main class="page-content">
+        <section class="section-block">
+          <div class="section-header">// GASTER E' UN PIRATA //</div>
+          <div class="meme-stack">
+            <article class="meme-card">
+              <div class="meme-media">
+                <iframe
+                  src="https://www.youtube.com/embed/M8caa3KAt6s"
+                  title="Gaster pirate meme"
+                  loading="lazy"
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                  "
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="meme-copy">
+                <div class="meme-kicker">01 // THE PIRATE INCIDENT</div>
+                <div class="meme-title">Da teoria a barzelletta collettiva</div>
+                <div class="meme-text">
+                  Il meme parte come tutte le grandi sciocchezze di internet:
+                  con una mezza osservazione che in teoria ha senso. Un utente
+                  Twitter fa notare che Aqua, il fiore azzurro, rimanda
+                  banalmente a "water", quindi al tema dell'acqua che Deltarune
+                  continua a citare in modo sospetto.
+                </div>
+                <div class="meme-text">
+                  Poi arriva <em>Pirate Dojo</em>, il tema piratesco composto da
+                  Toby Fox per la stanza di allenamento del Capitolo 5. A quel
+                  punto la community fa quello che sa fare meglio: collega due
+                  fili, finge che sia una prova definitiva, e decide che Aqua e'
+                  nella ciurma di Gaster.
+                </div>
+              </div>
+            </article>
+
+            <div class="meme-timeline">
+              <div class="meme-step">
+                <strong>Pirate Dojo</strong>
+                <span>
+                  Nel dojo Cap_n commenta sottolineando quanto sia stufo di
+                  comporre temi in terzine, perché sembrano tutti temi
+                  pirateschi.
+                </span>
+              </div>
+              <div class="meme-step">
+                <strong>Ciurma Gaster</strong>
+                <span>
+                  Aqua, Friend e Normal_NPC finiscono arruolati (Normal_NPC poi
+                  è già parte di teorie sulla scomparsa di OnionSan, tutto
+                  torna.)
+                </span>
+              </div>
+            </div>
+
+            <article class="meme-card">
+              <div class="meme-media">
+                <img
+                  src="https://preview.redd.it/everyones-reaction-to-aqua-being-part-of-gasters-crew-v0-i29f4dwr83ch1.jpeg?width=2101&format=pjpg&auto=webp&s=534cd62393db1b5a9537f59162f24235c5b92480"
+                  alt="Reazione della community ad Aqua nella ciurma di Gaster"
+                  loading="lazy"
+                />
+              </div>
+              <div class="meme-copy">
+                <div class="meme-kicker">02 // AQUA CREWMATE ARC</div>
+                <div class="meme-title">La ciurma si espande</div>
+                <div class="meme-text">
+                  La parte piu' bella e' che il meme non prova neanche piu' a
+                  convincerti. Ti guarda negli occhi e dice: certo, Aqua e'
+                  nella ciurma di Gaster. Friend? Ovviamente anche lui.
+                  Normal_NPC? Ma che domande.
+                </div>
+                <div class="meme-text">
+                  E' lo stesso tipo di fanon esploso con Togore, il terzo figlio
+                  inventato di Asgore e Toriel: nessuno ci crede davvero, pero'
+                  internet lo ripete abbastanza volte da farlo sembrare un
+                  ricordo rimosso.
+                </div>
+              </div>
+            </article>
+
+            <article class="meme-card">
+              <div class="meme-media">
+                <img
+                  src="https://static.wikia.nocookie.net/neutral-characters-fanon/images/0/09/DoesAnybodyRememberThisUndertaleCharacter.png/revision/latest?cb=20260105001743"
+                  alt="Meme fanon Togore"
+                  loading="lazy"
+                />
+              </div>
+              <div class="meme-copy">
+                <div class="meme-kicker">03 // TOGORE PARALLEL</div>
+                <div class="meme-title">Il falso ricordo come format</div>
+                <div class="meme-text">
+                  Togore funzionava perche' sembrava una di quelle cose che
+                  potresti aver visto in un asset beta, in una creepypasta
+                  dimenticata o in una pagina wiki letta alle tre di notte.
+                </div>
+                <div class="meme-text">
+                  Gaster pirata usa lo stesso trucco, ma con piu' benzina:
+                  Gaster e' gia' il buco nero delle teorie Deltarune, quindi
+                  basta mettergli un cappello da capitano e la community fa il
+                  resto da sola.
+                </div>
+              </div>
+            </article>
+
+            <article class="meme-card">
+              <div class="meme-media">
+                <iframe
+                  src="https://www.youtube.com/embed/QJbe3lM5aWk"
+                  title="Gaster pirate chapter introduction meme"
+                  loading="lazy"
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                  "
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="meme-copy">
+                <div class="meme-kicker">04 // NEXT CHAPTER VISION</div>
+                <div class="meme-title">L'introduzione che internet merita</div>
+                <div class="meme-text">
+                  Il secondo video immagina l'ingresso di Gaster nel prossimo
+                  capitolo secondo la forma piu' ormai naturale del meme: non
+                  entita' cosmica irraggiungibile, non scienziato spezzato dal
+                  tempo, ma capitano pirata pronto a salire in scena.
+                </div>
+                <a
+                  class="meme-link"
+                  href="https://www.youtube.com/watch?v=QJbe3lM5aWk"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Apri video</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer id="site-footer">
+        <span>GASTER_SYSTEM // PRE-CAP 6 // MEME</span>
+      </footer>
+    </div>
+
+    <script src="../../assets/main.js"></script>
+  </body>
+</html>
