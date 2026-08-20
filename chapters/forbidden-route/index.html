@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WEIRD ROUTE - ARCHIVIO PROIBITO</title>
+    <link rel="stylesheet" href="../../assets/style.css?v=20260728-noelle-2" />
+    <style>
+      .weird-route-stack {
+        display: grid;
+        gap: 1em;
+      }
+
+      .weird-route-card {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1fr);
+        gap: 1em;
+        align-items: stretch;
+        border: 1px solid color-mix(in srgb, var(--border) 46%, transparent);
+        background:
+          linear-gradient(180deg, rgba(3, 13, 22, 0.92), rgba(0, 5, 10, 0.94)),
+          repeating-linear-gradient(
+            90deg,
+            color-mix(in srgb, var(--accent-2) 5%, transparent) 0,
+            color-mix(in srgb, var(--accent-2) 5%, transparent) 2px,
+            transparent 2px,
+            transparent 10px
+          );
+        padding: 1em;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .weird-route-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-left: 4px solid var(--accent-2);
+        box-shadow: inset 0 0 34px rgba(145, 235, 255, 0.08);
+        pointer-events: none;
+      }
+
+      .weird-video iframe {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        height: auto;
+        border: 1px solid color-mix(in srgb, var(--border) 46%, transparent);
+        background: #000;
+      }
+
+      .weird-copy {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7em;
+      }
+
+      .weird-kicker,
+      .weird-note {
+        font-family: var(--font-mono);
+        font-size: 14px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .weird-kicker {
+        color: var(--accent-3);
+      }
+
+      .weird-title {
+        font-family: var(--font-display);
+        font-size: clamp(1.8rem, 5vw, 3rem);
+        line-height: 1;
+        letter-spacing: 0.06em;
+      }
+
+      .weird-text {
+        font-family: var(--font-mono);
+        color: var(--dim);
+        font-size: 15px;
+        line-height: 1.65;
+        letter-spacing: 0.03em;
+      }
+
+      .weird-note {
+        color: var(--accent-2);
+        margin-top: auto;
+      }
+
+      .weird-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        width: fit-content;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .theory-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.8em;
+      }
+
+      .theory-chip {
+        border: 1px solid color-mix(in srgb, var(--border) 42%, transparent);
+        background: rgba(3, 14, 22, 0.76);
+        padding: 1em;
+      }
+
+      .theory-chip strong {
+        display: block;
+        margin-bottom: 0.45em;
+        color: var(--accent-2);
+        font-family: var(--font-mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .theory-chip span {
+        color: var(--dim);
+        font-family: var(--font-mono);
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      .thorn-panel {
+        display: grid;
+        grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1fr);
+        gap: 1em;
+        align-items: stretch;
+      }
+
+      .thorn-stats,
+      .thorn-copy {
+        border: 1px solid color-mix(in srgb, var(--border) 42%, transparent);
+        background: rgba(3, 14, 22, 0.76);
+        padding: 1em;
+      }
+
+      .thorn-stat {
+        display: grid;
+        gap: 0.25em;
+        padding: 0.75em 0;
+        border-bottom: 1px solid color-mix(in srgb, var(--border) 24%, transparent);
+      }
+
+      .thorn-stat:last-child {
+        border-bottom: 0;
+      }
+
+      .thorn-stat span,
+      .thorn-copy strong {
+        color: var(--accent-2);
+        font-family: var(--font-mono);
+        font-size: 14px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .thorn-stat b {
+        color: var(--fg);
+        font-family: var(--font-display);
+        font-size: 1.45em;
+        letter-spacing: 0.06em;
+      }
+
+      .thorn-copy {
+        display: grid;
+        gap: 0.85em;
+      }
+
+      .thorn-copy p {
+        margin: 0;
+        color: var(--dim);
+        font-family: var(--font-mono);
+        font-size: 15px;
+        line-height: 1.65;
+        letter-spacing: 0.03em;
+      }
+
+      @media (max-width: 840px) {
+        .weird-route-card,
+        .thorn-panel,
+        .theory-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body data-route-variant="alternate">
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">
+          <a class="back-link" href="../../index.html">&larr; INDIETRO</a>
+          WEIRD ROUTE - ARCHIVIO PROIBITO
+        </span>
+        <span id="header-sub"
+          >snowgrave &middot; abort &middot; side b &middot; completion file</span
+        >
+      </header>
+
+      <main class="page-content">
+        <section class="section-block">
+          <div class="section-header">// PERCHE' QUESTA PAGINA //</div>
+          <div class="narrative">
+            Qui raccogliamo la parte del gioco che non segue piu' il percorso
+            normale: nuove teorie sulla Weird Route, variazioni legate a
+            Snowgrave, e soprattutto cosa succede quando provi ad annullare la
+            route in punti diversi.
+          </div>
+          <div class="narrative">
+            La cosa importante e' che non stiamo parlando solo di una deviazione
+            locale. Deltarune conserva lo stato nei Completion FILE: quello che
+            fai in un capitolo puo' tornare piu' avanti come una cicatrice.
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-header">// TEORIE NUOVE DA TENERE D'OCCHIO //</div>
+          <div class="theory-grid">
+            <div class="theory-chip">
+              <strong>Side B</strong>
+              <span>
+                Dopo il Capitolo 5 la route non sembra piu' solo "Snowgrave":
+                il gioco la tratta come archivio alternativo, separato dal
+                percorso principale.
+              </span>
+            </div>
+            <div class="theory-chip">
+              <strong>Abort route</strong>
+              <span>
+                Annullare la route non significa tornare innocenti. In alcuni
+                punti il gioco ti lascia andare avanti, ma con oggetti, magie o
+                scene che non combaciano piu' con una run normale.
+              </span>
+            </div>
+            <div class="theory-chip">
+              <strong>Chapter 6?</strong>
+              <span>
+                Il finale Side B del Capitolo 5 suggerisce che la numerazione
+                stessa possa rompersi. Per ora lo teniamo come segnale, non come
+                certezza.
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-header">// THORNRING //</div>
+          <div class="thorn-panel">
+            <aside class="thorn-stats">
+              <div class="thorn-stat">
+                <span>Tipo</span>
+                <b>Weapon</b>
+              </div>
+              <div class="thorn-stat">
+                <span>Equip</span>
+                <b>Noelle</b>
+              </div>
+              <div class="thorn-stat">
+                <span>Effetti</span>
+                <b>+14 AT / +12 Magic</b>
+              </div>
+              <div class="thorn-stat">
+                <span>Prezzo</span>
+                <b>1997 D$</b>
+              </div>
+            </aside>
+
+            <div class="thorn-copy">
+              <p>
+                Il ThornRing e' l'oggetto che trasforma la Weird Route da
+                deviazione sospetta a scelta irreversibile. Lo vende Spamton nel
+                Capitolo 2, solo se Noelle ha congelato tutti i nemici richiesti
+                in Cyber City, prima dell'incontro con Berdly e con spazio
+                libero nell'inventario.
+              </p>
+              <p>
+                La parte meccanica e' crudele: dimezza il costo in TP delle
+                magie di ghiaccio di Noelle, quindi rende Snowgrave lanciabile,
+                ma durante gli incontri abbassa gradualmente i suoi HP fino a un
+                terzo del massimo. Contro Berdly questo significa 55 HP.
+              </p>
+              <p>
+                La chicca piu' importante per gli abort e' questa: se compri il
+                ThornRing e poi annulli la Weird Route, puoi conservarlo
+                nell'inventario armi solo se lo togli a Noelle prima della
+                battaglia con Berdly. Non e' una semplice curiosita': e' uno di
+                quei casi in cui un file "abortito" puo' diventare piu'
+                interessante di un file pulito.
+              </p>
+              <p>
+                Nel Capitolo 4 torna anche il suo equivalente nel Light World:
+                non piu' equipaggiamento astratto da menu, ma una spina che Kris
+                forza di nuovo su Noelle. Da qui il ThornRing smette di essere
+                solo build da boss fight e diventa una prova fisica che la route
+                non e' rimasta chiusa nel Capitolo 2.
+              </p>
+              <p>
+                Dettaglio da tenere in tasca: in Castle Town il ThornRing puo'
+                essere fuso con il PureCrystal per creare la TwistedSwd, ma il
+                PureCrystal non e' ottenibile fino al Capitolo 5. Quindi per ora
+                resta una promessa appesa al file.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-header">// DIVISO PER CAPITOLO //</div>
+          <div class="weird-route-stack">
+            <article class="weird-route-card">
+              <div class="weird-video">
+                <iframe
+                  src="https://www.youtube.com/embed/63frL8gxzu8"
+                  title="Weird Route Chapter 2"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="weird-copy">
+                <div class="weird-kicker">CHAPTER 2 // SNOWGRAVE</div>
+                <div class="weird-title">Il punto in cui nasce la deviazione</div>
+                <div class="weird-text">
+                  La Weird Route comincia quando Noelle entra nel party in
+                  Cyber City e il giocatore forza una serie di azioni che il
+                  percorso normale non richiede mai: tornare indietro, congelare
+                  nemici, comprare il Thorn Ring, arrivare allo scontro con
+                  Berdly.
+                </div>
+                <div class="weird-text">
+                  Qui gli abort sono gia' interessanti: proteggere Noelle da
+                  Berdly, risparmiare Berdly, oppure chiudere la fight senza
+                  Snowgrave non hanno tutti lo stesso peso. In certi casi il
+                  gioco annulla la route in modo pulito, in altri resta qualcosa
+                  addosso al file.
+                </div>
+                <a
+                  class="weird-link"
+                  href="https://www.youtube.com/watch?v=63frL8gxzu8"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Apri video</a
+                >
+                <div class="weird-note">PROCEED // THORN RING // BERDLY</div>
+              </div>
+            </article>
+
+            <article class="weird-route-card">
+              <div class="weird-video">
+                <iframe
+                  src="https://www.youtube.com/embed/5bKvMjEpJuk"
+                  title="Weird Route Chapter 4"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="weird-copy">
+                <div class="weird-kicker">CHAPTER 4 // FORBIDDEN PATH</div>
+                <div class="weird-title">Il gioco inizia a riconoscere il file</div>
+                <div class="weird-text">
+                  Nel Capitolo 4 la route torna come continuita' fra capitoli:
+                  non e' piu' solo il ricordo di Cyber City, ma una condizione
+                  che il gioco puo' leggere, riprendere e forzare in avanti.
+                </div>
+                <div class="weird-text">
+                  Il dettaglio centrale e' che la deviazione non vive solo nelle
+                  scene piu' evidenti. Equipaggiamenti, nomi interni, dialoghi e
+                  prompt costruiscono l'idea che il "forbidden path" sia un
+                  binario alternativo, non una semplice scena segreta.
+                </div>
+                <a
+                  class="weird-link"
+                  href="https://www.youtube.com/watch?v=5bKvMjEpJuk"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Apri video</a
+                >
+                <div class="weird-note">COMPLETION FILE // FORBIDDEN PATH</div>
+              </div>
+            </article>
+
+            <article class="weird-route-card">
+              <div class="weird-video">
+                <iframe
+                  src="https://www.youtube.com/embed/On9rCiXX9LI"
+                  title="Weird Route Chapter 5"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="weird-copy">
+                <div class="weird-kicker">CHAPTER 5 // LAKE // SIDE B</div>
+                <div class="weird-title">Quando annullare non rimette tutto a posto</div>
+                <div class="weird-text">
+                  Il Capitolo 5 spinge la route in una forma ancora piu'
+                  esplicita: svegliare Kris contro la sua inerzia, prendere il
+                  Bread da Sans, arrivare al lago, e poi seguire una sequenza di
+                  prompt che porta al messaggio Side B.
+                </div>
+                <div class="weird-text">
+                  Se la scena del lago fallisce, non si torna semplicemente alla
+                  run normale. Il capitolo continua, ma con variazioni proprie:
+                  e' una route annullata, non cancellata. Per questo diventa uno
+                  dei punti piu' importanti da archiviare prima del Capitolo 6.
+                </div>
+                <a
+                  class="weird-link"
+                  href="https://www.youtube.com/watch?v=On9rCiXX9LI"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Apri video</a
+                >
+                <div class="weird-note">LAKE // ABORT // INSERT CHAPTER 7 SIDE B</div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer id="site-footer">
+        <span>GASTER_SYSTEM // WEIRD ROUTE</span>
+      </footer>
+    </div>
+
+    <script src="../../assets/main.js"></script>
+  </body>
+</html>

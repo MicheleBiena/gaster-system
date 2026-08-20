@@ -73,8 +73,7 @@ gaster-system/
     │   ├── curiosita.html            ← Curiosità Cap.5, dev letter e dettagli sparsi
     │   └── percorsi-alternativi.html ← Scelte diverse e variazioni Capitolo 5
     └── forbidden-route/
-        └── pre-chapter-1/
-            └── index.html            ← Primo archivio route proibita
+        └── index.html                ← Home Weird Route / archivio proibito
 ```
 
 ---
@@ -120,7 +119,7 @@ gaster-system/
 | `chapters/pre-cap6/index.html` | ✅ Creato | Hub "Attendendo il Capitolo 6" con curiosità, community work, route proibita e teoria futura |
 | `chapters/pre-cap6/curiosita.html` | ✅ Creato | Sezione Curiosità per Capitolo 5, dev letter e dettagli sparsi |
 | `chapters/pre-cap6/percorsi-alternativi.html` | ✅ Creato | Prima sezione Pre-Cap 6: bivi, scelte e variazioni del Capitolo 5 |
-| `chapters/forbidden-route/pre-chapter-1/index.html` | ✅ Creato | Primo hub separato per la route proibita |
+| `chapters/forbidden-route/index.html` | ✅ Creato | Home Weird Route / archivio proibito |
 
 ---
 
@@ -489,7 +488,7 @@ File: `chapters/pre-cap1/survey.html`
 - Rimossi dalla home riferimenti troppo specifici ai contenuti futuri della route proibita
 - La route proibita ora si appoggia solo alla premessa nota: il path proibito inizia con magie del ghiaccio
 - Separata la navigazione della homepage: archivio normale e archivio proibito puntano a sezioni diverse
-- Creato `chapters/forbidden-route/pre-chapter-1/index.html` come prima sezione della route proibita
+- Creato `chapters/forbidden-route/index.html` come home della route proibita
 - Corretto il CSS della home: in route proibita le card dell'archivio normale vengono davvero nascoste e rese non cliccabili
 - Sostituiti i petali ricolorati della route proibita con fiocchi di neve CSS e sfondo più buio
 
@@ -526,6 +525,13 @@ File: `chapters/pre-cap1/survey.html`
 - Aggiunta terza curiosita: playlist delle OST placeholder, beta o scartate apparse nelle dev letter
 - Creata `chapters/pre-cap6/meme.html` e collegata dall'hub Pre-Cap 6
 - Inserito focus meme su "Gaster pirata", con video, paragone Togore e ciurma Aqua/Friend/Normal_NPC
+
+### Sessione 52 — Weird Route
+- Rivoluzionata `chapters/forbidden-route/index.html` come archivio Weird Route
+- Divisa la pagina per Capitolo 2, Capitolo 4 e Capitolo 5
+- Inseriti tre embed video su Snowgrave, forbidden path e Side B/lake abort
+- Aggiunta sezione iniziale sulle teorie nuove: Side B, abort route e possibile rottura della progressione verso il Capitolo 6
+- Aggiunta sezione ThornRing con ottenimento, effetti, interazione con Snowgrave, abort route e collegamento a TwistedSwd/PureCrystal
 
 ---
 
