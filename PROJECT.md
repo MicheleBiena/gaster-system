@@ -532,6 +532,8 @@ File: `chapters/pre-cap1/survey.html`
 - Inseriti tre embed video su Snowgrave, forbidden path e Side B/lake abort
 - Aggiunta sezione iniziale sulle teorie nuove: Side B, abort route e possibile rottura della progressione verso il Capitolo 6
 - Aggiunta sezione ThornRing con ottenimento, effetti, interazione con Snowgrave, abort route e collegamento a TwistedSwd/PureCrystal
+- Spostata "Discussione sulla terza route" in `chapters/forbidden-route/third-route.html`, collegata dalla home Weird Route come scheda separata
+- Aggiunti punti a sfavore della teoria della terza route: primo tabellone, bird blu/Snowgrave, incertezza sul save e gestione Darkner
 
 ---
 

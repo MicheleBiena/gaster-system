@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terza Route - WEIRD ROUTE</title>
+    <link rel="stylesheet" href="../../assets/style.css?v=20260728-noelle-2" />
+    <style>
+      .third-route-card {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1fr);
+        gap: 1em;
+        align-items: stretch;
+        border: 1px solid color-mix(in srgb, var(--border) 46%, transparent);
+        background:
+          linear-gradient(180deg, rgba(3, 13, 22, 0.92), rgba(0, 5, 10, 0.94)),
+          repeating-linear-gradient(
+            90deg,
+            color-mix(in srgb, var(--accent-2) 5%, transparent) 0,
+            color-mix(in srgb, var(--accent-2) 5%, transparent) 2px,
+            transparent 2px,
+            transparent 10px
+          );
+        padding: 1em;
+      }
+
+      .third-route-video iframe {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        height: auto;
+        border: 1px solid color-mix(in srgb, var(--border) 46%, transparent);
+        background: #000;
+      }
+
+      .third-route-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75em;
+        min-width: 0;
+      }
+
+      .third-route-kicker,
+      .third-route-note {
+        font-family: var(--font-mono);
+        font-size: 14px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .third-route-kicker {
+        color: var(--accent-3);
+      }
+
+      .third-route-title {
+        font-family: var(--font-display);
+        font-size: clamp(1.8rem, 5vw, 3rem);
+        line-height: 1;
+        letter-spacing: 0.06em;
+      }
+
+      .third-route-text {
+        color: var(--dim);
+        font-family: var(--font-mono);
+        font-size: 15px;
+        line-height: 1.65;
+        letter-spacing: 0.03em;
+      }
+
+      .third-route-note {
+        color: var(--accent-2);
+        margin-top: auto;
+      }
+
+      .third-route-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        width: fit-content;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .counter-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.8em;
+      }
+
+      .counter-card {
+        border: 1px solid color-mix(in srgb, var(--border) 42%, transparent);
+        background: rgba(3, 14, 22, 0.76);
+        padding: 1em;
+      }
+
+      .counter-card strong {
+        display: block;
+        margin-bottom: 0.45em;
+        color: var(--accent-2);
+        font-family: var(--font-mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .counter-card span {
+        color: var(--dim);
+        font-family: var(--font-mono);
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      @media (max-width: 840px) {
+        .third-route-card,
+        .counter-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body data-route-variant="alternate">
+    <div id="scanlines"></div>
+    <div id="vignette"></div>
+
+    <div id="screen">
+      <header id="site-header">
+        <span id="header-title">
+          <a class="back-link" href="index.html">&larr; INDIETRO</a>
+          WEIRD ROUTE - TERZA ROUTE
+        </span>
+        <span id="header-sub">sword route &middot; twisted sword</span>
+      </header>
+
+      <main class="page-content">
+        <section class="section-block">
+          <div class="section-header">// DISCUSSIONE SULLA TERZA ROUTE //</div>
+          <article class="third-route-card">
+            <div class="third-route-video">
+              <iframe
+                src="https://www.youtube.com/embed/7PZrJST8qko"
+                title="Deltarune secret third route theory"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="third-route-copy">
+              <div class="third-route-kicker">THEORY // SWORD ROUTE</div>
+              <div class="third-route-title">
+                Una terza strada fra Side A e Side B
+              </div>
+              <div class="third-route-text">
+                Il video propone che la Weird Route non sia il vero percorso
+                proibito, ma solo la Side B. La terza route sarebbe invece la
+                <em>Sword Route</em>, nascosta dietro la TwistedSwd: ThornRing
+                da una Snowgrave abortita, PureCrystal dalla quest degli Shadow
+                Crystal, poi crafting in Castle Town.
+              </div>
+              <div class="third-route-text">
+                Il punto piu' interessante e' il minigioco del Mantle: sword
+                route nel codice, progressione a colpi di spada, Noelle "used
+                up", Kris in trance, Susie e Ralsei eliminati, radici e shelter.
+                La teoria lo legge come guida anticipata, non come semplice
+                metafora di Snowgrave.
+              </div>
+              <div class="third-route-text">
+                Punto forte: collega ThornRing, PureCrystal, TwistedSwd, Image
+                Friend, shelter e roots in un'unica ipotesi elegante. Punto
+                debole: parte accettando assunzioni enormi, soprattutto che il
+                minigioco vada letto quasi letteralmente e che "sword route" nel
+                codice sia una promessa narrativa.
+              </div>
+              <div class="third-route-text">
+                Quindi: punto di vista molto interessante, ma non dimostrazione.
+                Per ora e' una mappa possibile.
+              </div>
+              <a
+                class="third-route-link"
+                href="https://www.youtube.com/watch?v=7PZrJST8qko"
+                target="_blank"
+                rel="noreferrer"
+                >Apri video</a
+              >
+              <div class="third-route-note">
+                TWISTEDSWORD // MANTLE // IMAGE FRIEND
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="section-block">
+          <div class="section-header">// PUNTI A SFAVORE //</div>
+          <div class="counter-grid">
+            <div class="counter-card">
+              <strong>Primo tabellone</strong>
+              <span>
+                La teoria tende a ignorare il primo board del Mantle, dove
+                usiamo gia' la spada per uccidere tutto. Se il minigioco e' una
+                mappa quasi letterale, quel pezzo dovrebbe contare.
+              </span>
+            </div>
+            <div class="counter-card">
+              <strong>Uccellino azzurro</strong>
+              <span>
+                Il congelamento del bird blu porta il parallelo molto vicino a
+                Berdly. Letta cosi', la teoria sembra richiedere una Weird Route
+                del Capitolo 2 completata con Snowgrave, non solo abortita.
+              </span>
+            </div>
+            <div class="counter-card">
+              <strong>Save file da preparare?</strong>
+              <span>
+                Non e' detto che abbiamo gia' tutti i dati per preparare il save
+                giusto. Il video lo dà quasi per risolto, ma qui siamo ancora
+                parecchio nel campo delle ipotesi.
+              </span>
+            </div>
+            <div class="counter-card">
+              <strong>Darkner reclutati o scappati</strong>
+              <span>
+                Anche ammesso che serva un file "ibrido", non sappiamo come
+                vadano gestite le sezioni senza magia di ghiaccio: reclutare i
+                Darkner, farli scappare, o seguire un criterio ancora diverso.
+              </span>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer id="site-footer">
+        <span>GASTER_SYSTEM // WEIRD ROUTE // TERZA ROUTE</span>
+      </footer>
+    </div>
+
+    <script src="../../assets/main.js"></script>
+  </body>
+</html>
