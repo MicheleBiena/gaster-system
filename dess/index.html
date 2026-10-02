@@ -211,28 +211,38 @@
           class="sighting-wide"
           src="../spignatt.png"
           alt="Un ristorante vuoto"
-          width="800"
-          height="800"
+          width="1254"
+          height="1254"
           fetchpriority="high"
         />
         <img
           class="sighting-close"
           src="../spignatt.png"
           alt=""
-          width="800"
-          height="800"
+          width="1254"
+          height="1254"
           aria-hidden="true"
         />
       </button>
+      <audio
+        id="sighting-audio"
+        src="../assets/audio/digitalroots.mp3"
+        preload="metadata"
+        loop
+      ></audio>
     </main>
     <script>
       const sighting = document.querySelector('.sighting');
+      const sightingAudio = document.getElementById('sighting-audio');
+
+      sightingAudio.volume = 0.5;
 
       sighting.addEventListener(
         'click',
         () => {
           sighting.classList.add('sighted');
           sighting.setAttribute('aria-label', 'Avvistamento');
+          sightingAudio.play().catch(() => {});
         },
         { once: true },
       );

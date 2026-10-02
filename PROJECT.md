@@ -84,13 +84,14 @@ gaster-system/
 |---|---|---|
 | `index.html` | ✅ Aggiornato | Hub ridisegnato come soglia Chapter 5; Pre-Cap 6 è aperto con toggle route proibita e navigazione alternativa |
 | `dess/index.html` | ✅ Creato | Pagina segreta autonoma, raggiungibile solo tramite URL diretto `/dess/` |
-| `spignatt.png` | ✅ Creato | Immagine usata nell'avvistamento della pagina segreta `/dess/` |
+| `spignatt.png` | ✅ Aggiornato | Immagine monocromatica molto scura usata nell'avvistamento della pagina segreta `/dess/` |
 | `10anniversary.png` | ✅ Creato | Still del couch stream Undertale 10th Anniversary |
 | `newhome.png` | ✅ Creato | Still della nuova area New Home dal 10th Anniversary Stream |
 | `assets/style.css` | ✅ Aggiornato | Tema globale Chapter 5: nero, fiori, rosa/oro, accenti blu-verde |
 | `assets/main.js` | ✅ Aggiornato | Utility, temi, accessibilità, lazy media, audio esclusivo home e sakura |
 | `assets/audio/chapter5-home.mp3` | ✅ Creato | Nuovo audio home Chapter 5, riproduzione singola senza loop |
 | `assets/audio/snd_icespell.ogg` | ✅ Creato | Effetto sonoro ice spell per il toggle route proibita della home |
+| `assets/audio/digitalroots.mp3` | ✅ Creato | Audio originale della pagina segreta `/dess/`, avviato al primo click |
 | `assets/img/pre-cap4/roots-tiles.json` | ✅ Creato | Manifest tile Roots Theory: griglia 4x4 con cella `0_0` vuota |
 | `assets/img/pre-cap4/hometown/` | ✅ Creato | Tile Hometown 384x256 nominate per posizione griglia |
 | `assets/img/pre-cap4/manhole/` | ✅ Creato | Tile Manhole 384x256 nominate per posizione griglia |
@@ -542,6 +543,8 @@ File: `chapters/pre-cap1/survey.html`
 - Ripreso il comportamento di `deltarune.com/sighting/`: immagine a pieno schermo, vignetta, zoom lento e secondo stato al click
 - Aggiunto `noindex, nofollow` per mantenere la pagina fuori dai motori di ricerca
 - Utilizzata `spignatt.png` senza caricare CSS o JavaScript globali
+- Aggiunto `digitalroots.mp3`, riprodotto in loop dal primo click come nella pagina originale
+- Trasformata `spignatt.png` in una fotografia monocromatica scura, contrastata e granulosa
 
 ---
 
