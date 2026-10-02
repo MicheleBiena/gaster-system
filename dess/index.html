@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>dess</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body,
+      main {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        background: #000;
+      }
+
+      body {
+        min-height: 100svh;
+        overflow: hidden;
+      }
+
+      .sighting {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 0;
+        background: #000;
+        cursor: pointer;
+        touch-action: manipulation;
+      }
+
+      .sighting:focus-visible {
+        outline: 3px solid #fff;
+        outline-offset: -6px;
+      }
+
+      .sighting::before,
+      .sighting::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 3;
+      }
+
+      .sighting::before {
+        box-shadow:
+          inset 0 0 18vmin 7vmin #000,
+          inset 0 0 48vmin 15vmin #000;
+        transition: box-shadow 2s ease-in-out;
+      }
+
+      .sighting::after {
+        background:
+          repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.16) 0,
+            rgba(0, 0, 0, 0.16) 1px,
+            transparent 1px,
+            transparent 3px
+          );
+        opacity: 0.28;
+      }
+
+      .sighting img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        user-select: none;
+        -webkit-user-drag: none;
+        transition: opacity 2s ease-in-out;
+      }
+
+      .sighting-wide {
+        opacity: 1;
+        animation: distant-sighting 24s infinite;
+      }
+
+      .sighting-close {
+        z-index: 2;
+        opacity: 0;
+        object-position: 18% 32%;
+      }
+
+      .sighting.sighted {
+        cursor: default;
+      }
+
+      .sighting.sighted::before {
+        box-shadow: inset 0 0 22vmin 5vmin #000;
+      }
+
+      .sighting.sighted .sighting-wide {
+        opacity: 0;
+        animation: none;
+      }
+
+      .sighting.sighted .sighting-close {
+        opacity: 1;
+        animation: close-sighting 17s infinite;
+      }
+
+      @keyframes distant-sighting {
+        0% {
+          transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+          opacity: 0;
+        }
+
+        5% {
+          opacity: 1;
+        }
+
+        45% {
+          transform: scale3d(1.45, 1.45, 1) translate3d(-4%, 2%, 0);
+          opacity: 1;
+        }
+
+        50% {
+          transform: scale3d(1.9, 1.9, 1) translate3d(-7%, 4%, 0);
+          opacity: 0;
+        }
+
+        51% {
+          transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+          opacity: 0;
+        }
+
+        55% {
+          opacity: 1;
+        }
+
+        95% {
+          transform: scale3d(1.7, 1.7, 1) translate3d(3%, -3%, 0);
+          opacity: 1;
+        }
+
+        100% {
+          transform: scale3d(2.35, 2.35, 1) translate3d(6%, -5%, 0);
+          opacity: 0;
+        }
+      }
+
+      @keyframes close-sighting {
+        0% {
+          transform: scale3d(1.15, 1.15, 1) translate3d(0, 0, 0);
+          opacity: 0;
+        }
+
+        5% {
+          opacity: 1;
+        }
+
+        45% {
+          transform: scale3d(2, 2, 1) translate3d(13%, 8%, 0);
+          opacity: 1;
+        }
+
+        50% {
+          transform: scale3d(2.7, 2.7, 1) translate3d(18%, 11%, 0);
+          opacity: 0;
+        }
+
+        51% {
+          transform: scale3d(1.2, 1.2, 1) translate3d(0, 0, 0);
+          opacity: 0;
+        }
+
+        55% {
+          opacity: 1;
+        }
+
+        95% {
+          transform: scale3d(2.25, 2.25, 1) translate3d(8%, 4%, 0);
+          opacity: 1;
+        }
+
+        100% {
+          transform: scale3d(3.2, 3.2, 1) translate3d(-6%, 6%, 0);
+          opacity: 0;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .sighting img {
+          animation: none !important;
+          transition-duration: 0.01ms;
+        }
+
+        .sighting::before {
+          transition-duration: 0.01ms;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <button class="sighting" type="button" aria-label="Osserva piu da vicino">
+        <img
+          class="sighting-wide"
+          src="../spignatt.png"
+          alt="Un ristorante vuoto"
+          width="800"
+          height="800"
+          fetchpriority="high"
+        />
+        <img
+          class="sighting-close"
+          src="../spignatt.png"
+          alt=""
+          width="800"
+          height="800"
+          aria-hidden="true"
+        />
+      </button>
+    </main>
+    <script>
+      const sighting = document.querySelector('.sighting');
+
+      sighting.addEventListener(
+        'click',
+        () => {
+          sighting.classList.add('sighted');
+          sighting.setAttribute('aria-label', 'Avvistamento');
+        },
+        { once: true },
+      );
+    </script>
+  </body>
+</html>

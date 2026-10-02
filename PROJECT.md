@@ -83,6 +83,8 @@ gaster-system/
 | File | Stato | Note |
 |---|---|---|
 | `index.html` | ✅ Aggiornato | Hub ridisegnato come soglia Chapter 5; Pre-Cap 6 è aperto con toggle route proibita e navigazione alternativa |
+| `dess/index.html` | ✅ Creato | Pagina segreta autonoma, raggiungibile solo tramite URL diretto `/dess/` |
+| `spignatt.png` | ✅ Creato | Immagine usata nell'avvistamento della pagina segreta `/dess/` |
 | `10anniversary.png` | ✅ Creato | Still del couch stream Undertale 10th Anniversary |
 | `newhome.png` | ✅ Creato | Still della nuova area New Home dal 10th Anniversary Stream |
 | `assets/style.css` | ✅ Aggiornato | Tema globale Chapter 5: nero, fiori, rosa/oro, accenti blu-verde |
@@ -534,6 +536,12 @@ File: `chapters/pre-cap1/survey.html`
 - Aggiunta sezione ThornRing con ottenimento, effetti, interazione con Snowgrave, abort route e collegamento a TwistedSwd/PureCrystal
 - Spostata "Discussione sulla terza route" in `chapters/forbidden-route/third-route.html`, collegata dalla home Weird Route come scheda separata
 - Aggiunti punti a sfavore della teoria della terza route: primo tabellone, bird blu/Snowgrave, incertezza sul save e gestione Darkner
+
+### Sessione 53 — Pagina segreta Dess
+- Creata `dess/index.html`, raggiungibile tramite URL diretto `/dess/` e non collegata dalla navigazione
+- Ripreso il comportamento di `deltarune.com/sighting/`: immagine a pieno schermo, vignetta, zoom lento e secondo stato al click
+- Aggiunto `noindex, nofollow` per mantenere la pagina fuori dai motori di ricerca
+- Utilizzata `spignatt.png` senza caricare CSS o JavaScript globali
 
 ---
 
