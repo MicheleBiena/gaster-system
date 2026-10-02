@@ -552,6 +552,12 @@ File: `chapters/pre-cap1/survey.html`
 - Corretti i percorsi relativi di immagine e audio dopo lo spostamento
 - Verificati in locale il redirect `/dess` → `/dess/`, la risposta `200` della pagina e il caricamento degli asset
 
+### Sessione 55 — Sequenza multi-inquadratura Dess
+- Sostituito lo zoom singolo con quattro inquadrature cicliche della scena
+- Aggiunti crop e movimenti distinti su campo largo, lati e tavoli in primo piano
+- Dopo il click la sequenza riparte con zoom più ravvicinati e mantiene l'audio in loop
+- Conservato un fermo immagine stabile per `prefers-reduced-motion`
+
 ---
 
 ## Istruzioni per agenti successivi
