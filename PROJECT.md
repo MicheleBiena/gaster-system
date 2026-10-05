@@ -558,6 +558,12 @@ File: `chapters/pre-cap1/survey.html`
 - Dopo il click la sequenza riparte con zoom più ravvicinati e mantiene l'audio in loop
 - Conservato un fermo immagine stabile per `prefers-reduced-motion`
 
+### Sessione 56 — Fix temporizzazione inquadrature Dess
+- Separata la dichiarazione abbreviata dell'animazione dalle proprietà temporali
+- Ripristinati i delay progressivi a 0, 10, 20 e 30 secondi per mostrare davvero i quattro crop in sequenza
+- Eliminato il tratto nero causato dalla partenza simultanea di tutti i livelli immagine
+- Rimossi dal repository i profili Chrome e gli screenshot temporanei usati per i test visuali
+
 ---
 
 ## Istruzioni per agenti successivi
